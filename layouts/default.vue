@@ -1,14 +1,9 @@
 <template>
   <div>
-    Default layout
-
-    <div class="flex items-center mb-4">
-      <nuxt-link to="/">Home</nuxt-link>
-      <nuxt-link to="/about">About</nuxt-link>
-    </div>
-
+    <LayoutHeader />
     <div>
       <slot></slot>
     </div>
+    <LayoutFooter />
   </div>
 </template>
