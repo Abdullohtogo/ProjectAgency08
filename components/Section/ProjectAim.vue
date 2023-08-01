@@ -8,7 +8,7 @@
             class="text-white bg-green-300 rounded-xl px-2.5">hissa</span> qo'shish</span>
       </h2>
       <div class="flex justify-between items-center">
-        <div class="basis-2/3 sm:-translate-x-[100px]">
+        <div class="basis-2/3 sm:-translate-x-[100px] sm:translate-y-[72px]">
           <img src="/images/project-aim.png" alt="aim">
         </div>
         <div class="basis-5/12">

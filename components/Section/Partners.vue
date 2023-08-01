@@ -29,7 +29,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import PartnerCompanyCard from "~/components/Cards/PartnerCompanyCard.vue";
+import PartnerCompanyCard from "~/components/Card/PartnerCompanyCard.vue";
 
 const cards = [
   {

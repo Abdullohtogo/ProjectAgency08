@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import MainCard from "~/components/Cards/MainCard.vue";
+import MainCard from "~/components/Card/MainCard.vue";
 
 const cards = [
   {

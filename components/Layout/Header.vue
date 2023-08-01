@@ -8,7 +8,7 @@
     <nav>
       <ul class="flex justify-between gap-4 lg:gap-8">
         <li v-for="item in menu" :key="item.id">
-          <a href="" class="hover:text-green-300 text-black-100 transition-all duration-300 ease-in-out">{{
+          <a :href="item.url" class="hover:text-green-300 text-black-100 transition-all duration-300 ease-in-out">{{
               item.text
             }}</a>
         </li>
@@ -23,31 +23,28 @@
 </template>
 
 <script setup lang="ts">
-import {reactive} from "vue";
+const menu = [
+  {
+    id: 1,
+    text: "Biz haqimizda",
+    url: "/about"
+  },
+  {
+    id: 2,
+    text: "Afzalliklar"
+  },
+  {
+    id: 3,
+    text: "Ilova"
+  },
+  {
+    id: 4,
+    text: "Fondlar uchun"
+  },
 
-const menu = reactive(
-    [
-      {
-        id: 1,
-        text: "Biz haqimizda"
-      },
-      {
-        id: 2,
-        text: "Afzalliklar"
-      },
-      {
-        id: 3,
-        text: "Ilova"
-      },
-      {
-        id: 4,
-        text: "Fondlar uchun"
-      },
-
-      {
-        id: 5,
-        text: "Bog'lanish"
-      }
-    ]
-)
+  {
+    id: 5,
+    text: "Bog'lanish"
+  }
+]
 </script>

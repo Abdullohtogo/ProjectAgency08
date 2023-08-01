@@ -30,7 +30,7 @@ const buttonStyle = computed(() => {
     case 'secondary':
       return 'text-purple bg-green-400 border-green-400 text-white'
     case 'darker':
-      return 'text-purple'
+      return 'text-green-400 bg-green-100 border-transparent'
     default:
       return 'bg-green'
   }

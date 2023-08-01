@@ -4,5 +4,5 @@
   <SectionMainCards class="mb-10"/>
   <SectionAppBanner />
   <SectionPartners class="mb-10"/>
+  <SectionContactUs class="mb-[96px]"/>
 </template>
-

@@ -3,7 +3,9 @@
     <div class="container">
       <div class="flex">
         <div class="basis-1/2">
-          <img src="@/public/logo.svg" alt="">
+          <a href="/">
+            <img src="@/public/logo.svg" alt="">
+          </a>
           <p class="mt-5 text-gray-200">
             Saxovat amallari bilan shug‘ullanatigan fondlarni va ularning yaxshilik yo‘lida tashkil qilayotgan
             loyihalarini kuzatib boring.
@@ -15,8 +17,12 @@
             <div>
               <p class="text-black-100 font-medium text-xl mb-2">Ilova yanada qulayroq</p>
               <div class="flex gap-3">
-                <img src="@/public/icons/AppStore-footer.svg" alt="appstore">
-                <img src="@/public/icons/PlayMarket-footer.svg" alt="playmarket">
+                <a href="/">
+                  <img src="@/public/icons/AppStore-footer.svg" alt="appstore">
+                </a>
+                <a href="/">
+                  <img src="@/public/icons/PlayMarket-footer.svg" alt="playmarket">
+                </a>
               </div>
             </div>
           </div>
@@ -65,7 +71,8 @@
           </p>
           <ul class="flex gap-3">
             <li v-for="item in links" :key="item.id">
-              <a :href="item.url" class="text-black-100 hover:text-green-300 transition-all duration-300 ease-in-out">{{ item.text }}</a>
+              <a :href="item.url"
+                 class="text-black-100 hover:text-green-300 transition-all duration-300 ease-in-out">{{ item.text }}</a>
             </li>
           </ul>
         </div>
@@ -78,7 +85,7 @@ const main = [
   {
     id: 1,
     text: 'Biz haqimizda',
-    url: '/'
+    url: '/about'
   },
   {
     id: 2,

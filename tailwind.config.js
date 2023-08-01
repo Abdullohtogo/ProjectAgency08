@@ -22,8 +22,11 @@ module.exports = {
                     200: '#5C6659',
                     300: '#F6F7F5',
                     400: '#808F7C',
+                    500: '#CDD7C6',
+                    600: '#E5ECDF',
                 },
                 green: {
+                    100: '#EBF7F1',
                     200: '#A7D2B5',
                     300: '#16CC53',
                     400: '#27A44A',
@@ -31,7 +34,7 @@ module.exports = {
                 },
                 black: {
                     100: '#090E14'
-                }
+                },
             },
             gradientColorStops: {
                 'app-banner-1': '#27A44A',
@@ -43,7 +46,10 @@ module.exports = {
                 40: '40px',
             },
             boxShadow: {
-                'partners': "0px 4px 30px 0px rgba(22, 204, 83, 0.20)"
+                'partners': "0px 4px 30px 0px rgba(22, 204, 83, 0.20)",
+                'partnersCard': "0px 10px 48px 0px rgba(16, 16, 16, 0.10)",
+                'formCard': "0px 10px 48px 0px rgba(16, 16, 16, 0.10)",
+                'qrlight': "0px 4px 50px 0px rgba(39, 164, 74, 0.60)",
             },
         },
     },
