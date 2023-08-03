@@ -20,12 +20,12 @@
         <img src="/icons/QR-light.svg" alt="" class="mt-8 shadow-qrlight">
       </div>
       <div class="mt-4 flex gap-3 w-full">
-        <a href="/" class="basis-1/2">
-          <img src="/icons/Appstore.svg" alt="" class="w-full">
-        </a>
-        <a href="/" class="basis-1/2">
-          <img src="/icons/Playmarket.svg" alt="" class="w-full">
-        </a>
+        <router-link to="/" class="basis-1/2">
+          <img src="/icons/Appstore.svg" alt="" class="w-full"/>
+        </router-link>
+        <router-link to="/" class="basis-1/2">
+          <img src="/icons/Playmarket.svg" alt="" class="w-full"/>
+        </router-link>
       </div>
     </div>
   </div>

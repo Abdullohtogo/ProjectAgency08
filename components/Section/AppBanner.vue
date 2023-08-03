@@ -10,12 +10,12 @@
         <div class="flex gap-4 mt-7">
           <img src="/icons/QR.svg" alt="qr">
           <div class="flex flex-col justify-between">
-            <a href="/" class="cursor-pointer">
-              <img src="/images/Appstore.png" alt="">
-            </a>
-            <a href="/" class="cursor-pointer">
-              <img src="/images/Playmarket.png" alt="">
-            </a>
+            <router-link to="/" class="cursor-pointer">
+              <img src="/images/Appstore.png" alt="" />
+            </router-link>
+            <router-link to="/" class="cursor-pointer">
+              <img src="/images/Playmarket.png" alt=""/>
+            </router-link>
           </div>
         </div>
       </div>

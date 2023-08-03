@@ -9,7 +9,8 @@
       <div class="flex items-center gap-10 lg:gap-20 relative z-100">
         <div>
           <div class="mb-10">
-            <h2 class="text-3xl lg:text-[42px] lg:leading-10 font-bold uppercase text-green-500">Xayrli ishlarga <span class="underline">
+            <h2 class="text-3xl lg:text-[42px] lg:leading-10 font-bold uppercase text-green-500">Xayrli ishlarga <span
+                class="underline">
             hissa
           </span> qo‘shish uchun
               platforma</h2>
@@ -18,14 +19,14 @@
             </p>
           </div>
           <div class="flex gap-3">
-            <a href="/">
+            <router-link to="/">
               <img src="@/public/icons/Appstore.svg" alt=""
-                   class="cursor-pointer hover:-translate-y-1 transition-all duration-300 ease-in-out">
-            </a>
-            <a href="/">
+                   class="cursor-pointer hover:-translate-y-1 transition-all duration-300 ease-in-out"/>
+            </router-link>
+            <router-link to="/">
               <img src="@/public/icons/Playmarket.svg" alt=""
-                   class="cursor-pointer hover:-translate-y-1 transition-all duration-300 ease-in-out">
-            </a>
+                   class="cursor-pointer hover:-translate-y-1 transition-all duration-300 ease-in-out"/>
+            </router-link>
           </div>
         </div>
         <div class="w-[60%]">

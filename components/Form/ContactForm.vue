@@ -10,7 +10,7 @@
     </div>
     <div class="flex justify-between gap-20 mt-5">
       <div class="flex gap-2 items-center">
-        <input type="checkbox" class="bg-gray-300 w-8 h-6 border-[1px] border-gray-500 rounded-md appearance-none checked:bg-green-300">
+        <input type="checkbox" class="bg-gray-300 w-8 h-6 border border-gray-500 rounded-md appearance-none checked:bg-green-300">
         <p class="text-gray-200">Ommaviy offerta qoidalarini qabul qilaman</p>
       </div>
       <ButtonVButton label="Yuborish"/>

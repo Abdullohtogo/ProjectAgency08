@@ -1,16 +1,17 @@
 <template>
   <header class="container mt-8 flex justify-between items-center mb-10">
     <div>
-      <a href="/">
-        <img src="@/public/logo.svg" alt="logo">
-      </a>
+      <router-link to="/">
+        <img src="@/public/logo.svg" alt="logo"/>
+      </router-link>
     </div>
     <nav>
       <ul class="flex justify-between gap-4 lg:gap-8">
         <li v-for="item in menu" :key="item.id">
-          <a :href="item.url" class="hover:text-green-300 text-black-100 transition-all duration-300 ease-in-out">{{
-              item.text
-            }}</a>
+          <router-link :to="item?.url"
+                       class="hover:text-green-300 text-black-100 transition-all duration-300 ease-in-out">
+            {{ item.text }}
+          </router-link>
         </li>
       </ul>
     </nav>
@@ -31,20 +32,25 @@ const menu = [
   },
   {
     id: 2,
-    text: "Afzalliklar"
+    text: "Afzalliklar",
+    url: "/about"
+
   },
   {
     id: 3,
-    text: "Ilova"
+    text: "Ilova",
+    url: "/about"
   },
   {
     id: 4,
-    text: "Fondlar uchun"
+    text: "Fondlar uchun",
+    url: "/about"
   },
 
   {
     id: 5,
-    text: "Bog'lanish"
+    text: "Bog'lanish",
+    url: "/about"
   }
 ]
 </script>

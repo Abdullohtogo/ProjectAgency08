@@ -5,27 +5,27 @@
         <h3 class="text-3xl text-white font-semibold">Bog‘lanish usullari</h3>
         <p class="mt-3 text-white/60">Biz bilan quyida keltirilgan yo‘llar orqali aloqaga chiqishingiz mumkin</p>
         <div class="flex-col gap-2">
-          <a :href="item?.url" target="_blank" class="mt-6 p-3 flex gap-2 rounded-40 border-[1px] border-white/20"
-             v-for="item in info" :key="item?.id"
+          <router-link :to="item?.url" target="_blank" class="mt-6 p-3 flex gap-2 rounded-40 border border-white/20"
+                       v-for="item in info" :key="item?.id"
           >
-            <img :src="item?.src" alt="icon">
+            <img :src="item?.src" alt="icon"/>
             <div class="flex flex-col gap-1">
               <p class="text-sm text-white/60">{{ item?.title }}</p>
               <div class="text-white font-medium flex gap-1.5" target="_blank">
                 <p>{{ item?.text }}</p>
-                <img :src="item?.icon" alt="" v-if="item?.icon">
+                <img :src="item?.icon" alt="" v-if="item?.icon"/>
               </div>
             </div>
-          </a>
+          </router-link>
         </div>
         <div class="mt-3.5 flex flex-col gap-2">
           <p class="text-sm text-white font-semibold">
             Biz ijtimoiy tarmoqlarda
           </p>
           <div class="flex gap-3">
-            <a :href="item.url" class="p-2 rounded-full bg-[#e8f0fe33]" v-for="item in social" :key="item.id">
-              <img :src="item.src" alt="social-icon" />
-            </a>
+            <router-link :to="item.url" class="p-2 rounded-full bg-[#e8f0fe33]" v-for="item in social" :key="item.id">
+              <img :src="item.src" alt="social-icon"/>
+            </router-link>
           </div>
         </div>
       </div>

@@ -1,11 +1,10 @@
 <template>
   <div class="mx-11 flex gap-7">
-    <MainCard v-for="item in cards" :item="item" :key="item.id"/>
+    <CardMain v-for="item in cards" :item="item" :key="item.id"/>
   </div>
 </template>
 
 <script setup lang="ts">
-import MainCard from "~/components/Card/MainCard.vue";
 
 const cards = [
   {

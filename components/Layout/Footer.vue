@@ -3,9 +3,9 @@
     <div class="container">
       <div class="flex">
         <div class="basis-1/2">
-          <a href="/">
-            <img src="@/public/logo.svg" alt="">
-          </a>
+          <router-link to="/">
+            <img src="@/public/logo.svg" alt=""/>
+          </router-link>
           <p class="mt-5 text-gray-200">
             Saxovat amallari bilan shug‘ullanatigan fondlarni va ularning yaxshilik yo‘lida tashkil qilayotgan
             loyihalarini kuzatib boring.
@@ -17,12 +17,12 @@
             <div>
               <p class="text-black-100 font-medium text-xl mb-2">Ilova yanada qulayroq</p>
               <div class="flex gap-3">
-                <a href="/">
-                  <img src="@/public/icons/AppStore-footer.svg" alt="appstore">
-                </a>
-                <a href="/">
-                  <img src="@/public/icons/PlayMarket-footer.svg" alt="playmarket">
-                </a>
+                <router-link to="/">
+                  <img src="@/public/icons/AppStore-footer.svg" alt="appstore"/>
+                </router-link>
+                <router-link to="/">
+                  <img src="@/public/icons/PlayMarket-footer.svg" alt="playmarket"/>
+                </router-link>
               </div>
             </div>
           </div>
@@ -33,7 +33,7 @@
             <ul class="mt-3 flex flex-col gap-3">
               <li v-for="item in main" :key="item.id"
                   class="text-black-100 hover:text-green-300 transition-all duration-300 ease-in-out">
-                <a :href="item.url">{{ item.text }}</a>
+                <router-link :to="item.url">{{ item.text }}</router-link>
               </li>
             </ul>
           </div>
@@ -43,10 +43,10 @@
               <li v-for="item in contact" :key="item.id"
                   class="flex gap-2">
                 <img :src="item.src" alt="icon">
-                <a :href="item.url"
+                <router-link :to="item.url"
                    class="text-black-100 hover:text-green-300 transition-all duration-300 ease-in-out">{{
                     item.text
-                  }}</a>
+                  }}</router-link>
               </li>
             </ul>
             <div class="mt-7">
@@ -54,9 +54,9 @@
                 Bizni ijtimoiy tarmoqlarda kuzatib boring
               </p>
               <div class="mt-4 flex gap-3">
-                <a :href="item.url" v-for="item in share" :key="item.id">
-                  <img :src="item.src" alt="icon">
-                </a>
+                <router-link :to="item.url" v-for="item in share" :key="item.id">
+                  <img :src="item.src" alt="icon"/>
+                </router-link>
               </div>
             </div>
           </div>
@@ -71,8 +71,8 @@
           </p>
           <ul class="flex gap-3">
             <li v-for="item in links" :key="item.id">
-              <a :href="item.url"
-                 class="text-black-100 hover:text-green-300 transition-all duration-300 ease-in-out">{{ item.text }}</a>
+              <router-link :to="item.url"
+                 class="text-black-100 hover:text-green-300 transition-all duration-300 ease-in-out">{{ item.text }}</router-link>
             </li>
           </ul>
         </div>

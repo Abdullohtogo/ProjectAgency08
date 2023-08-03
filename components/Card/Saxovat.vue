@@ -13,7 +13,7 @@
 
     <div class="mt-6 flex flex-col gap-4">
       <div class="flex gap-5">
-        <div class="p-3 rounded-2xl border-[1px] border-gray-600 flex flex-col items-center w-full">
+        <div class="p-3 rounded-2xl border border-gray-600 flex flex-col items-center w-full">
           <p class="text-black-100 font-medium text-center">
             Saxovat tugagunicha qolgan vaqt:
           </p>
@@ -48,7 +48,7 @@
             </div>
           </div>
         </div>
-        <div class="p-3 rounded-2xl border-[1px] border-gray-600 flex flex-col items-center w-full">
+        <div class="p-3 rounded-2xl border border-gray-600 flex flex-col items-center w-full">
           <div class="flex justify-between w-full">
             <div>
               <p class="text-sm text-gray-400">Yig'ildi:</p>

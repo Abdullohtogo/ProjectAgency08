@@ -1,5 +1,5 @@
 <template>
-  <button class="py-2.5 px-5 rounded-xl relative border-[1px] font-semibold transition-all duration-300 ease-in-out"
+  <button class="py-2.5 px-5 rounded-xl relative border font-semibold transition-all duration-300 ease-in-out"
 :class=" [buttonStyle, {
   'pointer-events-none': loading }]">
   {{ label }}

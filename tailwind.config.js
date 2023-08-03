@@ -51,6 +51,12 @@ module.exports = {
                 'formCard': "0px 10px 48px 0px rgba(16, 16, 16, 0.10)",
                 'qrlight': "0px 4px 50px 0px rgba(39, 164, 74, 0.60)",
             },
+            lineHeight: {
+                130: '130%',
+            },
+            fontSize: {
+              '2xs': '10px'
+            },
         },
     },
     plugins: [],
