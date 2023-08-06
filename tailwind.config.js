@@ -24,6 +24,7 @@ module.exports = {
                     400: '#808F7C',
                     500: '#CDD7C6',
                     600: '#E5ECDF',
+                    700: '#939694',
                 },
                 green: {
                     100: '#EBF7F1',
@@ -33,7 +34,11 @@ module.exports = {
                     500: '#0C3317',
                 },
                 black: {
-                    100: '#090E14'
+                    100: '#090E14',
+                    200: '#292E2A',
+                },
+                blue: {
+                  light: '#E4ECF7',
                 },
             },
             gradientColorStops: {

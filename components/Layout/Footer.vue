@@ -85,7 +85,7 @@ const main = [
   {
     id: 1,
     text: 'Biz haqimizda',
-    url: '/about'
+    url: '/rpofile'
   },
   {
     id: 2,

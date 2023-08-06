@@ -8,10 +8,10 @@
     <nav>
       <ul class="flex justify-between gap-4 lg:gap-8">
         <li v-for="item in menu" :key="item.id">
-          <router-link :to="item?.url"
+          <nuxt-link :to="item?.url"
                        class="hover:text-green-300 text-black-100 transition-all duration-300 ease-in-out">
             {{ item.text }}
-          </router-link>
+          </nuxt-link>
         </li>
       </ul>
     </nav>
@@ -28,29 +28,29 @@ const menu = [
   {
     id: 1,
     text: "Biz haqimizda",
-    url: "/about"
+    url: "/profile"
   },
   {
     id: 2,
     text: "Afzalliklar",
-    url: "/about"
+    url: "/advantages"
 
   },
   {
     id: 3,
     text: "Ilova",
-    url: "/about"
+    url: "/app"
   },
   {
     id: 4,
     text: "Fondlar uchun",
-    url: "/about"
+    url: "/forfonds"
   },
 
   {
     id: 5,
     text: "Bog'lanish",
-    url: "/about"
+    url: "/contact"
   }
 ]
 </script>
