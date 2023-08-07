@@ -1,16 +1,20 @@
 import { createI18n } from 'vue-i18n'
-import uz from '@/i18n/uz.json'
 
-const messages = {
-  uz,
-}
-export default defineNuxtPlugin(({ vueApp }) => {
+import en from '@/languages/en.json'
+import ru from '@/languages/ru.json'
+import uz from '@/languages/uz.json'
+import { Html } from '.nuxt/components'
+
+export default defineNuxtPlugin((nuxtApp) => {
   const i18n = createI18n({
+    locale: useCookie('locale').value || 'en',
     legacy: false,
-    globalInjection: true,
-    locale: 'uz',
-    messages,
+    messages: {
+      en,
+      ru,
+      uz,
+    },
   })
-
-  vueApp.use(i18n)
+  
+  nuxtApp.vueApp.use(i18n)
 })
