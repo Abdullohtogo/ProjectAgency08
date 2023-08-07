@@ -22,7 +22,7 @@ build-dev:
 build-prod:  
   stage: build-prod
   script:
-    - echo "Building production $CI_REGISTRY_IMAGE:latest"
+    - echo "Building production hissa landing $CI_REGISTRY_IMAGE:latest"
     - docker build . -t "$CI_REGISTRY_IMAGE:latest"
     - echo "DONE"
   tags:
