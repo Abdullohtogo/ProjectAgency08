@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  hissa-landing:
+    image: registry.uicgroup.tech/imkon/commeta-frontend/hissa-landing:dev
+    environment:
+      - TZ=Asia/Tashkent
+    ports:
+      - 8083:80
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
