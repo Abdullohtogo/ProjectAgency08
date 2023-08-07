@@ -1,20 +1,18 @@
 <template>
-  <header class="container mt-8 flex justify-between items-center mb-10">
+  <header class="container py-8 flex justify-between items-center">
     <div>
       <router-link to="/">
         <img src="@/public/logo.svg" alt="logo"/>
       </router-link>
     </div>
-    <nav>
-      <ul class="flex justify-between gap-4 lg:gap-8">
+      <ul class="gap-4 lg:gap-8 hidden  md:flex">
         <li v-for="item in menu" :key="item.id">
           <nuxt-link :to="item?.url"
-                       class="hover:text-green-300 text-black-100 transition-all duration-300 ease-in-out">
+                       class="hover:text-green-300 text-sm leading-5 text-black-100 transition-all duration-300 ease-in-out">
             {{ item.text }}
           </nuxt-link>
         </li>
       </ul>
-    </nav>
     <div class="flex gap-1 cursor-pointer">
       <img src="../../public/icons/language-outline.svg" alt="">
       <p>O'zbekcha</p>
