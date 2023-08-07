@@ -1,0 +1,50 @@
+image: docker:latest
+
+stages:
+  - build-prod
+  - build-dev
+  - push
+
+before_script:
+  - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY --username $CI_REGISTRY_USER --password-stdin
+
+build-dev:
+  stage: build-dev
+  script:    
+    - echo "Building development $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
+    - docker build . -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
+    - echo "DONE"
+  tags:
+    - commeta
+  only:
+    - dev
+
+build-prod:  
+  stage: build-prod
+  script:
+    - echo "Building production $CI_REGISTRY_IMAGE:latest"
+    - docker build . -t "$CI_REGISTRY_IMAGE:latest"
+    - echo "DONE"
+  tags:
+    - commeta
+  only:
+    - master
+
+push:
+  stage: push
+  script:
+    - echo "------------- Pushing image -------------"
+    - |
+      if [[ "$CI_COMMIT_BRANCH" == "$CI_DEFAULT_BRANCH" ]]; then
+        tag=""
+        echo "Running on default branch '$CI_DEFAULT_BRANCH': tag = 'latest'"
+      else
+        tag=":$CI_COMMIT_REF_SLUG"
+        echo "Running on branch '$CI_COMMIT_BRANCH': tag = $tag"
+      fi    
+    - docker push "$CI_REGISTRY_IMAGE${tag}"
+  tags:
+    - commeta
+  only:
+    - dev
+    - master
