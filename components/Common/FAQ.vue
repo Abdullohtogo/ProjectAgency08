@@ -6,7 +6,7 @@
         v-for="(item, index) in faqs"
         :key="index"
         class="group transition-300 col-span-2 md:col-span-1 rounded-xl bg-gray-800 mb-4"
-        :class="[{'': selectedItem !== item.id }, {' border border-green-400': selectedItem === item.id}]"
+        :class="[{'bg-white border border-green-400': selectedItem === item.id}]"
     >
       <div
           class="flex items-center justify-between cursor-pointer py-[13px] md:py-[15px] px-5"
@@ -18,17 +18,16 @@
           {{ item?.question }}
         </h4>
         <div class="ml-4">
-          <img src="/icons/arrow-down.svg" alt="" class="rotate-180"
-               v-if="selectedItem === item.id"
+          <img src="/icons/arrow-down.svg" alt=""
+               :class="{'rotate-180 ease-in-out': selectedItem === item.id}"
           >
-          <img src="/icons/arrow-down.svg" alt="" v-else>
         </div>
       </div>
 
       <CollapseTransition>
         <div
             v-if="selectedItem === item.id"
-            class="p-4"
+            class="p-4 pt-0"
         >
           <p class="text-black-200 text-sm leading-140">
             {{ item?.answer }}

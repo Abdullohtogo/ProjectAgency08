@@ -1,15 +1,16 @@
 <template>
   <button
-      class="py-2.5 px-5 rounded-xl relative border font-semibold transition-all duration-300 ease-in-out flex gap-2 items-center"
+      class="py-2.5 px-5 rounded-xl relative border font-semibold transition-all duration-300 ease-in-out flex gap-2 items-center justify-center"
       :class=" [buttonStyle, {
   'pointer-events-none': loading },
   buttonVariantClass,
   ]">
+    <slot name="before"/>
     {{ label }}
     <span
         class="absolute animate-ping top-0 right-0 bg-red-500 rounded-full h-2 w-2"
     ></span>
-    <slot></slot>
+    <slot/>
   </button>
 </template>
 

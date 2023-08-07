@@ -1,8 +1,16 @@
 <template>
   <div>
     <div class="bg-white rounded-28 p-5 flex flex-col gap-4">
-      <ButtonVButton label="Hissa qo'shish" variant="secondary"/>
-      <ButtonVButton label="Ulashish" variant="darker"/>
+      <ButtonVButton label="Hissa qo'shish" variant="secondary">
+        <template #before>
+          <img src="/icons/generous_heart.svg" alt="">
+        </template>
+      </ButtonVButton>
+      <ButtonVButton label="Ulashish" variant="darker">
+        <template #before>
+          <img src="/icons/share.svg" alt="">
+        </template>
+      </ButtonVButton>
     </div>
     <div
         class="relative overflow-hidden mt-6 bg-gradient-to-b from-app-banner-1 to-app-banner-2 rounded-28 flex flex-col justify-center items-center p-6 pt-8">
