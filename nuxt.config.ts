@@ -3,6 +3,10 @@ export default defineNuxtConfig({
     ssr: true,
     app: {
         head: {
+            htmlAttrs: {
+                lang: 'en',
+            },
+            title: 'Hissa',
             link: [
                 {
                     rel: "icon",
@@ -10,7 +14,6 @@ export default defineNuxtConfig({
                     href: "/favicon.svg",
                 },
             ],
-            title: 'Hissa',
         },
     },
     css: ['@/assets/styles/main.css'],

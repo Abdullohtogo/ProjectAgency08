@@ -10,8 +10,8 @@
           mumkin
         </p>
         <div class="flex-col gap-2">
-          <router-link
-            :to="item?.url"
+          <a
+            :href="item?.url"
             target="_blank"
             class="mt-6 p-3 flex gap-2 rounded-40 border border-white/20"
             v-for="item in info"
@@ -25,21 +25,21 @@
                 <img :src="item?.icon" alt="" v-if="item?.icon" />
               </div>
             </div>
-          </router-link>
+          </a>
         </div>
         <div class="mt-3.5 flex flex-col gap-2">
           <p class="text-sm text-white font-semibold">
             Biz ijtimoiy tarmoqlarda
           </p>
           <div class="flex gap-3">
-            <router-link
-              :to="item.url"
+            <a
+              :href="item.url"
               class="p-2 rounded-full bg-[#e8f0fe33]"
               v-for="item in social"
               :key="item.id"
             >
               <img :src="item.src" alt="social-icon" />
-            </router-link>
+            </a>
           </div>
         </div>
       </div>
@@ -80,22 +80,22 @@ const info = [
 const social = [
   {
     id: 1,
-    url: '/',
+    url: 'instagram.com',
     src: '/icons/instagram1.svg',
   },
   {
     id: 2,
-    url: '/',
+    url: 'youtube.com',
     src: '/icons/youtube1.svg',
   },
   {
     id: 3,
-    url: '/',
+    url: 'twitter.com',
     src: '/icons/twitter1.svg',
   },
   {
     id: 4,
-    url: '/',
+    url: 'telegram.com',
     src: '/icons/telegram1.svg',
   },
 ]

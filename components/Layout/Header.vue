@@ -13,15 +13,13 @@
           </nuxt-link>
         </li>
       </ul>
-    <div class="flex gap-1 cursor-pointer">
-      <img src="../../public/icons/language-outline.svg" alt="">
-      <p>O'zbekcha</p>
-      <img src="../../public/icons/arrow-down.svg" alt="">
-    </div>
+      <UILanguageSwitcher v-bind="{ variant: 'default' }" />
   </header>
 </template>
 
 <script setup lang="ts">
+// import { UILanguageSwitcher } from '@/components/UI/LanguageSwitcher.vue';
+
 const menu = [
   {
     id: 1,
