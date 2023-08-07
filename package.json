@@ -41,6 +41,7 @@
     "vue-i18n": "^9.2.2"
   },
   "dependencies": {
+    "@ivanv/vue-collapse-transition": "^1.0.2",
     "@pinia/nuxt": "^0.4.3",
     "dayjs": "^1.11.9"
   }
