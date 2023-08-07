@@ -1,12 +1,14 @@
 <template>
   <div>
-    <p class="text-black-100 font-semibold text-2xl">
+    <p class="text-black-100 font-semibold text-2xl mt-5">
       Saxovatchilar
     </p>
     <div class="mt-3 flex gap-6 flex-wrap">
       <CardGenerous :item="item" v-for="item in data" :key="item.id"/>
     </div>
-    <ButtonVButton variant="primary" label="Yana yuklash" class="mt-3"/>
+    <ButtonVButton variant="primary" label="Yana yuklash" class="mt-3 block mx-auto">
+      <img src="/icons/down.svg" alt="">
+    </ButtonVButton>
   </div>
 </template>
 <script setup lang="ts">

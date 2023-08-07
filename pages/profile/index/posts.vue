@@ -2,7 +2,7 @@
   <div class="p-5">
     <CardPost v-for="(card, index) in cards" :item="card" :key="index" class="mb-4"/>
     <ButtonVButton label="Yana yuklash" variant="primary" class="block mx-auto">
-      <img src="/icons/upload.svg" alt="">
+      <img src="/icons/down.svg" alt="">
     </ButtonVButton>
   </div>
 </template>

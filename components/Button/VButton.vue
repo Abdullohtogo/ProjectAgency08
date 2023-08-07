@@ -1,12 +1,16 @@
 <template>
-  <button class="py-2.5 px-5 rounded-xl relative border font-semibold transition-all duration-300 ease-in-out flex gap-2 items-center"
-          :class=" [buttonStyle, {
-  'pointer-events-none': loading }]">
+  <button
+      class="md:py-2.5 py-2 md:px-5 px-1.5 rounded-xl relative border font-semibold transition-all duration-300 ease-in-out flex gap-2 items-center justify-center"
+      :class=" [buttonStyle, {
+  'pointer-events-none': loading },
+  buttonVariantClass,
+  ]">
+    <slot name="before"/>
     {{ label }}
     <span
         class="absolute animate-ping top-0 right-0 bg-red-500 rounded-full h-2 w-2"
     ></span>
-    <slot></slot>
+    <slot/>
   </button>
 </template>
 
@@ -19,6 +23,8 @@ interface Props {
   variant?: 'primary' | 'secondary' | 'darker',
   loading?: boolean
 }
+
+const buttonVariantClass = computed(() => `s-button-${props.variant}`);
 
 const props = withDefaults(defineProps<Props>(), {
   variant: 'primary',
@@ -37,3 +43,17 @@ const buttonStyle = computed(() => {
   }
 })
 </script>
+
+<!--<style>-->
+<!--.s-button-primary:after {-->
+<!--  content: "";-->
+<!--  position: absolute;-->
+<!--  border-radius: 38px;-->
+<!--  opacity: 0.4000000059604645;-->
+<!--  background: #27A44A;-->
+<!--  filter: blur(14px);-->
+<!--  width: 100%;-->
+<!--  height: 70%;-->
+<!--  z-index: -99;-->
+<!--}-->
+<!--</style>-->

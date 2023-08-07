@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-11 flex gap-7">
+  <div class="md:mx-11 mx-5 grid lg:grid-cols-3 md:grid-cols-2  flex-wrap gap-7">
     <CardMain v-for="item in cards" :item="item" :key="item.id"/>
   </div>
 </template>
@@ -12,11 +12,13 @@ const cards = [
     title: "Ishonchlilik",
     text: "Foydalanuvchilarning maxfiylik, xavfsizlik, shaffoflik va ishonchlilik orqali qurilgan onlayn platforma.",
     src: "/icons/circle-lock.svg",
+    link: '/',
   },
   {
     id: 2,
     title: "Shaffoflik",
     text: "Foydalanuvchilarning maxfiylik, xavfsizlik, shaffoflik va ishonchlilik orqali qurilgan onlayn platforma.",
+    link: '/',
     src: "/icons/circle-search.svg",
   },
   {
@@ -24,6 +26,7 @@ const cards = [
     title: "Oddiylik",
     text: "Foydalanuvchilarning maxfiylik, xavfsizlik, shaffoflik va ishonchlilik orqali qurilgan onlayn platforma.",
     src: "/icons/circle-heart.svg",
+    link: '/',
   },
 ]
 </script>

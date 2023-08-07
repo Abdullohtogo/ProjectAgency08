@@ -44,6 +44,8 @@
   </div>
 </template>
 <script setup lang="ts">
+
+
 const tabs = [
   {
     id: 1,
@@ -66,7 +68,10 @@ const tabs = [
     url: '/profile/comments'
   },
 ];
-let activeTab = tabs[0];
+
+let activeTab = tabs[0]
+
+
 </script>
 <style scoped>
 p {

@@ -11,8 +11,8 @@ module.exports = {
     theme: {
         container: {
             center: true,
-            padding: '1rem',
-            screens: ['1200px']
+            padding: '8px',
+            screens: ['1280px']
         },
         extend: {
             colors: {
@@ -25,6 +25,7 @@ module.exports = {
                     500: '#CDD7C6',
                     600: '#E5ECDF',
                     700: '#939694',
+                    800: '#F5F7F6',
                 },
                 green: {
                     100: '#EBF7F1',
@@ -51,13 +52,16 @@ module.exports = {
                 40: '40px',
             },
             boxShadow: {
-                'partners': "0px 4px 30px 0px rgba(22, 204, 83, 0.20)",
-                'partnersCard': "0px 10px 48px 0px rgba(16, 16, 16, 0.10)",
-                'formCard': "0px 10px 48px 0px rgba(16, 16, 16, 0.10)",
-                'qrlight': "0px 4px 50px 0px rgba(39, 164, 74, 0.60)",
+                partners: "0px 4px 30px 0px rgba(22, 204, 83, 0.20)",
+                partnersCard: "0px 10px 48px 0px rgba(16, 16, 16, 0.10)",
+                formCard: "0px 10px 48px 0px rgba(16, 16, 16, 0.10)",
+                qrlight: "0px 4px 50px 0px rgba(39, 164, 74, 0.60)",
             },
             lineHeight: {
                 130: '130%',
+                128: "128%",
+                120: '128%',
+                140: '140%',
             },
             fontSize: {
               '2xs': '10px'
