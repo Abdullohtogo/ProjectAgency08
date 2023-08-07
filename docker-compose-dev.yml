@@ -5,6 +5,6 @@ services:
     environment:
       - TZ=Asia/Tashkent
     ports:
-      - 8083:80
+      - 3098:3098
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
