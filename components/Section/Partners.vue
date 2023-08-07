@@ -1,13 +1,13 @@
 <template>
   <div class="relative mb-[200px]">
     <div class="container relative z-10">
-      <p class="font-medium text-green-300 text-center uppercase mb-3">fondlar uchun</p>
-      <h2 class="text-green-500 text-4xl font-bold text-center">
-      <span class="block mb-4">Hozirgi kunda<span
+      <p class="font-medium leading-130 text-green-300 text-center uppercase text-base sm:text-sm mb-3">fondlar uchun</p>
+      <h2 class="text-green-500 lg:text-4xl md:text-3xl sm:text-2xl text-xl leading-130 font-bold text-center">
+      <span class="sm:block sm:mb-4">Hozirgi kunda<span
           class="text-white bg-green-300 rounded-xl px-2.5 shadow-partners mx-2">10000</span>dan ortiq fondlar</span>
         biz bilan birga hamkorlik qilishmoqda
       </h2>
-      <p class="text-gray-200 text-center mt-6">
+      <p class="text-gray-200 text-center mt-6 text-base sm:text-sm leading-130 ">
         Biz birlikda ishtirok etish va umumiy kuchlik qobiliyatiga e'tibor beramiz. Başqa xayriya fondlari bilan
         hamkorlik
         qilishimiz uchun andisha bilan inonamiz. Hamkorlik orqali natijalar qozonish va turli ijtimoiy muammolarni

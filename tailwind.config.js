@@ -11,8 +11,8 @@ module.exports = {
     theme: {
         container: {
             center: true,
-            padding: '1rem',
-            screens: ['1200px']
+            padding: '4px',
+            screens: ['1280px']
         },
         extend: {
             colors: {
@@ -59,6 +59,8 @@ module.exports = {
             },
             lineHeight: {
                 130: '130%',
+                128: "128%",
+                120: '128%',
                 140: '140%',
             },
             fontSize: {

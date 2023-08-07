@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded-36 border-4 border-white mx-11 bg-white pt-10 mb-10 overflow-hidden">
+  <div class="rounded-36 border-4 border-white md:mx-11 mx-5 bg-white pt-10 mb-10 overflow-hidden">
     <div class="container">
       <div class="flex">
         <div class="basis-1/2">
