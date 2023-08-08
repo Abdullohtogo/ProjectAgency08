@@ -19,11 +19,11 @@
     <div class="flex flex-wrap gap-5 mt-8 mx-11 justify-center relative z-10">
       <PartnerCompanyCard v-for="item in cards" :item="item" :key="item.id" class="last:cursor-pointer"/>
     </div>
-    <div class="container flex gap-9 mt-11 justify-center relative z-10">
+    <div class="container flex sm:gap-9 gap-3 mt-11 justify-center relative z-10">
       <ButtonVButton label="Bog‘lanish" variant="primary"/>
       <ButtonVButton label="Bizning safimizga qo‘shilish" variant="secondary"/>
     </div>
-    <div class="absolute -bottom-1/3 left-[20%] z-0">
+    <div class="absolute top-[234px] left-[20%] z-0">
       <img src="/icons/Uzbekistan.svg" alt="">
     </div>
   </div>
