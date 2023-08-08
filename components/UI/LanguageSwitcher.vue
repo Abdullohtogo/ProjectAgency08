@@ -27,10 +27,9 @@
           <span class="text-base font-semibold text-dark">
             {{ lang.name }}
           </span>
-          <span
+          <img
             v-if="lang?.code === currentLanguage?.code"
-            class="icon-tick text-2xl leading-5 text-blue"
-          />
+           src="@/public/icons/trick.svg" alt="trick icon">
         </div>
       </div>
     </template>
