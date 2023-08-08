@@ -65,7 +65,7 @@ const languages = [
 
 const { locale } = useI18n()
 
-const showDropdown = ref(true)
+const showDropdown = ref(false)
 
 const currentLanguage = computed(() =>
   languages.find((lang) => lang.code === locale.value)
