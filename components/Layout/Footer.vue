@@ -7,7 +7,7 @@
             <img src="@/public/logo.svg" alt=""/>
           </router-link>
           <p class="mt-5 text-gray-200 max-w-[497px] leading-130">
-            Saxovat amallari bilan shug‘ullanatigan fondlarni va ularning yaxshilik yo‘lida tashkil qilayotgan
+            Saxovat amallari biplan shug‘ullanatigan fondlarni va ularning yaxshilik yo‘lida tashkil qilayotgan
             loyihalarini kuzatib boring.
           </p>
           <div class="flex lg:flex-row flex-col gap-5 mt-[56px] mb-10 lg:items-end">
