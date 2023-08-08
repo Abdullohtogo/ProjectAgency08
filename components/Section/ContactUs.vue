@@ -4,8 +4,8 @@
   >
     <div class="container flex justify-between relative">
       <div class="my-16">
-        <h3 class="text-3xl text-white font-semibold">Bog‘lanish usullari</h3>
-        <p class="mt-3 text-white/60">
+        <h3 class="text-[32px] leading-130 text-white font-semibold">Bog‘lanish usullari</h3>
+        <p class="mt-3 leading-130 text-white/60">
           Biz bilan quyida keltirilgan yo‘llar orqali aloqaga chiqishingiz
           mumkin
         </p>

@@ -27,10 +27,9 @@
           <span class="text-base font-semibold text-dark">
             {{ lang.name }}
           </span>
-          <span
+          <img
             v-if="lang?.code === currentLanguage?.code"
-            class="icon-tick text-2xl leading-5 text-blue"
-          />
+           src="@/public/icons/trick.svg" alt="trick icon">
         </div>
       </div>
     </template>
@@ -66,7 +65,7 @@ const languages = [
 
 const { locale } = useI18n()
 
-const showDropdown = ref(false)
+const showDropdown = ref(true)
 
 const currentLanguage = computed(() =>
   languages.find((lang) => lang.code === locale.value)
