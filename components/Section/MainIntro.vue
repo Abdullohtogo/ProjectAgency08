@@ -96,33 +96,27 @@ const items = [
   position: absolute;
   z-index: -1;
   left: 0;
-  height: 0;
+  bottom: 6px;height: 0;
   width: 103%;
   border-bottom: 8px solid #16CC53;
   transition: width 0.3s ease;
 }
 
-@media only screen and (min-width: 1024px) {
-  .underlined::before {
-    bottom: 7px;
-  }
-}
-
-@media only screen and (min-width: 768px) {
+@media only screen and (max-width: 1024px) {
   .underlined::before {
     bottom: 3px;
   }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (max-width: 768px) {
   .underlined::before {
-    bottom: 3px;
+    bottom: 1.5px;
   }
 }
 
-@media only screen and (min-width: 320px) {
+@media only screen and (max-width: 640px) {
   .underlined::before {
-    bottom: 7px;
+    bottom: -1px;
   }
 }
 </style>
