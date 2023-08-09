@@ -1,6 +1,6 @@
 <template>
   <div
-      class="bg-gradient-to-r from-app-banner-1 to-app-banner-2 md:mx-11 mx-5 rounded-40"
+    class="bg-gradient-to-r from-app-banner-1 to-app-banner-2 md:mx-11 mx-5 rounded-40"
   >
     <div class="container flex justify-between">
       <div class="my-16">
@@ -15,11 +15,11 @@
         </p>
         <div class="flex flex-col gap-2 mt-6">
           <a
-              :href="item?.url"
-              target="_blank"
-              class="p-3 group flex items-center gap-2 rounded-40 transition transition-300 hover:border-white border border-white/20"
-              v-for="item in info"
-              :key="item?.id"
+            :href="item?.url"
+            target="_blank"
+            class="p-3 group flex items-center gap-2 rounded-40 transition transition-300 hover:border-white border border-white/20"
+            v-for="item in info"
+            :key="item?.id"
           >
             <img :src="item?.src" alt="icon" class="w-[42px] h-[42px]" />
             <div class="flex flex-col gap-[3px]">
@@ -74,35 +74,45 @@
           </p>
           <div class="flex flex-row md:gap-3 gap-2">
             <a
-                :href="item.url"
-                class="p-2 rounded-full group transition transition-300 hover:bg-[#33573e] bg-[#e8f0fe33]"
-                v-for="item in social"
-                :key="item.id"
+              :href="item.url"
+              class="p-2 rounded-full group transition transition-300 hover:bg-[#33573e] bg-[#e8f0fe33]"
+              v-for="item in social"
+              :key="item.id"
             >
-              <img :src="item.src" alt="social-icon"/>
+              <img :src="item.src" alt="social-icon" />
             </a>
           </div>
         </div>
       </div>
       <div class="w-[43%] relative">
-        <FormContact class="absolute top-1/2 -translate-y-1/2"
-                     @open="toggleModal"
+        <FormContact
+          class="absolute top-1/2 -translate-y-1/2"
+          @open="toggleModal"
         />
-        <div class="fixed top-0 left-0 w-full h-full z-50 bg-modal hidden opacity-0"
-             :class="{'!block opacity-100 overflow-hidden ': showModal}">
-          <FormModal class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 max-w-[434px]"
-                     v-show="showModal"
-                     @close="toggleModal"
-                     :show="showModal"
-          />
-        </div>
+        <Teleport to="body">
+          <transition name="fade" appear>
+            <div
+              class="modal-overlay"
+              v-if="showModal"
+              @click="showModal = false"
+            ></div>
+          </transition>
+          <transition name="pop" appear>
+            <FormModal
+              class="modal"
+              v-if="showModal"
+              role="dialog"
+              @close="toggleModal"
+              :show="showModal"
+            />
+          </transition>
+        </Teleport>
       </div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import {ref} from 'vue'
-
+import { ref } from 'vue'
 
 const info = [
   {
@@ -152,12 +162,68 @@ const social = [
   },
 ]
 
-const showModal = ref(false);
+const showModal = ref(false)
 
 function toggleModal() {
   showModal.value = !showModal.value
   console.log(showModal.value)
 }
-
 </script>
 
+<style >
+.modal {
+  position: absolute;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  text-align: center;
+  width: fit-content;
+  height: fit-content;
+  max-width: 434px;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  background: #FFF;
+  z-index: 999;
+  transform: none;
+}
+
+.modal-overlay {
+  content: '';
+  position: absolute;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 998;
+  background: #2c3e50;
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+/* ---------------------------------- */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .4s linear;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.pop-enter-active,
+.pop-leave-active {
+  transition: transform 0.4s cubic-bezier(0.5, 0, 0.5, 1), opacity 0.4s linear;
+}
+
+.pop-enter,
+.pop-leave-to {
+  opacity: 0;
+  transform: scale(0.3) translateY(-50%);
+}
+</style>
