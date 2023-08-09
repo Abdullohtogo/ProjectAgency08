@@ -89,7 +89,7 @@ const main = [
   {
     id: 1,
     text: 'Biz haqimizda',
-    url: '/rpofile'
+    url: '/profile'
   },
   {
     id: 2,

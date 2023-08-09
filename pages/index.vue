@@ -1,5 +1,5 @@
 <template>
-  <SectionMainIntro class="mb-7"/>
+  <SectionMainIntro class="mb-7 mt-6"/>
   <SectionProjectAim class="mb-12"/>
   <SectionMainCards class="mb-10"/>
   <SectionAppBanner />

@@ -1,6 +1,6 @@
 <template>
   <div
-      class="rounded-36 border-4 border-white bg-white md:mx-11 mx-5 relative overflow-hidden lg:pt-[248px] pt-[122px]  pb-12"
+      class="rounded-36 border-4 border-white bg-white md:mx-11 mx-5 relative overflow-hidden lg:pt-[248px] md:pt-[122px] sm:py-12 p-6 px-4"
   >
     <div class="absolute top-0 right-0 z-0 w-[48%] md:block hidden">
       <img src="@/public/icons/main-line.svg" alt="line"/>
@@ -11,10 +11,10 @@
         alt="green-elipse"
     />
 
-    <div class="container z-30 relative flex flex-col justify-center h-full">
+    <div class="container relative flex flex-col justify-center h-full">
       <div class="flex items-start gap-10 lg:gap-20 relative z-100">
         <div class="flex flex-col">
-          <div class="flex flex-col lg:pb-[222px] pb-24">
+          <div class="flex flex-col lg:pb-[222px] md:pb-24 md:pb-15 pb-10">
             <div class="mb-10">
               <h2
                   class="md:text-3xl sm:text-2xl text-xl lg:text-[42px] lg:leading-10 relative font-bold uppercase text-green-500 lg:max-w-[1120px]"
@@ -96,7 +96,8 @@ const items = [
   position: absolute;
   z-index: -1;
   left: 0;
-  bottom: 6px;height: 0;
+  bottom: 6px;
+  height: 0;
   width: 103%;
   border-bottom: 8px solid #16CC53;
   transition: width 0.3s ease;
