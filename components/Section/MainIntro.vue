@@ -31,14 +31,14 @@
                 <img
                     src="@/public/icons/Appstore.svg"
                     alt=""
-                    class="cursor-pointer hover:-translate-y-1 transition-all duration-300 ease-in-out"
+                    class="cursor-pointer hover:opacity-80 transition-all duration-300 ease-in-out"
                 />
               </router-link>
               <router-link to="/">
                 <img
                     src="@/public/icons/Playmarket.svg"
                     alt=""
-                    class="cursor-pointer hover:-translate-y-1 transition-all duration-300 ease-in-out"
+                    class="cursor-pointer hover:opacity-80 transition-all duration-300 ease-in-out"
                 />
               </router-link>
             </div>

@@ -10,11 +10,11 @@
         <div class="flex gap-4 mt-7">
           <img src="/icons/QR.svg" alt="qr">
           <div class="flex flex-col justify-between">
-            <router-link to="/" class="cursor-pointer">
-              <img src="/images/Appstore.png" alt="" />
+            <router-link to="/" class="cursor-pointer hover:opacity-80 transition-all duration-300">
+              <img src="/icons/Appstore1.svg" alt="" />
             </router-link>
-            <router-link to="/" class="cursor-pointer">
-              <img src="/images/Playmarket.png" alt=""/>
+            <router-link to="/" class="cursor-pointer hover:opacity-80 transition-all duration-300">
+              <img src="/icons/Playmarket1.svg" alt="" />
             </router-link>
           </div>
         </div>
