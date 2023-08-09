@@ -4,37 +4,79 @@
   >
     <div class="container flex justify-between relative">
       <div class="my-16">
-        <h3 class="text-[32px] leading-130 text-white font-semibold">Bog‘lanish usullari</h3>
-        <p class="mt-3 leading-130 text-white/60">
+        <h3
+          class="lg:text-[32px] md:text-[28px] text-2xl leading-130 text-white font-semibold"
+        >
+          Bog‘lanish usullari
+        </h3>
+        <p class="md:mt-3 mt-2 leading-130 text-white/60 max-w-[436px]">
           Biz bilan quyida keltirilgan yo‘llar orqali aloqaga chiqishingiz
           mumkin
         </p>
-        <div class="flex-col gap-2">
+        <div class="flex flex-col gap-2 mt-6">
           <a
             :href="item?.url"
             target="_blank"
-            class="mt-6 p-3 flex gap-2 rounded-40 border border-white/20"
+            class="p-3 group flex items-center gap-2 rounded-40 transition transition-300 hover:border-white border border-white/20"
             v-for="item in info"
             :key="item?.id"
           >
-            <img :src="item?.src" alt="icon" />
-            <div class="flex flex-col gap-1">
-              <p class="text-sm text-white/60">{{ item?.title }}</p>
-              <div class="text-white font-medium flex gap-1.5" target="_blank">
+            <img :src="item?.src" alt="icon" class="w-[42px] h-[42px]" />
+            <div class="flex flex-col gap-[3px]">
+              <p class="sm:text-sm text-xs text-white/60 leading-130">
+                {{ item?.title }}
+              </p>
+              <div
+                class="text-white sm:text-base text-sm font-medium leading-130 items-center flex gap-1.5"
+                target="_blank"
+              >
                 <p>{{ item?.text }}</p>
-                <img :src="item?.icon" alt="" v-if="item?.icon" />
+                <i v-if="item?.icon">
+                  <svg
+                    width="16"
+                    height="17"
+                    viewBox="0 0 16 17"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M8.66699 7.83337L14.1337 2.3667"
+                      class="group-hover:stroke-white"
+                      stroke="#8EAF9B"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M14.6668 5.0335V1.8335H11.4668"
+                      class="group-hover:stroke-white"
+                      stroke="#8EAF9B"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M7.33301 1.8335H5.99967C2.66634 1.8335 1.33301 3.16683 1.33301 6.50016V10.5002C1.33301 13.8335 2.66634 15.1668 5.99967 15.1668H9.99967C13.333 15.1668 14.6663 13.8335 14.6663 10.5002V9.16683"
+                      class="group-hover:stroke-white"
+                      stroke="#8EAF9B"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </i>
               </div>
             </div>
           </a>
         </div>
-        <div class="mt-3.5 flex flex-col gap-2">
-          <p class="text-sm text-white font-semibold">
+        <div class="mt-3.5 flex flex-col">
+          <p class="text-sm text-white mb-2 font-semibold">
             Biz ijtimoiy tarmoqlarda
           </p>
-          <div class="flex gap-3">
+          <div class="flex flex-row md:gap-3 gap-2">
             <a
               :href="item.url"
-              class="p-2 rounded-full bg-[#e8f0fe33]"
+              class="p-2 rounded-full group transition transition-300 hover:bg-[#33573e] bg-[#e8f0fe33]"
               v-for="item in social"
               :key="item.id"
             >
