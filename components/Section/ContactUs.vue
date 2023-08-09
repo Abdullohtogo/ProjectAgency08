@@ -27,7 +27,7 @@
                 {{ item?.title }}
               </p>
               <div
-                class="text-white sm:text-base text-sm font-medium leading-130 items-centerflex gap-1.5"
+                class="text-white sm:text-base text-sm font-medium leading-130 items-center flex gap-1.5"
               >
                 <p>{{ item?.text }}</p>
                 <i v-if="item?.icon">
