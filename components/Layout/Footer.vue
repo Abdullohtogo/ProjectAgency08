@@ -17,12 +17,12 @@
             <div>
               <p class="text-black-100 font-medium sm:text-xl text-lg leading-130 mb-2">Ilova yanada qulayroq</p>
               <div class="flex gap-3">
-                <router-link to="/" class="hover:opacity-80 transition-all duration-300">
+                <a href="/" class="hover:opacity-80 transition-all duration-300">
                   <img src="@/public/icons/AppStore-footer.svg" alt="appstore"/>
-                </router-link>
-                <router-link to="/" class="hover:opacity-80 transition-all duration-300">
+                </a>
+                <a href="/" class="hover:opacity-80 transition-all duration-300">
                   <img src="@/public/icons/PlayMarket-footer.svg" alt="playmarket"/>
-                </router-link>
+                </a>
               </div>
             </div>
           </div>
