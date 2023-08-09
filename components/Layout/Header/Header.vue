@@ -1,9 +1,13 @@
 <template>
-  <header :class="{'bg-white': route.params !== 'about'}">
-    <div class="container py-8 flex justify-between items-center">
+  <header :class="{'bg-white shadow-header': route.params !== 'about'}">
+    <div class="container md:py-8 sm:py-6 py-4 flex justify-between items-center sticky z-50">
+      <button class="md:hidden block hover:cursor-pointer w-7 h-7" @click="showMenu = !showMenu">
+        <img src="/icons/burger.svg" alt="" v-if="!showMenu">
+        <img src="/icons/close.svg" alt="" v-else>
+      </button>
       <div>
         <router-link to="/">
-          <img src="@/public/logo.svg" alt="logo"/>
+          <img src="../../../public/logo.svg" alt="logo"/>
         </router-link>
       </div>
       <ul class="gap-4 lg:gap-8 hidden  md:flex">
@@ -14,16 +18,30 @@
           </nuxt-link>
         </li>
       </ul>
-      <UILanguageSwitcher v-bind="{ variant: 'default' }" />
+      <UILanguageSwitcher v-bind="{ variant: 'default' }"/>
     </div>
+    <LayoutHeaderFullMenu
+        :open-menu="showMenu"
+        :menu="menu"
+        @close="showMenu = false"
+    />
   </header>
 </template>
 
 <script setup lang="ts">
+import {  onMounted, ref} from 'vue'
 import {useRoute} from "vue-router";
 
-
+const showMenu = ref(false)
 const route = useRoute()
+
+const scrollY = ref(0)
+
+onMounted(() => {
+  document.addEventListener('scroll', () => {
+    scrollY.value = window.scrollY
+  })
+})
 
 console.log(route.params)
 
