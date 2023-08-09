@@ -3,7 +3,7 @@
     <p class="text-black-100 font-semibold text-2xl mt-5">
       Saxovatchilar
     </p>
-    <div class="mt-3 grid grid-cols-1 gap-y-4 gap-x-6">
+    <div class="mt-3 grid lg:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-y-4 gap-x-6">
       <CardGenerous :item="item" v-for="item in data" :key="item.id"/>
     </div>
     <CommonButton variant="primary" label="Yana yuklash" class="mt-3 block mx-auto">
