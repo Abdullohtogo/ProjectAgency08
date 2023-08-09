@@ -74,12 +74,12 @@
           </p>
           <div class="flex flex-row md:gap-3 gap-2">
             <a
-                :href="item.url"
-                class="p-2 rounded-full group transition transition-300 hover:bg-[#33573e] bg-[#e8f0fe33]"
-                v-for="item in social"
-                :key="item.id"
+              :href="item.url"
+              class="p-2 rounded-full group transition transition-300 hover:bg-[#33573e] bg-[#e8f0fe33]"
+              v-for="item in social"
+              :key="item.id"
             >
-              <img :src="item.src" alt="social-icon"/>
+              <img :src="item.src" alt="social-icon" />
             </a>
           </div>
         </div>
@@ -152,7 +152,7 @@ const social = [
   },
 ]
 
-const showModal = ref(false);
+const showModal = ref(false)
 
 function toggleModal() {
   showModal.value = !showModal.value
