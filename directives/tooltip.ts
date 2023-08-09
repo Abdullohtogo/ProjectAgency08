@@ -1,4 +1,5 @@
 import { DirectiveBinding } from 'vue'
+import * as Maska from "maska";
 
 export function VTooltip(el: HTMLElement, binding: DirectiveBinding) {
   el.classList.add('group', 'relative', '_v-tooltip')

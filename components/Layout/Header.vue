@@ -1,5 +1,5 @@
 <template>
-  <header :class="{'bg-white': route.params !== 'about'}">
+  <header>
     <div class="container py-8 flex justify-between items-center">
       <div>
         <router-link to="/">
@@ -20,12 +20,10 @@
 </template>
 
 <script setup lang="ts">
-import {useRoute} from "vue-router";
+import { useRoute } from "vue-router";
 
 
 const route = useRoute()
-
-console.log(route.params)
 
 const menu = [
   {
