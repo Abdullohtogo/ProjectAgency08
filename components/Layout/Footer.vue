@@ -15,19 +15,20 @@
               <img src="@/public/icons/QR.svg" class="qr" alt="qr">
             </div>
             <div>
-              <p class="text-black-100 font-medium sm:text-xl text-lg leading-130  mb-2">Ilova yanada qulayroq</p>
+              <p class="text-black-100 font-medium sm:text-xl text-lg leading-130 mb-2">Ilova yanada qulayroq</p>
               <div class="flex gap-3">
-                <a href="/">
+                <a href="/" class="hover:opacity-80 transition-all duration-300">
                   <img src="@/public/icons/AppStore-footer.svg" alt="appstore"/>
                 </a>
-                <a href="/">
+                <a href="/" class="hover:opacity-80 transition-all duration-300">
                   <img src="@/public/icons/PlayMarket-footer.svg" alt="playmarket"/>
                 </a>
               </div>
             </div>
           </div>
         </div>
-        <div class="flex lg:flex-row md:flex-row sm:flex-row flex-col lg:justify-between md:justify-normal sm:justify-between xl:gap-[125px] gap-[30px]">
+        <div
+            class="flex lg:flex-row md:flex-row sm:flex-row flex-col lg:justify-between md:justify-normal sm:justify-between xl:gap-[125px] gap-[30px]">
           <div>
             <p class="text-green-500 sm:text-xl text-lg leading-130 font-medium">Asosiy</p>
             <ul class="mt-3 flex flex-col gap-3">
@@ -54,7 +55,7 @@
                 Bizni ijtimoiy tarmoqlarda kuzatib boring
               </p>
               <div class="mt-4 flex gap-3">
-                <a :href="item.url" v-for="item in share" :key="item.id">
+                <a :href="item.url" v-for="item in share" :key="item.id" class="hover:opacity-80 transition-all duration-300">
                   <img :src="item.src" alt="icon"/>
                 </a>
               </div>
@@ -65,14 +66,17 @@
     </div>
     <div class="bg-gray-300">
       <div class="container">
-        <div class="py-5 border-b-3 border-white flex md:justify-between justify-center items-center md:items-start md:flex-row flex-col md:gap-0 gap-2 sm:px-4 px-1">
+        <div
+            class="py-5 border-b-3 border-white flex md:justify-between justify-center items-center md:items-start md:flex-row flex-col md:gap-0 gap-2 sm:px-4 px-1">
           <p class="text-black-100 text-center text-sm leading-130">
             © 2023 Hissa Inc. Barcha huquqlar himoyalangan.
           </p>
           <ul class="flex gap-3 flexx-wrap sm:flex-nowrap">
             <li v-for="item in links" :key="item.id">
               <router-link :to="item.url"
-                 class="text-black-100 hover:text-green-300 text-sm transition-all duration-300 ease-in-out leading-130">{{ item.text }}</router-link>
+                           class="text-black-100 hover:text-green-300 text-sm transition-all duration-300 ease-in-out leading-130">
+                {{ item.text }}
+              </router-link>
             </li>
           </ul>
         </div>

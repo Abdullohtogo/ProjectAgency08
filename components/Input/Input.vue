@@ -1,12 +1,12 @@
 <template>
   <div class="flex flex-col gap-2">
     <label class="text-gray-200">{{ label }}</label>
-    <div class="bg-gray-300 rounded-lg flex gap-2 p-3 h-full border border-transparent focus-within:border-green-400">
-      <img :src="src" alt="">
+    <div class="bg-gray-300 rounded-lg transition transition-300 flex sm:gap-2 gap-1 sm:p-3 p-1.5 h-full border border-transparent focus-within:border-green-400">
+      <img :src="src" alt="" v-if="src">
       <span>
         <slot/>
       </span>
-      <input :type="type" class="outline-0 bg-transparent w-full caret-green-400" :maxlength="maxlength"
+      <input :type="type" class="outline-0 bg-transparent w-full caret-green-400 placeholder:text-sm" :maxlength="maxlength"
              :placeholder="placeholder"/>
     </div>
   </div>
