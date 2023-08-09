@@ -17,7 +17,7 @@
           <div class="flex flex-col lg:pb-[222px] pb-24">
             <div class="mb-10">
               <h2
-                  class="md:text-3xl sm:text-2xl text-xl lg:text-[42px] lg:leading-10 relative font-bold uppercase text-green-500"
+                  class="md:text-3xl sm:text-2xl text-xl lg:text-[42px] lg:leading-10 relative font-bold uppercase text-green-500 lg:max-w-[1120px]"
               >
                 Xayrli ishlarga <span class="underlined relative"> hissa </span> qo‘shish
                 uchun platforma

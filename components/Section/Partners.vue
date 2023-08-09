@@ -20,8 +20,8 @@
       <PartnerCompanyCard v-for="item in cards" :item="item" :key="item.id" class="last:cursor-pointer"/>
     </div>
     <div class="container flex sm:gap-9 gap-3 mt-11 justify-center relative z-10">
-      <ButtonVButton label="Bog‘lanish" variant="primary"/>
-      <ButtonVButton label="Bizning safimizga qo‘shilish" variant="secondary"/>
+      <CommonButton label="Bog‘lanish" variant="primary"/>
+      <CommonButton label="Bizning safimizga qo‘shilish" variant="secondary"/>
     </div>
     <div class="absolute top-[234px] left-[20%] z-0">
       <img src="/icons/Uzbekistan.svg" alt="">

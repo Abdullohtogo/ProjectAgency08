@@ -33,11 +33,11 @@ const props = withDefaults(defineProps<Props>(), {
 const buttonStyle = computed(() => {
   switch (props.variant) {
     case 'primary':
-      return 'bg-white border-green-400 text-green-400'
+      return 'bg-white border-green-400 text-green-400 hover:bg-green-100'
     case 'secondary':
-      return 'text-purple bg-green-400 border-green-400 text-white'
+      return 'text-purple bg-green-400 border-green-400 text-white hover:bg-green-600'
     case 'darker':
-      return 'text-green-400 bg-green-100 border-transparent'
+      return 'text-green-400 bg-green-100 border-transparent hover:bg-green-light'
     default:
       return 'bg-green'
   }
