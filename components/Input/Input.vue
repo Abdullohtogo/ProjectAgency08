@@ -2,7 +2,7 @@
   <div class="flex flex-col gap-2">
     <label class="text-gray-200">{{ label }}</label>
     <div
-      :class="inputClass"
+      :class="(inputClass, error ? '!border-red' : '')"
       class="bg-gray-300 rounded-lg transition transition-300 flex sm:gap-2 gap-1 sm:p-3 p-1.5 h-full border border-transparent focus-within:border-green-400"
     >
       <img :src="src" alt="" v-if="src" />
@@ -28,6 +28,8 @@ interface Props {
   type: string
   maxlength: number
   modelValue: any
+  error: boolean
+  inputClass: string
 }
 
 defineProps<Props>()

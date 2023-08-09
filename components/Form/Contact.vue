@@ -16,22 +16,29 @@
             label="Ismingiz"
             placeholder="To'liq ismingizni kiriting"
             type="text"
-            v-model="name"
+            :error="$v.name.$error"
+            v-model="form.name"
           />
-          <Input
-            label="Telefon raqamingiz"
-            type="text"
-            v-model="phone_number"
-            src="/icons/flag.svg"
-            :maxlength="9"
-            >+998</Input
-          >
+          <ClientOnly>
+            <Input
+              label="Telefon raqamingiz"
+              type="phone"
+              v-model="form.phoneNumber"
+              src="/icons/flag.svg"
+              v-maska="'(##) ###-##-##'"
+              :error="$v.phoneNumber.$error"
+              >+998</Input
+            >
+          </ClientOnly>
           <div>
             <label for="" class="text-gray-200"
               >Sizga qanday yordam bera olamiz?</label
             >
             <textarea
-              v-model="message"
+              v-model="form.message"
+              :maxlength="500"
+              :error="$v.message.$error"
+              :class="$v.message.$error ? '!border-red' : ''"
               class="custom-checkbox transition transition-300 md:h-[130px] sm:h-[100px] h-[80px] mt-2 bg-gray-300 sm:p-3 p-1.5 rounded-lg border border-transparent focus-within:border-green-400 outline-0 w-full caret-green-400 resize-none placeholder:text-sm"
               placeholder="Murojaatingizni kiriting..."
             ></textarea>
@@ -41,12 +48,19 @@
           class="flex justify-between lg:gap-20 md:gap-10 gap-5 md:mt-[21px] sm:mt-4 mt-3"
         >
           <div class="flex gap-2 items-center">
-            <CommonCheckbox />
+            <CommonCheckbox
+              v-model="form.agreement"
+              :error="$v.agreement.$error"
+            />
             <p class="text-gray-200 sm:text-base text-sm leading-130">
               Ommaviy offerta qoidalarini qabul qilaman
             </p>
           </div>
-          <button type="submit">submit</button>
+          <CommonButton
+            :type="'submit'"
+            :label="'Yuborish'"
+            @click="submitForm"
+          />
         </div>
       </form>
     </div>
@@ -55,35 +69,79 @@
 
 <script setup lang="ts">
 import { useVuelidate } from '@vuelidate/core'
-import { regex, required } from '@vuelidate/validators'
-import { ref } from 'vue'
+import { required } from '@vuelidate/validators'
+import { reactive, ref } from 'vue'
 
 const name = ref('')
 const phone_number = ref('')
 const message = ref('')
 
-const {value: $v, handleSubmit } = useVuelidate({
-  name: { required },
-  phone: { required, regex: /^(\+?\d{1,3}[- ]?)?\d{10}$/ },
-  message: { required },
-})
-
-const submitForm = () => {
-  handleSubmit(() => {
-    if ($v.$invalid) {
-      // Handle form validation errors
-      console.log('error')
-
-      return
-    }
-    console.log('success');
-    
-    // Submit form data
-    // ...
-  })()
+interface IContactForm {
+  name?: string
+  phoneNumber?: string
+  message?: string
+  agreement?: boolean
 }
 
+const form = reactive<IContactForm>({
+  name: '',
+  phoneNumber: '',
+  message: '',
+  agreement: false,
+})
+
+const isTrue = (val: boolean) => {
+  return val === true
+}
+
+const validPhones = [
+  '90',
+  '91',
+  '33',
+  '50',
+  '93',
+  '94',
+  '88',
+  '95',
+  '97',
+  '98',
+  '99',
+  '77',
+]
+
+const isValidPhone = (val: string) => {
+  const phone = val.replace(/[\s)(-]/g, '')
+  return phone.length === 9 && validPhones.includes(phone.substring(0, 2))
+}
+const rules = {
+  phoneNumber: {
+    required,
+    isValidPhone,
+  },
+  name: {
+    required,
+  },
+  message: {
+    required,
+  },
+  agreement: {
+    required,
+    isTrue,
+  },
+}
+
+const $v = useVuelidate<IContactForm>(rules, form)
+
 const emit = defineEmits(['open'])
+const submitForm = () => {
+  $v.value.$touch()
+  if ($v.value.$invalid) {
+    console.log($v.value.$error)
+  } else {
+    console.log('success')
+    emit('open')
+  }
+}
 </script>
 
 <style>

@@ -29,19 +29,10 @@
 </template>
 
 <script setup lang="ts">
-import {  onMounted, ref} from 'vue'
 import {useRoute} from "vue-router";
 
-const showMenu = ref(false)
+
 const route = useRoute()
-
-const scrollY = ref(0)
-
-onMounted(() => {
-  document.addEventListener('scroll', () => {
-    scrollY.value = window.scrollY
-  })
-})
 
 console.log(route.params)
 
