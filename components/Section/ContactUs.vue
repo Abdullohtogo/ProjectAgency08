@@ -21,7 +21,7 @@
               v-for="item in info"
               :key="item?.id"
           >
-            <img :src="item?.src" alt="icon"class="w-[42px] h-[42px]" />
+            <img :src="item?.src" alt="icon" class="w-[42px] h-[42px]" />
             <div class="flex flex-col gap-[3px]">
               <p class="sm:text-sm text-xs text-white/60 leading-130">
                 {{ item?.title }}
