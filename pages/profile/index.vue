@@ -17,7 +17,7 @@
                 {{ tab.tab }}
                 <span
                     v-if="activeTab === tab"
-                    class="absolute -bottom-[1px] left-0 w-full h-0.5 bg-green-400 rounded-t-md"
+                    class="absolute -bottom-[0.5px] left-0 w-full h-0.5 bg-green-400 rounded-t-md"
                 ></span>
               </nuxt-link>
             </div>
@@ -44,7 +44,11 @@
   </div>
 </template>
 <script setup lang="ts">
+import {useI18n} from 'vue-i18n'
+import {useRoute} from "vue-router";
 
+const {t} = useI18n()
+const route = useRoute()
 
 const tabs = [
   {
@@ -71,7 +75,9 @@ const tabs = [
 
 let activeTab = tabs[0]
 
-
+onMounted(() => {
+  console.log(route.path)
+})
 </script>
 <style scoped>
 p {

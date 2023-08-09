@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gradient-to-r from-app-banner-1 to-app-banner-2 md:mx-11 mx-5 rounded-28 py-9 mt-[130px] mb-[170px] relative">
+  <div class="bg-gradient-to-r from-app-banner-1 to-app-banner-2 md:mx-11 mx-5 rounded-28 py-9 lg:mt-[130px] lg:mb-[170px] md:m-20 sm:m-10 m-5 relative">
     <div class="container flex lg:flex-row flex-col relative">
       <div class="flex flex-col  items-start">
         <img src="/icons/hissa-main.svg" alt="hissa">
@@ -10,11 +10,11 @@
         <div class="flex gap-4 mt-7">
           <img src="/icons/QR.svg" alt="qr">
           <div class="flex flex-col justify-between">
-            <router-link to="/" class="cursor-pointer">
-              <img src="/images/Appstore.png" alt="" />
+            <router-link to="/" class="cursor-pointer hover:opacity-80 transition-all duration-300">
+              <img src="/icons/Appstore1.svg" alt="" />
             </router-link>
-            <router-link to="/" class="cursor-pointer">
-              <img src="/images/Playmarket.png" alt=""/>
+            <router-link to="/" class="cursor-pointer hover:opacity-80 transition-all duration-300">
+              <img src="/icons/Playmarket1.svg" alt="" />
             </router-link>
           </div>
         </div>

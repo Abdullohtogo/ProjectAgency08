@@ -1,5 +1,5 @@
 <template>
-  <div class="relative mb-[200px]">
+  <div class="relative lg:mb-[200px] mb-[50px]">
     <div class="container relative z-10">
       <p class="font-medium leading-130 text-green-300 text-center uppercase text-base sm:text-sm mb-3">fondlar uchun</p>
       <h2 class="text-green-500 lg:text-4xl md:text-3xl sm:text-2xl text-xl leading-130 font-bold text-center">
@@ -20,8 +20,8 @@
       <PartnerCompanyCard v-for="item in cards" :item="item" :key="item.id" class="last:cursor-pointer"/>
     </div>
     <div class="container flex sm:gap-9 gap-3 mt-11 justify-center relative z-10">
-      <ButtonVButton label="Bog‘lanish" variant="primary"/>
-      <ButtonVButton label="Bizning safimizga qo‘shilish" variant="secondary"/>
+      <CommonButton label="Bog‘lanish" variant="primary"/>
+      <CommonButton label="Bizning safimizga qo‘shilish" variant="secondary"/>
     </div>
     <div class="absolute top-[234px] left-[20%] z-0">
       <img src="/icons/Uzbekistan.svg" alt="">

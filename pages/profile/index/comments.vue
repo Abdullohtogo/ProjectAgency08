@@ -1,9 +1,9 @@
 <template>
   <div class="p-5">
     <CardComment v-for="(card, index) in cards" :item="card" :key="index" class="mb-4"/>
-    <ButtonVButton variant="primary" label="Yana yuklash" class="mx-auto block">
+    <CommonButton variant="primary" label="Yana yuklash" class="mx-auto block">
       <img src="/icons/down.svg" alt="">
-    </ButtonVButton>
+    </CommonButton>
   </div>
 </template>
 <script setup lang="ts">

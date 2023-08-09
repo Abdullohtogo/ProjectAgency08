@@ -73,16 +73,16 @@
         </div>
       </div>
       <div class="flex gap-5 w-full justify-between">
-        <ButtonVButton label="Hissa qo'shish" variant="secondary" class="w-full">
+        <CommonButton label="Hissa qo'shish" variant="secondary" class="w-full">
           <template #before>
             <img src="/icons/generous_heart.svg" alt="">
           </template>
-        </ButtonVButton>
-        <ButtonVButton label="Ulashish" variant="darker" class="w-full">
+        </CommonButton>
+        <CommonButton label="Ulashish" variant="darker" class="w-full">
           <template #before>
             <img src="/icons/share.svg" alt="">
           </template>
-        </ButtonVButton>
+        </CommonButton>
       </div>
     </div>
   </div>

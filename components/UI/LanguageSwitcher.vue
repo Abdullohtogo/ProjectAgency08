@@ -13,10 +13,9 @@
       <span class="icon-languages text-xl transition-300" />
       <img src="/icons/language-outline.svg" alt="">
       <span class="text-sm transition-300 text-[#596066]">{{ currentLanguage?.name }}</span>
-      <img 
-      class="icon-chevron transition-transforms transition-300"
+      <span
       :class="[{ 'rotate-180': showDropdown }]"
-      src="/icons/arrow-down.svg" alt="">
+      class="icon-call text-black-100 text-xs transition-transforms transition-300" />
     </template>
     <template #body>
       <div v-for="(lang, index) in languages" :key="index" class="w-full">
