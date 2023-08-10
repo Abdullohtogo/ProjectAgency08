@@ -1,16 +1,16 @@
 <template>
-  <div class="rounded-36 border-4 border-white md:mx-11 mx-5 bg-white pt-10 mb-10 overflow-hidden">
+  <div class="sm:rounded-36 rounded-2xl border-4 border-white md:mx-11 mx-5 bg-white md:pt-10 sm:pt-8 pt-4 md:mb-10 sm:mb-8 mb-4 overflow-hidden">
     <div class="container w-full">
       <div class="flex w-full justify-between pb-4 lg:pb-0 flex-col md:flex-row">
         <div class="">
           <router-link to="/">
             <img src="@/public/logo.svg" alt=""/>
           </router-link>
-          <p class="mt-5 text-gray-200 max-w-[497px] leading-130">
+          <p class="md:mt-5 mt-3 text-gray-200 max-w-[497px] leading-130">
             Saxovat amallari biplan shug‘ullanatigan fondlarni va ularning yaxshilik yo‘lida tashkil qilayotgan
             loyihalarini kuzatib boring.
           </p>
-          <div class="flex lg:flex-row flex-col gap-5 mt-[56px] mb-10 lg:items-end">
+          <div class="flex lg:flex-row flex-col md:gap-5 gap-3 lg:mt-[56px] md:mt-10 sm:mt-6 mt-3 lg:mb-10 md:mb-8 sm:mb-6 mb-3 lg:items-end">
             <div class="">
               <img src="@/public/icons/QR.svg" class="qr" alt="qr">
             </div>
@@ -28,7 +28,7 @@
           </div>
         </div>
         <div
-            class="flex lg:flex-row md:flex-row sm:flex-row flex-col lg:justify-between md:justify-normal sm:justify-between xl:gap-[125px] gap-[30px]">
+            class="flex lg:flex-row md:flex-row sm:flex-row flex-col lg:justify-between md:justify-normal sm:justify-between xl:gap-[125px] gap-5">
           <div>
             <p class="text-green-500 sm:text-xl text-lg leading-130 font-medium">Asosiy</p>
             <ul class="mt-3 flex flex-col gap-3">
@@ -50,7 +50,7 @@
                   }}</a>
               </li>
             </ul>
-            <div class="mt-7">
+            <div class="md:mt-7 sm:mt-5 mt-3">
               <p class="text-green-500 sm:text-xl text-lg leading-130 font-medium">
                 Bizni ijtimoiy tarmoqlarda kuzatib boring
               </p>
@@ -67,7 +67,7 @@
     <div class="bg-gray-300">
       <div class="container">
         <div
-            class="py-5 border-b-3 border-white flex md:justify-between justify-center items-center md:items-start md:flex-row flex-col md:gap-0 gap-2 sm:px-4 px-1">
+            class="sm:py-5 py-3 border-b-3 border-white flex md:justify-between justify-center items-center md:items-start md:flex-row flex-col md:gap-0 gap-2 sm:px-4 px-1">
           <p class="text-black-100 text-center text-sm leading-130">
             © 2023 Hissa Inc. Barcha huquqlar himoyalangan.
           </p>

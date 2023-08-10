@@ -29,9 +29,10 @@
 </template>
 
 <script setup lang="ts">
+import {ref} from 'vue'
 import {useRoute} from "vue-router";
 
-
+const showMenu = ref(false)
 const route = useRoute()
 
 console.log(route.params)

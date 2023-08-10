@@ -1,19 +1,19 @@
 <template>
   <div
-      class="grid w-full items-start gap-y-2 gap-x-4 mt-4"
+      class="grid w-full items-start gap-y-2 gap-x-4 sm:mt-4 mt-3"
   >
     <div
         v-for="(item, index) in faqs"
         :key="index"
-        class="group transition-300 col-span-2 md:col-span-1 rounded-xl bg-gray-800 mb-4"
+        class="group transition-300 col-span-2 md:col-span-1 rounded-xl bg-gray-800 sm:mb-4 mb-2"
         :class="[{'bg-white border border-green-400': selectedItem === item.id}]"
     >
       <div
-          class="flex items-center justify-between cursor-pointer py-[13px] md:py-[15px] px-5"
+          class="flex items-center justify-between cursor-pointer py-2 md:py-4 sm:px-5 px-2"
           @click="openItem(item.id)"
       >
         <h4
-            class="font-semibold leading-140 text-xl text-black-200 transition-300 group-hover:text-purple line-clamp-2"
+            class="font-semibold sm:leading-140 sm:text-xl text-base text-black-200 transition-300 group-hover:text-purple line-clamp-2"
         >
           {{ item?.question }}
         </h4>
@@ -27,9 +27,9 @@
       <CollapseTransition>
         <div
             v-if="selectedItem === item.id"
-            class="p-4 pt-0"
+            class="sm:p-4 p-2 pt-0"
         >
-          <p class="text-black-200 text-sm leading-140">
+          <p class="text-black-200 sm:text-sm text-xs leading-140">
             {{ item?.answer }}
           </p>
         </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="p-5">
+  <div class="sm:p-5 p-3">
     <CardComment v-for="(card, index) in cards" :item="card" :key="index" class="mb-4"/>
     <CommonButton variant="primary" label="Yana yuklash" class="mx-auto block">
       <img src="/icons/down.svg" alt="">

@@ -11,13 +11,13 @@
         alt="green-elipse"
     />
 
-    <div class="container relative flex flex-col justify-center h-full">
+    <div class="container relative flex flex-col justify-center h-full p-0">
       <div class="flex items-start gap-10 lg:gap-20 relative z-100">
         <div class="flex flex-col">
           <div class="flex flex-col lg:pb-[222px] md:pb-24 md:pb-15 pb-10">
             <div class="mb-10">
               <h2
-                  class="md:text-3xl sm:text-2xl text-xl lg:text-[42px] lg:leading-10 relative font-bold uppercase text-green-500 lg:max-w-[1120px]"
+                  class="md:text-3xl sm:text-2xl text-xl lg:text-[42px] lg:leading-10 relative font-bold uppercase text-green-500 lg:max-w-[1090px]"
               >
                 Xayrli ishlarga <span class="underlined relative"> hissa </span> qo‘shish
                 uchun platforma
@@ -43,14 +43,14 @@
               </router-link>
             </div>
           </div>
-          <div class="flex md:gap-8 gap-x-4 gap-y-3 flex-wrap">
+          <div class="flex md:gap-8 sm:gap-x-4 sm:gap-y-3 sm:justify-normal justify-between flex-wrap">
             <div
-                class="flex gap-2 items-center"
+                class="flex sm:gap-2 gap-0.5 items-center"
                 v-for="item in items"
                 :key="item.id"
             >
               <img :src="item.url" alt="icon"/>
-              <p>{{ item.text }}</p>
+              <p class="font-medium text-black-100 sm:text-base text-sm">{{ item.text }}</p>
             </div>
           </div>
         </div>

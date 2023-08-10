@@ -1,6 +1,6 @@
 <template>
-  <div class="p-5">
-    <CardPost v-for="(card, index) in cards" :item="card" :key="index" class="mb-4"/>
+  <div class="sm:p-5 p-3">
+    <CardPost v-for="(card, index) in cards" :item="card" :key="index" class="sm:mb-4 mb-2"/>
     <CommonButton label="Yana yuklash" variant="primary" class="block mx-auto">
       <img src="/icons/down.svg" alt="">
     </CommonButton>

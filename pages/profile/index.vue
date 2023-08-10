@@ -1,17 +1,17 @@
 <template>
-  <div class="container mt-6 mb-16">
-    <div class="flex gap-6">
+  <div class="container sm:mt-6 mt-3 sm:mb-16 mb-4">
+    <div class="flex gap-6 md:flex-row flex-col">
       <div class="basis-2/3">
         <CardSaxovat/>
-        <div class="rounded-28 bg-white backdrop-filter mt-5">
+        <div class="sm:rounded-28 rounded-2xl bg-white backdrop-filter mt-5">
           <div class="border-b border-gray-300">
-            <div class="pt-4 px-5 flex gap-6">
+            <div class="sm:pt-4 pt-3 sm:px-5 px-4 flex gap-6">
               <nuxt-link
                   :to="tab.url"
                   v-for="(tab, index) in tabs"
                   :key="index"
                   @click="activeTab = tab"
-                  class="text-gray-200 font-semibold leading-130 cursor-pointer relative h-full pb-2"
+                  class="text-gray-200 sm:text-base text-sm font-semibold leading-130 cursor-pointer relative h-full pb-2"
                   :class="{'!text-black-100': activeTab === tab}"
               >
                 {{ tab.tab }}

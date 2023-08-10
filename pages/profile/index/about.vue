@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="p-5">
+    <div class="sm:p-5 p-3">
       <div>
         <iframe width="100%" src="https://www.youtube.com/embed/yxq2sirgexU"
                 title="YouTube video player" frameborder="0"

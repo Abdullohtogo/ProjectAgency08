@@ -13,7 +13,7 @@
       </CommonButton>
     </div>
     <div
-        class="relative overflow-hidden mt-6 bg-gradient-to-b from-app-banner-1 to-app-banner-2 rounded-28 flex flex-col justify-center items-center p-6 pt-8">
+        class="relative overflow-hidden sm:mt-6 mt-3 bg-gradient-to-b from-app-banner-1 to-app-banner-2 rounded-28 flex flex-col justify-center items-center p-6 pt-8">
       <div>
         <img src="/icons/hissa-main.svg" alt="">
       </div>
@@ -34,7 +34,7 @@
         <router-link to="/" class="basis-1/2 hover:opacity-80 transition-all duration-300">
           <img src="/icons/Playmarket.svg" alt="" class="w-full"/>
         </router-link>
-      </div>x
+      </div>
     </div>
   </div>
 </template>
