@@ -1,12 +1,12 @@
 <template>
   <div class="flex flex-col gap-2">
     <label for="" class="text-gray-200">{{ label }}</label>
-    <div class="bg-gray-300 rounded-lg flex gap-2 p-3 h-full">
+    <div class="bg-gray-300 rounded-xl flex gap-2 px-[9px] py-2 h-full">
       <img :src="src" alt="">
       <span>
         <slot/>
       </span>
-      <input :type="type" name="" id="" class="outline-0 bg-transparent w-full" :maxlength="maxlength"
+      <input :type="type" name="" id="" class="outline-0 text-gray-700 text-base bg-transparent w-full" :maxlength="maxlength"
              :placeholder="placeholder"/>
     </div>
   </div>

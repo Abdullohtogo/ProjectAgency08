@@ -1,83 +1,87 @@
 <template>
   <div class="container sm:mt-6 mt-3 sm:mb-16 mb-4">
-    <div class="flex gap-6 md:flex-row flex-col">
-      <div class="basis-2/3">
-        <CardSaxovat/>
+    <div class="md:grid flex flex-col grid-cols-12 gap-6">
+      <div class="md:col-span-8">
+        <CardSaxovat />
         <div class="sm:rounded-28 rounded-2xl bg-white backdrop-filter mt-5">
           <div class="border-b border-gray-300">
             <div class="sm:pt-4 pt-3 sm:px-5 px-4 flex gap-6">
-              <nuxt-link
-                  :to="tab.url"
-                  v-for="(tab, index) in tabs"
-                  :key="index"
-                  @click="activeTab = tab"
-                  class="text-gray-200 sm:text-base text-sm font-semibold leading-130 cursor-pointer relative h-full pb-2"
-                  :class="{'!text-black-100': activeTab === tab}"
+              <button
+                v-for="(item, index) in tabs"
+                :key="index"
+                @click="activate(index)"
+                class="text-gray-200 sm:text-base text-sm font-semibold leading-130 cursor-pointer relative h-full pb-2"
+                :class="{ '!text-black-100': currentTab === item.id }"
               >
-                {{ tab.tab }}
+                {{ item.tab }}
                 <span
-                    v-if="activeTab === tab"
-                    class="absolute -bottom-[0.5px] left-0 w-full h-0.5 bg-green-400 rounded-t-md"
+                  v-if="currentTab === item.id"
+                  class="absolute -bottom-[0.5px] left-0 w-full h-0.5 bg-green-400 rounded-t-md"
                 ></span>
-              </nuxt-link>
+              </button>
             </div>
           </div>
-          <NuxtPage
-              v-if="activeTab.tab === 'Saxovat haqida'"
-          />
-          <NuxtPage
-              v-if="activeTab.tab === 'Postlar'"
-          />
-          <NuxtPage
-              v-if="activeTab.tab === 'T.B.S'"
-          />
-          <NuxtPage
-              v-if="activeTab.tab === 'Izohlar'"
-          />
+          <Transition mode="out-in" name="fade">
+            <div :key="currentTab">
+              <ComponentsAbout v-if="currentTab === 0" />
+              <ComponentsPosts v-if="currentTab === 1" />
+              <ComponentsFAQ v-if="currentTab === 2" />
+              <ComponentsComments v-if="currentTab === 3" />
+            </div>
+          </Transition>
         </div>
-        <SectionGenerous/>
+        <SectionGenerous />
       </div>
-      <div class="basis-1/3">
-        <SectionSideBar/>
+      <div class="md:col-span-4">
+        <SectionSideBar />
       </div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import {useI18n} from 'vue-i18n'
-import {useRoute} from "vue-router";
+import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { useRoute } from 'vue-router'
 
-const {t} = useI18n()
+import ComponentsAbout from '@/pages/profile/components/About.vue'
+import ComponentsComments from '@/pages/profile/components/Comments.vue'
+import ComponentsFAQ from '@/pages/profile/components/FAQ.vue'
+import ComponentsPosts from '@/pages/profile/components/Posts.vue'
+
+const { t } = useI18n()
 const route = useRoute()
+const currentTab = ref(0)
 
 const tabs = [
   {
-    id: 1,
+    id: 0,
     tab: 'Saxovat haqida',
-    url: '/profile/about'
+    current: true,
+  },
+  {
+    id: 1,
+    tab: 'Postlar',
+    current: false,
   },
   {
     id: 2,
-    tab: 'Postlar',
-    url: '/profile/posts'
+    tab: 'T.B.S',
+    current: false,
   },
   {
     id: 3,
-    tab: 'T.B.S',
-    url: '/profile/faq'
-  },
-  {
-    id: 4,
     tab: 'Izohlar',
-    url: '/profile/comments'
+    current: false,
   },
-];
-
-let activeTab = tabs[0]
+]
 
 onMounted(() => {
   console.log(route.path)
 })
+
+function activate(index) {
+  currentTab.value = index
+}
 </script>
 <style scoped>
 p {
@@ -86,5 +90,15 @@ p {
 
 p:not(.text-black-100):hover {
   color: #6b7280;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 </style>
