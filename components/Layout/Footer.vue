@@ -75,11 +75,11 @@
               Bog‘lanish
             </p>
             <ul class="mt-3 flex flex-col gap-3">
-              <li v-for="item in contact" :key="item.id" class="flex gap-2">
-                <img :src="item.src" alt="icon" />
+              <li v-for="item in contact" :key="item.id" class="flex items-center group gap-2">
+                <span :class="`icon-${item.type}`" class="text-xl text-gray-400 transition transition-300 group-hover:text-green-400" />
                 <a
                   :href="item.url"
-                  class="text-black-100 hover:text-green-300 transition-all duration-300 ease-in-out leading-130"
+                  class="text-black-100  transition-all duration-300 ease-in-out leading-130"
                   >{{ item.text }}</a
                 >
               </li>
@@ -163,19 +163,20 @@ const contact = [
     id: 1,
     text: '+998 71 200 7007',
     url: 'tel:+998 71 200 7007',
-    src: '/icons/call.svg',
+    type: 'call',
   },
   {
     id: 2,
     text: 'info@uic.group',
     url: 'mailto: info@uic.group',
-    src: '/icons/sms.svg',
+    type: 'sms',
   },
   {
     id: 3,
     text: "24 Oybek ko'chasi, Tashkent, Узбекистан",
     url: 'https://goo.gl/maps/Gn5ieiks1NbMdLQU6',
     src: '/icons/location.svg',
+    type: 'location',
   },
 ]
 

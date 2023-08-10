@@ -23,7 +23,9 @@
         <div
           class="sm:p-3 p-2 rounded-2xl border border-gray-600 flex flex-col items-center w-full"
         >
-          <p class="text-black-100 font-medium leading-130 text-base text-center">
+          <p
+            class="text-black-100 font-medium leading-130 text-base text-center"
+          >
             Saxovat tugagunicha qolgan vaqt:
           </p>
           <div class="mt-3 flex gap-4 items-center">
@@ -107,14 +109,24 @@
         </div>
       </div>
       <div class="flex gap-5 w-full sm:flex-row flex-col justify-between">
-        <CommonButton label="Hissa qo'shish" variant="secondary" class="w-full">
+        <CommonButton
+          label="Hissa qo'shish"
+          buttonStyle="flex items-center"
+          variant="secondary"
+          class="w-full"
+        >
           <template #before>
-            <img src="/icons/generous_heart.svg" alt="" />
+            <span class="icon-heart text-2xl text-white" />
           </template>
         </CommonButton>
-        <CommonButton label="Ulashish" variant="darker" class="w-full">
+        <CommonButton
+          label="Ulashish"
+          buttonStyle="flex items-center"
+          variant="darker"
+          class="w-full"
+        >
           <template #before>
-            <img src="/icons/share.svg" alt="" />
+            <span class="icon-share text-2xl text-green-400" />
           </template>
         </CommonButton>
       </div>

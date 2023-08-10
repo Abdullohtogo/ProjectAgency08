@@ -47,72 +47,16 @@
 <script setup lang="ts">
 import CollapseTransition from '@ivanv/vue-collapse-transition/src/CollapseTransition.vue'
 
-const faqs = [
-  {
-    id: 1,
-    question: "Yig'ilgan mablag'lar nimaga sarflanadi?",
-    answer:
-      "Boshpana hayvonlarni himoya qilishning asosiy tarkibiy qismlaridan biri bo'lib, to'rtta asosiy funktsiyani bajaradi: hayvonga tezkor yordam va g'amxo'rlik, shu jumladan veterinariya yordami yoki evtanaziya orqali azob-uqubatlarni engillashtirish; eski yoki yangi egasini darhol topa olmaydigan hayvonga uzoq muddatli g'amxo'rlik",
-  },
-  {
-    id: 2,
-    question:
-      'Nima uchun zamonaviy dunyoda hayvonlarning boshpanalariga muhtojmiz?',
-    answer:
-      "Boshpana hayvonlarni himoya qilishning asosiy tarkibiy qismlaridan biri bo'lib, to'rtta asosiy funktsiyani bajaradi: hayvonga tezkor yordam va g'amxo'rlik, shu jumladan veterinariya yordami yoki evtanaziya orqali azob-uqubatlarni engillashtirish; eski yoki yangi egasini darhol topa olmaydigan hayvonga uzoq muddatli g'amxo'rlik",
-  },
-  {
-    id: 3,
-    question: "Yig'ilgan mablag'lar nimaga sarflanadi?",
-    answer:
-      "Boshpana hayvonlarni himoya qilishning asosiy tarkibiy qismlaridan biri bo'lib, to'rtta asosiy funktsiyani bajaradi: hayvonga tezkor yordam va g'amxo'rlik, shu jumladan veterinariya yordami yoki evtanaziya orqali azob-uqubatlarni engillashtirish; eski yoki yangi egasini darhol topa olmaydigan hayvonga uzoq muddatli g'amxo'rlik",
-  },
-  {
-    id: 4,
-    question:
-      "Men sarmoya kiritsam bo'ladimi va siz agentlar va distribyutorlarni qidiryapsizmi?",
-    answer:
-      "Boshpana hayvonlarni himoya qilishning asosiy tarkibiy qismlaridan biri bo'lib, to'rtta asosiy funktsiyani bajaradi: hayvonga tezkor yordam va g'amxo'rlik, shu jumladan veterinariya yordami yoki evtanaziya orqali azob-uqubatlarni engillashtirish; eski yoki yangi egasini darhol topa olmaydigan hayvonga uzoq muddatli g'amxo'rlik",
-  },
-  {
-    id: 5,
-    question: 'Qaytarishni talab qilish mumkinmi?',
-    answer:
-      "Boshpana hayvonlarni himoya qilishning asosiy tarkibiy qismlaridan biri bo'lib, to'rtta asosiy funktsiyani bajaradi: hayvonga tezkor yordam va g'amxo'rlik, shu jumladan veterinariya yordami yoki evtanaziya orqali azob-uqubatlarni engillashtirish; eski yoki yangi egasini darhol topa olmaydigan hayvonga uzoq muddatli g'amxo'rlik",
-  },
-  {
-    id: 6,
-    question: "Yig'ilgan mablag'lar nimaga sarflanadi?",
-    answer:
-      "Boshpana hayvonlarni himoya qilishning asosiy tarkibiy qismlaridan biri bo'lib, to'rtta asosiy funktsiyani bajaradi: hayvonga tezkor yordam va g'amxo'rlik, shu jumladan veterinariya yordami yoki evtanaziya orqali azob-uqubatlarni engillashtirish; eski yoki yangi egasini darhol topa olmaydigan hayvonga uzoq muddatli g'amxo'rlik",
-  },
-  {
-    id: 7,
-    question:
-      "Men sarmoya kiritsam bo'ladimi va siz agentlar va distribyutorlarni qidiryapsizmi?",
-    answer:
-      "Boshpana hayvonlarni himoya qilishning asosiy tarkibiy qismlaridan biri bo'lib, to'rtta asosiy funktsiyani bajaradi: hayvonga tezkor yordam va g'amxo'rlik, shu jumladan veterinariya yordami yoki evtanaziya orqali azob-uqubatlarni engillashtirish; eski yoki yangi egasini darhol topa olmaydigan hayvonga uzoq muddatli g'amxo'rlik",
-  },
-  {
-    id: 8,
-    question: 'Qaytarishni talab qilish mumkinmi?',
-    answer:
-      "Boshpana hayvonlarni himoya qilishning asosiy tarkibiy qismlaridan biri bo'lib, to'rtta asosiy funktsiyani bajaradi: hayvonga tezkor yordam va g'amxo'rlik, shu jumladan veterinariya yordami yoki evtanaziya orqali azob-uqubatlarni engillashtirish; eski yoki yangi egasini darhol topa olmaydigan hayvonga uzoq muddatli g'amxo'rlik",
-  },
-  {
-    id: 9,
-    question: "Yig'ilgan mablag'lar nimaga sarflanadi?",
-    answer:
-      "Boshpana hayvonlarni himoya qilishning asosiy tarkibiy qismlaridan biri bo'lib, to'rtta asosiy funktsiyani bajaradi: hayvonga tezkor yordam va g'amxo'rlik, shu jumladan veterinariya yordami yoki evtanaziya orqali azob-uqubatlarni engillashtirish; eski yoki yangi egasini darhol topa olmaydigan hayvonga uzoq muddatli g'amxo'rlik",
-  },
-  {
-    id: 10,
-    question:
-      "Men sarmoya kiritsam bo'ladimi va siz agentlar va distribyutorlarni qidiryapsizmi?",
-    answer:
-      "Boshpana hayvonlarni himoya qilishning asosiy tarkibiy qismlaridan biri bo'lib, to'rtta asosiy funktsiyani bajaradi: hayvonga tezkor yordam va g'amxo'rlik, shu jumladan veterinariya yordami yoki evtanaziya orqali azob-uqubatlarni engillashtirish; eski yoki yangi egasini darhol topa olmaydigan hayvonga uzoq muddatli g'amxo'rlik",
-  },
-]
+interface Props {
+  faqs: {
+    id: number
+    question: string
+    answer: number
+  }
+}
+
+defineProps<Props>()
+
 const selectedItem = ref(0)
 
 const openItem = (id: number) => {
@@ -122,4 +66,4 @@ const openItem = (id: number) => {
   }
   selectedItem.value = id
 }
-</script>
+  </script>

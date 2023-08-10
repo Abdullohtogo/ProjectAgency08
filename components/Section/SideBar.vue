@@ -1,16 +1,26 @@
 <template>
   <div>
     <div class="bg-white rounded-28 p-5 flex flex-col gap-4">
-      <CommonButton label="Hissa qo'shish" variant="secondary">
-        <template #before>
-          <img src="/icons/generous_heart.svg" alt="">
-        </template>
-      </CommonButton>
-      <CommonButton label="Ulashish" variant="darker">
-        <template #before>
-          <img src="/icons/share.svg" alt="">
-        </template>
-      </CommonButton>
+      <CommonButton
+          label="Hissa qo'shish"
+          buttonStyle="flex items-center"
+          variant="secondary"
+          class="w-full"
+        >
+          <template #before>
+            <span class="icon-heart text-2xl text-white" />
+          </template>
+        </CommonButton>
+        <CommonButton
+          label="Ulashish"
+          buttonStyle="flex items-center"
+          variant="darker"
+          class="w-full"
+        >
+          <template #before>
+            <span class="icon-share text-2xl text-green-400" />
+          </template>
+        </CommonButton>
     </div>
     <div
         class="relative overflow-hidden sm:mt-6 mt-3 bg-gradient-to-b from-app-banner-1 to-app-banner-2 rounded-28 flex flex-col justify-center items-center p-6 pt-8">

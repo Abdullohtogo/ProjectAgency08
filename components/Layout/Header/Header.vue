@@ -41,7 +41,7 @@ const menu = [
   {
     id: 1,
     text: "Biz haqimizda",
-    url: "/profile/about"
+    url: "/profile"
   },
   {
     id: 2,

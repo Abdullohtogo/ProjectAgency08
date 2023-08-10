@@ -1,39 +1,29 @@
 <template>
   <div class="sm:p-5 p-3">
-    <CardPost v-for="(card, index) in cards" :item="card" :key="index" class="sm:mb-4 mb-2"/>
+    <CardPost
+      v-for="(card, index) in posts"
+      :item="card"
+      :key="index"
+      class="sm:mb-4 mb-2"
+    />
     <CommonButton label="Yana yuklash" variant="primary" class="block mx-auto">
-      <img src="/icons/down.svg" alt="">
+      <img src="/icons/down.svg" alt="" />
     </CommonButton>
   </div>
 </template>
 
 <script setup lang="ts">
-const cards = [
-  {
-    name: "Mehrli qo‘llar",
-    sphere: 'Ta‘lim',
-    logo: '/icons/Logo.svg',
-    title: 'Barchangizdan minnatdormiz!',
-    text: 'Azizlar, sizdek saxiy insonlar saxovati yordamida biz operatsiya uchun kerakli miqdordagi mablag‘ni yig‘ishga muvaffaq bo‘ldik.',
-    img: '/images/Image.png',
-    date: '22.11.2022, 22:22'
-  },
-  {
-    name: "Mehrli qo‘llar",
-    sphere: 'Ta‘lim',
-    logo: '/icons/Logo.svg',
-    title: 'Barchangizdan minnatdormiz!',
-    text: 'Azizlar, sizdek saxiy insonlar saxovati yordamida biz operatsiya uchun kerakli miqdordagi mablag‘ni yig‘ishga muvaffaq bo‘ldik.',
-    date: '22.11.2022, 22:22'
-  },
-  {
-    name: "Mehrli qo‘llar",
-    sphere: 'Ta‘lim',
-    logo: '/icons/Logo.svg',
-    title: 'Barchangizdan minnatdormiz!',
-    text: 'Azizlar, sizdek saxiy insonlar saxovati yordamida biz operatsiya uchun kerakli miqdordagi mablag‘ni yig‘ishga muvaffaq bo‘ldik.',
-    img: '/images/Image.png',
-    date: '22.11.2022, 22:22'
+interface Props {
+  posts: {
+    name: string
+    sphere: string
+    logo: number
+    text: string
+    date: string
+    title: string
+    img: string
   }
-]
+}
+
+defineProps<Props>()
 </script>
