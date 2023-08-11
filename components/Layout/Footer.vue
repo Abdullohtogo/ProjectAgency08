@@ -1,6 +1,6 @@
 <template>
   <div
-    class="sm:rounded-36 rounded-2xl border-4 border-white md:mx-11 mx-5 bg-white md:pt-10 sm:pt-8 pt-4 md:mb-10 sm:mb-8 mb-4 overflow-hidden"
+    class="sm:rounded-36 rounded-2xl border-4 border-white md:mx-11 mx-5 bg-white md:pt-10 sm:pt-9 pt-8 md:mb-10 sm:mb-8 mb-4 overflow-hidden"
   >
     <div class="container w-full">
       <div
@@ -75,11 +75,18 @@
               Bog‘lanish
             </p>
             <ul class="mt-3 flex flex-col gap-3">
-              <li v-for="item in contact" :key="item.id" class="flex items-center group gap-2">
-                <span :class="`icon-${item.type}`" class="text-xl text-gray-400 transition transition-300 group-hover:text-green-400" />
+              <li
+                v-for="item in contact"
+                :key="item.id"
+                class="flex items-center group gap-2"
+              >
+                <span
+                  :class="`icon-${item.type}`"
+                  class="text-xl text-gray-400 transition transition-300 group-hover:text-green-400"
+                />
                 <a
                   :href="item.url"
-                  class="text-black-100  transition-all duration-300 ease-in-out leading-130"
+                  class="text-black-100 transition-all duration-300 ease-in-out leading-130"
                   >{{ item.text }}</a
                 >
               </li>
@@ -114,6 +121,7 @@
           <p class="text-black-100 text-center text-sm leading-130">
             © 2023 Hissa Inc. Barcha huquqlar himoyalangan.
           </p>
+          <pre>{{ contacts }}</pre>
           <ul class="flex gap-3 flexx-wrap sm:flex-nowrap">
             <li v-for="item in links" :key="item.id">
               <router-link
@@ -130,6 +138,9 @@
   </div>
 </template>
 <script setup lang="ts">
+import { useCareContact } from '@/composables/useCareContact'
+
+const { loading, contacts, getContact } = useCareContact
 const main = [
   {
     id: 1,

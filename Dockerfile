@@ -1,7 +1,7 @@
 FROM node:alpine
 RUN npm install pm2 -g
 WORKDIR /app/src
-COPY . .
+COPY .env.example .env
 RUN yarn && yarn build && yarn cache clean
 RUN mv .output ../
 COPY ecosystem.config.js ../
