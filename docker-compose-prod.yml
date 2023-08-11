@@ -8,3 +8,4 @@ services:
       - 3098:3098
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
+    restart: always
