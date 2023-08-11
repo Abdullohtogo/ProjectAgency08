@@ -1,62 +1,104 @@
 <template>
-  <div class="rounded-36 border-4 border-white md:mx-11 mx-5 bg-white pt-10 mb-10 overflow-hidden">
+  <div
+    class="sm:rounded-36 rounded-2xl border-4 border-white md:mx-11 mx-5 bg-white md:pt-10 sm:pt-8 pt-4 md:mb-10 sm:mb-8 mb-4 overflow-hidden"
+  >
     <div class="container w-full">
-      <div class="flex w-full justify-between pb-4 lg:pb-0 flex-col md:flex-row">
+      <div
+        class="flex w-full justify-between pb-4 lg:pb-0 flex-col md:flex-row"
+      >
         <div class="">
           <router-link to="/">
-            <img src="@/public/logo.svg" alt=""/>
+            <img src="@/public/logo.svg" alt="" />
           </router-link>
-          <p class="mt-5 text-gray-200 max-w-[497px] leading-130">
-            Saxovat amallari biplan shug‘ullanatigan fondlarni va ularning yaxshilik yo‘lida tashkil qilayotgan
-            loyihalarini kuzatib boring.
+          <p class="md:mt-5 mt-3 text-gray-200 max-w-[497px] leading-130">
+            Saxovat amallari biplan shug‘ullanatigan fondlarni va ularning
+            yaxshilik yo‘lida tashkil qilayotgan loyihalarini kuzatib boring.
           </p>
-          <div class="flex lg:flex-row flex-col gap-5 mt-[56px] mb-10 lg:items-end">
+          <div
+            class="flex lg:flex-row flex-col md:gap-5 gap-3 lg:mt-[56px] md:mt-10 sm:mt-6 mt-3 lg:mb-10 md:mb-8 sm:mb-6 mb-3 lg:items-end"
+          >
             <div class="">
-              <img src="@/public/icons/QR.svg" class="qr" alt="qr">
+              <img src="@/public/icons/QR.svg" class="qr" alt="qr" />
             </div>
             <div>
-              <p class="text-black-100 font-medium sm:text-xl text-lg leading-130 mb-2">Ilova yanada qulayroq</p>
+              <p
+                class="text-black-100 font-medium sm:text-xl text-lg leading-130 mb-2"
+              >
+                Ilova yanada qulayroq
+              </p>
               <div class="flex gap-3">
-                <a href="/" class="hover:opacity-80 transition-all duration-300">
-                  <img src="@/public/icons/AppStore-footer.svg" alt="appstore"/>
+                <a
+                  href="/"
+                  class="hover:opacity-80 transition-all duration-300"
+                >
+                  <img
+                    src="@/public/icons/AppStore-footer.svg"
+                    alt="appstore"
+                  />
                 </a>
-                <a href="/" class="hover:opacity-80 transition-all duration-300">
-                  <img src="@/public/icons/PlayMarket-footer.svg" alt="playmarket"/>
+                <a
+                  href="/"
+                  class="hover:opacity-80 transition-all duration-300"
+                >
+                  <img
+                    src="@/public/icons/PlayMarket-footer.svg"
+                    alt="playmarket"
+                  />
                 </a>
               </div>
             </div>
           </div>
         </div>
         <div
-            class="flex lg:flex-row md:flex-row sm:flex-row flex-col lg:justify-between md:justify-normal sm:justify-between xl:gap-[125px] gap-[30px]">
+          class="flex lg:flex-row md:flex-row sm:flex-row flex-col lg:justify-between md:justify-normal sm:justify-between xl:gap-[125px] gap-5"
+        >
           <div>
-            <p class="text-green-500 sm:text-xl text-lg leading-130 font-medium">Asosiy</p>
+            <p
+              class="text-green-500 sm:text-xl text-lg leading-130 font-medium"
+            >
+              Asosiy
+            </p>
             <ul class="mt-3 flex flex-col gap-3">
-              <li v-for="item in main" :key="item.id"
-                  class="text-black-100 hover:text-green-300 transition-all duration-300 ease-in-out leading-130">
+              <li
+                v-for="item in main"
+                :key="item.id"
+                class="text-black-100 hover:text-green-300 transition-all duration-300 ease-in-out leading-130"
+              >
                 <router-link :to="item.url">{{ item.text }}</router-link>
               </li>
             </ul>
           </div>
           <div>
-            <p class="text-green-500 sm:text-xl text-lg leading-130 font-medium">Bog‘lanish</p>
+            <p
+              class="text-green-500 sm:text-xl text-lg leading-130 font-medium"
+            >
+              Bog‘lanish
+            </p>
             <ul class="mt-3 flex flex-col gap-3">
-              <li v-for="item in contact" :key="item.id"
-                  class="flex gap-2">
-                <img :src="item.src" alt="icon">
-                <a :href="item.url"
-                   class="text-black-100 hover:text-green-300 transition-all duration-300 ease-in-out leading-130">{{
-                    item.text
-                  }}</a>
+              <li v-for="item in contact" :key="item.id" class="flex items-center group gap-2">
+                <span :class="`icon-${item.type}`" class="text-xl text-gray-400 transition transition-300 group-hover:text-green-400" />
+                <a
+                  :href="item.url"
+                  class="text-black-100  transition-all duration-300 ease-in-out leading-130"
+                  >{{ item.text }}</a
+                >
               </li>
             </ul>
-            <div class="mt-7">
-              <p class="text-green-500 sm:text-xl text-lg leading-130 font-medium">
+            <div class="md:mt-7 sm:mt-5 mt-3">
+              <p
+                class="text-green-500 sm:text-xl text-lg leading-130 font-medium"
+              >
                 Bizni ijtimoiy tarmoqlarda kuzatib boring
               </p>
               <div class="mt-4 flex gap-3">
-                <a :href="item.url" v-for="item in share" :key="item.id" class="hover:opacity-80 transition-all duration-300">
-                  <img :src="item.src" alt="icon"/>
+                <a
+                  :href="item.url"
+                  v-for="item in share"
+                  :key="item.id"
+                  v-tooltip.bottom="'Facebook'"
+                  class="hover:opacity-80 transition-all duration-300"
+                >
+                  <img :src="item.src" alt="icon" />
                 </a>
               </div>
             </div>
@@ -67,14 +109,17 @@
     <div class="bg-gray-300">
       <div class="container">
         <div
-            class="py-5 border-b-3 border-white flex md:justify-between justify-center items-center md:items-start md:flex-row flex-col md:gap-0 gap-2 sm:px-4 px-1">
+          class="sm:py-5 py-3 border-b-3 border-white flex md:justify-between justify-center items-center md:items-start md:flex-row flex-col md:gap-0 gap-2 sm:px-4 px-1"
+        >
           <p class="text-black-100 text-center text-sm leading-130">
             © 2023 Hissa Inc. Barcha huquqlar himoyalangan.
           </p>
           <ul class="flex gap-3 flexx-wrap sm:flex-nowrap">
             <li v-for="item in links" :key="item.id">
-              <router-link :to="item.url"
-                           class="text-black-100 hover:text-green-300 text-sm transition-all duration-300 ease-in-out leading-130">
+              <router-link
+                :to="item.url"
+                class="text-black-100 hover:text-green-300 text-sm transition-all duration-300 ease-in-out leading-130"
+              >
                 {{ item.text }}
               </router-link>
             </li>
@@ -89,27 +134,27 @@ const main = [
   {
     id: 1,
     text: 'Biz haqimizda',
-    url: '/profile'
+    url: '/profile',
   },
   {
     id: 2,
     text: 'Afzalliklar',
-    url: '/'
+    url: '/',
   },
   {
     id: 3,
     text: 'Ilova',
-    url: '/'
+    url: '/',
   },
   {
     id: 4,
     text: 'Fondlar uchun',
-    url: '/'
+    url: '/',
   },
   {
     id: 5,
     text: 'Bog‘lanish',
-    url: '/'
+    url: '/',
   },
 ]
 
@@ -118,19 +163,20 @@ const contact = [
     id: 1,
     text: '+998 71 200 7007',
     url: 'tel:+998 71 200 7007',
-    src: '/icons/call.svg'
+    type: 'call',
   },
   {
     id: 2,
     text: 'info@uic.group',
     url: 'mailto: info@uic.group',
-    src: '/icons/sms.svg'
+    type: 'sms',
   },
   {
     id: 3,
-    text: '24 Oybek ko\'chasi, Tashkent, Узбекистан',
+    text: "24 Oybek ko'chasi, Tashkent, Узбекистан",
     url: 'https://goo.gl/maps/Gn5ieiks1NbMdLQU6',
-    src: '/icons/location.svg'
+    src: '/icons/location.svg',
+    type: 'location',
   },
 ]
 
@@ -182,6 +228,6 @@ const links = [
 
 <style>
 .qr {
-  box-shadow: 0px 4.279999732971191px 20px 0px rgba(39, 164, 74, 0.30);
+  box-shadow: 0px 4.279999732971191px 20px 0px rgba(39, 164, 74, 0.3);
 }
 </style>

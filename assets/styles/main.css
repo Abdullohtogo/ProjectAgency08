@@ -1,3 +1,4 @@
+@import url("../icomoon/style.css");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -32,4 +33,14 @@
 
 body {
     background-color: #F5F6F7;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
 }

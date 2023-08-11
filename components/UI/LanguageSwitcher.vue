@@ -2,7 +2,7 @@
   <UIDropdown
     :show="showDropdown"
     :head-class="[
-      'flex items-center gap-1 text-gray-700 hover:opacity-80 transition-300 cursor-pointer py-2 transition-colors duration-300',
+      'flex items-center gap-1 text-gray-700 group transition transition-300 cursor-pointer py-2',
       { '!text-blue !opacity-100': showDropdown },
       { 'text-white': variant === 'transparent' },
     ]"
@@ -10,12 +10,17 @@
     @toggle="handleDropdownToggle"
   >
     <template #head>
-      <span class="icon-languages text-xl transition-300" />
-      <img src="/icons/language-outline.svg" alt="">
-      <span class="text-sm transition-300 text-[#596066]">{{ currentLanguage?.name }}</span>
       <span
-      :class="[{ 'rotate-180': showDropdown }]"
-      class="icon-call text-black-100 text-xs transition-transforms transition-300" />
+        class="icon-language text-[#596066] group-hover:text-[#090E14] transition transition-300 text-base"
+      />
+      <span
+        class="text-[13px] leading-130 transition transition-300 group-hover:text-[#090E14] text-[#596066]"
+        >{{ currentLanguage?.name }}</span
+      >
+      <span
+        :class="[{ 'rotate-180': showDropdown }]"
+        class="icon-arrow-down group text-xs group-hover:text-[#090E14] transition transition-300"
+      />
     </template>
     <template #body>
       <div v-for="(lang, index) in languages" :key="index" class="w-full">
@@ -28,7 +33,9 @@
           </span>
           <img
             v-if="lang?.code === currentLanguage?.code"
-           src="@/public/icons/trick.svg" alt="trick icon">
+            src="@/public/icons/trick.svg"
+            alt="trick icon"
+          />
         </div>
       </div>
     </template>
@@ -59,7 +66,7 @@ const languages = [
     name: "O'zbekcha",
     code: 'uz',
     flag: '/icons/flag/uz.svg',
-  }
+  },
 ]
 
 const { locale } = useI18n()

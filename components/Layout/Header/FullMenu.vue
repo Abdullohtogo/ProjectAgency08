@@ -10,7 +10,7 @@
               v-for="(item, index) in menu"
               :key="index"
               :to="item?.url"
-              class="flex-center flex-col gap-3 group font-semibold text-[28px] leading-130 text-black-200"
+              class="flex-center flex-col gap-3 group font-semibold text-[28px] leading-130 text-black-200 hover:text-green-400 transition-all duration-300 ease-in-out"
               @click="$emit('close')"
           >
             {{ item?.text }}

@@ -1,6 +1,6 @@
 <template>
   <div
-      class="bg-gradient-to-r from-app-banner-1 to-app-banner-2 md:mx-11 mx-5 rounded-40 relative z-50"
+      class="bg-gradient-to-r from-app-banner-1 to-app-banner-2 md:mx-11 mx-5 sm:rounded-40 rounded-2xl relative z-50"
   >
     <div class="container flex justify-between flex-col lg:flex-row">
       <div class="lg:my-16 md:my-8 sm:my-5 my-3 mx-auto">
@@ -74,12 +74,12 @@
           </p>
           <div class="flex flex-row md:gap-3 gap-2">
             <a
-              :href="item.url"
-              class="p-2 rounded-full group transition transition-300 hover:bg-[#33573e] bg-[#e8f0fe33]"
-              v-for="item in social"
-              :key="item.id"
+                :href="item.url"
+                class="p-2 rounded-full group transition transition-300 hover:bg-[#33573e] bg-[#e8f0fe33]"
+                v-for="item in social"
+                :key="item.id"
             >
-              <img :src="item.src" alt="social-icon" />
+              <img :src="item.src" alt="social-icon"/>
             </a>
           </div>
         </div>
@@ -90,7 +90,7 @@
         />
         <div class="fixed top-0 left-0 w-full h-full z-50 bg-modal hidden opacity-0"
              :class="{'!block opacity-100 overflow-hidden ': showModal}">
-          <FormModal class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 max-w-[434px]"
+          <FormModal class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 sm:max-w-[434px] w-[70%] sm:w-full"
                      v-show="showModal"
                      @close="toggleModal"
                      :show="showModal"
@@ -155,7 +155,13 @@ const social = [
 const showModal = ref(false)
 
 function toggleModal() {
-  showModal.value = !showModal.value
+  if (showModal.value == true) {
+    showModal.value = false
+    console.log(showModal.value)
+  } else {
+    showModal.value = true
+    console.log(showModal.value)
+  }
 }
 
 </script>
