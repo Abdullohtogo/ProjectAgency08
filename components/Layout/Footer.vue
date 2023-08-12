@@ -166,22 +166,8 @@ onMounted(() => {
         })
     })
   }
-  function fetchPostList() {
-    return new Promise((resolve, reject) => {
-      useApi()
-        .$get('care/api/v1/CareProjectSearchSuggest/')
-        .then((res) => {
-          resolve(res)
-          postsList.value = res
-        })
-        .catch((err) => {
-          reject(err?.data)
-          console.log(err)
-        })
-    })
-  }
+
   fetchCareContact()
-  fetchPostList()
 })
 const contacts = ref()
 const postsList = ref()

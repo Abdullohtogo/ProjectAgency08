@@ -2,7 +2,10 @@
   <div class="container sm:mt-6 mt-3 sm:mb-16 mb-4">
     <div class="md:grid flex flex-col grid-cols-12 gap-6">
       <div class="md:col-span-8">
-        <CardSaxovat />
+        <CardSaxovat
+          :data="projectList?.results[0]"
+          :end_time="new Date(projectList?.results[0]?.end_time)"
+        />
         <div class="sm:rounded-28 rounded-2xl bg-white backdrop-filter mt-5">
           <div class="border-b border-gray-300">
             <div class="sm:pt-4 pt-3 sm:px-5 px-4 flex gap-6">
@@ -18,8 +21,8 @@
                   v-if="currentTab === item.id"
                   class="absolute -bottom-[0.5px] left-0 w-full h-0.5 bg-green-400 rounded-t-md"
                 ></span>
-                <!-- <span
-                  v-if="item.id !== 0"
+                <span
+                  v-if="item.id !== 0 && item.id !== null"
                   :class="
                     currentTab == item.id
                       ? 'text-green-400 bg-green-100'
@@ -29,22 +32,29 @@
                 >
                   {{
                     index == 1
-                      ? posts.length
+                      ? posts?.count
                       : '' || index == 2
-                      ? faqs.length
+                      ? faqs?.count
                       : '' || index == 3
                       ? comments.length
                       : ''
                   }}
-                </span> -->
+                </span>
               </button>
             </div>
           </div>
           <Transition mode="out-in" name="fade">
             <div :key="currentTab">
               <ComponentsAbout v-if="currentTab === 0" />
-              <ComponentsPosts :posts="posts" v-if="currentTab === 1" />
-              <ComponentsFAQ :faqs="faqs" v-if="currentTab === 2" />
+              <ComponentsPosts
+                :posts="posts?.results"
+                v-if="currentTab === 1 && posts?.count !== 0"
+              />
+              <ComponentsFAQ
+                :faqs="faqs"
+                @load-more="loadMoreFaq()"
+                v-if="currentTab === 2 && faqs?.count !== 0"
+              />
               <ComponentsComments
                 :comments="comments"
                 v-if="currentTab === 3"
@@ -52,7 +62,7 @@
             </div>
           </Transition>
         </div>
-        <SectionGenerous />
+        <SectionGenerous :data="donations?.results" />
       </div>
       <div class="md:col-span-4">
         <SectionSideBar />
@@ -146,37 +156,10 @@ const comments = [
     text: 'Пусть малышка скорее выздороит. Будем молиться и надеяться что она выздоровит как можно скорее и проживет долгую, прекрасную жизнь🙏',
   },
 ]
-
+const donations = ref()
 const faqs = ref()
 
-const posts = [
-  {
-    name: 'Mehrli qo‘llar',
-    sphere: 'Ta‘lim',
-    logo: '/icons/Logo.svg',
-    title: 'Barchangizdan minnatdormiz!',
-    text: 'Azizlar, sizdek saxiy insonlar saxovati yordamida biz operatsiya uchun kerakli miqdordagi mablag‘ni yig‘ishga muvaffaq bo‘ldik.',
-    img: '/images/Image.png',
-    date: '22.11.2022, 22:22',
-  },
-  {
-    name: 'Mehrli qo‘llar',
-    sphere: 'Ta‘lim',
-    logo: '/icons/Logo.svg',
-    title: 'Barchangizdan minnatdormiz!',
-    text: 'Azizlar, sizdek saxiy insonlar saxovati yordamida biz operatsiya uchun kerakli miqdordagi mablag‘ni yig‘ishga muvaffaq bo‘ldik.',
-    date: '22.11.2022, 22:22',
-  },
-  {
-    name: 'Mehrli qo‘llar',
-    sphere: 'Ta‘lim',
-    logo: '/icons/Logo.svg',
-    title: 'Barchangizdan minnatdormiz!',
-    text: 'Azizlar, sizdek saxiy insonlar saxovati yordamida biz operatsiya uchun kerakli miqdordagi mablag‘ni yig‘ishga muvaffaq bo‘ldik.',
-    img: '/images/Image.png',
-    date: '22.11.2022, 22:22',
-  },
-]
+const posts = ref()
 
 const tabs = [
   {
@@ -200,18 +183,27 @@ const tabs = [
     current: false,
   },
 ]
+const donatParams = ref({
+  limit: 8,
+  offset: 0,
+})
 
+const faqParams = ref({
+  limit: 1,
+  offset: 0,
+})
 const projectList = ref()
 const ids = ref()
-onMounted(() => {
+onMounted(async () => {
   // getting project list
   function getProjectList() {
     return new Promise((resolve, reject) => {
       useApi()
-        .$get('care/api/v1/CareProjectList/?limit=100000000000&offset=0')
+        .$get('care/api/v1/CareProjectList/')
         .then((res) => {
           resolve(res)
           projectList.value = res
+          ids.value = res.results[0].id
         })
         .catch((err) => {
           reject(err?.data)
@@ -219,22 +211,17 @@ onMounted(() => {
         })
     })
   }
-  console.log(projectList)
 
   // getting faq list
   function getFaqList() {
-    ids.value
-
     return new Promise((resolve, reject) => {
       useApi()
         .$get(
-          `care/api/v1/${projectList.value?.results.map(
-            (x) => x.id
-          )}/CareProjectFAQList/`
+          `care/api/v1/${ids.value}/CareProjectFAQList/?limit=${faqParams.value.limit}&offset=${faqParams.value.offset}`
         )
         .then((res) => {
           resolve(res)
-          fa.value = res
+          faqs.value = res
         })
         .catch((err) => {
           reject(err?.data)
@@ -242,9 +229,61 @@ onMounted(() => {
         })
     })
   }
-  getFaqList()
-  getProjectList()
+
+  function getDonatList() {
+    return new Promise((resolve, reject) => {
+      useApi()
+        .$get(`care/api/v1/${ids.value}/CareProjectDonationList/`)
+        .then((res) => {
+          resolve(res)
+          donations.value = res
+        })
+        .catch((err) => {
+          reject(err?.data)
+          console.log(err)
+        })
+    })
+  }
+
+  // getting posts list
+  function getPostList() {
+    return new Promise((resolve, reject) => {
+      useApi()
+        .$get(
+          `care/api/v1/${ids.value}/CareProjectPostList/?limit=${donatParams.value.limit}&offset=${donatParams.value.offset}`
+        )
+        .then((res) => {
+          resolve(res)
+          posts.value = res
+        })
+        .catch((err) => {
+          reject(err?.data)
+          console.log(err)
+        })
+    })
+  }
+  await getProjectList()
+  await getFaqList()
+  await getPostList()
+  await getDonatList()
 })
+function loadMoreFaq() {
+  return new Promise((resolve, reject) => {
+    faqParams.value.limit += 1
+    useApi()
+      .$get(
+        `care/api/v1/${ids.value}/CareProjectFAQList/?limit=${faqParams.value.limit}&offset=${faqParams.value.offset}`
+      )
+      .then((res) => {
+        resolve(res)
+        faqs.value = [...faqs.value, ...res]
+      })
+      .catch((err) => {
+        reject(err?.data)
+        console.log(err)
+      })
+  })
+}
 
 function activate(index) {
   currentTab.value = index

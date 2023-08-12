@@ -4,7 +4,7 @@
       <CommonInput src="/icons/search.svg" type="text" placeholder="Izlash" />
       <div class="grid w-full items-start gap-y-2 gap-x-4 sm:mt-4 mt-3">
         <div
-          v-for="(item, index) in faqs"
+          v-for="(item, index) in faqs?.results"
           :key="index"
           class="group transition-300 col-span-2 md:col-span-1 rounded-xl bg-gray-800 sm:mb-4 mb-2"
           :class="[
@@ -39,7 +39,13 @@
         </div>
       </div>
     </div>
-    <CommonButton label="Yana yuklash" variant="primary" class="mx-auto">
+    <CommonButton
+    @click="$emit('loadMore')"
+      v-if="faqs?.count > 4"
+      label="Yana yuklash"
+      variant="primary"
+      class="mx-auto"
+    >
       <img src="/icons/down.svg" alt="" />
     </CommonButton>
   </div>
@@ -56,6 +62,7 @@ interface Props {
 }
 
 defineProps<Props>()
+defineEmits(['loadMore'])
 
 const selectedItem = ref(0)
 
@@ -66,4 +73,4 @@ const openItem = (id: number) => {
   }
   selectedItem.value = id
 }
-  </script>
+</script>

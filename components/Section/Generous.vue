@@ -3,6 +3,7 @@
     <p class="text-black-100 font-semibold lg:text-2xl md:text-xl text-lg">
       Saxovatchilar
     </p>
+
     <div class="flex flex-col">
       <div
         class="mt-3 grid lg:grid-cols-4 sm:grid-cols-3 grid-cols-2 sm:gap-y-4 sm:gap-x-6 gap-y-2 gap-x-4"
@@ -10,7 +11,9 @@
         <CardGenerous :item="item" v-for="item in data" :key="item.id" />
       </div>
       <CommonButton
+      v-if="data?.length >= 9"
         variant="primary"
+        @click="loadMore"
         label="Yana yuklash"
         class="mt-3 block mx-auto"
       >
@@ -20,62 +23,21 @@
   </div>
 </template>
 <script setup lang="ts">
-const data = [
-  {
-    id: 1,
-    avatar: '/images/profile_photo.png',
-    fullname: 'Shohruh Baxtiyarov',
-    price: 125000000,
-    date: '2022.12.24',
-  },
-  {
-    id: 2,
-    avatar: '/images/profile_photo.png',
-    fullname: 'Shohruh Baxtiyarov',
-    price: 125000000,
-    date: '2022.12.24',
-  },
-  {
-    id: 3,
-    avatar: '/images/profile_photo.png',
-    fullname: 'Shohruh Baxtiyarov',
-    price: 125000000,
-    date: '2022.12.24',
-  },
-  {
-    id: 4,
-    avatar: '/images/profile_photo.png',
-    fullname: 'Shohruh Baxtiyarov',
-    price: 125000000,
-    date: '2022.12.24',
-  },
-  {
-    id: 5,
-    avatar: '/images/profile_photo.png',
-    fullname: 'Shohruh Baxtiyarov',
-    price: 125000000,
-    date: '2022.12.24',
-  },
-  {
-    id: 6,
-    avatar: '/images/profile_photo.png',
-    fullname: 'Shohruh Baxtiyarov',
-    price: 125000000,
-    date: '2022.12.24',
-  },
-  {
-    id: 7,
-    avatar: '/images/profile_photo.png',
-    fullname: 'Shohruh Baxtiyarov',
-    price: 125000000,
-    date: '2022.12.24',
-  },
-  {
-    id: 8,
-    avatar: '/images/profile_photo.png',
-    fullname: 'Shohruh Baxtiyarov',
-    price: 125000000,
-    date: '2022.12.24',
-  },
-]
+interface Props {
+  data: {
+    id: number
+    avatar: string
+    last_name: string
+    user: string
+    first_name: string
+    money_amount: number
+    created_at: string
+  }
+}
+const emit = defineEmits(['loadMore'])
+function loadMore() {
+  emit('loadMore')
+}
+
+defineProps<Props>()
 </script>

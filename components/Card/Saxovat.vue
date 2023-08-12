@@ -1,10 +1,10 @@
 <template>
-  <div class="bg-white/90 rounded-28 sm:p-5 p-3">
+  <div v-if="remainingDays && remainingHours && remainingMinutes && remainingSeconds !== 0" class="bg-white/90 rounded-28 sm:p-5 p-3">
     <div class="relative">
       <img
-        src="/images/saxovat-animals.png"
+        :src="data?.company?.brand_logo.thumbnail?.medium"
         alt=""
-        class="rounded-2xl w-full"
+        class="rounded-2xl max-h-[320px] object-cover w-full"
       />
       <div class="flex gap-2 absolute left-4 bottom-4 p-2 bg-white rounded-40">
         <img src="/icons/pawprint.svg" alt="icon" />
@@ -14,8 +14,7 @@
     <h3
       class="md:mt-5 sm:mt-4 mt-3 lg:text-xl md:text-lg text-black-100 leading-130 text-base font-semibold max-w-[490px]"
     >
-      Ushbu yoqimtoy uy hayvonlariga zudlik bilan yurak plantatsiyasi
-      operatsiyasi kerak
+      {{ data?.title }}
     </h3>
 
     <div class="md:mt-6 sm:mt-4 mt-3 flex flex-col gap-4">
@@ -29,8 +28,10 @@
             Saxovat tugagunicha qolgan vaqt:
           </p>
           <div class="mt-3 flex gap-4 items-center">
-            <div class="bg-green-100 rounded-md md:py-1.5 py-1 md:px-3.5 px-2">
-              <p class="md:text-base text-sm font-bold text-green-400">30</p>
+            <div class="flex items-center flex-col bg-green-100 rounded-md md:py-1.5 py-1 md:px-3.5 px-2">
+              <p class="md:text-base text-sm font-bold text-green-400">
+                {{ remainingDays }}
+              </p>
               <span class="sm:mt-0.5 mt-0 text-green-400 text-xs font-medium"
                 >kun</span
               >
@@ -39,8 +40,10 @@
               <div class="w-1 h-1 rounded-full bg-green-400"></div>
               <div class="w-1 h-1 rounded-full bg-green-400"></div>
             </div>
-            <div class="bg-green-100 rounded-md md:py-1.5 py-1 md:px-3.5 px-2">
-              <p class="md:text-base text-sm font-bold text-green-400">16</p>
+            <div class="flex items-center flex-col bg-green-100 rounded-md md:py-1.5 py-1 md:px-3.5 px-2">
+              <p class="md:text-base text-sm font-bold text-green-400">
+                {{ remainingHours }}
+              </p>
               <span class="sm:mt-0.5 mt-0 text-green-400 text-xs font-medium"
                 >soat</span
               >
@@ -49,8 +52,10 @@
               <div class="w-1 h-1 rounded-full bg-green-400"></div>
               <div class="w-1 h-1 rounded-full bg-green-400"></div>
             </div>
-            <div class="bg-green-100 rounded-md md:py-1.5 py-1 md:px-3.5 px-2">
-              <p class="md:text-base text-sm font-bold text-green-400">59</p>
+            <div class="flex items-center flex-col bg-green-100 rounded-md md:py-1.5 py-1 md:px-3.5 px-2">
+              <p class="md:text-base text-sm font-bold text-green-400">
+                {{ remainingMinutes }}
+              </p>
               <span class="sm:mt-0.5 mt-0 text-green-400 text-xs font-medium"
                 >daq</span
               >
@@ -59,8 +64,10 @@
               <div class="w-1 h-1 rounded-full bg-green-400"></div>
               <div class="w-1 h-1 rounded-full bg-green-400"></div>
             </div>
-            <div class="bg-green-100 rounded-md md:py-1.5 py-1 md:px-3.5 px-2">
-              <p class="md:text-base text-sm font-bold text-green-400">23</p>
+            <div class="flex items-center flex-col bg-green-100 rounded-md md:py-1.5 py-1 md:px-3.5 px-2">
+              <p class="md:text-base text-sm font-bold text-green-400">
+                {{ remainingSeconds }}
+              </p>
               <span class="sm:mt-0.5 mt-0 text-green-400 text-xs font-medium"
                 >sek</span
               >
@@ -74,19 +81,19 @@
             <div>
               <p class="text-sm text-gray-400">Yig'ildi:</p>
               <span class="font-bold text-green-400"
-                >{{ gatheredmoneys.percentage }}%</span
+                >{{ data?.gained_money_in_percent }}%</span
               >
             </div>
             <div>
               <p class="text-sm text-gray-400 text-end">Marra:</p>
               <span class="font-bold text-black-100"
-                >{{ formatMoneyWithSpace(gatheredmoneys?.money) }} UZS</span
+                >{{ formatMoneyWithSpace(data?.target_money) }} UZS</span
               >
             </div>
           </div>
           <div class="w-full h-2 rounded bg-green-100 my-2">
             <div
-              :style="`width: ${gatheredmoneys.percentage}%`"
+              :style="`width: ${data?.gained_money_in_percent}%`"
               class="h-full rounded bg-green-300"
             ></div>
           </div>
@@ -94,8 +101,8 @@
             <p class="text-gray-400 text-sm">
               Saxovatchilar
               <span class="text-black-100 font-semibold"
-                >{{ gatheredmoneys.investors }}
-                <span v-if="gatheredmoneys.investors !== '0'">ta</span></span
+                >{{ data?.donation_count }}
+                <span v-if="data?.donation_count !== '0'">ta</span></span
               >
             </p>
             <p class="text-gray-400 text-sm">
@@ -148,12 +155,24 @@
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
+import VueAwesomeCountdown from 'vue-awesome-countdown'
 
 const gatheredmoneys = ref({
   percentage: 21,
   money: '1500000',
   investors: '18',
   invested: '0',
+})
+
+const props = defineProps({
+  data: {
+    type: Array,
+    required: true,
+  },
+  end_time: {
+    type: String,
+    required: true,
+  },
 })
 
 const showModal = ref(false)
@@ -167,6 +186,36 @@ function toggleModal() {
     console.log(showModal.value)
   }
 }
+
+const remainingDays = ref()
+const remainingHours = ref()
+const remainingMinutes = ref()
+const remainingSeconds = ref()
+function startTimer() {
+  const timeNow = new Date().getTime()
+  const timeDifference = props.end_time - timeNow
+  const millisecondsInOneSecond = 1000
+  const millisecondsInOneMinute = millisecondsInOneSecond * 60
+  const millisecondsInOneHour = millisecondsInOneMinute * 60
+  const millisecondsInOneDay = millisecondsInOneHour * 24
+  const differenceInDays = timeDifference / millisecondsInOneDay
+  const remainderDifferenceInHours =
+    (timeDifference % millisecondsInOneDay) / millisecondsInOneHour
+  const remainderDifferenceInMinutes =
+    (timeDifference % millisecondsInOneHour) / millisecondsInOneMinute
+  const remainderDifferenceInSeconds =
+    (timeDifference % millisecondsInOneMinute) / millisecondsInOneSecond
+  remainingDays.value = Math.floor(differenceInDays)
+  remainingHours.value = Math.floor(remainderDifferenceInHours)
+  remainingMinutes.value = Math.floor(remainderDifferenceInMinutes)
+  remainingSeconds.value = Math.floor(remainderDifferenceInSeconds)
+}
+
+onMounted(() => {
+  setInterval(() => {
+    startTimer()
+  }, 1000)
+})
 
 function formatMoneyWithSpace(number: string | number) {
   return number && number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
