@@ -18,7 +18,7 @@
                   v-if="currentTab === item.id"
                   class="absolute -bottom-[0.5px] left-0 w-full h-0.5 bg-green-400 rounded-t-md"
                 ></span>
-                <span
+                <!-- <span
                   v-if="item.id !== 0"
                   :class="
                     currentTab == item.id
@@ -36,11 +36,11 @@
                       ? comments.length
                       : ''
                   }}
-                </span>
+                </span> -->
               </button>
             </div>
           </div>
-            <Transition mode="out-in" name="fade">
+          <Transition mode="out-in" name="fade">
             <div :key="currentTab">
               <ComponentsAbout v-if="currentTab === 0" />
               <ComponentsPosts :posts="posts" v-if="currentTab === 1" />
@@ -61,7 +61,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 
@@ -147,72 +147,7 @@ const comments = [
   },
 ]
 
-const faqs = [
-  {
-    id: 1,
-    question: "Yig'ilgan mablag'lar nimaga sarflanadi?",
-    answer:
-      "Boshpana hayvonlarni himoya qilishning asosiy tarkibiy qismlaridan biri bo'lib, to'rtta asosiy funktsiyani bajaradi: hayvonga tezkor yordam va g'amxo'rlik, shu jumladan veterinariya yordami yoki evtanaziya orqali azob-uqubatlarni engillashtirish; eski yoki yangi egasini darhol topa olmaydigan hayvonga uzoq muddatli g'amxo'rlik",
-  },
-  {
-    id: 2,
-    question:
-      'Nima uchun zamonaviy dunyoda hayvonlarning boshpanalariga muhtojmiz?',
-    answer:
-      "Boshpana hayvonlarni himoya qilishning asosiy tarkibiy qismlaridan biri bo'lib, to'rtta asosiy funktsiyani bajaradi: hayvonga tezkor yordam va g'amxo'rlik, shu jumladan veterinariya yordami yoki evtanaziya orqali azob-uqubatlarni engillashtirish; eski yoki yangi egasini darhol topa olmaydigan hayvonga uzoq muddatli g'amxo'rlik",
-  },
-  {
-    id: 3,
-    question: "Yig'ilgan mablag'lar nimaga sarflanadi?",
-    answer:
-      "Boshpana hayvonlarni himoya qilishning asosiy tarkibiy qismlaridan biri bo'lib, to'rtta asosiy funktsiyani bajaradi: hayvonga tezkor yordam va g'amxo'rlik, shu jumladan veterinariya yordami yoki evtanaziya orqali azob-uqubatlarni engillashtirish; eski yoki yangi egasini darhol topa olmaydigan hayvonga uzoq muddatli g'amxo'rlik",
-  },
-  {
-    id: 4,
-    question:
-      "Men sarmoya kiritsam bo'ladimi va siz agentlar va distribyutorlarni qidiryapsizmi?",
-    answer:
-      "Boshpana hayvonlarni himoya qilishning asosiy tarkibiy qismlaridan biri bo'lib, to'rtta asosiy funktsiyani bajaradi: hayvonga tezkor yordam va g'amxo'rlik, shu jumladan veterinariya yordami yoki evtanaziya orqali azob-uqubatlarni engillashtirish; eski yoki yangi egasini darhol topa olmaydigan hayvonga uzoq muddatli g'amxo'rlik",
-  },
-  {
-    id: 5,
-    question: 'Qaytarishni talab qilish mumkinmi?',
-    answer:
-      "Boshpana hayvonlarni himoya qilishning asosiy tarkibiy qismlaridan biri bo'lib, to'rtta asosiy funktsiyani bajaradi: hayvonga tezkor yordam va g'amxo'rlik, shu jumladan veterinariya yordami yoki evtanaziya orqali azob-uqubatlarni engillashtirish; eski yoki yangi egasini darhol topa olmaydigan hayvonga uzoq muddatli g'amxo'rlik",
-  },
-  {
-    id: 6,
-    question: "Yig'ilgan mablag'lar nimaga sarflanadi?",
-    answer:
-      "Boshpana hayvonlarni himoya qilishning asosiy tarkibiy qismlaridan biri bo'lib, to'rtta asosiy funktsiyani bajaradi: hayvonga tezkor yordam va g'amxo'rlik, shu jumladan veterinariya yordami yoki evtanaziya orqali azob-uqubatlarni engillashtirish; eski yoki yangi egasini darhol topa olmaydigan hayvonga uzoq muddatli g'amxo'rlik",
-  },
-  {
-    id: 7,
-    question:
-      "Men sarmoya kiritsam bo'ladimi va siz agentlar va distribyutorlarni qidiryapsizmi?",
-    answer:
-      "Boshpana hayvonlarni himoya qilishning asosiy tarkibiy qismlaridan biri bo'lib, to'rtta asosiy funktsiyani bajaradi: hayvonga tezkor yordam va g'amxo'rlik, shu jumladan veterinariya yordami yoki evtanaziya orqali azob-uqubatlarni engillashtirish; eski yoki yangi egasini darhol topa olmaydigan hayvonga uzoq muddatli g'amxo'rlik",
-  },
-  {
-    id: 8,
-    question: 'Qaytarishni talab qilish mumkinmi?',
-    answer:
-      "Boshpana hayvonlarni himoya qilishning asosiy tarkibiy qismlaridan biri bo'lib, to'rtta asosiy funktsiyani bajaradi: hayvonga tezkor yordam va g'amxo'rlik, shu jumladan veterinariya yordami yoki evtanaziya orqali azob-uqubatlarni engillashtirish; eski yoki yangi egasini darhol topa olmaydigan hayvonga uzoq muddatli g'amxo'rlik",
-  },
-  {
-    id: 9,
-    question: "Yig'ilgan mablag'lar nimaga sarflanadi?",
-    answer:
-      "Boshpana hayvonlarni himoya qilishning asosiy tarkibiy qismlaridan biri bo'lib, to'rtta asosiy funktsiyani bajaradi: hayvonga tezkor yordam va g'amxo'rlik, shu jumladan veterinariya yordami yoki evtanaziya orqali azob-uqubatlarni engillashtirish; eski yoki yangi egasini darhol topa olmaydigan hayvonga uzoq muddatli g'amxo'rlik",
-  },
-  {
-    id: 10,
-    question:
-      "Men sarmoya kiritsam bo'ladimi va siz agentlar va distribyutorlarni qidiryapsizmi?",
-    answer:
-      "Boshpana hayvonlarni himoya qilishning asosiy tarkibiy qismlaridan biri bo'lib, to'rtta asosiy funktsiyani bajaradi: hayvonga tezkor yordam va g'amxo'rlik, shu jumladan veterinariya yordami yoki evtanaziya orqali azob-uqubatlarni engillashtirish; eski yoki yangi egasini darhol topa olmaydigan hayvonga uzoq muddatli g'amxo'rlik",
-  },
-]
+const faqs = ref()
 
 const posts = [
   {
@@ -266,8 +201,49 @@ const tabs = [
   },
 ]
 
+const projectList = ref()
+const ids = ref()
 onMounted(() => {
-  console.log(route.path)
+  // getting project list
+  function getProjectList() {
+    return new Promise((resolve, reject) => {
+      useApi()
+        .$get('care/api/v1/CareProjectList/?limit=100000000000&offset=0')
+        .then((res) => {
+          resolve(res)
+          projectList.value = res
+        })
+        .catch((err) => {
+          reject(err?.data)
+          console.log(err)
+        })
+    })
+  }
+  console.log(projectList)
+
+  // getting faq list
+  function getFaqList() {
+    ids.value
+
+    return new Promise((resolve, reject) => {
+      useApi()
+        .$get(
+          `care/api/v1/${projectList.value?.results.map(
+            (x) => x.id
+          )}/CareProjectFAQList/`
+        )
+        .then((res) => {
+          resolve(res)
+          fa.value = res
+        })
+        .catch((err) => {
+          reject(err?.data)
+          console.log(err)
+        })
+    })
+  }
+  getFaqList()
+  getProjectList()
 })
 
 function activate(index) {

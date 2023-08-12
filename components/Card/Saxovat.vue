@@ -124,11 +124,24 @@
           buttonStyle="flex items-center"
           variant="darker"
           class="w-full"
+          @click="toggleModal()"
         >
           <template #before>
             <span class="icon-share text-2xl text-green-400" />
           </template>
         </CommonButton>
+      </div>
+
+      <div
+        class="fixed top-0 left-0 w-full h-full z-50 bg-modal hidden opacity-0"
+        :class="{ '!block opacity-100 overflow-hidden ': showModal }"
+      >
+        <UIModal
+          class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 sm:max-w-[434px] w-[70%] sm:w-full"
+          v-if="showModal"
+          @close="toggleModal"
+          :show="showModal"
+        />
       </div>
     </div>
   </div>
@@ -142,6 +155,18 @@ const gatheredmoneys = ref({
   investors: '18',
   invested: '0',
 })
+
+const showModal = ref(false)
+
+function toggleModal() {
+  if (showModal.value == true) {
+    showModal.value = false
+    console.log(showModal.value)
+  } else {
+    showModal.value = true
+    console.log(showModal.value)
+  }
+}
 
 function formatMoneyWithSpace(number: string | number) {
   return number && number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')

@@ -35,8 +35,6 @@ import {useRoute} from "vue-router";
 const showMenu = ref(false)
 const route = useRoute()
 
-console.log(route.params)
-
 const menu = [
   {
     id: 1,

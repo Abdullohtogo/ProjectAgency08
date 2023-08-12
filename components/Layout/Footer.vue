@@ -121,7 +121,6 @@
           <p class="text-black-100 text-center text-sm leading-130">
             © 2023 Hissa Inc. Barcha huquqlar himoyalangan.
           </p>
-          <pre>{{ contacts }}</pre>
           <ul class="flex gap-3 flexx-wrap sm:flex-nowrap">
             <li v-for="item in links" :key="item.id">
               <router-link
@@ -139,8 +138,54 @@
 </template>
 <script setup lang="ts">
 import { useCareContact } from '@/composables/useCareContact'
+import { resolveDirective } from 'nuxt/dist/app/compat/capi'
 
-const { loading, contacts, getContact } = useCareContact
+function formatPhoneNumber(number: string) {
+  const format = number
+    ?.replace(/\D/g, '')
+    .match(/(\d{0,3})(\d{0,2})(\d{0,3})(\d{0,2})(\d{0,2})/)
+  return `+${format && format[1] ? format[1] : ''}
+    ${format && format[2] ? format[2] : ''}
+    ${format && format[3] ? format[3] : ''}
+    ${format && format[4] ? format[4] : ''}${
+    format && format[5] ? format[5] : ''
+  }`
+}
+onMounted(() => {
+  function fetchCareContact() {
+    return new Promise((resolve, reject) => {
+      useApi()
+        .$get('care/api/v1/CareContact/')
+        .then((res: any) => {
+          contacts.value = res
+          resolve(res)
+        })
+        .catch((err) => {
+          reject(err?.data)
+          console.log(err)
+        })
+    })
+  }
+  function fetchPostList() {
+    return new Promise((resolve, reject) => {
+      useApi()
+        .$get('care/api/v1/CareProjectSearchSuggest/')
+        .then((res) => {
+          resolve(res)
+          postsList.value = res
+        })
+        .catch((err) => {
+          reject(err?.data)
+          console.log(err)
+        })
+    })
+  }
+  fetchCareContact()
+  fetchPostList()
+})
+const contacts = ref()
+const postsList = ref()
+
 const main = [
   {
     id: 1,
@@ -169,54 +214,58 @@ const main = [
   },
 ]
 
-const contact = [
-  {
-    id: 1,
-    text: '+998 71 200 7007',
-    url: 'tel:+998 71 200 7007',
-    type: 'call',
-  },
-  {
-    id: 2,
-    text: 'info@uic.group',
-    url: 'mailto: info@uic.group',
-    type: 'sms',
-  },
-  {
-    id: 3,
-    text: "24 Oybek ko'chasi, Tashkent, Узбекистан",
-    url: 'https://goo.gl/maps/Gn5ieiks1NbMdLQU6',
-    src: '/icons/location.svg',
-    type: 'location',
-  },
-]
+const contact = computed(() => {
+  return [
+    {
+      id: 1,
+      text: formatPhoneNumber(contacts.value?.phone),
+      url: `tel: ${contacts.value?.phone}`,
+      type: 'call',
+    },
+    {
+      id: 2,
+      text: 'info@uic.group',
+      url: 'mailto: info@uic.group',
+      type: 'sms',
+    },
+    {
+      id: 3,
+      text: "24 Oybek ko'chasi, Tashkent, Узбекистан",
+      url: 'https://goo.gl/maps/Gn5ieiks1NbMdLQU6',
+      src: '/icons/location.svg',
+      type: 'location',
+    },
+  ]
+})
 
-const share = [
-  {
-    id: 1,
-    url: '',
-    name: 'telegram',
-    src: '/icons/telegram.svg',
-  },
-  {
-    id: 2,
-    url: '',
-    src: '/icons/twitter.svg',
-    name: 'twitter',
-  },
-  {
-    id: 3,
-    url: '',
-    src: '/icons/youtube.svg',
-    name: 'youtube',
-  },
-  {
-    id: 4,
-    url: '',
-    src: '/icons/instagram.svg',
-    name: 'instagram',
-  },
-]
+const share = computed(() => {
+  return [
+    {
+      id: 1,
+      url: '',
+      name: 'telegram',
+      src: '/icons/telegram.svg',
+    },
+    {
+      id: 2,
+      url: contacts.value?.twitter,
+      src: '/icons/twitter.svg',
+      name: 'twitter',
+    },
+    {
+      id: 3,
+      url: contacts.value?.youtube,
+      src: '/icons/youtube.svg',
+      name: 'youtube',
+    },
+    {
+      id: 4,
+      url: contacts.value?.instagram,
+      src: '/icons/instagram.svg',
+      name: 'instagram',
+    },
+  ]
+})
 
 const links = [
   {
