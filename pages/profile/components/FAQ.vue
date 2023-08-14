@@ -4,7 +4,7 @@
       <CommonInput src="/icons/search.svg" type="text" placeholder="Izlash" />
       <div class="grid w-full items-start gap-y-2 gap-x-4 sm:mt-4 mt-3">
         <div
-          v-for="(item, index) in faqs?.results"
+          v-for="(item, index) in faqs"
           :key="index"
           class="group transition-300 col-span-2 md:col-span-1 rounded-xl bg-gray-800 sm:mb-4 mb-2"
           :class="[
@@ -40,8 +40,8 @@
       </div>
     </div>
     <CommonButton
-    @click="$emit('loadMore')"
-      v-if="faqs?.count > 4"
+      @click="$emit('loadMore')"
+      v-if="faqs.length !== faqCount"
       label="Yana yuklash"
       variant="primary"
       class="mx-auto"
@@ -54,6 +54,7 @@
 import CollapseTransition from '@ivanv/vue-collapse-transition/src/CollapseTransition.vue'
 
 interface Props {
+  faqCount: number
   faqs: {
     id: number
     question: string

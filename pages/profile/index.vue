@@ -2,10 +2,18 @@
   <div class="container sm:mt-6 mt-3 sm:mb-16 mb-4">
     <div class="md:grid flex flex-col grid-cols-12 gap-6">
       <div class="md:col-span-8">
-        <CardSaxovat
-          :data="projectList?.results[0]"
-          :end_time="new Date(projectList?.results[0]?.end_time)"
-        />
+        <CommonBlockPreloader
+          :loading="projectLoading"
+          width="100%"
+          height="631px"
+          borderRadius="28px"
+        >
+          <CardSaxovat
+            :data="projectList?.results[0]"
+            :end_time="new Date(projectList?.results[0]?.end_time)"
+          />
+        </CommonBlockPreloader>
+        <!-- <pre>{{ projectDetail }}</pre> -->
         <div class="sm:rounded-28 rounded-2xl bg-white backdrop-filter mt-5">
           <div class="border-b border-gray-300">
             <div class="sm:pt-4 pt-3 sm:px-5 px-4 flex gap-6">
@@ -32,9 +40,9 @@
                 >
                   {{
                     index == 1
-                      ? posts?.count
+                      ? postCount
                       : '' || index == 2
-                      ? faqs?.count
+                      ? faqCount
                       : '' || index == 3
                       ? comments.length
                       : ''
@@ -45,24 +53,33 @@
           </div>
           <Transition mode="out-in" name="fade">
             <div :key="currentTab">
-              <ComponentsAbout v-if="currentTab === 0" />
+              <ComponentsAbout :detail="projectDetail" v-if="currentTab === 0" />
               <ComponentsPosts
-                :posts="posts?.results"
-                v-if="currentTab === 1 && posts?.count !== 0"
+                :posts="posts"
+                :postsCount="postCount"
+                @load-more="fetchMorePost()"
+                v-if="currentTab === 1 && postCount !== 0"
               />
               <ComponentsFAQ
                 :faqs="faqs"
-                @load-more="loadMoreFaq()"
-                v-if="currentTab === 2 && faqs?.count !== 0"
+                :faqCount="faqCount"
+                @load-more="fetchMoreFaq()"
+                v-if="currentTab === 2 && faqCount !== 0"
               />
               <ComponentsComments
                 :comments="comments"
-                v-if="currentTab === 3"
+                @load-more="fetchMoreComment()"
+                :commentCount="commentCount"
+                v-if="currentTab === 3 && commentCount !== 0"
               />
             </div>
           </Transition>
         </div>
-        <SectionGenerous :data="donations?.results" />
+        <SectionGenerous
+          :data="donats"
+          @load-more="fetchMoreDonat"
+          :donatCount="donatCount"
+        />
       </div>
       <div class="md:col-span-4">
         <SectionSideBar />
@@ -75,6 +92,7 @@ import { onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 
+import CommonBlockPreloader from '@/components/Common/BlockPreloader.vue'
 import ComponentsAbout from '@/pages/profile/components/About.vue'
 import ComponentsComments from '@/pages/profile/components/Comments.vue'
 import ComponentsFAQ from '@/pages/profile/components/FAQ.vue'
@@ -83,83 +101,6 @@ import ComponentsPosts from '@/pages/profile/components/Posts.vue'
 const { t } = useI18n()
 const route = useRoute()
 const currentTab = ref(0)
-
-const comments = [
-  {
-    img: '/images/profile_photo.png',
-    name: 'Jasurbek Po‘latov',
-    time: '17:23',
-    price: 50000000,
-    text: 'Пусть малышка скорее выздороит. Будем молиться и надеяться что она выздоровит как можно скорее и проживет долгую, прекрасную жизнь🙏',
-  },
-  {
-    img: '/images/profile_photo.png',
-    name: 'Jasurbek Po‘latov',
-    time: '17:23',
-    price: 50000000,
-    text: 'Пусть малышка скорее выздороит. Будем молиться и надеяться что она выздоровит как можно скорее и проживет долгую, прекрасную жизнь🙏',
-  },
-  {
-    img: '/images/profile_photo.png',
-    name: 'Jasurbek Po‘latov',
-    time: '17:23',
-    price: 50000000,
-    text: 'Пусть малышка скорее выздороит. Будем молиться и надеяться что она выздоровит как можно скорее и проживет долгую, прекрасную жизнь🙏',
-  },
-  {
-    img: '/images/profile_photo.png',
-    name: 'Jasurbek Po‘latov',
-    time: '17:23',
-    price: 50000000,
-    text: 'Пусть малышка скорее выздороит. Будем молиться и надеяться что она выздоровит как можно скорее и проживет долгую, прекрасную жизнь🙏',
-  },
-  {
-    img: '/images/profile_photo.png',
-    name: 'Jasurbek Po‘latov',
-    time: '17:23',
-    price: 50000000,
-    text: 'Пусть малышка скорее выздороит. Будем молиться и надеяться что она выздоровит как можно скорее и проживет долгую, прекрасную жизнь🙏',
-  },
-  {
-    img: '/images/profile_photo.png',
-    name: 'Jasurbek Po‘latov',
-    time: '17:23',
-    price: 50000000,
-    text: 'Пусть малышка скорее выздороит. Будем молиться и надеяться что она выздоровит как можно скорее и проживет долгую, прекрасную жизнь🙏',
-  },
-  {
-    img: '/images/profile_photo.png',
-    name: 'Jasurbek Po‘latov',
-    time: '17:23',
-    price: 50000000,
-    text: 'Пусть малышка скорее выздороит. Будем молиться и надеяться что она выздоровит как можно скорее и проживет долгую, прекрасную жизнь🙏',
-  },
-  {
-    img: '/images/profile_photo.png',
-    name: 'Jasurbek Po‘latov',
-    time: '17:23',
-    price: 50000000,
-    text: 'Пусть малышка скорее выздороит. Будем молиться и надеяться что она выздоровит как можно скорее и проживет долгую, прекрасную жизнь🙏',
-  },
-  {
-    img: '/images/profile_photo.png',
-    name: 'Jasurbek Po‘latov',
-    time: '17:23',
-    price: 50000000,
-    text: 'Пусть малышка скорее выздороит. Будем молиться и надеяться что она выздоровит как можно скорее и проживет долгую, прекрасную жизнь🙏',
-  },
-  {
-    img: '/images/profile_photo.png',
-    name: 'Jasurbek Po‘latov',
-    time: '17:23',
-    price: 50000000,
-    text: 'Пусть малышка скорее выздороит. Будем молиться и надеяться что она выздоровит как можно скорее и проживет долгую, прекрасную жизнь🙏',
-  },
-]
-const donations = ref()
-const faqs = ref()
-
-const posts = ref()
 
 const tabs = [
   {
@@ -183,107 +124,202 @@ const tabs = [
     current: false,
   },
 ]
-const donatParams = ref({
+const donatParams = reactive({
   limit: 8,
   offset: 0,
 })
-
-const faqParams = ref({
-  limit: 1,
+const postParams = reactive({
+  limit: 3,
+  offset: 0,
+})
+const commentParams = reactive({
+  limit: 10,
+  offset: 0,
+})
+const faqParams = reactive({
+  limit: 10,
   offset: 0,
 })
 const projectList = ref()
 const ids = ref()
-onMounted(async () => {
-  // getting project list
-  function getProjectList() {
-    return new Promise((resolve, reject) => {
-      useApi()
-        .$get('care/api/v1/CareProjectList/')
-        .then((res) => {
-          resolve(res)
-          projectList.value = res
-          ids.value = res.results[0].id
-        })
-        .catch((err) => {
-          reject(err?.data)
-          console.log(err)
-        })
-    })
-  }
 
-  // getting faq list
-  function getFaqList() {
-    return new Promise((resolve, reject) => {
-      useApi()
-        .$get(
-          `care/api/v1/${ids.value}/CareProjectFAQList/?limit=${faqParams.value.limit}&offset=${faqParams.value.offset}`
-        )
-        .then((res) => {
-          resolve(res)
-          faqs.value = res
-        })
-        .catch((err) => {
-          reject(err?.data)
-          console.log(err)
-        })
-    })
-  }
-
-  function getDonatList() {
-    return new Promise((resolve, reject) => {
-      useApi()
-        .$get(`care/api/v1/${ids.value}/CareProjectDonationList/`)
-        .then((res) => {
-          resolve(res)
-          donations.value = res
-        })
-        .catch((err) => {
-          reject(err?.data)
-          console.log(err)
-        })
-    })
-  }
-
-  // getting posts list
-  function getPostList() {
-    return new Promise((resolve, reject) => {
-      useApi()
-        .$get(
-          `care/api/v1/${ids.value}/CareProjectPostList/?limit=${donatParams.value.limit}&offset=${donatParams.value.offset}`
-        )
-        .then((res) => {
-          resolve(res)
-          posts.value = res
-        })
-        .catch((err) => {
-          reject(err?.data)
-          console.log(err)
-        })
-    })
-  }
-  await getProjectList()
-  await getFaqList()
-  await getPostList()
-  await getDonatList()
-})
-function loadMoreFaq() {
-  return new Promise((resolve, reject) => {
-    faqParams.value.limit += 1
-    useApi()
-      .$get(
-        `care/api/v1/${ids.value}/CareProjectFAQList/?limit=${faqParams.value.limit}&offset=${faqParams.value.offset}`
-      )
-      .then((res) => {
-        resolve(res)
-        faqs.value = [...faqs.value, ...res]
-      })
-      .catch((err) => {
-        reject(err?.data)
-        console.log(err)
-      })
-  })
+interface IPaginationResponse<T> {
+  count: number
+  next: string
+  prev: string
+  results: T[]
 }
+
+interface IProject {
+  id: string
+}
+const projectLoading = ref(true)
+
+const fetchProject = () => {
+  return useApi()
+    .$get<IPaginationResponse<IProject>>('care/api/v1/CareProjectList/')
+    .then((res) => {
+      projectList.value = res
+      ids.value = res.results[0].id
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+    .finally(() => (projectLoading.value = false))
+}
+
+interface IFaq {
+  count: number
+  next: string
+  prev: string
+  results: []
+}
+
+const faqs = ref<IFaq[]>([])
+const faqCount = ref(0)
+
+const fetchFaq = () => {
+  return useApi()
+    .$get<IPaginationResponse<IFaq>>(
+      `care/api/v1/landing/CareProject/${ids.value}/FAQList/`,
+      {
+        // ?limit=${faqParams.value.limit}&offset=${faqParams.value.offset}
+        params: faqParams,
+      }
+    )
+    .then((res) => {
+      faqCount.value = res.count
+      faqs.value = [...faqs.value, ...res.results]
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+const fetchMoreFaq = () => {
+  faqParams.offset += faqParams.limit
+  fetchFaq()
+}
+
+interface IDonat {
+  count: number
+  next: string
+  prev: string
+  results: []
+}
+
+const donats = ref<IDonat[]>([])
+const donatCount = ref(0)
+
+const fetchDonat = () => {
+  return useApi()
+    .$get<IPaginationResponse<IDonat>>(
+      `care/api/v1/landing/CareProject/${ids.value}/DonationList/`,
+      {
+        params: donatParams,
+      }
+    )
+    .then((res) => {
+      donatCount.value = res.count
+      donats.value = [...donats.value, ...res.results]
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
+const fetchMoreDonat = () => {
+  donatParams.offset += donatParams.limit
+  fetchDonat()
+}
+
+interface IPost {
+  count: number
+  next: string
+  prev: string
+  results: []
+}
+
+const posts = ref<IPost[]>([])
+const postCount = ref(0)
+
+const fetchPost = () => {
+  return useApi()
+    .$get<IPaginationResponse<IDonat>>(
+      `care/api/v1/${ids.value}/CareProjectPostList/`,
+      {
+        params: postParams,
+      }
+    )
+    .then((res) => {
+      postCount.value = res.count
+      posts.value = [...posts.value, ...res.results]
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
+const fetchMorePost = () => {
+  postParams.offset += postParams.limit
+  fetchPost()
+}
+
+interface IComment {
+  count: number
+  next: string
+  prev: string
+  results: []
+}
+
+const comments = ref<IComment[]>([])
+const commentCount = ref(0)
+
+const fetchComment = () => {
+  return useApi()
+    .$get<IPaginationResponse<IComment>>(
+      `care/api/v1/landing/${ids.value}/CareProjectCommentList/`,
+      {
+        params: commentParams,
+      }
+    )
+    .then((res) => {
+      commentCount.value = res.count
+      comments.value = [...comments.value, ...res.results]
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
+const fetchMoreComment = () => {
+  commentParams.offset += commentParams.limit
+  fetchComment()
+}
+
+
+const projectDetail = ref()
+
+const fetchProjectDetail = () => {
+  return useApi()
+    .$get(
+      `care/api/v1/landing/CareProjectDetail/${ids.value}/`
+    )
+    .then((res) => {
+      projectDetail.value = res
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
+onMounted(async () => {
+  await fetchProject()
+  await fetchProjectDetail()
+  await fetchComment()
+  await fetchDonat()
+  await fetchFaq()
+  await fetchPost()
+})
 
 function activate(index) {
   currentTab.value = index

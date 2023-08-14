@@ -25,7 +25,7 @@
               type="phone"
               v-model="form.phoneNumber"
               src="/icons/flag.svg"
-              v-maska="'(##) ###-##-##'"
+              v-maska="'## ### ## ##'"
               :error="$v.phoneNumber.$error"
               >+998</Input
             >
@@ -133,6 +133,33 @@ const submitForm = () => {
     console.log($v.value.$error)
   } else {
     console.log('success')
+    useApi()
+      .$post('care/api/v1/landing/CareFeedbackCreate/', {
+        body: {
+          phone_number: `+998${form?.phoneNumber.replace(/ /g, '')}`,
+          full_name: form?.name,
+          message: form?.message,
+        },
+      })
+      .then((res) => {
+        console.log(res)
+      })
+      .finally(() => {
+        form.agreement = false
+        form.message = ''
+        form.name = ''
+        form.phoneNumber = ''
+        $v.value.$reset()
+      })
+      .catch((err) => {
+        if (err?.status === 500) {
+          console.log('server_error')
+        }
+        if (err?.status === 403) {
+          console.log('u_need_to_auth')
+        }
+        console.log(err)
+      })
     emit('open')
   }
 }

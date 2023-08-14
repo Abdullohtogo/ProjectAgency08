@@ -3,7 +3,6 @@
     <p class="text-black-100 font-semibold lg:text-2xl md:text-xl text-lg">
       Saxovatchilar
     </p>
-
     <div class="flex flex-col">
       <div
         class="mt-3 grid lg:grid-cols-4 sm:grid-cols-3 grid-cols-2 sm:gap-y-4 sm:gap-x-6 gap-y-2 gap-x-4"
@@ -11,7 +10,7 @@
         <CardGenerous :item="item" v-for="item in data" :key="item.id" />
       </div>
       <CommonButton
-      v-if="data?.length >= 9"
+        v-if="data.length !== donatCount"
         variant="primary"
         @click="loadMore"
         label="Yana yuklash"
@@ -24,15 +23,8 @@
 </template>
 <script setup lang="ts">
 interface Props {
-  data: {
-    id: number
-    avatar: string
-    last_name: string
-    user: string
-    first_name: string
-    money_amount: number
-    created_at: string
-  }
+  data: Array
+  donatCount: number
 }
 const emit = defineEmits(['loadMore'])
 function loadMore() {

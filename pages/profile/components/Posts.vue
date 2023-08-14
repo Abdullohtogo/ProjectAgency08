@@ -14,7 +14,13 @@
       :key="index"
       class="sm:mb-4 mb-2"
     />
-    <CommonButton v-if="posts?.length >= 4" label="Yana yuklash" variant="primary" class="block mx-auto">
+    <CommonButton
+      v-if="posts.length !== postsCount"
+      @click="loadMore"
+      label="Yana yuklash"
+      variant="primary"
+      class="block mx-auto"
+    >
       <img src="/icons/down.svg" alt="" />
     </CommonButton>
   </div>
@@ -31,6 +37,11 @@ interface Props {
     title?: string
     thumbnail?: string
   }
+  postsCount: number
+}
+const emit = defineEmits(['loadMore'])
+function loadMore() {
+  emit('loadMore')
 }
 
 defineProps<Props>()
