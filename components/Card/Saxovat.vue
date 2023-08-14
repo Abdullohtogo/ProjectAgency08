@@ -155,17 +155,19 @@
         </CommonButton>
       </div>
 
-      <div
-        class="fixed top-0 left-0 w-full h-full z-50 bg-modal hidden opacity-0"
-        :class="{ '!block opacity-100 overflow-hidden ': showModal }"
-      >
-        <UIModal
-          class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 sm:max-w-[434px] w-[70%] sm:w-full"
+      <Transition name="fade">
+        <div
+          class="fixed top-0 left-0 w-full h-full z-50 bg-modal hidden opacity-0"
           v-if="showModal"
-          @close="toggleModal"
-          :show="showModal"
-        />
-      </div>
+          :class="{ '!block opacity-100 overflow-hidden ': showModal }"
+        >
+          <UIModal
+            class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 sm:max-w-[434px] w-[70%] sm:w-full"
+            @close="toggleModal"
+            :show="showModal"
+          />
+        </div>
+      </Transition>
     </div>
   </div>
 </template>
@@ -230,10 +232,22 @@ function startTimer() {
 }
 
 onMounted(() => {
-    startTimer()
+  startTimer()
 })
 
 function formatMoneyWithSpace(number: string | number) {
   return number && number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
 }
 </script>
+
+<style>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
