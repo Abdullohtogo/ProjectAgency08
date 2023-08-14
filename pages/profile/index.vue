@@ -53,7 +53,11 @@
           </div>
           <Transition mode="out-in" name="fade">
             <div :key="currentTab">
-              <ComponentsAbout :detail="projectDetail" v-if="currentTab === 0" />
+              <ComponentsAbout
+                :detail="projectDetail"
+                v-if="currentTab === 0"
+                :loading="detailLoading"
+              />
               <ComponentsPosts
                 :posts="posts"
                 :postsCount="postCount"
@@ -161,11 +165,11 @@ const fetchProject = () => {
     .then((res) => {
       projectList.value = res
       ids.value = res.results[0].id
+      projectLoading.value = false
     })
     .catch((err) => {
       console.log(err)
     })
-    .finally(() => (projectLoading.value = false))
 }
 
 interface IFaq {
@@ -298,6 +302,7 @@ const fetchMoreComment = () => {
 
 
 const projectDetail = ref()
+const detailLoading = ref(true)
 
 const fetchProjectDetail = () => {
   return useApi()
@@ -306,6 +311,9 @@ const fetchProjectDetail = () => {
     )
     .then((res) => {
       projectDetail.value = res
+    })
+    .finally(() => {
+      detailLoading.value = false
     })
     .catch((err) => {
       console.log(err)

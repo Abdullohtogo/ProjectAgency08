@@ -1,5 +1,13 @@
 <template>
-  <div v-if="remainingDays && remainingHours && remainingMinutes && remainingSeconds !== 0" class="bg-white/90 rounded-28 sm:p-5 p-3">
+  <div
+    v-if="
+      remainingDays &&
+      remainingHours &&
+      remainingMinutes &&
+      remainingSeconds !== 0
+    "
+    class="bg-white/90 rounded-28 sm:p-5 p-3"
+  >
     <div class="relative">
       <img
         :src="data?.company?.brand_logo.thumbnail?.medium"
@@ -28,7 +36,9 @@
             Saxovat tugagunicha qolgan vaqt:
           </p>
           <div class="mt-3 flex gap-4 items-center">
-            <div class="flex items-center flex-col bg-green-100 rounded-md md:py-1.5 py-1 md:px-3.5 px-2">
+            <div
+              class="flex items-center flex-col bg-green-100 rounded-md md:py-1.5 py-1 md:px-3.5 px-2"
+            >
               <p class="md:text-base text-sm font-bold text-green-400">
                 {{ remainingDays }}
               </p>
@@ -40,7 +50,9 @@
               <div class="w-1 h-1 rounded-full bg-green-400"></div>
               <div class="w-1 h-1 rounded-full bg-green-400"></div>
             </div>
-            <div class="flex items-center flex-col bg-green-100 rounded-md md:py-1.5 py-1 md:px-3.5 px-2">
+            <div
+              class="flex items-center flex-col bg-green-100 rounded-md md:py-1.5 py-1 md:px-3.5 px-2"
+            >
               <p class="md:text-base text-sm font-bold text-green-400">
                 {{ remainingHours }}
               </p>
@@ -52,7 +64,9 @@
               <div class="w-1 h-1 rounded-full bg-green-400"></div>
               <div class="w-1 h-1 rounded-full bg-green-400"></div>
             </div>
-            <div class="flex items-center flex-col bg-green-100 rounded-md md:py-1.5 py-1 md:px-3.5 px-2">
+            <div
+              class="flex items-center flex-col bg-green-100 rounded-md md:py-1.5 py-1 md:px-3.5 px-2"
+            >
               <p class="md:text-base text-sm font-bold text-green-400">
                 {{ remainingMinutes }}
               </p>
@@ -64,7 +78,9 @@
               <div class="w-1 h-1 rounded-full bg-green-400"></div>
               <div class="w-1 h-1 rounded-full bg-green-400"></div>
             </div>
-            <div class="flex items-center flex-col bg-green-100 rounded-md md:py-1.5 py-1 md:px-3.5 px-2">
+            <div
+              class="flex items-center flex-col bg-green-100 rounded-md md:py-1.5 py-1 md:px-3.5 px-2"
+            >
               <p class="md:text-base text-sm font-bold text-green-400">
                 {{ remainingSeconds }}
               </p>
@@ -154,6 +170,8 @@
   </div>
 </template>
 <script setup lang="ts">
+import CommonBlockPreloader from '@/components/Common/BlockPreloader.vue'
+
 import { ref } from 'vue'
 import VueAwesomeCountdown from 'vue-awesome-countdown'
 
@@ -212,9 +230,7 @@ function startTimer() {
 }
 
 onMounted(() => {
-  setInterval(() => {
     startTimer()
-  }, 1000)
 })
 
 function formatMoneyWithSpace(number: string | number) {
