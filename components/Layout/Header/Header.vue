@@ -1,6 +1,6 @@
 <template>
   <header :class="{'bg-white shadow-header': route.params !== 'about'}">
-    <div class="container md:py-8 sm:py-6 py-4 flex justify-between items-center sticky z-50">
+    <div class="container md:py-6 sm:py-5 py-4 flex justify-between items-center sticky z-50">
       <button class="md:hidden block hover:cursor-pointer w-7 h-7" @click="showMenu = !showMenu">
         <img src="/icons/burger.svg" alt="" v-if="!showMenu">
         <img src="/icons/close.svg" alt="" v-else>

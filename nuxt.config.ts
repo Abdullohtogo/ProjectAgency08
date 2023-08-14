@@ -13,7 +13,79 @@ export default defineNuxtConfig({
                     type: "image/x-icon",
                     href: "/favicon.svg",
                 },
+                {
+                    rel: 'stylesheet',
+                    href: 'https://cdnjs.cloudflare.com/ajax/libs/smartbanner.js/1.14.6/smartbanner.min.css',
+                },
             ],
+            script: [
+                {
+                    src: 'https://cdnjs.cloudflare.com/ajax/libs/smartbanner.js/1.14.6/smartbanner.min.js',
+                },
+            ],
+            meta: [
+                {
+                    name: 'smartbanner:price-suffix-apple',
+                    content: ' - App Store',
+                },
+                {
+                    name: 'smartbanner:price-suffix-google',
+                    content: ' - Google Play',
+                },
+                {
+                    name: 'smartbanner:title',
+                    content: 'Hissa',
+                },
+                {
+                    name: 'smartbanner:author',
+                    content: 'Kimga ishonish mumkinligini aniqlang',
+                },
+                {
+                    name: 'smartbanner:price',
+                    content: 'Bepul',
+                },
+                {
+                    name: 'smartbanner:price-suffix-apple',
+                    content: ' - App Store',
+                },
+                {
+                    name: 'smartbanner:price-suffix-google',
+                    content: ' - Google Play',
+                },
+                {
+                    name: 'smartbanner:icon-apple',
+                    content: '/app-store1.png',
+                },
+                {
+                    name: 'smartbanner:icon-google',
+                    content: '/playmarket1.webp',
+                },
+                {
+                    name: 'smartbanner:button',
+                    content: 'Yuklab oling',
+                },
+                {
+                    name: 'smartbanner:button-url-apple',
+                    content: 'https://apps.apple.com/us/app/sharh-uz/id6454791625',
+                },
+                {
+                    name: 'smartbanner:button-url-google',
+                    content:
+                        'https://play.google.com/store/apps/details?id=io.commeta.sharhuz',
+                },
+                {
+                    name: 'smartbanner:enabled-platforms',
+                    content: 'android,ios',
+                },
+                {
+                    name: 'smartbanner:close-label',
+                    content: 'Close',
+                },
+                {
+                    name: 'smartbanner:custom-design-modifier',
+                    content: 'elzodxon.me',
+                },
+            ]
         },
     },
     css: ['@/assets/styles/main.css'],
