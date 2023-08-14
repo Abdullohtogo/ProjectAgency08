@@ -1,28 +1,29 @@
 <template>
   <div>
-    <div class="bg-white rounded-28 p-5 flex flex-col gap-4">
-      <CommonButton
-        label="Hissa qo'shish"
-        buttonStyle="flex items-center"
-        variant="secondary"
-        class="w-full"
-      >
-        <template #before>
-          <span class="icon-heart text-2xl text-white" />
-        </template>
-      </CommonButton>
-      <CommonButton
-        label="Ulashish"
-        buttonStyle="flex items-center"
-        variant="darker"
-        class="w-full"
-        @click="toggleModal()"
-      >
-        <template #before>
-          <span class="icon-share text-2xl text-green-400" />
-        </template>
-      </CommonButton>
-    </div>
+    <CommonButton
+      label="Ulashish"
+      buttonStyle="flex items-center"
+      variant="primary"
+      customButton="!bg-[#ffffffe0] !border-white"
+      class="w-full"
+      v-if="installedApp"
+    >
+      <template #before>
+        <svg
+          width="28"
+          height="28"
+          viewBox="0 0 28 28"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9.05317 2.83337H18.9465C20.5192 2.83337 21.4427 3.12319 21.9919 3.6782C22.5427 4.23471 22.8332 5.17468 22.8332 6.77837V21.2217C22.8332 22.8254 22.5427 23.7651 21.9909 24.3215C21.4402 24.8767 20.5138 25.1667 18.9348 25.1667H9.05317C7.48047 25.1667 6.55698 24.8769 6.00773 24.3219C5.457 23.7654 5.1665 22.8254 5.1665 21.2217V6.77837C5.1665 5.17468 5.457 4.23471 6.00773 3.6782C6.55698 3.12319 7.48047 2.83337 9.05317 2.83337ZM11.4582 20.475C11.4582 21.8712 12.6037 23.0167 13.9998 23.0167C15.396 23.0167 16.5415 21.8712 16.5415 20.475C16.5415 19.0789 15.396 17.9334 13.9998 17.9334C12.6037 17.9334 11.4582 19.0789 11.4582 20.475ZM11.6665 7.79171H16.3332C17.0876 7.79171 17.7082 7.17118 17.7082 6.41671C17.7082 5.66223 17.0876 5.04171 16.3332 5.04171H11.6665C10.912 5.04171 10.2915 5.66223 10.2915 6.41671C10.2915 7.17118 10.912 7.79171 11.6665 7.79171Z"
+            fill="#27A44A"
+            stroke="#27A44A"
+          />
+        </svg>
+      </template>
+    </CommonButton>
     <div
       class="relative overflow-hidden sm:mt-6 mt-3 bg-gradient-to-b from-app-banner-1 to-app-banner-2 rounded-28 flex flex-col justify-center items-center p-6 pt-8"
     >
@@ -57,30 +58,46 @@
       </div>
     </div>
   </div>
-  <Transition name="fade">
-    <div
-      class="fixed top-0 left-0 w-full h-full z-50 bg-modal hidden opacity-0"
-      v-if="showModal"
-      :class="{ '!block opacity-100 overflow-hidden ': showModal }"
-    >
-      <UIModal
-        class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 sm:max-w-[434px] w-[70%] sm:w-full"
-        @close="toggleModal"
-        :show="showModal"
-      />
-    </div>
-  </Transition>
 </template>
 <script setup lang="ts">
-const showModal = ref(false)
-
-function toggleModal() {
-  if (showModal.value == true) {
-    showModal.value = false
-    console.log(showModal.value)
-  } else {
-    showModal.value = true
-    console.log(showModal.value)
-  }
+interface Props {
+  id: string
 }
+
+defineProps<Props>()
+const installedApp = ref(false)
+
+function isAppInstalled(deepLink) {
+  return new Promise((resolve) => {
+    window.location.href = deepLink
+
+    const timeout = setTimeout(function () {
+      // Timeout reached, app is not installed
+      resolve(false)
+    }, 1000)
+
+    document.addEventListener('visibilitychange', function () {
+      clearTimeout(timeout)
+
+      if (document.visibilityState === 'visible') {
+        // App opened, it's installed
+        resolve(true)
+      } else {
+        // User switched back to browser, app is not installed
+        resolve(false)
+      }
+    })
+  })
+}
+
+// Usage
+isAppInstalled('hissa://io.commeta.hissa').then((isInstalled) => {
+  if (isInstalled) {
+    installedApp.value = true
+  } else {
+    installedApp.value = false
+    console.log('App is not installed')
+  }
+})
 </script>
+``

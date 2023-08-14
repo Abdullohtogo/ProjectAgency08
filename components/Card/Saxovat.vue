@@ -230,9 +230,10 @@ function startTimer() {
   remainingMinutes.value = Math.floor(remainderDifferenceInMinutes)
   remainingSeconds.value = Math.floor(remainderDifferenceInSeconds)
 }
-
 onMounted(() => {
-  startTimer()
+  setInterval(() => {
+    startTimer()
+  }, 1000)
 })
 
 function formatMoneyWithSpace(number: string | number) {
