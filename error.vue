@@ -1,15 +1,12 @@
 <template>
-  <div class="relative font-sans" n="green6">
-    <div class="container max-w-200 mx-auto py-10 px-4">
-      <!-- <h1 class="text-red text-[60px]">{{ error }}</h1> -->
-      <pre>{{ error }}</pre>
-      <p v-html="error?.stack"></p>
-      <p class="text-[40px] text-red">There was an error 😱</p>
-    </div>
+  <div class="relative max-md:min-h-screen">
+    <LayoutHeader />
+    <UI404 />
   </div>
 </template>
 
 <script setup lang="ts">
+import UI404 from '@/components/UI/404.vue'
 defineProps({
   error: Object,
 })

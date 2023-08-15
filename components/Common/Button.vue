@@ -1,32 +1,34 @@
 <template>
   <button
-  :type="type"
-      class="md:py-2.5 sm:py-2 py-1 md:px-5 sm:px-1.5 px-1 rounded-xl relative border font-semibold transition-all duration-300 ease-in-out flex gap-2 items-center justify-center"
-      :class=" [buttonStyle, {
+    :type="type"
+    class="md:py-2.5 sm:py-2 py-1 md:px-5 sm:px-1.5 px-1 rounded-xl relative border font-semibold transition-all duration-300 ease-in-out flex gap-2 items-center justify-center"
+    :class=" [buttonStyle, customButton, {
   'pointer-events-none': loading },
   buttonVariantClass,
-  ]">
-    <slot name="before"/>
+  ]"
+  >
+    <slot name="before" />
     {{ label }}
     <span
-        class="absolute animate-ping top-0 right-0 bg-red-500 rounded-full h-2 w-2"
+      class="absolute animate-ping top-0 right-0 bg-red-500 rounded-full h-2 w-2"
     ></span>
-    <slot/>
+    <slot />
   </button>
 </template>
 
 <script lang="ts" setup>
 interface Props {
   label: {
-    type: String,
-    required: true,
-  },
+    type: String
+    required: true
+  }
+  customButton: string
   type: string
-  variant?: 'primary' | 'secondary' | 'darker',
+  variant?: 'primary' | 'secondary' | 'darker'
   loading?: boolean
 }
 
-const buttonVariantClass = computed(() => `s-button-${props.variant}`);
+const buttonVariantClass = computed(() => `s-button-${props.variant}`)
 
 const props = withDefaults(defineProps<Props>(), {
   variant: 'primary',
