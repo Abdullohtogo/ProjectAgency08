@@ -1,5 +1,5 @@
 <template>
-  <div class="relative lg:pb-[175px] pb-16 md:pt-32 pt-20">
+  <div class="relative lg:pb-[175px] pb-16 lg:pt-32 md:pt-20 pt-10">
     <div class="container relative z-10">
       <p
         class="font-medium leading-130 text-green-300 text-center uppercase text-base sm:text-sm mb-3"
@@ -30,7 +30,7 @@
     </div>
     <div class="flex flex-wrap gap-5 mt-8 mx-11 justify-center relative z-10">
       <PartnerCompanyCard
-        v-for="item in cards"
+        v-for="item in partners"
         :item="item"
         :key="item.id"
         class="last:cursor-pointer"
@@ -61,92 +61,42 @@ import PartnerCompanyCard from '~/components/Card/PartnerCompany.vue'
 
 const businePanel = import.meta.env.VITE_APP_BUSINESS_PANEL
 defineEmits(['scroll'])
-const cards = [
-  {
-    id: 1,
-    text: 'Ona foundation',
-    src: '/icons/partner-1.svg',
-  },
-  {
-    id: 2,
-    text: 'Zamin Foundation',
-    src: '/icons/partner-2.svg',
-  },
-  {
-    id: 3,
-    text: 'Hayot - дом пиотмцев',
-    src: '/icons/partner-3.svg',
-  },
-  {
-    id: 4,
-    text: 'Yoshlat Ishlari Agentligi',
-    src: '/icons/partner-4.svg',
-  },
-  {
-    id: 5,
-    text: 'Mehrli qo‘llar',
-    src: '/icons/partner-5.svg',
-  },
-  {
-    id: 6,
-    text: 'Yoshlat Ishlari Agentligi',
-    src: '/icons/partner-6.svg',
-  },
-  {
-    id: 7,
-    text: 'Ezgu amal',
-    src: '/icons/partner-7.svg',
-  },
-  {
-    id: 8,
-    text: 'Ezgu amal',
-    src: '/icons/partner-7.svg',
-  },
-  {
-    id: 9,
-    text: 'UIC Hope',
-    src: '/icons/partner-6.svg',
-  },
-  {
-    id: 10,
-    text: 'Yoshlat Ishlari Agentligi',
-    src: '/icons/partner-5.svg',
-  },
-  {
-    id: 11,
-    text: 'Ona foundation',
-    src: '/icons/partner-4.svg',
-  },
-  {
-    id: 12,
-    text: 'Hayot - дом пиотмцев',
-    src: '/icons/partner-3.svg',
-  },
-  {
-    id: 13,
-    text: 'Yoshlat Ishlari Agentligi',
-    src: '/icons/partner-4.svg',
-  },
-  {
-    id: 14,
-    text: 'Zamin Foundation',
-    src: '/icons/partner-2.svg',
-  },
-  {
-    id: 15,
-    text: 'Ezgu amal',
-    src: '/icons/partner-1.svg',
-  },
-  {
-    id: 16,
-    text: 'UIC Hope',
-    src: '/icons/partner-1.svg',
-  },
-  {
-    id: 17,
-    text: 'Ещё 1023',
-    url: '/',
-    src: '/icons/partner+.svg',
-  },
-]
+
+interface IPaginationResponse<T> {
+  count: number
+  next: string
+  prev: string
+  results: T[]
+}
+
+interface IPartner {
+  count: number
+  next: string
+  prev: string
+  results: []
+}
+const partnerParams = reactive({
+  limit: 15,
+  offset: 0,
+})
+const partners = ref<IPartner[]>([])
+const partnerCount = ref(0)
+
+const fetchFaq = () => {
+  return useApi()
+    .$get<IPaginationResponse<IPartner>>(`care/api/v1/CompanyList/`, {
+      params: partnerParams,
+    })
+    .then((res) => {
+      partnerCount.value = res.count
+      partners.value = [...partners.value, ...res.results]
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
+onMounted(() => {
+  fetchFaq()
+})
 </script>

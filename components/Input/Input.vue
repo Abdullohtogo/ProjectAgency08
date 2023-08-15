@@ -6,7 +6,7 @@
       class="bg-gray-300 rounded-lg transition transition-300 flex sm:gap-2 gap-1 sm:p-3 p-1.5 h-full border border-transparent focus-within:border-green-400"
     >
       <img :src="src" alt="" v-if="src" />
-      <span>
+      <span class="text-sm text-black-100 leading-130 translate-y-[1px] font-normal flex items-center">
         <slot />
       </span>
       <input

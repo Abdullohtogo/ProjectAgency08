@@ -6,7 +6,7 @@
       <h3 class="lg:text-3xl md:text-2xl text-xl text-black-100 font-semibold">
         Biz bilan bog’laning
       </h3>
-      <p class="text-gray-200 sm:text-base text-sm">
+      <p class="text-gray-200 md:text-base sm:text-sm text-xs leading-120">
         Sizni qiziqtirayotgan ma’lumotlar yoki savollaringiz bo‘lsa biz bilan
         bog‘lanishdan tortinmang
       </p>
@@ -27,8 +27,7 @@
               src="/icons/flag.svg"
               v-maska="'## ### ## ##'"
               :error="$v.phoneNumber.$error"
-              >+998</Input
-            >
+              >+998</Input>
           </ClientOnly>
           <div>
             <label for="" class="text-gray-200"
@@ -45,7 +44,7 @@
           </div>
         </div>
         <div
-          class="flex justify-between md:gap-6 gap-5 md:mt-[21px] sm:mt-4 mt-3"
+          class="flex flex-wrap justify-between md:gap-6 gap-5 md:mt-[21px] sm:mt-4 mt-3"
         >
           <div class="">
             <CommonCheckbox

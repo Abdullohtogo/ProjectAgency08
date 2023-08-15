@@ -3,7 +3,7 @@
     class="bg-gradient-to-r from-app-banner-1 to-app-banner-2 md:mx-11 mx-5 sm:rounded-40 rounded-2xl relative z-50"
   >
     <div class="container flex justify-between flex-col lg:flex-row">
-      <div class="lg:my-16 md:my-8 my-7 mx-auto">
+      <div class="lg:my-16 md:my-8 my-7 sm:mx-auto">
         <h3
           class="lg:text-[32px] md:text-[28px] text-2xl leading-130 text-white font-semibold"
         >

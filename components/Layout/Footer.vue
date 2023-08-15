@@ -28,7 +28,7 @@
               </p>
               <div class="flex gap-3">
                 <a
-                  href="/"
+                  :href="appstore"
                   class="hover:opacity-80 transition-all duration-300"
                 >
                   <img
@@ -37,7 +37,7 @@
                   />
                 </a>
                 <a
-                  href="/"
+                 :href="playstore"
                   class="hover:opacity-80 transition-all duration-300"
                 >
                   <img
@@ -140,6 +140,8 @@
 import { useCareContact } from '@/composables/useCareContact'
 import { resolveDirective } from 'nuxt/dist/app/compat/capi'
 
+const appstore = ref(import.meta.env.VITE_APP_APP_STORE)
+const playstore = ref(import.meta.env.VITE_APP_PLAY_STORE)
 function formatPhoneNumber(number: string) {
   const format = number
     ?.replace(/\D/g, '')
