@@ -7,7 +7,7 @@ import { Html } from '.nuxt/components'
 
 export default defineNuxtPlugin((nuxtApp) => {
   const i18n = createI18n({
-    locale: useCookie('locale').value || 'en',
+    locale: useCookie('locale').value || 'uz',
     legacy: false,
     messages: {
       en,

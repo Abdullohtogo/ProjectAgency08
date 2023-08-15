@@ -2,17 +2,12 @@
   <div class="container sm:mt-6 mt-3 sm:mb-16 mb-4">
     <div class="md:grid flex flex-col grid-cols-12 gap-6">
       <div class="md:col-span-8">
-        <CommonBlockPreloader
-          :loading="projectLoading"
-          width="100%"
-          height="631px"
-          borderRadius="28px"
-        >
-          <CardSaxovat :data="data" :end_time="new Date(data?.end_time)" />
-        </CommonBlockPreloader>
+        <CardSaxovat v-bind="{ data }" :end_time="new Date(data?.end_time)" />
         <div class="sm:rounded-28 rounded-2xl bg-white backdrop-filter mt-5">
           <div class="border-b border-gray-300">
-            <div class="sm:pt-4 pt-3 sm:px-5 px-4 flex gap-6">
+            <div
+              class="pt-4 md:px-5 sm:px-4 px-3 justify-center md:justify-start items-center flex md:gap-6 gap-2"
+            >
               <button
                 v-for="(item, index) in tabs"
                 :key="index"
@@ -20,7 +15,7 @@
                 class="text-gray-200 sm:text-base text-sm font-semibold leading-130 cursor-pointer relative h-full pb-2"
                 :class="{ '!text-black-100': currentTab === item.id }"
               >
-                {{ item.tab }}
+                {{ $t(item.tab) }}
                 <span
                   v-if="currentTab === item.id"
                   class="absolute -bottom-[0.5px] left-0 w-full h-0.5 bg-green-400 rounded-t-md"
@@ -76,6 +71,7 @@
           </Transition>
         </div>
         <SectionGenerous
+          v-if="donatCount !== 0"
           :data="donats"
           @load-more="fetchMoreDonat"
           :donatCount="donatCount"
@@ -103,17 +99,17 @@ const currentTab = ref(0)
 const tabs = [
   {
     id: 0,
-    tab: 'Saxovat haqida',
+    tab: 'ab_saxovat',
     current: true,
   },
   {
     id: 1,
-    tab: 'Postlar',
+    tab: 'posts',
     current: false,
   },
   {
     id: 2,
-    tab: 'T.B.S',
+    tab: 'faq',
     current: false,
   },
   {
@@ -138,8 +134,6 @@ const faqParams = reactive({
   limit: 10,
   offset: 0,
 })
-const projectList = ref()
-const projectId = ref()
 
 interface IPaginationResponse<T> {
   count: number
@@ -152,19 +146,14 @@ interface IProject {
   id: string
 }
 
-const projectLoading = ref(true)
-
 const fetchProject = () => {
-  return useApi()
-    .$get<IPaginationResponse<IProject>>('care/api/v1/CareProjectList/')
-    .then((res) => {
-      projectList.value = res
-      projectLoading.value = false
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+  return useApi().$get<IPaginationResponse<IProject>>(
+    'care/api/v1/CareProjectList/'
+  )
 }
+const { data: projectList } = useAsyncData('fetchMuhammadjonAka', () =>
+  fetchProject()
+)
 
 interface IFaq {
   count: number
@@ -294,29 +283,20 @@ const fetchMoreComment = () => {
   fetchComment()
 }
 
-const projectDetail = ref()
-const detailLoading = ref(true)
-
 const fetchProjectDetail = () => {
-  return useApi()
-    .$get(`care/api/v1/landing/CareProjectDetail/${route.params.slug}/`)
-    .then((res) => {
-      projectDetail.value = res
-    })
-    .finally(() => {
-      detailLoading.value = false
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+  return useApi().$get(
+    `care/api/v1/landing/CareProjectDetail/${route.params.slug}/`
+  )
 }
+const { data: projectDetail } = useAsyncData('fetchMuhammadjon', () =>
+  fetchProjectDetail()
+)
 
 const data = computed(() =>
   projectList.value?.results.find((el) => el.id === route.params.slug)
 )
 onMounted(async () => {
-  await fetchProject()
-  await fetchProjectDetail()
+  // await fetchProject()
   await fetchComment()
   await fetchDonat()
   await fetchFaq()

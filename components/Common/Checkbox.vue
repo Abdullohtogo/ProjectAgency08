@@ -18,10 +18,10 @@
     />
     <span class="pl-8 max-w-[301px] text-gray-200  sm:text-base text-sm leading-130">
       <slot class="">
-        <a href="" target="_blank">
-          {{ labelStart }}
+        <a href="" target="_blank" class="text-[#4489F7] font-medium">
+          {{ $t(labelStart) }}
         </a>
-        {{ label }}
+        {{ $t(label) }}
       </slot>
     </span>
   </label>

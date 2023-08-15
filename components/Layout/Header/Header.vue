@@ -3,7 +3,6 @@
     <div
       class="container md:py-6 sm:py-5 py-4 flex justify-between items-center sticky z-50"
     >
-      <pre>{{ $route.path == '/' }}</pre>
       <button
         class="md:hidden block hover:cursor-pointer w-7 h-7"
         @click="showMenu = !showMenu"
@@ -22,7 +21,7 @@
             @click="item.id == 1 ? $router.push(item.url) : scrollTo(item.url)"
             class="hover:text-green-400 text-sm leading-5 text-black-100 transition-all duration-300 ease-linear"
           >
-            {{ item.text }}
+            {{ $t(item.text) }}
           </button>
         </li>
       </ul>
@@ -99,23 +98,23 @@ const menu = computed(() => {
   return [
     {
       id: 1,
-      text: 'Biz haqimizda',
+      text: 'about_us',
       url: `/profile/${ids.value}`,
     },
     {
       id: 2,
-      text: 'Afzalliklar',
+      text: 'advantages',
       url: 'afzalliklar',
     },
     {
       id: 3,
-      text: 'Fondlar uchun',
+      text: 'for_founds',
       url: 'fonds',
     },
 
     {
       id: 4,
-      text: "Bog'lanish",
+      text: "for_contact",
       url: 'contact',
     },
   ]

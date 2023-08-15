@@ -1,7 +1,7 @@
 <template>
   <div class="sm:p-5 p-3 !pt-1">
-    <div class="lg:px-[92px] md:px-10 px-5">
-      <CommonInput src="/icons/search.svg" type="text" placeholder="Izlash" />
+    <div class="lg:px-[92px] md:px-10 px-5 mt-4">
+      <CommonInput src="/icons/search.svg" type="text" placeholder="search" />
       <div class="grid w-full items-start gap-y-2 gap-x-4 sm:mt-4 mt-3">
         <div
           v-for="(item, index) in faqs"

@@ -11,20 +11,26 @@
       alt="green-elipse"
     />
 
-    <div class="container relative z-10 flex flex-col justify-center h-full p-0">
+    <div
+      class="container relative z-10 flex flex-col justify-center h-full p-0"
+    >
       <div class="flex items-start gap-10 lg:gap-20 relative z-100">
         <div class="flex flex-col">
           <div class="flex flex-col lg:pb-[222px] md:pb-24 md:pb-15 pb-10">
             <div class="mb-10">
-              <h2
+              <i18n-t
+                keypath="prlatform_for"
+                tag="h2"
                 class="md:text-3xl sm:text-2xl text-xl lg:text-[42px] lg:leading-10 relative font-bold uppercase text-green-500 lg:max-w-[1090px]"
               >
-                Xayrli ishlarga
-                <span class="underlined relative"> hissa </span> qo‘shish uchun
-                platforma
-              </h2>
+                <template #store>
+                  <span class="underlined relative">
+                    {{ $t('hissa') }}
+                  </span>
+                </template>
+              </i18n-t>
               <p class="text-gray-200 pt-2 text-base leading-128">
-                O‘z hissangizni xavfsiz va ishonchli qo‘shing.
+                {{ $t('contribute_safely_and_securely') }}
               </p>
             </div>
             <div class="flex gap-3">
@@ -54,7 +60,7 @@
             >
               <img :src="item.url" alt="icon" />
               <p class="font-medium text-black-100 sm:text-base text-sm">
-                {{ item.text }}
+                {{ $t(item.text) }}
               </p>
             </div>
           </div>
@@ -82,17 +88,17 @@ const playstore = ref(import.meta.env.VITE_APP_PLAY_STORE)
 const items = [
   {
     id: 1,
-    text: 'Ishonchlilik',
+    text: 'realibility',
     url: '/icons/shield-tick.svg',
   },
   {
     id: 2,
-    text: 'Shaffoflik',
+    text: 'transparency',
     url: '/icons/search-status.svg',
   },
   {
     id: 3,
-    text: 'Oddiylik',
+    text: 'simplicity',
     url: '/icons/heart.svg',
   },
 ]

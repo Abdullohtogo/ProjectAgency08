@@ -11,8 +11,7 @@
             <img src="@/public/logo.svg" alt="" />
           </router-link>
           <p class="md:mt-5 mt-3 text-gray-200 max-w-[497px] leading-130">
-            Saxovat amallari biplan shug‘ullanatigan fondlarni va ularning
-            yaxshilik yo‘lida tashkil qilayotgan loyihalarini kuzatib boring.
+            {{ $t('saxovat_terms') }}
           </p>
           <div
             class="flex lg:flex-row flex-col md:gap-5 gap-3 lg:mt-[56px] md:mt-10 sm:mt-6 mt-3 lg:mb-10 md:mb-8 sm:mb-6 mb-3 lg:items-end"
@@ -24,7 +23,7 @@
               <p
                 class="text-black-100 font-medium sm:text-xl text-lg leading-130 mb-2"
               >
-                Ilova yanada qulayroq
+                {{ $t('ez_usage_app') }}
               </p>
               <div class="flex gap-3">
                 <a
@@ -37,7 +36,7 @@
                   />
                 </a>
                 <a
-                 :href="playstore"
+                  :href="playstore"
                   class="hover:opacity-80 transition-all duration-300"
                 >
                   <img
@@ -56,7 +55,7 @@
             <p
               class="text-green-500 sm:text-xl text-lg leading-130 font-medium"
             >
-              Asosiy
+              {{ $t('main') }}
             </p>
             <ul class="mt-3 flex flex-col gap-3">
               <li
@@ -64,7 +63,7 @@
                 :key="item.id"
                 class="text-black-100 hover:text-green-300 transition-all duration-300 ease-in-out leading-130"
               >
-                <a target="_blank" :href="item.url">{{ item.text }}</a>
+                <a target="_blank" :href="item.url">{{ $t(item.text) }}</a>
               </li>
             </ul>
           </div>
@@ -72,7 +71,7 @@
             <p
               class="text-green-500 sm:text-xl text-lg leading-130 font-medium"
             >
-              Bog‘lanish
+              {{ $t('for_contact') }}
             </p>
             <ul class="mt-3 flex flex-col gap-3">
               <li
@@ -95,7 +94,7 @@
               <p
                 class="text-green-500 sm:text-xl text-lg leading-130 font-medium"
               >
-                Bizni ijtimoiy tarmoqlarda kuzatib boring
+                {{ $t('check_us_on_socials') }}
               </p>
               <div class="mt-4 flex gap-3">
                 <a
@@ -119,7 +118,7 @@
           class="sm:py-5 py-3 border-b-3 border-white flex md:justify-between justify-center items-center md:items-start md:flex-row flex-col md:gap-0 gap-2 sm:px-4 px-1"
         >
           <p class="text-black-100 text-center text-sm leading-130">
-            © 2023 Hissa Inc. Barcha huquqlar himoyalangan.
+            © 2023 Hissa Inc. {{ $t('everything_reserved') }}
           </p>
           <ul class="flex gap-3 flexx-wrap sm:flex-nowrap">
             <li v-for="item in links" :key="item.id">
@@ -127,7 +126,7 @@
                 :to="item.url"
                 class="text-black-100 hover:text-green-300 text-sm transition-all duration-300 ease-in-out leading-130"
               >
-                {{ item.text }}
+                {{ $t(item.text) }}
               </router-link>
             </li>
           </ul>
@@ -177,27 +176,22 @@ const businePanel = import.meta.env.VITE_APP_BUSINESS_PANEL
 const main = [
   {
     id: 1,
-    text: 'Biz haqimizda',
+    text: 'about_us',
     url: businePanel,
   },
   {
     id: 2,
-    text: 'Afzalliklar',
+    text: 'advantages',
     url: businePanel,
   },
   {
     id: 3,
-    text: 'Ilova',
-    url: businePanel,
-  },
-  {
-    id: 4,
-    text: 'Fondlar uchun',
+    text: 'for_founds',
     url: businePanel,
   },
   {
     id: 5,
-    text: 'Bog‘lanish',
+    text: 'for_contact',
     url: businePanel,
   },
 ]
@@ -258,17 +252,17 @@ const share = computed(() => {
 const links = [
   {
     id: 1,
-    text: 'Reklama',
+    text: 'adv',
     url: '/',
   },
   {
     id: 2,
-    text: 'Maxfiylik',
+    text: 'ninja',
     url: '/',
   },
   {
     id: 3,
-    text: 'Foydalanish qoidalari',
+    text: 'use_terms',
     url: '/',
   },
 ]

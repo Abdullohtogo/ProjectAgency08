@@ -1,31 +1,30 @@
 <template>
   <div class="relative lg:pb-[175px] pb-16 lg:pt-32 md:pt-20 pt-10">
-    <div class="container relative z-10">
+    <div
+      class="container flex flex-col items-center justify-center relative z-10"
+    >
       <p
         class="font-medium leading-130 text-green-300 text-center uppercase text-base sm:text-sm mb-3"
       >
-        fondlar uchun
+        {{ $t('for_founds') }}
       </p>
-      <h2
-        class="text-green-500 lg:text-4xl md:text-3xl sm:text-2xl text-xl leading-130 font-bold text-center"
+      <i18n-t
+        keypath="partners_who_support_us"
+        tag="h2"
+        class="text-green-500 lg:text-4xl md:text-3xl sm:text-2xl text-xl leading-130 font-bold text-center max-w-[666px]"
       >
-        <span class="sm:block sm:mb-4"
-          >Hozirgi kunda<span
+        <template #store>
+          <span
             class="text-white bg-green-300 rounded-xl px-2.5 shadow-partners mx-2"
-            >{{partnerCount}}</span
-          >dan ortiq fondlar</span
-        >
-        biz bilan birga hamkorlik qilishmoqda
-      </h2>
+          >
+            {{ partnerCount }}
+          </span>
+        </template>
+      </i18n-t>
       <p
         class="text-gray-200 text-center mt-6 text-base sm:text-sm leading-130"
       >
-        Biz birlikda ishtirok etish va umumiy kuchlik qobiliyatiga e'tibor
-        beramiz. Başqa xayriya fondlari bilan hamkorlik qilishimiz uchun andisha
-        bilan inonamiz. Hamkorlik orqali natijalar qozonish va turli ijtimoiy
-        muammolarni yechishga erishamiz, masalan, bolalar yordamini ta'minlash,
-        mushkul holatdagi oilalarga yordam berish, ta'limning rivojlanishi va
-        sog'liqni saqlashga yo'l ochish kabi.
+        {{ $t('with_us_you_are_the_best') }}
       </p>
     </div>
     <div class="flex flex-wrap gap-5 mt-8 mx-11 justify-center relative z-10">
@@ -41,12 +40,12 @@
     >
       <CommonButton
         @click="$emit('scroll')"
-        label="Bog‘lanish"
+        label="for_contact"
         variant="primary"
       />
       <a :href="businePanel" target="_blank">
         <CommonButton
-          label="Bizning safimizga qo‘shilish"
+          label="get_with_us"
           variant="secondary"
         />
       </a>

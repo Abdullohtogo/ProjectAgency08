@@ -1,7 +1,7 @@
 <template>
   <div class="mt-5">
     <p class="text-black-100 font-semibold lg:text-2xl md:text-xl text-lg">
-      Saxovatchilar
+      {{$t('geneourses')}}
     </p>
     <div class="flex flex-col">
       <div

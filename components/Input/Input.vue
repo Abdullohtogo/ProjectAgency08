@@ -1,12 +1,14 @@
 <template>
   <div class="flex flex-col gap-2">
-    <label class="text-gray-200">{{ label }}</label>
+    <label class="text-gray-200">{{ $t(label) }}</label>
     <div
       :class="(inputClass, error ? '!border-red' : '')"
       class="bg-gray-300 rounded-lg transition transition-300 flex sm:p-3 p-1.5 h-full border border-transparent focus-within:border-green-400"
     >
       <img class="mr-2" :src="src" alt="" v-if="src" />
-      <span class="text-sm mr-1 text-black-100 leading-130  font-normal flex items-center">
+      <span
+        class="text-sm mr-1 text-black-100 leading-130 font-normal flex items-center"
+      >
         <slot />
       </span>
       <input

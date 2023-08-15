@@ -2,13 +2,17 @@
   <button
     :type="type"
     class="md:py-2.5 py-2 md:px-5 px-1.5 rounded-xl relative border font-semibold transition-all duration-300 ease-in-out flex gap-2 items-center justify-center"
-    :class=" [buttonStyle, customButton, {
-  'pointer-events-none': loading },
-  buttonVariantClass,
-  ]"
+    :class="[
+      buttonStyle,
+      customButton,
+      {
+        'pointer-events-none': loading,
+      },
+      buttonVariantClass,
+    ]"
   >
     <slot name="before" />
-    {{ label }}
+    {{ $t(label) }}
     <span
       class="absolute animate-ping top-0 right-0 bg-red-500 rounded-full h-2 w-2"
     ></span>

@@ -8,10 +8,10 @@
         <h2
           class="mt-6 md:text-2xl text-xl font-semibold text-white leading-120"
         >
-          Barcha fondlar qo‘lingiz ostida
+          {{ $t('all_founds_on_ur_hands') }}
         </h2>
         <p class="mt-2 text-base leading-130 text-green-200">
-          Fondlar va xayriya loyihalarni smartfoningiz orqalik kuzatib boring
+          {{ $t('check_founds_on_phone') }}
         </p>
         <div class="flex gap-4 mt-7">
           <img src="/icons/QR.svg" alt="qr" />
@@ -31,10 +31,12 @@
           </div>
         </div>
       </div>
-      <div
-        class="absolute lg:block hidden -bottom-[210px]  -right-[100px]"
-      >
-        <img src="/images/phones.png" class="max-w-[900px] max-h-[778px]" alt="" />
+      <div class="absolute lg:block hidden -bottom-[210px] -right-[100px]">
+        <img
+          src="/images/phones.png"
+          class="max-w-[900px] max-h-[778px]"
+          alt=""
+        />
       </div>
       <div class="absolute left-[23%]">
         <img src="/icons/heart-transparent.svg" alt="" />

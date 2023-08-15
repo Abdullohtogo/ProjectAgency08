@@ -4,42 +4,42 @@
       class="lg:py-[56px] md:py-20 sm:py-10 py-5 lg:px-8 md:px-6 px-4 bg-white rounded-3xl shadow-formCard"
     >
       <h3 class="lg:text-3xl md:text-2xl text-xl text-black-100 font-semibold">
-        Biz bilan bog’laning
+        {{ $t('contact_with_us') }}
       </h3>
       <p class="text-gray-200 md:text-base sm:text-sm text-xs leading-120">
-        Sizni qiziqtirayotgan ma’lumotlar yoki savollaringiz bo‘lsa biz bilan
-        bog‘lanishdan tortinmang
+        {{ $t('if_you_have_question') }}
       </p>
       <form @submit.prevent="submitForm">
         <div class="md:mt-5 sm:mt-4 mt-2 flex flex-col md:gap-6 sm:gap-4 gap-2">
           <Input
-            label="Ismingiz"
-            placeholder="To'liq ismingizni kiriting"
+            label="name"
+            placeholder="full_name"
             type="text"
             :error="$v.name.$error"
             v-model="form.name"
           />
           <ClientOnly>
             <Input
-              label="Telefon raqamingiz"
+              label="phone_num"
               type="phone"
               v-model="form.phoneNumber"
               src="/icons/flag.svg"
               v-maska="'## ### ## ##'"
               :error="$v.phoneNumber.$error"
-              >+998</Input>
+              >+998</Input
+            >
           </ClientOnly>
           <div>
-            <label for="" class="text-gray-200"
-              >Sizga qanday yordam bera olamiz?</label
-            >
+            <label for="" class="text-gray-200">{{
+              $t('how_can_we_help_you')
+            }}</label>
             <textarea
               v-model="form.message"
               :maxlength="500"
               :error="$v.message.$error"
               :class="$v.message.$error ? '!border-red' : ''"
               class="custom-checkbox transition transition-300 md:h-[130px] sm:h-[100px] h-[80px] mt-2 bg-gray-300 sm:p-3 p-1.5 rounded-lg border border-transparent focus-within:border-green-400 outline-0 w-full caret-green-400 resize-none placeholder:text-sm"
-              placeholder="Murojaatingizni kiriting..."
+              :placeholder="$t('write_issue')"
             ></textarea>
           </div>
         </div>
@@ -49,12 +49,12 @@
           <div class="">
             <CommonCheckbox
               v-model="form.agreement"
-              :label-start="'Foydalanish qoidalari'"
-              :label="'bilan tanishib chiqdim va qabul qilaman'"
+              :label-start="'user_terms'"
+              :label="'agreements_for'"
               :error="$v.agreement.$error"
             />
           </div>
-          <CommonButton :type="'submit'" :label="'Yuborish'" />
+          <CommonButton :type="'submit'" :label="'send'" />
         </div>
       </form>
     </div>

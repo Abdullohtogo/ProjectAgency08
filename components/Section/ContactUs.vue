@@ -7,11 +7,10 @@
         <h3
           class="lg:text-[32px] md:text-[28px] text-2xl leading-130 text-white font-semibold"
         >
-          Bog‘lanish usullari
+          {{ $t('contact_types') }}
         </h3>
         <p class="md:mt-3 mt-2 leading-130 text-white/60 max-w-[436px]">
-          Biz bilan quyida keltirilgan yo‘llar orqali aloqaga chiqishingiz
-          mumkin
+          {{ $t('contact_with_us_these_ways') }}
         </p>
         <div class="flex flex-col gap-2 mt-6">
           <a
@@ -24,7 +23,7 @@
             <img :src="item?.src" alt="icon" class="w-[42px] h-[42px]" />
             <div class="flex flex-col gap-[3px]">
               <p class="sm:text-sm text-xs text-white/60 leading-130">
-                {{ item?.title }}
+                {{ $t(item?.title) }}
               </p>
               <div
                 class="text-white sm:text-base text-sm font-medium leading-130 flex items-center gap-1.5"
@@ -70,7 +69,7 @@
         </div>
         <div class="mt-3.5 flex flex-col">
           <p class="text-sm text-white mb-2 font-semibold">
-            Biz ijtimoiy tarmoqlarda
+            {{ $t('we_on_social') }}
           </p>
           <div class="flex flex-row md:gap-3 gap-2">
             <a
@@ -120,7 +119,6 @@ function formatPhoneNumber(number: string) {
   }`
 }
 
-
 const contacts = ref()
 
 const fetchCareContact = () => {
@@ -158,7 +156,7 @@ const info = computed(() => {
     {
       id: 1,
       src: '/icons/location1.svg',
-      title: 'Manzilimiz',
+      title: 'location',
       text: contactInfo.value?.address,
       icon: '/icons/openin.svg',
       url: 'https://goo.gl/maps/Gn5ieiks1NbMdLQU6',
@@ -166,20 +164,19 @@ const info = computed(() => {
     {
       id: 2,
       src: '/icons/phone.svg',
-      title: 'Telefon raqamimiz:',
+      title: 'our_phone_num',
       text: formatPhoneNumber(contactInfo?.value?.phone),
       url: `tel:${contactInfo?.value?.phone}`,
     },
     {
       id: 3,
       src: '/icons/email.svg',
-      title: 'Elektron manzilimiz:',
+      title: 'email',
       text: contactInfo?.value?.email,
       url: `mailto:${contactInfo?.value?.email}`,
     },
   ]
 })
-
 
 const social = computed(() => {
   return [
