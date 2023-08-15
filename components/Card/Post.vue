@@ -2,7 +2,7 @@
   <div class="sm:p-4 p-2 rounded-2xl border border-gray-600">
     <div class="flex gap-2">
       <img
-        :src="item?.image"
+        :src="item?.image?.thumbnail?.small"
         alt="logo"
         class="border w-11 h-11 rounded-full border-blue-light"
       />
@@ -37,15 +37,7 @@
 
 <script setup lang="ts">
 interface Props {
-  item: {
-    name?: string
-    sphere?: string
-    image?: string
-    title?: string
-    content?: string
-    thumbnail?: string
-    published_at?: string
-  }
+  item: Array
 }
 
 defineProps<Props>()

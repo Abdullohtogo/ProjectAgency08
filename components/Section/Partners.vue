@@ -12,7 +12,7 @@
         <span class="sm:block sm:mb-4"
           >Hozirgi kunda<span
             class="text-white bg-green-300 rounded-xl px-2.5 shadow-partners mx-2"
-            >10000</span
+            >{{partnerCount}}</span
           >dan ortiq fondlar</span
         >
         biz bilan birga hamkorlik qilishmoqda

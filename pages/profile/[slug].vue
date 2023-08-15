@@ -58,7 +58,7 @@
                 :posts="posts"
                 :postsCount="postCount"
                 @load-more="fetchMorePost()"
-                v-if="currentTab === 1 && postCount !== 0 && postError"
+                v-if="currentTab === 1 && postCount !== 0"
               />
               <ComponentsFAQ
                 :faqs="faqs"

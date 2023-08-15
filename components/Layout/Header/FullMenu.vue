@@ -2,7 +2,7 @@
   <Transition name="menu">
     <div
         v-if="openMenu"
-        class="absolute w-full z-10 left-0 bg-gray-100 top-[72px] h-[calc(100vh-70px)]"
+        class="absolute w-full z-20 left-0 bg-gray-100 top-[72px] h-[calc(100vh-70px)]"
     >
       <div class="container h-full flex flex-col justify-between gap-16">
         <div class="flex items-start flex-col gap-6 mt-24">
