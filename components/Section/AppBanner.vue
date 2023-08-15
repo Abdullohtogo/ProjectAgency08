@@ -2,7 +2,7 @@
   <div
     class="bg-gradient-to-r from-app-banner-1 to-app-banner-2 md:mx-11 mx-5 rounded-28 py-9 lg:mt-[147px] mb-6 relative"
   >
-    <div class="container flex lg:flex-row flex-col relative">
+    <div class="container pl- flex lg:flex-row flex-col relative">
       <div class="flex flex-col items-start">
         <img src="/icons/hissa-main.svg" alt="hissa" />
         <h2
@@ -32,7 +32,7 @@
         </div>
       </div>
       <div
-        class="absolute lg:block hidden -bottom-[210px] xl:right-0 -right-[100px]"
+        class="absolute lg:block hidden -bottom-[210px]  -right-[100px]"
       >
         <img src="/images/phones.png" class="max-w-[900px] max-h-[778px]" alt="" />
       </div>
