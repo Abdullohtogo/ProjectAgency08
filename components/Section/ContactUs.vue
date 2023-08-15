@@ -120,6 +120,20 @@ function formatPhoneNumber(number: string) {
   }`
 }
 
+
+const contacts = ref()
+
+const fetchCareContact = () => {
+  useApi()
+    .$get('care/api/v1/CareContact/')
+    .then((res: any) => {
+      contacts.value = res
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
 onMounted(async () => {
   function getContactInfo() {
     return new Promise((resolve, reject) => {
@@ -135,6 +149,8 @@ onMounted(async () => {
         })
     })
   }
+
+  await fetchCareContact()
   await getContactInfo()
 })
 const info = computed(() => {
@@ -164,28 +180,35 @@ const info = computed(() => {
   ]
 })
 
-const social = [
-  {
-    id: 1,
-    url: 'instagram.com',
-    src: '/icons/instagram1.svg',
-  },
-  {
-    id: 2,
-    url: 'youtube.com',
-    src: '/icons/youtube1.svg',
-  },
-  {
-    id: 3,
-    url: 'twitter.com',
-    src: '/icons/twitter1.svg',
-  },
-  {
-    id: 4,
-    url: 'telegram.com',
-    src: '/icons/telegram1.svg',
-  },
-]
+
+const social = computed(() => {
+  return [
+    {
+      id: 1,
+      url: contacts.value?.instagram,
+      src: '/icons/instagram1.svg',
+      name: 'instagram',
+    },
+    {
+      id: 2,
+      url: contacts.value?.youtube,
+      src: '/icons/youtube1.svg',
+      name: 'youtube',
+    },
+    {
+      id: 3,
+      url: contacts.value?.twitter,
+      src: '/icons/twitter1.svg',
+      name: 'twitter',
+    },
+    {
+      id: 4,
+      url: contacts.value?.telegram,
+      name: 'telegram',
+      src: '/icons/telegram1.svg',
+    },
+  ]
+})
 
 const showModal = ref(false)
 

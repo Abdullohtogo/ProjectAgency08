@@ -2,7 +2,7 @@ import { DirectiveBinding } from 'vue'
 import * as Maska from "maska";
 
 export function VTooltip(el: HTMLElement, binding: DirectiveBinding) {
-  el.classList.add('group', 'relative', '_v-tooltip')
+  el.classList.add('group/tooltip', 'relative', '_v-tooltip')
   const tooltip = document.createElement('div')
   tooltip.classList.add(
     'max-md:hidden',
@@ -17,8 +17,8 @@ export function VTooltip(el: HTMLElement, binding: DirectiveBinding) {
     'px-2',
     'rounded-[10px]',
     'pointer-events-none',
-    'group-hover:opacity-100',
-    'group-hover:-top-2',
+    'group-hover/tooltip:opacity-100',
+    'group-hover/tooltip:-top-2',
     'after:absolute',
     'after:w-2.5',
     'after:h-2.5',

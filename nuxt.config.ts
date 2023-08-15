@@ -66,12 +66,11 @@ export default defineNuxtConfig({
                 },
                 {
                     name: 'smartbanner:button-url-apple',
-                    content: 'https://apps.apple.com/us/app/sharh-uz/id6454791625',
+                    content: import.meta.env.VITE_APP_APP_STORE,
                 },
                 {
                     name: 'smartbanner:button-url-google',
-                    content:
-                        'https://play.google.com/store/apps/details?id=io.commeta.sharhuz',
+                    content: import.meta.env.VITE_APP_PLAY_STORE
                 },
                 {
                     name: 'smartbanner:enabled-platforms',

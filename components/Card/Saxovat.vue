@@ -200,10 +200,8 @@ const showModal = ref(false)
 function toggleModal() {
   if (showModal.value == true) {
     showModal.value = false
-    console.log(showModal.value)
   } else {
     showModal.value = true
-    console.log(showModal.value)
   }
 }
 

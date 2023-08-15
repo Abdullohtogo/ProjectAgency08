@@ -6,7 +6,7 @@
       { '!text-blue !opacity-100': showDropdown },
       { 'text-white': variant === 'transparent' },
     ]"
-    body-class="!w-[138px] border border-gray-250 bg-white rounded-xl"
+    body-class="!w-[138px] border !border-[2px] !border-gray-100 bg-white rounded-xl"
     @toggle="handleDropdownToggle"
   >
     <template #head>
@@ -23,7 +23,7 @@
       />
     </template>
     <template #body>
-      <div v-for="(lang, index) in languages" :key="index" class="w-full">
+      <div v-for="(lang, index) in languages" :key="index" class="w-full hover:bg-green-100 bg-white transition transition-300">
         <div
           class="flex items-center justify-between gap-4 py-3 pl-4 pr-2 cursor-pointer transition-300 hover:bg-white-100"
           @click="changeLocale(lang?.code)"

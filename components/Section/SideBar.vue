@@ -93,10 +93,11 @@ function isAppInstalled(deepLink) {
 // Usage
 isAppInstalled('hissa://io.commeta.hissa').then((isInstalled) => {
   if (isInstalled) {
+    alert('App is installed')
     installedApp.value = true
   } else {
+    alert('App is not installed')
     installedApp.value = false
-    console.log('App is not installed')
   }
 })
 </script>

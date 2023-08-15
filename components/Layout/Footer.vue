@@ -170,7 +170,6 @@ onMounted(() => {
   fetchCareContact()
 })
 const contacts = ref()
-const postsList = ref()
 
 const main = [
   {
@@ -228,7 +227,7 @@ const share = computed(() => {
   return [
     {
       id: 1,
-      url: '',
+      url: contacts.value?.telegram,
       name: 'telegram',
       src: '/icons/telegram.svg',
     },

@@ -8,12 +8,8 @@
           height="631px"
           borderRadius="28px"
         >
-          <CardSaxovat
-            :data="projectList?.results[0]"
-            :end_time="new Date(projectList?.results[0]?.end_time)"
-          />
+          <CardSaxovat :data="data" :end_time="new Date(data?.end_time)" />
         </CommonBlockPreloader>
-        <!-- <pre>{{ projectDetail }}</pre> -->
         <div class="sm:rounded-28 rounded-2xl bg-white backdrop-filter mt-5">
           <div class="border-b border-gray-300">
             <div class="sm:pt-4 pt-3 sm:px-5 px-4 flex gap-6">
@@ -62,7 +58,7 @@
                 :posts="posts"
                 :postsCount="postCount"
                 @load-more="fetchMorePost()"
-                v-if="currentTab === 1 && postCount !== 0"
+                v-if="currentTab === 1 && postCount !== 0 && postError"
               />
               <ComponentsFAQ
                 :faqs="faqs"
@@ -86,7 +82,7 @@
         />
       </div>
       <div class="md:col-span-4">
-        <SectionSideBar />
+        <SectionSideBar :id="route.params.slug" />
       </div>
     </div>
   </div>
@@ -94,8 +90,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useRoute } from 'vue-router'
-
+import { useRoute, useRouter } from 'vue-router'
 import CommonBlockPreloader from '@/components/Common/BlockPreloader.vue'
 import ComponentsAbout from '@/pages/profile/components/About.vue'
 import ComponentsComments from '@/pages/profile/components/Comments.vue'
@@ -105,7 +100,6 @@ import ComponentsPosts from '@/pages/profile/components/Posts.vue'
 const { t } = useI18n()
 const route = useRoute()
 const currentTab = ref(0)
-
 const tabs = [
   {
     id: 0,
@@ -145,7 +139,7 @@ const faqParams = reactive({
   offset: 0,
 })
 const projectList = ref()
-const ids = ref()
+const projectId = ref()
 
 interface IPaginationResponse<T> {
   count: number
@@ -157,6 +151,7 @@ interface IPaginationResponse<T> {
 interface IProject {
   id: string
 }
+
 const projectLoading = ref(true)
 
 const fetchProject = () => {
@@ -164,7 +159,6 @@ const fetchProject = () => {
     .$get<IPaginationResponse<IProject>>('care/api/v1/CareProjectList/')
     .then((res) => {
       projectList.value = res
-      ids.value = res.results[0].id
       projectLoading.value = false
     })
     .catch((err) => {
@@ -185,9 +179,8 @@ const faqCount = ref(0)
 const fetchFaq = () => {
   return useApi()
     .$get<IPaginationResponse<IFaq>>(
-      `care/api/v1/landing/CareProject/${ids.value}/FAQList/`,
+      `care/api/v1/landing/CareProject/${route.params.slug}/FAQList/`,
       {
-        // ?limit=${faqParams.value.limit}&offset=${faqParams.value.offset}
         params: faqParams,
       }
     )
@@ -217,7 +210,7 @@ const donatCount = ref(0)
 const fetchDonat = () => {
   return useApi()
     .$get<IPaginationResponse<IDonat>>(
-      `care/api/v1/landing/CareProject/${ids.value}/DonationList/`,
+      `care/api/v1/landing/CareProject/${route.params.slug}/DonationList/`,
       {
         params: donatParams,
       }
@@ -243,13 +236,14 @@ interface IPost {
   results: []
 }
 
+const postError = ref()
 const posts = ref<IPost[]>([])
 const postCount = ref(0)
 
 const fetchPost = () => {
   return useApi()
     .$get<IPaginationResponse<IDonat>>(
-      `care/api/v1/${ids.value}/CareProjectPostList/`,
+      `care/api/v1/${route.params.slug}/CareProjectPostList/`,
       {
         params: postParams,
       }
@@ -281,7 +275,7 @@ const commentCount = ref(0)
 const fetchComment = () => {
   return useApi()
     .$get<IPaginationResponse<IComment>>(
-      `care/api/v1/landing/${ids.value}/CareProjectCommentList/`,
+      `care/api/v1/landing/${route.params.slug}/CareProjectCommentList/`,
       {
         params: commentParams,
       }
@@ -300,15 +294,12 @@ const fetchMoreComment = () => {
   fetchComment()
 }
 
-
 const projectDetail = ref()
 const detailLoading = ref(true)
 
 const fetchProjectDetail = () => {
   return useApi()
-    .$get(
-      `care/api/v1/landing/CareProjectDetail/${ids.value}/`
-    )
+    .$get(`care/api/v1/landing/CareProjectDetail/${route.params.slug}/`)
     .then((res) => {
       projectDetail.value = res
     })
@@ -320,6 +311,9 @@ const fetchProjectDetail = () => {
     })
 }
 
+const data = computed(() =>
+  projectList.value?.results.find((el) => el.id === route.params.slug)
+)
 onMounted(async () => {
   await fetchProject()
   await fetchProjectDetail()
