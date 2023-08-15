@@ -3,6 +3,7 @@
     <div
       class="container md:py-6 sm:py-5 py-4 flex justify-between items-center sticky z-50"
     >
+      <pre>{{ $route.path == '/' }}</pre>
       <button
         class="md:hidden block hover:cursor-pointer w-7 h-7"
         @click="showMenu = !showMenu"
@@ -17,12 +18,12 @@
       </div>
       <ul class="gap-4 lg:gap-8 hidden md:flex">
         <li v-for="item in menu" :key="item.id">
-          <nuxt-link
-            :to="item?.url"
+          <button
+            @click="item.id == 1 ? $router.push(item.url) : scrollTo(item.url)"
             class="hover:text-green-400 text-sm leading-5 text-black-100 transition-all duration-300 ease-linear"
           >
             {{ item.text }}
-          </nuxt-link>
+          </button>
         </li>
       </ul>
       <UILanguageSwitcher v-bind="{ variant: 'default' }" />
@@ -37,7 +38,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 interface IPaginationResponse<T> {
   count: number
@@ -68,6 +69,31 @@ onMounted(() => {
 
 const showMenu = ref(false)
 const route = useRoute()
+const router = useRouter()
+
+function scrollTo(url: string) {
+  console.log(document.getElementById(url))
+
+  if (route.path !== '/') {
+    router.push('/').finally(() => {
+      const section = document.getElementById(url)
+      setTimeout(() => {
+        section?.scrollIntoView({
+          behavior: 'smooth',
+          inline: 'center',
+          block: 'center',
+        })
+      }, 100)
+    })
+  } else {
+    const section = document.getElementById(url)
+    section?.scrollIntoView({
+      behavior: 'smooth',
+      inline: 'center',
+      block: 'center',
+    })
+  }
+}
 
 const menu = computed(() => {
   return [
@@ -79,23 +105,18 @@ const menu = computed(() => {
     {
       id: 2,
       text: 'Afzalliklar',
-      url: '/advantages',
+      url: 'afzalliklar',
     },
     {
       id: 3,
-      text: 'Ilova',
-      url: '/app',
-    },
-    {
-      id: 4,
       text: 'Fondlar uchun',
-      url: '/forfonds',
+      url: 'fonds',
     },
 
     {
-      id: 5,
+      id: 4,
       text: "Bog'lanish",
-      url: '/contact',
+      url: 'contact',
     },
   ]
 })

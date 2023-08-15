@@ -1,14 +1,18 @@
 <template>
   <SectionMainIntro class="mb-7 mt-6" />
   <SectionProjectAim class="lg:mb-12 md:mb-8 mb-6" />
-  <SectionMainCards class="lg:mb-10 md:mb-8 mb-6" />
-  <SectionAppBanner />
-  <SectionPartners @scroll="scrollToSection()" class="mb-10" />
-  <SectionContactUs id="mySection" class="mb-[96px]" />
+  <SectionMainCards id="afzalliklar" class="lg:mb-10 md:mb-8 mb-6" />
+  <SectionAppBanner id="ilova" />
+  <SectionPartners id="fonds" @scroll="scrollToSection()" class="mb-10" />
+  <SectionContactUs id="contact" class="mb-[96px]" />
 </template>
 <script lang="ts" setup>
 function scrollToSection() {
-  const section = document.getElementById('mySection')
-  section.scrollIntoView({ behavior: 'smooth' })
+  const section = document.getElementById('contact')
+  section.scrollIntoView({
+    behavior: 'smooth',
+    inline: 'center',
+    block: 'center',
+  })
 }
 </script>
