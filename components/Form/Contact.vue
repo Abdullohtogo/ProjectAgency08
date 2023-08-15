@@ -50,7 +50,8 @@
           <div class="">
             <CommonCheckbox
               v-model="form.agreement"
-              :label="'Ommaviy offerta qoidalarini qabul qilaman'"
+              :label-start="'Foydalanish qoidalari'"
+              :label="'bilan tanishib chiqdim va qabul qilaman'"
               :error="$v.agreement.$error"
             />
           </div>

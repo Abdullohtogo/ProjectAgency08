@@ -64,7 +64,7 @@
                 :key="item.id"
                 class="text-black-100 hover:text-green-300 transition-all duration-300 ease-in-out leading-130"
               >
-                <router-link :to="item.url">{{ item.text }}</router-link>
+                <a target="_blank" :href="item.url">{{ item.text }}</a>
               </li>
             </ul>
           </div>
@@ -170,32 +170,33 @@ onMounted(() => {
   fetchCareContact()
 })
 const contacts = ref()
+const businePanel = import.meta.env.VITE_APP_BUSINESS_PANEL
 
 const main = [
   {
     id: 1,
     text: 'Biz haqimizda',
-    url: '/profile',
+    url: businePanel,
   },
   {
     id: 2,
     text: 'Afzalliklar',
-    url: '/',
+    url: businePanel,
   },
   {
     id: 3,
     text: 'Ilova',
-    url: '/',
+    url: businePanel,
   },
   {
     id: 4,
     text: 'Fondlar uchun',
-    url: '/',
+    url: businePanel,
   },
   {
     id: 5,
     text: 'Bog‘lanish',
-    url: '/',
+    url: businePanel,
   },
 ]
 

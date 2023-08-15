@@ -1,9 +1,9 @@
 <template>
   <Transition name="fade" mode="out-in">
-    <div v-if="show" class="absolute top-0 left-1/2 z-10">
+    <div v-if="show" class="absolute -top-8 -left-3 z-10">
       <div class="relative flex-center">
         <div
-          class="absolute w-2.5 h-2.5 rotate-45 rounded-sm bg-[#1D2C3B]"
+          class="absolute w-2.5 h-2.5 top-5 left-5 rotate-45 rounded-sm bg-[#1D2C3B]"
         ></div>
       </div>
       <div
