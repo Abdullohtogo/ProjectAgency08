@@ -11,7 +11,7 @@ const cards = [
     id: 1,
     title: "Ishonchlilik",
     text: "Foydalanuvchilarning maxfiylik, xavfsizlik, shaffoflik va ishonchlilik orqali qurilgan onlayn platforma.",
-    src: "/icons/circle-lock.svg",
+    src: "/images/circle-lock.png",
     link: '/',
   },
   {
@@ -19,13 +19,13 @@ const cards = [
     title: "Shaffoflik",
     text: "Foydalanuvchilarning maxfiylik, xavfsizlik, shaffoflik va ishonchlilik orqali qurilgan onlayn platforma.",
     link: '/',
-    src: "/icons/circle-search.svg",
+    src: "/images/circle-search.png",
   },
   {
     id: 3,
     title: "Oddiylik",
     text: "Foydalanuvchilarning maxfiylik, xavfsizlik, shaffoflik va ishonchlilik orqali qurilgan onlayn platforma.",
-    src: "/icons/circle-heart.svg",
+    src: "/images/circle-heart.png",
     link: '/',
   },
 ]

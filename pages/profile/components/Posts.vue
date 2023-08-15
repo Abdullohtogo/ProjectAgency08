@@ -5,7 +5,7 @@
       :item="{
         name: card?.name,
         sphere: card?.sphere,
-        image: card?.image?.thumbnail?.medium,
+        image: card?.image?.thumbnail?.small,
         title: card?.title,
         content: card?.content,
         thumbnail: card?.thumbnail,

@@ -10,7 +10,7 @@
   >
     <div class="relative">
       <img
-        :src="data?.company?.brand_logo.thumbnail?.medium"
+        :src="data?.company?.brand_logo.thumbnail?.small"
         alt=""
         class="rounded-2xl max-h-[320px] object-cover w-full"
       />
