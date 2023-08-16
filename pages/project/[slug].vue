@@ -47,18 +47,21 @@
               <ComponentsAbout :detail="data" v-if="currentTab === 0" />
               <ComponentsPosts
                 :posts="posts"
+                :loading="postsLoading"
                 :postsCount="postCount"
                 @load-more="fetchMorePost()"
                 v-if="currentTab === 1 && postCount !== 0"
               />
               <ComponentsFAQ
                 :faqs="faqs"
+                :loading="faqLoading"
                 :faqCount="faqCount"
                 @load-more="fetchMoreFaq()"
                 v-if="currentTab === 2 && faqCount !== 0"
               />
               <ComponentsComments
                 :comments="comments"
+                :loading="commentLoading"
                 @load-more="fetchMoreComment()"
                 :commentCount="commentCount"
                 v-if="currentTab === 3 && commentCount !== 0"
@@ -71,6 +74,7 @@
           :data="donats"
           @load-more="fetchMoreDonat"
           :donatCount="donatCount"
+          :loading="loadingDonat"
         />
       </div>
       <div class="md:col-span-4">
@@ -147,6 +151,7 @@ interface IFaq {
 const faqs = ref<IFaq[]>([])
 const faqCount = ref(0)
 const faqSearch = ref('')
+const faqLoading = ref(true)
 const fetchFaq = () => {
   return useApi()
     .$get<IPaginationResponse<IFaq>>(
@@ -157,6 +162,7 @@ const fetchFaq = () => {
     )
     .then((res) => {
       faqCount.value = res.count
+      faqLoading.value = false
       faqs.value = [...faqs.value, ...res.results]
     })
     .catch((err) => {
@@ -165,7 +171,8 @@ const fetchFaq = () => {
 }
 const fetchMoreFaq = () => {
   faqParams.offset += faqParams.limit
-  fetchFaq()
+  faqLoading.value = true
+  fetchFaq().then(() => (faqLoading.value = false))
 }
 
 interface IDonat {
@@ -177,7 +184,7 @@ interface IDonat {
 
 const donats = ref<IDonat[]>([])
 const donatCount = ref(0)
-
+const loadingDonat = ref(true)
 const fetchDonat = () => {
   return useApi()
     .$get<IPaginationResponse<IDonat>>(
@@ -189,6 +196,7 @@ const fetchDonat = () => {
     .then((res) => {
       donatCount.value = res.count
       donats.value = [...donats.value, ...res.results]
+      loadingDonat.value = false
     })
     .catch((err) => {
       console.log(err)
@@ -197,7 +205,8 @@ const fetchDonat = () => {
 
 const fetchMoreDonat = () => {
   donatParams.offset += donatParams.limit
-  fetchDonat()
+  loadingDonat.value = true
+  fetchDonat().then(() => (loadingDonat.value = false))
 }
 
 interface IPost {
@@ -210,7 +219,7 @@ interface IPost {
 const postError = ref()
 const posts = ref<IPost[]>([])
 const postCount = ref(0)
-
+const postsLoading = ref(true)
 const fetchPost = () => {
   return useApi()
     .$get<IPaginationResponse<IDonat>>(
@@ -222,6 +231,7 @@ const fetchPost = () => {
     .then((res) => {
       postCount.value = res.count
       posts.value = [...posts.value, ...res.results]
+      postsLoading.value = false
     })
     .catch((err) => {
       console.log(err)
@@ -230,7 +240,8 @@ const fetchPost = () => {
 
 const fetchMorePost = () => {
   postParams.offset += postParams.limit
-  fetchPost()
+  postsLoading.value = true
+  fetchPost().then(() => postsLoading.value = false)
 }
 
 interface IComment {
@@ -242,7 +253,7 @@ interface IComment {
 
 const comments = ref<IComment[]>([])
 const commentCount = ref(0)
-
+const commentLoading = ref(true)
 const fetchComment = () => {
   return useApi()
     .$get<IPaginationResponse<IComment>>(
@@ -254,6 +265,7 @@ const fetchComment = () => {
     .then((res) => {
       commentCount.value = res.count
       comments.value = [...comments.value, ...res.results]
+      commentLoading.value = false
     })
     .catch((err) => {
       console.log(err)
@@ -261,8 +273,9 @@ const fetchComment = () => {
 }
 
 const fetchMoreComment = () => {
+  commentLoading.value = true
   commentParams.offset += commentParams.limit
-  fetchComment()
+  fetchComment().then(() => commentLoading.value = false)
 }
 
 const fetchProjectDetail = () => {

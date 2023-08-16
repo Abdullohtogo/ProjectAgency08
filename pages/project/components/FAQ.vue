@@ -46,7 +46,11 @@
       variant="primary"
       class="mx-auto"
     >
-      <img src="/icons/down.svg" alt="" />
+      <img
+        src="/icons/down.svg"
+        :class="loading ? 'arrow cursor-wait' : ''"
+        alt=""
+      />
     </CommonButton>
   </div>
 </template>
@@ -60,6 +64,7 @@ interface Props {
     question: string
     answer: number
   }
+  loading: boolean
 }
 async function useUpdateRouteQuery(key: string, value: string | undefined) {
   const router = useRouter()
@@ -113,3 +118,18 @@ const openItem = (id: number) => {
   selectedItem.value = id
 }
 </script>
+
+<style>
+.arrow {
+  animation: circle 2s infinite linear;
+}
+
+@keyframes circle {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+</style>

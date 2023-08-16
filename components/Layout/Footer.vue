@@ -102,6 +102,7 @@
               <div class="mt-4 flex gap-3">
                 <a
                   :href="item.url"
+                  target="_blank"
                   v-for="item in share"
                   :key="item.id"
                   v-tooltip.bottom="'Facebook'"

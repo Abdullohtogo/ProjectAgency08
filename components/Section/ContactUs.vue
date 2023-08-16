@@ -73,6 +73,7 @@
           </p>
           <div class="flex flex-row md:gap-3 gap-2">
             <a
+              target="_blank"
               :href="item.url"
               class="p-2 rounded-full group transition transition-300 hover:bg-[#33573e] bg-[#e8f0fe33]"
               v-for="item in social"

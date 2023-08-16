@@ -241,7 +241,7 @@
                 <div class="absolute -right-5">
                   <img src="/icons/heart-transparent.svg" alt="" />
                 </div>
-                <div class="">
+                <div class="z-10">
                   <img
                     src="/icons/QR-light.svg"
                     alt=""
@@ -250,13 +250,13 @@
                 </div>
                 <div class="mt-4 flex gap-3 w-full">
                   <a
-                    href="/"
+                    :href="appstore"
                     class="basis-1/2 hover:opacity-80 transition-all duration-300"
                   >
                     <img src="/icons/Appstore.svg" alt="" class="w-full" />
                   </a>
                   <a
-                    href="/"
+                    :href="playstore"
                     class="basis-1/2 hover:opacity-80 transition-all duration-300"
                   >
                     <img src="/icons/Playmarket.svg" alt="" class="w-full" />
@@ -297,6 +297,8 @@ const gatheredmoneys = ref({
   investors: '18',
   invested: '0',
 })
+const appstore = ref(import.meta.env.VITE_APP_APP_STORE)
+const playstore = ref(import.meta.env.VITE_APP_PLAY_STORE)
 
 const ploader = ref(true)
 

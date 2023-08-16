@@ -1,8 +1,11 @@
 import { createI18n } from 'vue-i18n'
 
 import en from '@/languages/en.json'
+import kaa from '@/languages/kaa.json'
 import ru from '@/languages/ru.json'
 import uz from '@/languages/uz.json'
+import uzc from '@/languages/uzc.json'
+
 import { Html } from '.nuxt/components'
 
 export default defineNuxtPlugin((nuxtApp) => {
@@ -13,8 +16,10 @@ export default defineNuxtPlugin((nuxtApp) => {
       en,
       ru,
       uz,
+      kaa,
+      uzc,
     },
   })
-  
+
   nuxtApp.vueApp.use(i18n)
 })

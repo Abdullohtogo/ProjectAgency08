@@ -23,7 +23,11 @@
       />
     </template>
     <template #body>
-      <div v-for="(lang, index) in languages" :key="index" class="w-full hover:bg-green-100 bg-white transition transition-300">
+      <div
+        v-for="(lang, index) in languages"
+        :key="index"
+        class="w-full hover:bg-green-100 bg-white transition transition-300"
+      >
         <div
           class="flex items-center justify-between gap-4 py-3 pl-4 pr-2 cursor-pointer transition-300 hover:bg-white-100"
           @click="changeLocale(lang?.code)"
@@ -53,9 +57,19 @@ defineProps<Props>()
 
 const languages = [
   {
-    name: 'Русский',
-    code: 'ru',
-    flag: '/icons/flag/ru.svg',
+    name: "O'zbekcha",
+    code: 'uz',
+    flag: '/icons/flag/uz.svg',
+  },
+  {
+    name: 'Ўзбекча',
+    code: 'uzc',
+    flag: '/svg/flag/uz.svg',
+  },
+  {
+    name: 'Qaraqalpaqsha ',
+    code: 'kaa',
+    flag: '/svg/flag/uz.svg',
   },
   {
     name: 'English',
@@ -63,9 +77,9 @@ const languages = [
     flag: '/icons/flag/en.svg',
   },
   {
-    name: "O'zbekcha",
-    code: 'uz',
-    flag: '/icons/flag/uz.svg',
+    name: 'Русский',
+    code: 'ru',
+    flag: '/icons/flag/ru.svg',
   },
 ]
 

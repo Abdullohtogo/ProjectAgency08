@@ -13,7 +13,11 @@
       variant="primary"
       class="block mx-auto"
     >
-      <img src="/icons/down.svg" alt="" />
+      <img
+        src="/icons/down.svg"
+        :class="loading ? 'arrow cursor-wait' : ''"
+        alt="arrow-down"
+      />
     </CommonButton>
   </div>
 </template>
@@ -21,6 +25,7 @@
 <script setup lang="ts">
 interface Props {
   posts: Array
+  loading: boolean
   postsCount: number
 }
 const emit = defineEmits(['loadMore'])
@@ -30,3 +35,18 @@ function loadMore() {
 
 defineProps<Props>()
 </script>
+
+<style>
+.arrow {
+  animation: circle 2s infinite linear;
+}
+
+@keyframes circle {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+</style>
