@@ -6,7 +6,6 @@ export default defineNuxtConfig({
             htmlAttrs: {
                 lang: 'en',
             },
-            title: 'Hissa',
             link: [
                 {
                     rel: "icon",
@@ -33,15 +32,13 @@ export default defineNuxtConfig({
                     content: ' - App Store',
                 },
                 // { name: 'keywords', content: 'учебное учреждение, oliy talim, университет, university, образование, экономический университет' },
-                { hid: 'author', name: "author", content: "" },
-                { hid: 'og:locale', name: "og:locale", content: "uz_UZ" },
-                { hid: 'og:type', name: "og:type", content: "website" },
-                { hid: 'og:title', name: "og:title", content: "Hissa" },
-                { name: 'og:description', content: "O'z hissangizni biz bilan birga qo'shing!", },
-                { hid: 'og:image', name: 'og:image', content: '/og.png' },
+                { hid: 'author', property: "author", content: "" },
+                { hid: 'og:locale', property: "og:locale", content: "uz_UZ" },
+                { hid: 'og:type', property: "og:type", content: "website" },
+                { property: 'og:description', content: "O'z hissangizni biz bilan birga qo'shing!", },
+                { hid: 'og:image', property: 'og:image', content: '/og.png' },
                 // Twitter Cards
                 { name: "twitter:card", content: "summary_large_image" },
-                { name: "twitter:title", content: "Hissa" },
                 { name: 'twitter:description', content: "O'z hissangizni biz bilan birga qo'shing!", },
                 { name: "twitter:creator", content: "@hissa" },
                 { name: "twitter:site", content: "@hissa" },

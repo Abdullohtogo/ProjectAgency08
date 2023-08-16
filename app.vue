@@ -24,6 +24,11 @@ if ('mounted' in route.query) {
 setTimeout(() => {
   loading.value = false
 }, 1000);
+useSeoMeta({
+    title: 'Hissa',
+    ogTitle: 'Hissa',
+    twitterTitle: 'Hissa',
+  })
 </script>
 
 <style>

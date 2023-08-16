@@ -297,6 +297,8 @@ onMounted(async () => {
   await fetchPost()
   useSeoMeta({
     title: data?.value?.title,
+    ogTitle: data?.value?.title,
+    twitterTitle: data?.value?.title,
   })
 })
 
