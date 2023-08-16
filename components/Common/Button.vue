@@ -23,7 +23,7 @@
 <script lang="ts" setup>
 interface Props {
   label: {
-    type: String
+    type: string
     required: true
   }
   customButton: string

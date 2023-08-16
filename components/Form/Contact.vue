@@ -13,7 +13,7 @@
         <div class="md:mt-5 sm:mt-4 mt-2 flex flex-col md:gap-6 sm:gap-4 gap-2">
           <Input
             label="name"
-            placeholder="full_name"
+            placeholder="enter_full_name"
             type="text"
             :error="$v.name.$error"
             v-model="form.name"
