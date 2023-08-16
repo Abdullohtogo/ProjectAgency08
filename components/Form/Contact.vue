@@ -45,7 +45,7 @@
           </div>
         </div>
         <div
-          class="flex flex-wrap justify-between md:gap-6 gap-5 md:mt-[21px] sm:mt-4 mt-3"
+          class="flex sm:flex-row flex-col justify-between md:gap-6 gap-5 md:mt-[21px] sm:mt-4 mt-3"
         >
           <div class="">
             <CommonCheckbox
@@ -56,7 +56,7 @@
               :error="$v.agreement.$error"
             />
           </div>
-          <CommonButton :type="'submit'" :label="'send'" />
+          <CommonButton customButton="sm:w-[100px] !w-full" :type="'submit'" :label="'send'" />
         </div>
       </form>
     </div>
@@ -102,6 +102,7 @@ const validPhones = [
   '97',
   '98',
   '99',
+  '20',
   '77',
 ]
 
