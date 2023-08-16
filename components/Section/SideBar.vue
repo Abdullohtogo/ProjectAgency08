@@ -68,7 +68,7 @@ interface Props {
 defineProps<Props>()
 const installedApp = ref(false)
 
-// function isAppInstalled(deepLink) {
+// function isAppInstalled(deepLink: string) {
 //   return new Promise((resolve) => {
 //     window.location.href = deepLink
 

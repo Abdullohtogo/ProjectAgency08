@@ -28,7 +28,7 @@
           </template>
         </CommonButton>
         <NuxtLink to="/" class="inline-block">
-          <UIButton
+          <CommonButton
             icon-position="left"
             icon="icon-home text-white text-xl"
             :text="$t('back_to_home')"
