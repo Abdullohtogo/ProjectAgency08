@@ -3,7 +3,7 @@
     class="bg-[#FCFCFC] rounded-lg flex w-full items-center justify-between border border-gray-600"
   >
     <p
-      class="leading-130 md:text-lg sm:text-base text-sm bg-transparent text-[#181919] outline-none px-3 py-1 select-none"
+      class="leading-130 md:text-lg line-clamp-1 sm:text-base text-sm bg-transparent text-[#181919] outline-none px-3 py-1 select-none"
     >
       {{ currentRoute }}
     </p>
@@ -23,10 +23,11 @@
   </div>
 </template>
 
-
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 const link = window.location.href
+const route = useRoute()
+route.fullPath
 const clone = ref()
 const showTooltip = ref(false)
 const copy: any = () => {
@@ -43,7 +44,8 @@ function onFocus(e: any) {
 // eslint-disable-next-line vue/return-in-computed-property
 const currentRoute = computed(() => {
   if (window.location.href.length > 25) {
-    return window.location.href.slice(0, 30)
+    return window.location.href
   }
 })
+console.log(window.location.href)
 </script>

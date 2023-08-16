@@ -18,7 +18,7 @@
       <ul class="gap-4 lg:gap-8 hidden md:flex">
         <li v-for="item in menu" :key="item.id">
           <button
-            @click="item.id == 1 ? $router.push(item.url) : scrollTo(item.url)"
+            @click="scrollTo(item.url)"
             class="hover:text-green-400 text-sm leading-5 text-black-100 transition-all duration-300 ease-linear"
           >
             {{ $t(item.text) }}
@@ -39,59 +39,18 @@
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
-interface IPaginationResponse<T> {
-  count: number
-  next: string
-  prev: string
-  results: T[]
-}
-
-interface IProject {
-  id: string
-}
-
-const fetchProject = () => {
-  return useApi()
-    .$get<IPaginationResponse<IProject>>('care/api/v1/CareProjectList/')
-    .then((res) => {
-      ids.value = res.results[0].id
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-}
-const ids = ref()
-
-onMounted(() => {
-  fetchProject()
-})
-
 const showMenu = ref(false)
 const route = useRoute()
 const router = useRouter()
 
 function scrollTo(url: string) {
   console.log(document.getElementById(url))
-
-  if (route.path !== '/') {
-    router.push('/').finally(() => {
-      const section = document.getElementById(url)
-      setTimeout(() => {
-        section?.scrollIntoView({
-          behavior: 'smooth',
-          inline: 'center',
-          block: 'center',
-        })
-      }, 100)
-    })
-  } else {
-    const section = document.getElementById(url)
-    section?.scrollIntoView({
-      behavior: 'smooth',
-      inline: 'center',
-      block: 'center',
-    })
-  }
+  const section = document.getElementById(url)
+  section?.scrollIntoView({
+    behavior: 'smooth',
+    inline: 'center',
+    block: 'center',
+  })
 }
 
 const menu = computed(() => {
@@ -99,7 +58,7 @@ const menu = computed(() => {
     {
       id: 1,
       text: 'about_us',
-      url: `/profile/${ids.value}`,
+      url: `about`,
     },
     {
       id: 2,
@@ -114,7 +73,7 @@ const menu = computed(() => {
 
     {
       id: 4,
-      text: "for_contact",
+      text: 'for_contact',
       url: 'contact',
     },
   ]

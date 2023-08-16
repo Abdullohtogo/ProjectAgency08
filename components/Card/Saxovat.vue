@@ -194,6 +194,7 @@
             buttonStyle="flex items-center"
             variant="secondary"
             class="w-full"
+            @click="openHissa"
           >
             <template #before>
               <span class="icon-heart text-2xl text-white" />
@@ -211,16 +212,71 @@
             </template>
           </CommonButton>
         </div>
-
+        <Transition name="fade">
+          <div
+            class="fixed top-0 left-0 w-full h-full z-50 bg-modal hidden opacity-0"
+            v-if="showHissa"
+            @click="closeHissa()"
+            :class="{ '!block opacity-100 overflow-hidden ': showHissa }"
+          >
+            <div
+              @click="closeHissa()"
+              class="fixed top-1/2 left-1/2 transform -translate-x-1/2 flex items-end flex-col -translate-y-1/2 z-50 max-w-[376px]"
+            >
+              <span
+                class="icon-close text-white text-2xl translate-x-7 cursor-pointer"
+              />
+              <div
+                class="relativ max-w-[344px] w-full overflow-hidden bg-gradient-to-b from-app-banner-1 to-app-banner-2 rounded-28 flex flex-col justify-center items-center p-6 pt-8"
+              >
+                <div>
+                  <img src="/icons/hissa-main.svg" alt="" />
+                </div>
+                <h3 class="text-white text-center text-2xl font-semibold mt-5">
+                  {{ $t('download_app') }}
+                </h3>
+                <p class="text-green-200 mt-3 text-center">
+                  {{ $t('checkon_foundation') }}
+                </p>
+                <div class="absolute -right-5">
+                  <img src="/icons/heart-transparent.svg" alt="" />
+                </div>
+                <div class="">
+                  <img
+                    src="/icons/QR-light.svg"
+                    alt=""
+                    class="mt-8 shadow-qrlight"
+                  />
+                </div>
+                <div class="mt-4 flex gap-3 w-full">
+                  <a
+                    href="/"
+                    class="basis-1/2 hover:opacity-80 transition-all duration-300"
+                  >
+                    <img src="/icons/Appstore.svg" alt="" class="w-full" />
+                  </a>
+                  <a
+                    href="/"
+                    class="basis-1/2 hover:opacity-80 transition-all duration-300"
+                  >
+                    <img src="/icons/Playmarket.svg" alt="" class="w-full" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Transition>
         <Transition name="fade">
           <div
             class="fixed top-0 left-0 w-full h-full z-50 bg-modal hidden opacity-0"
             v-if="showModal"
+            @click="closeModal()"
             :class="{ '!block opacity-100 overflow-hidden ': showModal }"
           >
             <UIModal
               class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 sm:max-w-[434px] w-[70%] sm:w-full"
               @close="toggleModal"
+              @keyup.esc="onEscapeKeyUp"
               :show="showModal"
             />
           </div>
@@ -260,7 +316,13 @@ const props = defineProps({
 })
 
 const showModal = ref(false)
-
+const showHissa = ref(false)
+function closeHissa() {
+  showHissa.value = false
+}
+function openHissa() {
+  showHissa.value = true
+}
 function toggleModal() {
   if (showModal.value == true) {
     showModal.value = false
@@ -268,6 +330,25 @@ function toggleModal() {
     showModal.value = true
   }
 }
+function onEscapeKeyUp(event) {
+  if (event.key === 'Escape') {
+    closeModal()
+  }
+}
+function closeModal() {
+  showModal.value = false
+  document.body.style.overflow = 'auto'
+}
+onMounted(() => {
+  document.addEventListener('keyup', onEscapeKeyUp)
+  document.addEventListener('click', closeModal)
+})
+
+// Unmount the event listeners
+onUnmounted(() => {
+  document.removeEventListener('keyup', onEscapeKeyUp)
+  document.removeEventListener('click', closeModal)
+})
 
 const remainingDays = ref(0)
 const remainingHours = ref(0)

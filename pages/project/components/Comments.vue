@@ -11,7 +11,7 @@
       <CommonButton
         v-if="comments.length !== commentCount"
         @click="loadMore"
-        label="Yana yuklash"
+        label="load_more"
         variant="primary"
         class="block mx-auto mt-5"
       >

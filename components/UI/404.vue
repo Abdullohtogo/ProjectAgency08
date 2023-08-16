@@ -9,15 +9,14 @@
           <h1
             class="text-2xl lg:text-3.5xl text-dark font-semibold leading-130"
           >
-            Sahifa mavjud emas
+            {{ $t('no_page') }}
           </h1>
           <p class="text-base text-gray-700 font-normal leading-130">
-            Sahifa o‘chirib yuborilgan yoki siz noto‘g‘ri havola orqali sahifaga
-            o‘tdingiz
+            {{ $t('sorry_there_is_no_page_like_this') }}
           </p>
         </div>
         <CommonButton
-          label="Asosiyga qaytish"
+          label="go_back_main"
           variant="secondary"
           customButton="!gap-1"
           class="w-full"
@@ -27,13 +26,6 @@
             <img src="/icons/home.svg" alt="" />
           </template>
         </CommonButton>
-        <NuxtLink to="/" class="inline-block">
-          <CommonButton
-            icon-position="left"
-            icon="icon-home text-white text-xl"
-            :text="$t('back_to_home')"
-          />
-        </NuxtLink>
       </div>
     </div>
   </div>

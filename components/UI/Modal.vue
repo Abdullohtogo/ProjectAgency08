@@ -4,7 +4,9 @@
       <div
         class="pt-4 pb-2.5 px-6 flex items-center justify-between border-b border-green-100"
       >
-        <p class="font-semibold leading-130 text-black-100">Поделиться</p>
+        <p class="font-semibold leading-130 text-black-100">
+          {{ $t('share') }}
+        </p>
         <span
           @click="close"
           class="icon-close hover:cursor-pointer text-2xl leading-130 text-gray-200"
@@ -12,7 +14,7 @@
       </div>
       <div class="flex flex-col items-center px-5 pb-5 pt-[30px]">
         <p class="text-sm font-medium leading-130 mb-4">
-          Поделиться в социальных сетях
+          {{ $t('share_on_socials') }}
         </p>
         <div class="flex items-center gap-6">
           <a href="">

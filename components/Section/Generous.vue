@@ -13,7 +13,7 @@
         v-if="data.length !== donatCount"
         variant="primary"
         @click="loadMore"
-        label="Yana yuklash"
+        label="load_more"
         class="mt-3 block mx-auto"
       >
         <img src="/icons/down.svg" alt="" />

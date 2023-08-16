@@ -1,7 +1,7 @@
 <template>
   <div class="sm:p-5 p-3 !pt-1">
     <div class="lg:px-[92px] md:px-10 px-5 mt-4">
-      <CommonInput src="/icons/search.svg" type="text" placeholder="search" />
+      <CommonSearch v-model="search" placeholder="search" />
       <div class="grid w-full items-start gap-y-2 gap-x-4 sm:mt-4 mt-3">
         <div
           v-for="(item, index) in faqs"
@@ -42,7 +42,7 @@
     <CommonButton
       @click="$emit('loadMore')"
       v-if="faqs.length !== faqCount"
-      label="Yana yuklash"
+      label="load_more"
       variant="primary"
       class="mx-auto"
     >
@@ -51,7 +51,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import CollapseTransition from '@ivanv/vue-collapse-transition/src/CollapseTransition.vue'
+import CommonSearch from '@/components/Common/Search.vue'
 
 interface Props {
   faqCount: number
@@ -61,6 +61,44 @@ interface Props {
     answer: number
   }
 }
+async function useUpdateRouteQuery(key: string, value: string | undefined) {
+  const router = useRouter()
+  const routeQuery = { ...router.currentRoute.value.query }
+
+  if (!value) {
+    delete routeQuery[key]
+  } else {
+    routeQuery[key] = value
+  }
+
+  await router.replace({ query: routeQuery })
+}
+
+const timeouts: Record<string, any> = {}
+
+const cTimeout = (key = 'key') => {
+  if (timeouts[key]) {
+    clearTimeout(timeouts[key])
+    timeouts[key] = undefined
+  }
+}
+const debounce = (key = 'key', fn = () => {}, timeout = 500) => {
+  const sTimeout = (key: string, fn: any, timeout: number) => {
+    cTimeout(key)
+
+    timeouts[key] = setTimeout(() => {
+      try {
+        fn()
+      } catch (e) {}
+
+      timeouts[key] = undefined
+    }, timeout)
+  }
+
+  return sTimeout(key, fn, timeout)
+}
+
+const route = useRoute()
 
 defineProps<Props>()
 defineEmits(['loadMore'])

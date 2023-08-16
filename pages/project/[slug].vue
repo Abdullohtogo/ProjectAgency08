@@ -2,7 +2,7 @@
   <div class="container sm:mt-6 mt-3 sm:mb-16 mb-4">
     <div class="md:grid flex flex-col grid-cols-12 gap-6">
       <div class="md:col-span-8">
-        <CardSaxovat v-bind="{ data }" :end_time="new Date(data?.end_time)" />
+        <CardSaxovat :data="data" :end_time="new Date(data?.end_time)" />
         <div class="sm:rounded-28 rounded-2xl bg-white backdrop-filter mt-5">
           <div class="border-b border-gray-300">
             <div
@@ -44,11 +44,7 @@
           </div>
           <Transition mode="out-in" name="fade">
             <div :key="currentTab">
-              <ComponentsAbout
-                :detail="projectDetail"
-                v-if="currentTab === 0"
-                :loading="detailLoading"
-              />
+              <ComponentsAbout :detail="data" v-if="currentTab === 0" />
               <ComponentsPosts
                 :posts="posts"
                 :postsCount="postCount"
@@ -87,10 +83,10 @@
 import { onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
-import ComponentsAbout from '@/pages/profile/components/About.vue'
-import ComponentsComments from '@/pages/profile/components/Comments.vue'
-import ComponentsFAQ from '@/pages/profile/components/FAQ.vue'
-import ComponentsPosts from '@/pages/profile/components/Posts.vue'
+import ComponentsAbout from '@/pages/project/components/About.vue'
+import ComponentsComments from '@/pages/project/components/Comments.vue'
+import ComponentsFAQ from '@/pages/project/components/FAQ.vue'
+import ComponentsPosts from '@/pages/project/components/Posts.vue'
 
 const { t } = useI18n()
 const route = useRoute()
@@ -141,19 +137,6 @@ interface IPaginationResponse<T> {
   results: T[]
 }
 
-interface IProject {
-  id: string
-}
-
-const fetchProject = () => {
-  return useApi().$get<IPaginationResponse<IProject>>(
-    'care/api/v1/CareProjectList/'
-  )
-}
-const { data: projectList } = useAsyncData('fetchMuhammadjonAka', () =>
-  fetchProject()
-)
-
 interface IFaq {
   count: number
   next: string
@@ -163,7 +146,7 @@ interface IFaq {
 
 const faqs = ref<IFaq[]>([])
 const faqCount = ref(0)
-
+const faqSearch = ref('')
 const fetchFaq = () => {
   return useApi()
     .$get<IPaginationResponse<IFaq>>(
@@ -287,19 +270,21 @@ const fetchProjectDetail = () => {
     `care/api/v1/landing/CareProjectDetail/${route.params.slug}/`
   )
 }
-const { data: projectDetail } = useAsyncData('fetchMuhammadjon', () =>
+const { data, error } = useAsyncData('fetchMuhammadjonAka', () =>
   fetchProjectDetail()
 )
+if (error.value) {
+  showError({ statusCode: 404 })
+}
 
-const data = computed(() =>
-  projectList.value?.results.find((el) => el.id === route.params.slug)
-)
 onMounted(async () => {
-  // await fetchProject()
   await fetchComment()
   await fetchDonat()
   await fetchFaq()
   await fetchPost()
+  useSeoMeta({
+    title: data?.value?.title,
+  })
 })
 
 function activate(index) {

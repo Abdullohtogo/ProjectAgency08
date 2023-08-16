@@ -88,17 +88,20 @@
           class="static lg:absolute lg:top-1/2 lg:-translate-y-1/2 translate-y-5"
           @open="toggleModal"
         />
-        <div
-          class="fixed top-0 left-0 w-full h-full z-50 bg-modal hidden opacity-0"
-          :class="{ '!block opacity-100 overflow-hidden ': showModal }"
-        >
-          <FormModal
-            class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 sm:max-w-[434px] w-[70%] sm:w-full"
-            v-show="showModal"
-            @close="toggleModal"
-            :show="showModal"
-          />
-        </div>
+        <Transition name="fade">
+          <div
+            v-if="showModal"
+            @click="onClickOutside()"
+            class="fixed top-0 left-0 w-full h-full z-50 bg-modal hidden opacity-0"
+            :class="{ '!block opacity-100 overflow-hidden ': showModal }"
+          >
+            <FormModal
+              class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 sm:max-w-[434px] w-[70%] sm:w-full"
+              @close="toggleModal"
+              :show="showModal"
+            />
+          </div>
+        </Transition>
       </div>
     </div>
   </div>
@@ -119,6 +122,10 @@ function formatPhoneNumber(number: string) {
   }`
 }
 
+function onClickOutside() {
+  document.body.style.overflow = 'auto'
+  showModal.value = false
+}
 const contacts = ref()
 
 const fetchCareContact = () => {

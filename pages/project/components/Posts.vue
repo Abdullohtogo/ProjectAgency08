@@ -9,7 +9,7 @@
     <CommonButton
       v-if="posts.length !== postsCount"
       @click="loadMore"
-      label="Yana yuklash"
+      label="load_more"
       variant="primary"
       class="block mx-auto"
     >

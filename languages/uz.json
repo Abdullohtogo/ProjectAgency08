@@ -62,5 +62,13 @@
   "posts": "Postlar",
   "faq": "T.B.S",
   "comments": "Izohlar",
-  "search": "Izlash"
+  "search": "Izlash",
+  "go_back": "Ortga qaytish",
+  "load_more": "Yana yuklash",
+  "go_back_main": "Asosiyga qaytish",
+  "copied": "nusxalangan",
+  "share": "Ulashish",
+  "share_on_socials": "Ijtimoiy tarmoqlarda ulashing",
+  "no_page": "Sahifa mavjud emas",
+  "sorry_there_is_no_page_like_this": "Sahifa o‘chirib yuborilgan yoki siz noto‘g‘ri havola orqali sahifaga o‘tdingiz"
 }
