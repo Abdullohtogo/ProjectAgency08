@@ -56,7 +56,7 @@
               :error="$v.agreement.$error"
             />
           </div>
-          <CommonButton customButton="sm:w-[100px] !w-full" :type="'submit'" :label="'send'" />
+          <CommonButton customButton="sm:!w-auto !w-full" :type="'submit'" :label="'send'" />
         </div>
       </form>
     </div>
