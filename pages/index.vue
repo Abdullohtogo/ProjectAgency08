@@ -5,6 +5,7 @@
   <SectionAppBanner id="ilova" />
   <SectionPartners id="fonds" @scroll="scrollToSection()" class="mb-10" />
   <SectionContactUs id="contact" class="mb-[96px]" />
+  <div></div>
 </template>
 <script lang="ts" setup>
 function scrollToSection() {
