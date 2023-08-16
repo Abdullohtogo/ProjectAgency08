@@ -18,9 +18,9 @@
     />
     <span class="pl-8 max-w-[301px] text-gray-200  sm:text-base text-sm leading-130">
       <slot class="">
-        <NuxtLink :href="url" target="_blank" class="text-[#4489F7] font-medium">
+        <a :href="url" target="_blank" class="text-[#4489F7] font-medium">
           {{ $t(labelStart) }}
-        </NuxtLink>
+        </a>
         {{ $t(label) }}
       </slot>
     </span>

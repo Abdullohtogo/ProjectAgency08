@@ -51,6 +51,7 @@
             <CommonCheckbox
               v-model="form.agreement"
               :label-start="'user_terms'"
+              :url="userPrivacy"
               :label="'agreements_for'"
               :error="$v.agreement.$error"
             />
@@ -77,7 +78,7 @@ interface IContactForm {
   message?: string
   agreement?: boolean
 }
-
+const userPrivacy = ref(`${import.meta.env.VITE_APP_ID_URL}/help-center/privacy-policy`)
 const form = reactive<IContactForm>({
   name: '',
   phoneNumber: '',

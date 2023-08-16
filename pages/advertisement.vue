@@ -71,7 +71,7 @@
         >
           <Checkbox
             v-model="form.values.privacy_policy"
-            url="/page/terms-of-use"
+            :url="userPrivacy"
             label-start="user_terms"
             label="agreements_for"
             :error="form.$v.value.privacy_policy.$error"
@@ -90,11 +90,14 @@
 
 <script setup lang="ts">
 import { required, sameAs } from '@vuelidate/validators'
-import {useI18n} from "vue-i18n";
+import { useI18n } from 'vue-i18n'
 
 import Checkbox from '~/components/Common/Checkbox.vue'
 
-const {t} = useI18n()
+const userPrivacy = ref(
+  `${import.meta.env.VITE_APP_ID_URL}/help-center/privacy-policy`
+)
+const { t } = useI18n()
 
 const form = useForm(
   {
