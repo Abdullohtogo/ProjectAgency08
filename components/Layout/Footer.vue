@@ -281,7 +281,7 @@ const links = [
   {
     id: 1,
     text: 'adv',
-    url: '/advertisement',
+    url: '/',
   },
   {
     id: 2,
