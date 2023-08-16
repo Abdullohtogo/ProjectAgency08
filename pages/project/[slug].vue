@@ -241,7 +241,7 @@ const fetchPost = () => {
 const fetchMorePost = () => {
   postParams.offset += postParams.limit
   postsLoading.value = true
-  fetchPost().then(() => postsLoading.value = false)
+  fetchPost().then(() => (postsLoading.value = false))
 }
 
 interface IComment {
@@ -275,7 +275,7 @@ const fetchComment = () => {
 const fetchMoreComment = () => {
   commentLoading.value = true
   commentParams.offset += commentParams.limit
-  fetchComment().then(() => commentLoading.value = false)
+  fetchComment().then(() => (commentLoading.value = false))
 }
 
 const fetchProjectDetail = () => {
