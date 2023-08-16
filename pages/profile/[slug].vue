@@ -87,7 +87,6 @@
 import { onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
-import CommonBlockPreloader from '@/components/Common/BlockPreloader.vue'
 import ComponentsAbout from '@/pages/profile/components/About.vue'
 import ComponentsComments from '@/pages/profile/components/Comments.vue'
 import ComponentsFAQ from '@/pages/profile/components/FAQ.vue'

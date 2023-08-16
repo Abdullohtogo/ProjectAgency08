@@ -22,6 +22,7 @@
             <Input
               label="phone_num"
               type="phone"
+              placeholder=""
               v-model="form.phoneNumber"
               src="/icons/flag.svg"
               v-maska="'## ### ## ##'"

@@ -17,7 +17,7 @@
         :type="type"
         class="outline-0 text-sm text-black-100 leading-130 bg-transparent w-full caret-green-400 placeholder:text-sm"
         :maxlength="maxlength"
-        :placeholder="placeholder"
+        :placeholder="$t(placeholder)"
       />
     </div>
   </div>
