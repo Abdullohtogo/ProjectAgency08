@@ -45,12 +45,26 @@ const router = useRouter()
 
 function scrollTo(url: string) {
   console.log(document.getElementById(url))
-  const section = document.getElementById(url)
-  section?.scrollIntoView({
-    behavior: 'smooth',
-    inline: 'center',
-    block: 'center',
-  })
+
+  if (route.path !== '/') {
+    router.push('/').finally(() => {
+      const section = document.getElementById(url)
+      setTimeout(() => {
+        section?.scrollIntoView({
+          behavior: 'smooth',
+          inline: 'center',
+          block: 'center',
+        })
+      }, 100)
+    })
+  } else {
+    const section = document.getElementById(url)
+    section?.scrollIntoView({
+      behavior: 'smooth',
+      inline: 'center',
+      block: 'center',
+    })
+  }
 }
 
 const menu = computed(() => {

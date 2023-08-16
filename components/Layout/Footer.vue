@@ -63,7 +63,10 @@
                 :key="item.id"
                 class="text-black-100 hover:text-green-300 transition-all duration-300 ease-in-out leading-130"
               >
-                <a target="_blank" :href="item.url">{{ $t(item.text) }}</a>
+                <a v-if="item.id == 3" target="_blank" :href="item.url">{{
+                  $t(item.text)
+                }}</a>
+                <button @click="scrollTo(item.url)">{{ $t(item.text) }}</button>
               </li>
             </ul>
           </div>
@@ -172,17 +175,41 @@ onMounted(() => {
 })
 const contacts = ref()
 const businePanel = import.meta.env.VITE_APP_BUSINESS_PANEL
+const router = useRouter()
+const route = useRoute()
+function scrollTo(url: string) {
+  console.log(document.getElementById(url))
 
+  if (route.path !== '/') {
+    router.push('/').finally(() => {
+      const section = document.getElementById(url)
+      setTimeout(() => {
+        section?.scrollIntoView({
+          behavior: 'smooth',
+          inline: 'center',
+          block: 'center',
+        })
+      }, 100)
+    })
+  } else {
+    const section = document.getElementById(url)
+    section?.scrollIntoView({
+      behavior: 'smooth',
+      inline: 'center',
+      block: 'center',
+    })
+  }
+}
 const main = [
   {
     id: 1,
     text: 'about_us',
-    url: businePanel,
+    url: 'about',
   },
   {
     id: 2,
     text: 'advantages',
-    url: businePanel,
+    url: 'afzalliklar',
   },
   {
     id: 3,
@@ -192,7 +219,7 @@ const main = [
   {
     id: 5,
     text: 'for_contact',
-    url: businePanel,
+    url: 'contact',
   },
 ]
 

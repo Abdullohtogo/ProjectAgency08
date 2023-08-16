@@ -10,7 +10,7 @@
             v-for="(item, index) in menu"
             :key="index"
             class="flex-center flex-col gap-3 group font-semibold text-[28px] leading-130 text-black-200 hover:text-green-400 transition-all duration-300 ease-in-out"
-            @click="index == 1 ? $router.push(item.url) : scrollTo(item.url)"
+            @click="scrollTo(item.url)"
           >
             {{ $t(item?.text) }}
           </button>
