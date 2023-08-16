@@ -25,6 +25,10 @@ export default defineNuxtConfig({
             ],
             meta: [
                 {
+                    name: 'description',
+                    content: "O'z hissangizni biz bilan birga qo'shing!",
+                },
+                {
                     name: 'smartbanner:price-suffix-apple',
                     content: ' - App Store',
                 },
