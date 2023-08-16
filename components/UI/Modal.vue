@@ -17,7 +17,7 @@
           {{ $t('share_on_socials') }}
         </p>
         <div class="flex items-center gap-6">
-          <a href="">
+          <button @click="shareCount(), share('facebook')">
             <i
               ><svg
                 width="46"
@@ -39,8 +39,8 @@
                 />
               </svg>
             </i>
-          </a>
-          <a href="">
+          </button>
+          <button @click="shareCount(), share('twitter')" href="">
             <i>
               <svg
                 width="46"
@@ -66,8 +66,8 @@
                 />
               </svg>
             </i>
-          </a>
-          <a href="">
+          </button>
+          <button @click="shareCount() , share('telegram')" href="">
             <i
               ><svg
                 width="46"
@@ -106,8 +106,8 @@
                 </defs>
               </svg>
             </i>
-          </a>
-          <a href="">
+          </button>
+          <button @click="shareCount(), share('whatsapp')" href="">
             <i
               ><svg
                 width="46"
@@ -161,7 +161,7 @@
                 </defs>
               </svg>
             </i>
-          </a>
+          </button>
         </div>
         <div class="h-[1px] w-full bg-gray-100 my-5" />
         <ClibBoard />
@@ -175,9 +175,63 @@ import ClibBoard from '@/components/UI/ClibBoard.vue'
 
 interface Props {
   show: boolean
+  id: string
 }
-
 const props = defineProps<Props>()
+
+function shareCount() {
+  useApi()
+    .$post('care/api/v1/ProjectShare/', {
+      body: {
+        project: props.id,
+      },
+    })
+    .then((res) => {
+      console.log(res)
+    })
+    .catch((err) => {
+      if (err?.status === 500) {
+        console.log('server_error')
+      }
+      if (err?.status === 403) {
+        console.log('u_need_to_auth')
+      }
+      console.log(err)
+    })
+}
+const share = (network: string) => {
+  if (process.client) {
+    switch (network) {
+      case 'telegram':
+        window.open(
+          `https://t.me/share/url?url=${link.value}&text=help`,
+          '_blank'
+        )
+        break
+      case 'twitter':
+        window.open(
+          `https://twitter.com/intent/tweet?text=help\n\n+${link.value}`,
+          '_blank'
+        )
+        break
+      case 'facebook':
+        window.open(
+          `https://www.facebook.com/sharer/sharer.php?u=${link.value}`,
+          '_blank'
+        )
+        break
+      case 'whatsapp':
+        window.open(
+          `https://api.whatsapp.com/send?text=help\n${link.value}`,
+          '_blank'
+        )
+        break
+    }
+  }
+}
+const link = ref(
+  `${window.location.origin}/c/${props.id}/comments?comment=${props.id}`
+)
 
 const emit = defineEmits(['close'])
 

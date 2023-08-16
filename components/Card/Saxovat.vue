@@ -205,7 +205,7 @@
             buttonStyle="flex items-center"
             variant="darker"
             class="w-full"
-            @click="toggleModal()"
+            @click="openModal()"
           >
             <template #before>
               <span class="icon-share text-2xl text-green-400" />
@@ -224,6 +224,7 @@
               class="fixed top-1/2 left-1/2 transform -translate-x-1/2 flex items-end flex-col -translate-y-1/2 z-50 max-w-[376px]"
             >
               <span
+                @click="closeHissa()"
                 class="icon-close text-white text-2xl translate-x-7 cursor-pointer"
               />
               <div
@@ -269,14 +270,14 @@
         <Transition name="fade">
           <div
             class="fixed top-0 left-0 w-full h-full z-50 bg-modal hidden opacity-0"
-            v-if="showModal"
+            v-if="showModal == true"
             @click="closeModal()"
             :class="{ '!block opacity-100 overflow-hidden ': showModal }"
           >
             <UIModal
               class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 sm:max-w-[434px] w-[70%] sm:w-full"
               @close="toggleModal"
-              @keyup.esc="onEscapeKeyUp"
+              :id="data?.id"
               :show="showModal"
             />
           </div>
@@ -325,6 +326,11 @@ function closeHissa() {
 function openHissa() {
   showHissa.value = true
 }
+function openModal() {
+  showModal.value = true
+  console.log('modal');
+  
+}
 function toggleModal() {
   if (showModal.value == true) {
     showModal.value = false
@@ -332,25 +338,10 @@ function toggleModal() {
     showModal.value = true
   }
 }
-function onEscapeKeyUp(event) {
-  if (event.key === 'Escape') {
-    closeModal()
-  }
-}
 function closeModal() {
   showModal.value = false
   document.body.style.overflow = 'auto'
 }
-onMounted(() => {
-  document.addEventListener('keyup', onEscapeKeyUp)
-  document.addEventListener('click', closeModal)
-})
-
-// Unmount the event listeners
-onUnmounted(() => {
-  document.removeEventListener('keyup', onEscapeKeyUp)
-  document.removeEventListener('click', closeModal)
-})
 
 const remainingDays = ref(0)
 const remainingHours = ref(0)
