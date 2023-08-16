@@ -2,7 +2,7 @@
   <div>
     <div class="bg-white rounded-2xl">
       <div
-        class="pt-6 pb-5 px-4 flex items-center justify-between border-b border-green-100"
+        class="pt-4 pb-2.5 px-6 flex items-center justify-between border-b border-green-100"
       >
         <p class="font-semibold leading-130 text-black-100">Поделиться</p>
         <span
