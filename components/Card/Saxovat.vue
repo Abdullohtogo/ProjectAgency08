@@ -328,7 +328,6 @@ function openHissa() {
 }
 function openModal() {
   showModal.value = true
-  console.log('modal');
   
 }
 function toggleModal() {

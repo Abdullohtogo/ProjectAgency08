@@ -179,8 +179,6 @@ const businePanel = import.meta.env.VITE_APP_BUSINESS_PANEL
 const router = useRouter()
 const route = useRoute()
 function scrollTo(url: string) {
-  console.log(document.getElementById(url))
-
   if (route.path !== '/') {
     router.push('/').finally(() => {
       const section = document.getElementById(url)

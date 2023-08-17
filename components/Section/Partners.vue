@@ -11,6 +11,7 @@
       <i18n-t
         keypath="partners_who_support_us"
         tag="h2"
+        style="line-height: 1.5;"
         class="text-green-500 lg:text-4xl md:text-3xl sm:text-2xl text-xl leading-130 font-bold text-center max-w-[666px]"
       >
         <template #store>

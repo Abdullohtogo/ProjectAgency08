@@ -1,5 +1,5 @@
 <template>
-  <div class="sm:p-5 p-3 !pt-1">
+  <div v-if="faqCount !== 0" class="sm:p-5 p-3 !pt-1">
     <div class="lg:px-[92px] md:px-10 px-5 mt-4">
       <CommonSearch v-model="search" placeholder="search" />
       <div class="grid w-full items-start gap-y-2 gap-x-4 sm:mt-4 mt-3">
@@ -52,6 +52,15 @@
         alt=""
       />
     </CommonButton>
+  </div>
+  <div v-else class="flex flex-col py-12 w-full items-center justify-center">
+    <img src="/icons/no-data.svg" alt="no-data" class="mb-4" />
+    <p class="text-[#121C25] text-2xl font-medium leading-130">
+      {{ $t('no_faq') }}
+    </p>
+    <p class="text-[#8E9BA8] leading-130 text-base">
+      {{ $t('no_project_like_this') }}
+    </p>
   </div>
 </template>
 <script setup lang="ts">
