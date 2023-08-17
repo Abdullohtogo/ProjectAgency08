@@ -44,7 +44,6 @@ const route = useRoute()
 const router = useRouter()
 
 function scrollTo(url: string) {
-  console.log(document.getElementById(url))
 
   if (route.path !== '/') {
     router.push('/').finally(() => {
@@ -92,5 +91,4 @@ const menu = computed(() => {
     },
   ]
 })
-// console.log(ids.value)
 </script>

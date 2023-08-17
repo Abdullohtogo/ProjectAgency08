@@ -56,7 +56,11 @@
               :error="$v.agreement.$error"
             />
           </div>
-          <CommonButton customButton="sm:!w-auto !w-full" :type="'submit'" :label="'send'" />
+          <CommonButton
+            customButton="sm:!w-auto !w-full"
+            :type="'submit'"
+            :label="'send'"
+          />
         </div>
       </form>
     </div>
@@ -78,7 +82,9 @@ interface IContactForm {
   message?: string
   agreement?: boolean
 }
-const userPrivacy = ref(`${import.meta.env.VITE_APP_ID_URL}/help-center/privacy-policy`)
+const userPrivacy = ref(
+  `${import.meta.env.VITE_APP_ID_URL}/help-center/privacy-policy`
+)
 const form = reactive<IContactForm>({
   name: '',
   phoneNumber: '',
@@ -143,9 +149,6 @@ const submitForm = () => {
           full_name: form?.name,
           message: form?.message,
         },
-      })
-      .then((res) => {
-        console.log(res)
       })
       .finally(() => {
         form.agreement = false
