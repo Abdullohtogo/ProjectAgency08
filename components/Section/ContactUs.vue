@@ -77,6 +77,7 @@
               :href="item.url"
               class="p-2 rounded-full group transition transition-300 hover:bg-[#33573e] bg-[#e8f0fe33]"
               v-for="item in social"
+              v-tooltip.top="item.name"
               :key="item.id"
             >
               <img :src="item.src" alt="social-icon" />
@@ -192,24 +193,24 @@ const social = computed(() => {
       id: 1,
       url: contacts.value?.instagram,
       src: '/icons/instagram1.svg',
-      name: 'instagram',
+      name: 'Instagram',
     },
     {
       id: 2,
       url: contacts.value?.youtube,
       src: '/icons/youtube1.svg',
-      name: 'youtube',
+      name: 'YouTube',
     },
     {
       id: 3,
       url: contacts.value?.twitter,
       src: '/icons/twitter1.svg',
-      name: 'twitter',
+      name: 'X (Twitter)',
     },
     {
       id: 4,
       url: contacts.value?.telegram,
-      name: 'telegram',
+      name: 'Telegram',
       src: '/icons/telegram1.svg',
     },
   ]
