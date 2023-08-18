@@ -8,6 +8,7 @@
         <i18n-t
           keypath="get_helped_to_resp_by"
           tag="h2"
+          style="line-height: 1.6;"
           class="text-green-500 lg:text-4xl md:text-3xl text-xl font-bold text-center max-w-[806px]"
         >
           <template #store>

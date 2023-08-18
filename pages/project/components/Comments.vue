@@ -1,6 +1,6 @@
 <template>
   <div class="sm:p-5 p-3 !pt-6">
-    <div class="flex flex-col items-center">
+    <div v-if="commentCount !== 0" class="flex flex-col items-center">
       <div class="flex flex-col gap-4">
         <CardComment
           v-for="(card, index) in comments"
@@ -21,6 +21,15 @@
           alt="arrow-down"
         />
       </CommonButton>
+    </div>
+    <div v-else class="flex flex-col py-12 w-full items-center justify-center">
+      <img src="/icons/no-data.svg" alt="no-data" class="mb-4" />
+      <p class="text-[#121C25] text-2xl font-medium leading-130">
+        {{ $t('no_comment') }}
+      </p>
+      <p class="text-[#8E9BA8] leading-130 text-base">
+        {{ $t('no_project_like_this') }}
+      </p>
     </div>
   </div>
 </template>

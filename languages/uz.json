@@ -17,7 +17,7 @@
   "hissa": "hissa",
   "all_founds_on_ur_hands": "Barcha fondlar qo‘lingiz ostida",
   "check_founds_on_phone": "Fondlar va xayriya loyihalarni smartfoningiz orqalik kuzatib boring",
-  "get_helped_to_resp_by": "Respublikamizdagi xayriya sohasi rivojiga ulkan {store} hissa qo'shish",
+  "get_helped_to_resp_by": "Respublikamizdagi xayriya sohasi rivojiga ulkan {store} qo'shish",
   "partners_who_support_us": "Hozirgi kunda {store} dan ortiq fondlar biz bilan birga hamkorlik qilishmoqda",
   "with_us_you_are_the_best": "Biz birlikda ishtirok etish va umumiy kuchlik qobiliyatiga e'tibor beramiz. Başqa xayriya fondlari bilan hamkorlik qilishimiz uchun andisha bilan inonamiz. Hamkorlik orqali natijalar qozonish va turli ijtimoiy muammolarni yechishga erishamiz, masalan, bolalar yordamini ta'minlash, mushkul holatdagi oilalarga yordam berish, ta'limning rivojlanishi va sog'liqni saqlashga yo'l ochish kabi.",
   "get_with_us": "Bizning safimizga qo‘shilish",
@@ -78,5 +78,9 @@
   "share": "Ulashish",
   "share_on_socials": "Ijtimoiy tarmoqlarda ulashing",
   "no_page": "Sahifa mavjud emas",
-  "sorry_there_is_no_page_like_this": "Sahifa o‘chirib yuborilgan yoki siz noto‘g‘ri havola orqali sahifaga o‘tdingiz"
+  "sorry_there_is_no_page_like_this": "Sahifa o‘chirib yuborilgan yoki siz noto‘g‘ri havola orqali sahifaga o‘tdingiz",
+  "no_project_like_this": "Ushbu loyihaga xozircha izoh qoldirilmagan",
+  "no_posts": "Postlar mavjud emas",
+  "no_faq": "Savollar mavjud emas",
+  "no_comment": "Izohlar mavjud emasu"  
 }

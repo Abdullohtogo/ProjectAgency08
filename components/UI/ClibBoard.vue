@@ -47,5 +47,4 @@ const currentRoute = computed(() => {
     return window.location.href
   }
 })
-console.log(window.location.href)
 </script>
