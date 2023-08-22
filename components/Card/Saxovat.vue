@@ -1,4 +1,5 @@
 <template>
+  <pre>{{ data }}</pre>
   <div class="bg-white/90 rounded-28 sm:p-5 p-3">
     <div class="relative">
       <CommonBlockPreloader

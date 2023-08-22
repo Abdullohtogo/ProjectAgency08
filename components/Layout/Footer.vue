@@ -126,12 +126,12 @@
           </p>
           <ul class="flex gap-3 flexx-wrap sm:flex-nowrap">
             <li v-for="item in links" :key="item.id">
-              <router-link
-                :to="item.url"
+              <a
+                :href="item.url"
                 class="text-black-100 hover:text-green-300 text-sm transition-all duration-300 ease-in-out leading-130"
               >
                 {{ $t(item.text) }}
-              </router-link>
+              </a>
             </li>
           </ul>
         </div>
@@ -274,8 +274,11 @@ const share = computed(() => {
     },
   ]
 })
+const userPrivacy = ref(
+  `${import.meta.env.VITE_APP_ID_URL}/help-center/privacy-policy`
+)
 
-const links = [
+const links = reactive([
   {
     id: 1,
     text: 'adv',
@@ -289,9 +292,9 @@ const links = [
   {
     id: 3,
     text: 'use_terms',
-    url: '/',
+    url: userPrivacy,
   },
-]
+])
 </script>
 
 <style>

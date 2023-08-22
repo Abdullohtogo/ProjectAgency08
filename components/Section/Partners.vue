@@ -43,6 +43,7 @@
         @click="$emit('scroll')"
         label="for_contact"
         variant="primary"
+        customButton="!px-[45px]"
       />
       <a :href="businePanel" target="_blank">
         <CommonButton

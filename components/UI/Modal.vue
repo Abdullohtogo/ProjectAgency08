@@ -17,7 +17,10 @@
           {{ $t('share_on_socials') }}
         </p>
         <div class="flex items-center gap-6">
-          <button @click="shareCount(), share('facebook')">
+          <button
+            v-tooltip.top="'Facebook'"
+            @click="shareCount(), share('facebook')"
+          >
             <i
               ><svg
                 width="46"
@@ -40,7 +43,11 @@
               </svg>
             </i>
           </button>
-          <button @click="shareCount(), share('twitter')" href="">
+          <button
+            v-tooltip.top="'X (Twitter)'"
+            @click="shareCount(), share('twitter')"
+            href=""
+          >
             <i>
               <svg
                 width="46"
@@ -67,7 +74,11 @@
               </svg>
             </i>
           </button>
-          <button @click="shareCount() , share('telegram')" href="">
+          <button
+            v-tooltip.top="'Telegram'"
+            @click="shareCount(), share('telegram')"
+            href=""
+          >
             <i
               ><svg
                 width="46"
@@ -107,7 +118,11 @@
               </svg>
             </i>
           </button>
-          <button @click="shareCount(), share('whatsapp')" href="">
+          <button
+            v-tooltip.top="'Whatsapp'"
+            @click="shareCount(), share('whatsapp')"
+            href=""
+          >
             <i
               ><svg
                 width="46"
