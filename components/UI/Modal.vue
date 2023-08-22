@@ -214,12 +214,13 @@ function shareCount() {
       console.log(err)
     })
 }
+const shareText = ref('help')
 const share = (network: string) => {
   if (process.client) {
     switch (network) {
       case 'telegram':
         window.open(
-          `https://t.me/share/url?url=${link.value}&text=help`,
+          `https://t.me/share/url?url=${link.value}&text=${shareText.value}`,
           '_blank'
         )
         break

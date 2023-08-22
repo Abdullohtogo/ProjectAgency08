@@ -6,7 +6,7 @@
       { '!text-blue !opacity-100': showDropdown },
       { 'text-white': variant === 'transparent' },
     ]"
-    body-class="!w-[138px] border !border-[2px] !border-gray-100 bg-white rounded-xl"
+    :body-class="`!w-[138px] border !border-[2px] !border-gray-100 bg-white rounded-xl` && currentLanguage?.code == 'kaa' "
     @toggle="handleDropdownToggle"
   >
     <template #head>
