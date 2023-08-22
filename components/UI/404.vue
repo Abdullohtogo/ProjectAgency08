@@ -1,6 +1,6 @@
 <template>
-  <div class="container h-full flex items-center flex-col py-10">
-    <div class="h-full flex flex-col justify-center items-center py-16">
+  <div class="container h-full flex items-center flex-col lg:py-[72px] md:py-16 sm:py-12 py-9">
+    <div class="h-full flex flex-col justify-center items-center">
       <img src="/icons/404.svg" alt="404" class="relative z-10" />
       <div
         class="max-w-[430px] flex flex-col items-center w-full space-y-6 mt-9"

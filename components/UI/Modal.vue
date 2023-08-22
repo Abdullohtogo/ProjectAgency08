@@ -2,7 +2,7 @@
   <div>
     <div class="bg-white rounded-2xl">
       <div
-        class="pt-4 pb-2.5 px-6 flex items-center justify-between border-b border-green-100"
+        class="pt-4 pb-2.5 lg::px-6 md:px-5 px-4 flex items-center justify-between border-b border-green-100"
       >
         <p class="font-semibold leading-130 text-black-100">
           {{ $t('share') }}
@@ -12,11 +12,11 @@
           class="icon-close hover:cursor-pointer text-2xl leading-130 text-gray-200"
         />
       </div>
-      <div class="flex flex-col items-center px-5 pb-5 pt-[30px]">
+      <div class="flex flex-col items-center lg:px-5 md:px-4 px-3 pb-5 pt-[30px]">
         <p class="text-sm font-medium leading-130 mb-4">
           {{ $t('share_on_socials') }}
         </p>
-        <div class="flex items-center gap-6">
+        <div class="flex items-center  lg:gap-6 md:gap-5 gap-4 sm:gap-y-4 gap-y-3 sm:justify-start justify-center flex-wrap">
           <button
             v-tooltip.top="'Facebook'"
             @click="shareCount(), share('facebook')"
