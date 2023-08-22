@@ -1,5 +1,6 @@
 <template>
   <button
+  :disabled="disabled"
     :type="type"
     class="md:py-2.5 py-2 md:px-5 px-1.5 rounded-xl relative border font-semibold transition-all duration-300 ease-in-out flex gap-2 items-center justify-center"
     :class="[
@@ -28,6 +29,7 @@ interface Props {
   }
   customButton: string
   type: string
+  disabled: boolean
   variant?: 'primary' | 'secondary' | 'darker'
   loading?: boolean
 }
@@ -52,16 +54,15 @@ const buttonStyle = computed(() => {
 })
 </script>
 
-<!--<style>-->
-<!--.s-button-primary:after {-->
-<!--  content: "";-->
-<!--  position: absolute;-->
-<!--  border-radius: 38px;-->
-<!--  opacity: 0.4000000059604645;-->
-<!--  background: #27A44A;-->
-<!--  filter: blur(14px);-->
-<!--  width: 100%;-->
-<!--  height: 70%;-->
-<!--  z-index: -99;-->
-<!--}-->
-<!--</style>-->
+<style>
+button:disabled,
+button[disabled] {
+  border: 1px solid #e5ecdf;
+  background-color: #e5ecdf;
+  color: #808f7c;
+  ont-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 171.429% */
+}
+</style>

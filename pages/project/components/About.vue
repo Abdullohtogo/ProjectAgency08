@@ -7,11 +7,10 @@
         height="357"
         loop
         id="myVideo"
+        preload="auto"
+        :src="detail?.about_video?.file"
         controls
-      >
-        <source :src="detail?.about_video?.file" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      > </video>
       <div
         class="mt-4 text-sm text-black-200 leading-130"
         v-html="detail?.about"

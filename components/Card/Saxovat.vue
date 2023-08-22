@@ -12,14 +12,14 @@
       </div>
     </div>
     <h3
-      class=" lg:text-xl md:text-lg text-black-100 leading-130 text-base font-semibold max-w-[490px]"
+      class="lg:text-xl md:text-lg text-black-100 leading-130 text-base font-semibold max-w-[490px]"
     >
       {{ data?.title }}
     </h3>
 
     <ClientOnly>
       <div class="md:mt-6 sm:mt-4 mt-3 flex flex-col gap-4">
-        <div class="flex gap-5 md:flex-row flex-col">
+        <div class="flex gap-5 lg:flex-row flex-col">
           <div
             class="sm:p-3 p-2 rounded-2xl border border-gray-600 flex flex-col items-center w-full"
           >
@@ -116,7 +116,7 @@
 
             <div class="flex justify-between w-full">
               <p class="text-gray-400 text-sm">
-                {{ $t('geneourses') }}
+                {{ $t('geneourses') }}:
                 <span class="text-black-100 font-semibold"
                   >{{ data?.donation_count }}
                   <span v-if="data?.donation_count !== '0'">ta</span></span
@@ -170,7 +170,9 @@
                 <div>
                   <img src="/icons/hissa-main.svg" alt="" />
                 </div>
-                <h3 class="text-white text-center lg:text-2xl md:text-xl text-lg font-semibold mt-5">
+                <h3
+                  class="text-white text-center lg:text-2xl md:text-xl text-lg font-semibold mt-5"
+                >
                   {{ $t('download_app') }}
                 </h3>
                 <p class="text-green-200 mt-3 md:text-base text-sm text-center">
@@ -183,21 +185,33 @@
                   <img
                     src="/icons/QR-light.svg"
                     alt=""
-                    class="mt-8 shadow-qrlight"
+                    class="mt-8 shadow-qrlight rounded-[20px]"
                   />
                 </div>
+                <img
+                  src="/images/arm.png"
+                  class="-rotate-90 absolute -right-12 bottom-32"
+                  alt="arm"
+                />
+
                 <div class="mt-4 flex gap-3 w-full">
                   <a
                     :href="appstore"
+                    target="_blank"
                     class="basis-1/2 hover:opacity-80 transition-all duration-300"
                   >
                     <img src="/icons/Appstore-dark.svg" alt="" class="w-full" />
                   </a>
                   <a
+                    target="_blank"
                     :href="playstore"
                     class="basis-1/2 hover:opacity-80 transition-all duration-300"
                   >
-                    <img src="/icons/Playmarket-dark.svg" alt="" class="w-full" />
+                    <img
+                      src="/icons/Playmarket-dark.svg"
+                      alt=""
+                      class="w-full"
+                    />
                   </a>
                 </div>
               </div>

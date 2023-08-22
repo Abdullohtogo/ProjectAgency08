@@ -27,6 +27,7 @@
               </p>
               <div class="flex gap-3">
                 <a
+                  target="_blank"
                   :href="appstore"
                   class="hover:opacity-80 transition-all duration-300"
                 >
@@ -36,6 +37,7 @@
                   />
                 </a>
                 <a
+                  target="_blank"
                   :href="playstore"
                   class="hover:opacity-80 transition-all duration-300"
                 >

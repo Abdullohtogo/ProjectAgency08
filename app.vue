@@ -4,7 +4,7 @@
       <div v-if="loading" class="flex items-center justify-center h-screen">
         <span class="spinner" />
       </div>
-      <NuxtLayout v-else>
+      <NuxtLayout v-if="!loading">
         <div>
           <NuxtPage />
         </div>

@@ -246,7 +246,7 @@ const share = (network: string) => {
   }
 }
 const link = ref(
-  `${window.location.origin}/c/${props.id}/comments?comment=${props.id}`
+  `${window.location.href}`
 )
 
 const emit = defineEmits(['close'])

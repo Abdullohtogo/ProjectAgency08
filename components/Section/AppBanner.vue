@@ -17,12 +17,14 @@
           <img src="/icons/QR.svg" alt="qr" />
           <div class="flex flex-col justify-between">
             <a
+              target="_blank"
               :href="appstore"
               class="cursor-pointer hover:opacity-80 transition-all duration-300"
             >
               <img src="/icons/Appstore1.svg" alt="" />
             </a>
             <a
+              target="_blank"
               :href="playstore"
               class="cursor-pointer hover:opacity-80 transition-all duration-300"
             >

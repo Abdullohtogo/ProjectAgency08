@@ -35,14 +35,14 @@
               </p>
             </div>
             <div class="flex gap-3">
-              <a :href="appstore">
+              <a target="_blank" :href="appstore">
                 <img
                   src="@/public/icons/Appstore.svg"
                   alt=""
                   class="cursor-pointer hover:opacity-80 transition-all duration-300 ease-in-out"
                 />
               </a>
-              <a :href="playstore">
+              <a target="_blank" :href="playstore">
                 <img
                   src="@/public/icons/Playmarket.svg"
                   alt=""

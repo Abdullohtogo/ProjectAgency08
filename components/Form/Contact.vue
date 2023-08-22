@@ -59,6 +59,7 @@
           <CommonButton
             customButton="sm:!w-auto !w-full"
             :type="'submit'"
+            :disabled="$v.$invalid"
             :label="'send'"
           />
         </div>
@@ -134,7 +135,6 @@ const rules = {
 }
 
 const $v = useVuelidate<IContactForm>(rules, form)
-
 const emit = defineEmits(['open'])
 const submitForm = () => {
   $v.value.$touch()
