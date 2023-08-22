@@ -1,5 +1,5 @@
 <template>
-  <div class="relative lg:pb-[175px] pb-16 lg:pt-32 md:pt-20 pt-10">
+  <div class="relative overflow-hidden lg:pb-[175px] pb-16 lg:pt-32 md:pt-20 pt-10">
     <div
       class="container flex flex-col items-center justify-center relative z-10"
     >
@@ -52,7 +52,7 @@
         />
       </a>
     </div>
-    <div class="absolute top-[234px] left-[20%] z-0">
+    <div class="absolute top-[368px] left-[20%] w-full z-0">
       <img src="/icons/Uzbekistan.svg" alt="" />
     </div>
   </div>

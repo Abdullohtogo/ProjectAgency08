@@ -31,7 +31,7 @@
           </div>
         </div>
       </div>
-      <div class="absolute lg:block hidden -bottom-[210px] -right-[100px]">
+      <div class="absolute lg:block hidden -bottom-[244px] -right-[100px]">
         <img
           src="/images/phones.png"
           class="max-w-[900px] max-h-[778px]"
