@@ -191,13 +191,13 @@
                     :href="appstore"
                     class="basis-1/2 hover:opacity-80 transition-all duration-300"
                   >
-                    <img src="/icons/Appstore.svg" alt="" class="w-full" />
+                    <img src="/icons/Appstore-dark.svg" alt="" class="w-full" />
                   </a>
                   <a
                     :href="playstore"
                     class="basis-1/2 hover:opacity-80 transition-all duration-300"
                   >
-                    <img src="/icons/Playmarket.svg" alt="" class="w-full" />
+                    <img src="/icons/Playmarket-dark.svg" alt="" class="w-full" />
                   </a>
                 </div>
               </div>

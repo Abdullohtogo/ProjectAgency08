@@ -142,20 +142,10 @@
 <script setup lang="ts">
 import { useCareContact } from '@/composables/useCareContact'
 import { resolveDirective } from 'nuxt/dist/app/compat/capi'
+import { formatPhoneNumber } from '@/utils/index'
 
 const appstore = ref(import.meta.env.VITE_APP_APP_STORE)
 const playstore = ref(import.meta.env.VITE_APP_PLAY_STORE)
-function formatPhoneNumber(number: string) {
-  const format = number
-    ?.replace(/\D/g, '')
-    .match(/(\d{0,3})(\d{0,2})(\d{0,3})(\d{0,2})(\d{0,2})/)
-  return `+${format && format[1] ? format[1] : ''}
-    ${format && format[2] ? format[2] : ''}
-    ${format && format[3] ? format[3] : ''}
-    ${format && format[4] ? format[4] : ''}${
-    format && format[5] ? format[5] : ''
-  }`
-}
 onMounted(() => {
   function fetchCareContact() {
     return new Promise((resolve, reject) => {

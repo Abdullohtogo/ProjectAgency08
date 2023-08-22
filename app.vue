@@ -1,6 +1,11 @@
 <template>
-  <div v-if="loading" class="flex items-center justify-center h-screen"><span class="spinner" /></div>
-  <NuxtLayout v-else>
+  <div
+    :class="loading == true ? 'opacity-100' : 'opacity-0 hidden'"
+    class="flex items-center justify-center h-screen"
+  >
+    <span class="spinner" />
+  </div>
+  <NuxtLayout :class="loading == true ? 'opacity-100 ' : 'opacity-10'">
     <div>
       <NuxtPage />
     </div>
@@ -23,12 +28,12 @@ if ('mounted' in route.query) {
 }
 setTimeout(() => {
   loading.value = false
-}, 1000);
+}, 0)
 useSeoMeta({
-    title: 'Hissa',
-    ogTitle: 'Hissa',
-    twitterTitle: 'Hissa',
-  })
+  title: 'Hissa',
+  ogTitle: 'Hissa',
+  twitterTitle: 'Hissa',
+})
 </script>
 
 <style>
@@ -45,5 +50,14 @@ useSeoMeta({
   to {
     transform: rotate(1turn);
   }
+}
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 </style>
