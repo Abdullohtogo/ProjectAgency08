@@ -3,7 +3,7 @@
     class="bg-[#FCFCFC] rounded-lg flex w-full items-center justify-between border border-gray-600"
   >
     <p
-      class="leading-130 md:text-lg line-clamp-1 sm:text-base text-sm bg-transparent text-[#181919] outline-none px-3 py-1 select-none"
+      class="leading-130 md:text-lg sm:text-base text-sm bg-transparent text-[#181919] outline-none px-3 py-[11px] overflow-hidden h-[45.5px] select-none"
     >
       {{ currentRoute }}
     </p>

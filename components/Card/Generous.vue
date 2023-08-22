@@ -1,10 +1,7 @@
 <template>
   <div class="p-2 bg-white rounded-xl">
     <div class="flex gap-2 items-center">
-      <span
-        class="rounded-full w-[34px] h-[34px]"
-        v-if="!item.user?.avatar"
-      >
+      <span class="rounded-full w-[34px] h-[34px]" v-if="!item.user?.avatar">
         <svg
           width="34"
           height="34"
@@ -65,6 +62,7 @@
 </template>
 <script lang="ts" setup>
 import dayjs from 'dayjs'
+import { formatMoneyWithSpace } from '@/utils/index'
 interface Props {
   item: {
     id: number
@@ -72,9 +70,6 @@ interface Props {
     money_amount: number
     created_at: string
   }
-}
-function formatMoneyWithSpace(number: string | number) {
-  return number && number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
 }
 
 defineProps<Props>()

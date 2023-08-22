@@ -42,7 +42,12 @@
           />
         </svg>
       </span>
-      <img v-else :src="item?.user?.avatar" class="w-[34px] h-[34px]" alt="profile" />
+      <img
+        v-else
+        :src="item?.user?.avatar"
+        class="w-[34px] h-[34px]"
+        alt="profile"
+      />
       <div class="flex flex-col">
         <p class="text-black-200 text-sm font-semibold leading-130">
           {{ item?.user?.first_name }} {{ item.user.last_name }}
@@ -63,10 +68,8 @@
 </template>
 <script setup lang="ts">
 import dayjs from 'dayjs'
+import { formatMoneyWithSpace } from '@/utils/index'
 
-function formatMoneyWithSpace(number: string | number) {
-  return number && number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
-}
 interface Props {
   item: Array
 }
