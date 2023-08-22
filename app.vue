@@ -1,15 +1,16 @@
 <template>
-  <div
-    :class="loading == true ? 'opacity-100' : 'opacity-0 hidden'"
-    class="flex items-center justify-center h-screen"
-  >
-    <span class="spinner" />
-  </div>
-  <NuxtLayout :class="loading == true ? 'opacity-100 ' : 'opacity-10'">
-    <div>
-      <NuxtPage />
+  <Transition mode="out-in" name="fade">
+    <div :key="loading">
+      <div v-if="loading" class="flex items-center justify-center h-screen">
+        <span class="spinner" />
+      </div>
+      <NuxtLayout v-else>
+        <div>
+          <NuxtPage />
+        </div>
+      </NuxtLayout>
     </div>
-  </NuxtLayout>
+  </Transition>
 </template>
 
 <script setup>
