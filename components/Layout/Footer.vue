@@ -105,7 +105,7 @@
                   target="_blank"
                   v-for="item in share"
                   :key="item.id"
-                  v-tooltip.bottom="'Facebook'"
+                  v-tooltip.top="item?.name"
                   class="hover:opacity-80 transition-all duration-300"
                 >
                   <img :src="item.src" alt="icon" />
@@ -251,26 +251,26 @@ const share = computed(() => {
     {
       id: 1,
       url: contacts.value?.telegram,
-      name: 'telegram',
+      name: 'Telegram',
       src: '/icons/telegram.svg',
     },
     {
       id: 2,
       url: contacts.value?.twitter,
       src: '/icons/twitter.svg',
-      name: 'twitter',
+      name: 'X (Twitter)',
     },
     {
       id: 3,
       url: contacts.value?.youtube,
       src: '/icons/youtube.svg',
-      name: 'youtube',
+      name: 'YouTube',
     },
     {
       id: 4,
       url: contacts.value?.instagram,
       src: '/icons/instagram.svg',
-      name: 'instagram',
+      name: 'Instagram',
     },
   ]
 })

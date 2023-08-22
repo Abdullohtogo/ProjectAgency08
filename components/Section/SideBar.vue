@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <a v-if="installedApp" :href="`hissa://io.commeta.hissa/project/${id}`">
+  <div class="md:hidden">
+    <button @click="redirectToApp(id)" class="w-full">
       <CommonButton
         label="open_on_app"
         buttonStyle="flex items-center"
@@ -24,7 +24,7 @@
           </svg>
         </template>
       </CommonButton>
-    </a>
+    </button>
     <div
       class="relative overflow-hidden sm:mt-6 mt-3 bg-gradient-to-b from-app-banner-1 to-app-banner-2 rounded-28 flex flex-col justify-center items-center p-6 pt-8"
     >
@@ -61,6 +61,8 @@
   </div>
 </template>
 <script setup lang="ts">
+import {CONFIG} from "~/config";
+
 interface Props {
   id: string
 }
@@ -68,60 +70,14 @@ const appstore = ref(import.meta.env.VITE_APP_APP_STORE)
 const playstore = ref(import.meta.env.VITE_APP_PLAY_STORE)
 
 defineProps<Props>()
-const installedApp = ref(false)
-
-// function isAppInstalled(deepLink: string) {
-//   return new Promise((resolve) => {
-//     window.location.href = deepLink
-
-//     const timeout = setTimeout(function () {
-//       // Timeout reached, app is not installed
-//       resolve(false)
-//     }, 1000)
-
-//     document.addEventListener('visibilitychange', function () {
-//       clearTimeout(timeout)
-
-//       if (document.visibilityState === 'visible') {
-//         // App opened, it's installed
-//         resolve(true)
-//       } else {
-//         // User switched back to browser, app is not installed
-//         resolve(false)
-//       }
-//     })
-//   })
-// }
-
-function isAppInstalled(deepLink: string) {
-  return new Promise((resolve) => {
-    const iframe = document.createElement('iframe')
-    iframe.style.display = 'none'
-    iframe.src = deepLink
-
-    const timeout = setTimeout(function () {
-      // Timeout reached, app is not installed
-      resolve(false)
-      document.body.removeChild(iframe)
-    }, 1000)
-
-    iframe.onload = function () {
-      clearTimeout(timeout)
-      // App opened, it's installed
-      resolve(true)
-      document.body.removeChild(iframe)
+const redirectToApp = (id: string) => {
+  window.location.href = `${CONFIG.APP_URL}/project/${id}`
+  setTimeout(() =>{
+    if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+      window.open(appstore.value, '_blank')
+    } else {
+      window.open(playstore.value, '_blank')
     }
-
-    document.body.appendChild(iframe)
-  })
+  }, 20)
 }
-
-// Usage
-isAppInstalled('hissa://io.commeta.hissa').then((isInstalled) => {
-  if (isInstalled) {
-    installedApp.value = true
-  } else {
-    installedApp.value = false
-  }
-})
 </script>
