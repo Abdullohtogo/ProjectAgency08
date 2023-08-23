@@ -165,11 +165,7 @@ const fetchFaq = (val: string, merge?: boolean) => {
     .then((res) => {
       faqCount.value = res.count
       faqLoading.value = false
-      if (merge) {
-        faqs.value = [...faqs.value, ...res.results]
-      } else {
-        faqs.value = res.results
-      }
+      faqs.value = res.results
     })
     .catch((err) => {
       console.log(err)
@@ -177,7 +173,7 @@ const fetchFaq = (val: string, merge?: boolean) => {
 }
 
 const fetchMoreFaq = (val) => {
-  faqParams.offset += faqParams.limit
+  faqParams.limit += 2
   faqLoading.value = true
   fetchFaq(val, true).then(() => (faqLoading.value = false))
 }
