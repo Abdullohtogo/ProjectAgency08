@@ -90,6 +90,7 @@
                 />
                 <a
                   :href="item.url"
+                  :target="item.id == 3 ? '_blank' : ''"
                   class="text-black-100 transition-all duration-300 ease-in-out leading-130"
                   >{{ item.text }}</a
                 >
@@ -273,16 +274,6 @@ const userPrivacy = ref(
 const links = reactive([
   {
     id: 1,
-    text: 'adv',
-    url: '/',
-  },
-  {
-    id: 2,
-    text: 'ninja',
-    url: '/',
-  },
-  {
-    id: 3,
     text: 'use_terms',
     url: userPrivacy,
   },
