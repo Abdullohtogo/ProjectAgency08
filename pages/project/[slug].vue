@@ -155,7 +155,7 @@ const faqLoading = ref(true)
 const fetchFaq = () => {
   return useApi()
     .$get<IPaginationResponse<IFaq>>(
-      `care/api/v1/landing/CareProject/${route.params.slug}/FAQList/`,
+      `care/api/v1/landing/CareProject/${route.params.slug}/FAQList/?search=${faqSearch.value}`,
       {
         params: faqParams,
       }
