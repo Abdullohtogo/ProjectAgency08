@@ -56,8 +56,9 @@
                 :faqs="faqs"
                 :loading="faqLoading"
                 :faqCount="faqCount"
-                @load-more="fetchMoreFaq()"
-                v-if="currentTab === 2 && faqCount !== 0"
+                @on-type="fetchFaq"
+                @load-more="fetchMoreFaq"
+                v-if="currentTab === 2"
               />
               <ComponentsComments
                 :comments="comments"
@@ -130,7 +131,7 @@ const commentParams = reactive({
   offset: 0,
 })
 const faqParams = reactive({
-  limit: 10,
+  limit: 3,
   offset: 0,
 })
 
@@ -150,12 +151,13 @@ interface IFaq {
 
 const faqs = ref<IFaq[]>([])
 const faqCount = ref(0)
-const faqSearch = ref('')
 const faqLoading = ref(true)
-const fetchFaq = () => {
+const fetchFaq = (val: string, merge?: boolean) => {
   return useApi()
     .$get<IPaginationResponse<IFaq>>(
-      `care/api/v1/landing/CareProject/${route.params.slug}/FAQList/?search=${faqSearch.value}`,
+      `care/api/v1/landing/CareProject/${route.params.slug}/FAQList/?search=${
+        val == undefined ? '' : val
+      }`,
       {
         params: faqParams,
       }
@@ -163,16 +165,21 @@ const fetchFaq = () => {
     .then((res) => {
       faqCount.value = res.count
       faqLoading.value = false
-      faqs.value = [...faqs.value, ...res.results]
+      if (merge) {
+        faqs.value = [...faqs.value, ...res.results]
+      } else {
+        faqs.value = res.results
+      }
     })
     .catch((err) => {
       console.log(err)
     })
 }
-const fetchMoreFaq = () => {
+
+const fetchMoreFaq = (val) => {
   faqParams.offset += faqParams.limit
   faqLoading.value = true
-  fetchFaq().then(() => (faqLoading.value = false))
+  fetchFaq(val, true).then(() => (faqLoading.value = false))
 }
 
 interface IDonat {
