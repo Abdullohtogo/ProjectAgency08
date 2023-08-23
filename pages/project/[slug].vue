@@ -131,7 +131,7 @@ const commentParams = reactive({
   offset: 0,
 })
 const faqParams = reactive({
-  limit: 3,
+  limit: 10,
   offset: 0,
 })
 
@@ -173,7 +173,7 @@ const fetchFaq = (val: string, merge?: boolean) => {
 }
 
 const fetchMoreFaq = (val) => {
-  faqParams.limit += 2
+  faqParams.limit += 10
   faqLoading.value = true
   fetchFaq(val, true).then(() => (faqLoading.value = false))
 }
