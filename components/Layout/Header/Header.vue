@@ -19,7 +19,7 @@
         <li v-for="item in menu" :key="item.id">
           <button
             @click="scrollTo(item.url)"
-            class="hover:text-green-400 text-sm leading-5 text-black-100 transition-all duration-300 ease-linear"
+            class="hover:text-green-400 text-sm leading-5 text-black-100 transition-all duration-300 ease-linear font-medium"
           >
             {{ $t(item.text) }}
           </button>

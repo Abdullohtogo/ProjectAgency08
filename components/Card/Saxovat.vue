@@ -1,14 +1,15 @@
 <template>
   <div class="bg-white/90 rounded-28 sm:p-5 p-3">
-    <div v-if="data?.company?.brand_logo" class="relative md:mb-5 sm:mb-4 mb-3">
+    <div v-if="data?.image" class="relative md:mb-5 sm:mb-4 mb-3">
       <img
-        :src="data?.company?.brand_logo.thumbnail?.small"
+        :src="data?.image.thumbnail?.small"
         alt=""
         class="rounded-2xl max-h-[320px] object-cover w-full"
       />
       <div class="flex gap-2 absolute left-4 bottom-4 p-2 bg-white rounded-40">
-        <img src="/icons/pawprint.svg" alt="icon" />
-        <p class="text-black-100 font-medium text-sm">Salomatlik</p>
+<!--         :style="`background-color: ${data?.category?.background_color}`"-->
+        <img :src="data?.category?.icon?.file" alt="icon" />
+        <p class="text-black-100 font-medium text-sm">{{ data?.category?.name }}</p>
       </div>
     </div>
     <h3
