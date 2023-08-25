@@ -68,7 +68,7 @@
                 <a v-if="item.id == 3" target="_blank" :href="item.url">{{
                   $t(item.text)
                 }}</a>
-                <button @click="scrollTo(item.url)">{{ $t(item.text) }}</button>
+                <button v-else @click="scrollTo(item.url)">{{ $t(item.text) }}</button>
               </li>
             </ul>
           </div>
