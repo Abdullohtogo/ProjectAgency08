@@ -116,6 +116,7 @@ export default defineNuxtConfig({
                 ],
             },
         ],
+        'nuxt-security'
     ],
     runtimeConfig: {
         public: {
