@@ -59,7 +59,6 @@
           <CommonButton
             customButton="sm:!w-auto !w-full"
             :type="'submit'"
-            :disabled="$v.$invalid"
             :label="'send'"
           />
         </div>
@@ -111,6 +110,8 @@ const validPhones = [
   '99',
   '20',
   '77',
+  '20',
+  '55'
 ]
 
 const isValidPhone = (val: string) => {
@@ -141,7 +142,6 @@ const submitForm = () => {
   if ($v.value.$invalid) {
     console.log($v.value.$error)
   } else {
-    console.log('success')
     useApi()
       .$post('care/api/v1/landing/CareFeedbackCreate/', {
         body: {
@@ -164,7 +164,6 @@ const submitForm = () => {
         if (err?.status === 403) {
           console.log('u_need_to_auth')
         }
-        console.log(err)
       })
     emit('open')
   }
