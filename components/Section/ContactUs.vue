@@ -21,12 +21,12 @@
             :key="item?.id"
           >
             <img :src="item?.src" alt="icon" class="w-[42px] h-[42px]" />
-            <div class="flex flex-col gap-[3px]">
+            <div class="flex flex-col gap-[3px] max-sm:pr-2">
               <p class="sm:text-sm text-xs text-white/60 leading-130">
                 {{ $t(item?.title) }}
               </p>
               <div
-                class="text-white sm:text-base text-sm font-medium leading-130 flex items-center gap-1.5"
+                class="text-white sm:text-base text-sm font-medium leading-130 flex items-start md:items-center gap-1.5"
               >
                 <p>{{ item?.text }}</p>
                 <i v-if="item?.icon">

@@ -7,8 +7,15 @@
         class="md:hidden block hover:cursor-pointer w-7 h-7"
         @click="showMenu = !showMenu"
       >
-        <img src="/icons/burger.svg" alt="" v-if="!showMenu" />
-        <img src="/icons/close.svg" alt="" v-else />
+        <Transition mode="out-in" name="fade">
+          <svg v-if="!showMenu" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="burger">
+              <path id="Icon" d="M4.66666 7H23.3333M4.66666 14H16.3333M4.66666 21H10.5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+          </svg>
+         <i v-else class="icon-close text-[28px] leading-7 text-dark" />
+
+        </Transition>
       </button>
       <div>
         <router-link to="/">
