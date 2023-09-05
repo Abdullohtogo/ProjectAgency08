@@ -33,7 +33,6 @@
         v-for="item in partners"
         :item="item"
         :key="item.id"
-        class="last:cursor-pointer"
       />
     </div>
     <div
@@ -52,7 +51,7 @@
         />
       </a>
     </div>
-    <div class="absolute top-[368px] left-[20%] w-full z-0">
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 z-0">
       <img src="/icons/Uzbekistan.svg" alt="" />
     </div>
   </div>

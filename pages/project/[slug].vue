@@ -6,13 +6,13 @@
         <div class="sm:rounded-28 rounded-2xl bg-white backdrop-filter mt-5">
           <div class="border-b border-gray-300">
             <div
-              class="pt-4 md:px-5 sm:px-4 px-3 justify-center md:justify-start items-center flex md:gap-6 gap-2"
+              class="pt-4 md:px-5 sm:px-4 px-3 md:justify-start items-center flex md:gap-6 gap-3 w-full overflow-x-auto overflow-y-hidden scroll-style max-md:pb-1"
             >
               <button
                 v-for="(item, index) in tabs"
                 :key="index"
                 @click="activate(index)"
-                class="text-gray-200 sm:text-base text-sm font-semibold leading-130 cursor-pointer relative h-full pb-2"
+                class="text-gray-200 sm:text-base text-sm font-semibold leading-130 cursor-pointer relative pb-2 whitespace-nowrap shrink-0"
                 :class="{ '!text-black-100': currentTab === item.id }"
               >
                 {{ $t(item.tab) }}
@@ -281,12 +281,12 @@ const fetchMoreComment = () => {
   fetchComment().then(() => (commentLoading.value = false))
 }
 
-const fetchProjectDetail = () => {
+const  fetchProjectDetail = () => {
   return useApi().$get(
     `care/api/v1/landing/CareProjectDetail/${route.params.slug}/`
   )
 }
-const { data, error } = useAsyncData('fetchMuhammadjonAka', () =>
+const { data, error } = await useAsyncData('fetchProductDetail', () =>
   fetchProjectDetail()
 )
 if (error.value) {
@@ -327,4 +327,19 @@ p:not(.text-black-100):hover {
 .v-leave-to {
   opacity: 0;
 }
+
+
+.scroll-style::-webkit-scrollbar {
+  height: 3px;
+}
+
+.scroll-style::-webkit-scrollbar-track {
+  background: #DCE0E4;
+}
+
+.scroll-style::-webkit-scrollbar-thumb {
+  background: #8E9BA8;
+}
+
+
 </style>

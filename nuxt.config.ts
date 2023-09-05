@@ -19,7 +19,7 @@ export default defineNuxtConfig({
             ],
             script: [
                 {
-                    src: 'https://cdnjs.cloudflare.com/ajax/libs/smartbanner.js/1.14.6/smartbanner.min.js',
+                    src: '/smartbanner.min.js',
                 },
             ],
             meta: [
@@ -116,6 +116,7 @@ export default defineNuxtConfig({
                 ],
             },
         ],
+        'nuxt-security'
     ],
     runtimeConfig: {
         public: {

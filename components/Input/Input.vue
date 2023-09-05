@@ -7,7 +7,7 @@
     >
       <img class="mr-2" :src="src" alt="" v-if="src" />
       <span
-        class="text-sm mr-1 text-black-100 leading-130 font-normal flex items-center shrink-0"
+        class="text-base md:text-sm mr-1 text-black-100 leading-130 font-normal flex items-center shrink-0"
       >
         <slot />
       </span>
@@ -15,7 +15,7 @@
         :value="modelValue"
         @input="$emit('update:modelValue', $event.target.value)"
         :type="type"
-        class="outline-0 text-sm text-black-100 leading-130 bg-transparent w-full caret-green-400 placeholder:text-sm"
+        class="outline-0 text-base md:text-sm text-black-100 leading-130 bg-transparent w-full caret-green-400 placeholder:text-base placeholder:md:text-sm"
         :maxlength="maxlength"
         :placeholder="$t(placeholder)"
       />
