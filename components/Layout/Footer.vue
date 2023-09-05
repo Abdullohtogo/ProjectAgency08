@@ -164,7 +164,22 @@ onMounted(() => {
         })
     })
   }
+  function getContactInfo() {
+    return new Promise((resolve, reject) => {
+      useApi()
+        .$get('care/api/v1/landing/ContactInfo/')
+        .then((res) => {
+          resolve(res)
+          contactInfo.value = res
+        })
+        .catch((err) => {
+          reject(err?.data)
+          console.log(err)
+        })
+    })
+  }
 
+  getContactInfo()
   fetchCareContact()
 })
 const contacts = ref()
@@ -214,24 +229,25 @@ const main = [
     url: 'contact',
   },
 ]
+const contactInfo = ref()
 
 const contact = computed(() => {
   return [
     {
       id: 1,
-      text: formatPhoneNumber(contacts.value?.phone),
-      url: `tel: ${contacts.value?.phone}`,
+      text: formatPhoneNumber(contactInfo.value?.phone),
+      url: `tel: ${contactInfo.value?.phone}`,
       type: 'call',
     },
     {
       id: 2,
-      text: 'info@uic.group',
-      url: 'mailto: info@uic.group',
+      text: contactInfo?.value?.email,
+      url: `mailto:${contactInfo?.value?.email}`,
       type: 'sms',
     },
     {
       id: 3,
-      text: "24 Oybek ko'chasi, Tashkent, Узбекистан",
+      text: contactInfo.value?.address,
       url: 'https://goo.gl/maps/Gn5ieiks1NbMdLQU6',
       src: '/icons/location.svg',
       type: 'location',
