@@ -33,7 +33,7 @@
           </div>
         </div>
       </div>
-      <div class="absolute lg:block hidden -bottom-[244px] -right-[100px]">
+      <div class="absolute lg:block hidden -bottom-[244px] 2xl:-right-[100px] -right-[214px]">
         <img
           src="/images/phones.png"
           class="max-w-[900px] max-h-[778px]"
