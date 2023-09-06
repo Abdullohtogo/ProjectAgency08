@@ -63,12 +63,10 @@ import { useRoute, useRouter } from 'vue-router'
 const props = defineProps({
   white: Boolean,
 })
-console.log(window.pageYOffset)
 
 const yOffset = ref(0)
 function handleScroll() {
   yOffset.value = window.pageYOffset
-  console.log(window.pageYOffset)
 }
 
 onMounted(() => {
