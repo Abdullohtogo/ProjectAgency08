@@ -26,9 +26,9 @@ export const useLanguageSwitcher = () => {
   ]
 
   function changeLocale(_locale: string) {
+    window.location.reload()
     useCookie('locale').value = _locale
     locale.value = _locale
-    window.location.reload()
   }
 
   return { currentLanguage, languages, changeLocale }
