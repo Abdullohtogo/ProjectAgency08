@@ -11,6 +11,7 @@
       </NuxtLayout>
     </div>
   </Transition>
+  <span class="absolute -top-48 -left-60">Verification: 5a0618bd000f1245</span>
 </template>
 
 <script setup>

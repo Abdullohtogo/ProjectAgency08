@@ -16,4 +16,7 @@ function scrollToSection() {
     block: 'center',
   })
 }
+definePageMeta({
+  layout: "custom",
+});
 </script>

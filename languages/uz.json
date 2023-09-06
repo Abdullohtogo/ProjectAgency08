@@ -19,7 +19,7 @@
   "check_founds_on_phone": "Smartfoningiz orqali xayriya fondlari va loyihalarini kuzatib boring",
   "get_helped_to_resp_by": "Respublikamizning xayriya sohasi rivoji uchun ulkan {store} qo'shish",
   "partners_who_support_us": "Hozirgi kunda {store} dan ortiq fondlar biz bilan birga hamkorlik qilishmoqda",
-  "with_us_you_are_the_best": "Hissa ijtimoiy va global toʻsiqlarni birgalikda yengish, turli ijtimoiy gʻoyalarni roʻyobga chiqarish maqsadida xayriya tashkilotlari bilan hamkorlikni yoʻlga qoʻyish va mustahkamlashga intiladi. Platforma allaqachon xayriya tashkilotlari va jamiyat manfaatini koʻzlaydigan tashkilotlar oʻrtasidagi koʻprikga aylangan.",
+  "with_us_you_are_the_best": "Hissa ijtimoiy va global toʻsiqlarni birgalikda yengish, turli ijtimoiy gʻoyalarni roʻyobga chiqarish maqsadida xayriya tashkilotlari bilan hamkorlikni yoʻlga qoʻyish va mustahkamlashga intiladi. Platforma allaqachon xayriya tashkilotlari va jamiyat manfaatini koʻzlaydigan tashkilotlar oʻrtasidagi koʻprigiga aylangan.",
   "get_with_us": "Safimizga qo‘shilish",
   "contact_types": "Bog‘lanish usullari",
   "contact_with_us_these_ways": "Biz bilan quyida keltirilgan yo‘llar orqali aloqaga chiqishingiz mumkin",
@@ -28,7 +28,7 @@
   "email": "Elektron pochtamiz manzili:",
   "we_on_social": "Biz ijtimoiy tarmoqlarda",
   "contact_with_us": "Biz bilan bog’laning",
-  "if_you_have_question": "Sizni qiziqtirayotgan ma’lumotlar yoki savollaringiz bo‘lsa biz bilan bog‘lanishdan tortinmang",
+  "if_you_have_question": "Agar sizda biron bir savol tug'ilgan bo'lsa shaklni to'ldiring va biz siz bilan albatta bog'lanamiz",
   "name": "Ismingiz",
   "enter_full_name": "F.I.Shni kiriting",
   "full_name": "F.I.Sh",
@@ -82,5 +82,6 @@
   "no_project_like_this": "Ushbu loyihaga xozircha izoh qoldirilmagan",
   "no_posts": "Postlar mavjud emas",
   "no_faq": "Savollar mavjud emas",
-  "no_comment": "Izohlar mavjud emas"  
+  "no_comment": "Izohlar mavjud emas",
+  "more": "Ko'proq"
 }
