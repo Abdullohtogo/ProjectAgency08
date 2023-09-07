@@ -13,7 +13,7 @@
         v-show="showBody"
         :class="[bodyClass]"
         data-dropdown-body
-        class="absolute right-0 w-max min-w-full translate-y-full bg-white rounded-md overflow-hidden -bottom-1 z-20 shadow-md border border-white-100"
+        class="absolute right-0 w-max min-w-full translate-y-full bg-white rounded-md overflow-hidden -bottom-1 z-20 shadow-md border border-gray-900"
       >
         <slot name="body" />
       </div>
