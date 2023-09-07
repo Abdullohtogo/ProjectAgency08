@@ -6,7 +6,10 @@
       { '!text-blue !opacity-100': showDropdown },
       { 'text-white': variant === 'transparent' },
     ]"
-    :body-class="`!w-[138px] border !border-[2px] !border-gray-900 bg-white rounded-xl` && currentLanguage?.code == 'kaa' "
+    :body-class="
+      `!w-[138px] border !border-[2px] !border-gray-900 bg-white rounded-xl` &&
+      currentLanguage?.code == 'kaa'
+    "
     @toggle="handleDropdownToggle"
   >
     <template #head>
@@ -91,10 +94,18 @@ const currentLanguage = computed(() =>
 function handleDropdownToggle(val: boolean) {
   showDropdown.value = val
 }
-
-function changeLocale(_locale: string) {
-  useCookie('locale').value = _locale
-  locale.value = _locale
-  window.location.reload()
+const changeLocale = (lang: string) => {
+  // locale.value = lang
+  showDropdown.value = false
+  const _locale = useCookie('locale')
+  if (_locale.value !== lang) {
+    _locale.value = lang
+    window.location.reload()
+  }
 }
+// function changeLocale(_locale: string) {
+//   window.location.reload()
+//   useCookie('locale').value = _locale
+//   locale.value = _locale
+// }
 </script>

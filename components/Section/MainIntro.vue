@@ -22,7 +22,7 @@
                 keypath="prlatform_for"
                 tag="h2"
                 style="line-height: 1.3"
-                class="md:text-3xl sm:text-2xl text-xl lg:text-[42px] lg:leading-10 relative font-bold uppercase text-green-500 lg:max-w-[1090px]"
+                class="md:text-3xl sm:text-2xl text-xl lg:text-[42px] lg:leading-10 relative font-bold  text-green-500 lg:max-w-[1090px]"
               >
                 <template #store>
                   <span class="underlined relative">

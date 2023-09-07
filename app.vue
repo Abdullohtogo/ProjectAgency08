@@ -1,16 +1,17 @@
 <template>
   <Transition mode="out-in" name="fade">
     <div :key="loading">
-      <div v-if="loading" class="flex items-center justify-center h-screen">
+      <div v-if="!loading" class="flex items-center justify-center h-screen">
         <span class="spinner" />
       </div>
-      <NuxtLayout v-if="!loading">
+      <NuxtLayout v-else>
         <div>
           <NuxtPage />
         </div>
       </NuxtLayout>
     </div>
   </Transition>
+  <span class="absolute -top-48 -left-60">Verification: 5a0618bd000f1245</span>
 </template>
 
 <script setup>
@@ -18,7 +19,11 @@ import { onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
-const loading = ref(true)
+const loading = ref(false)
+onMounted(() => {
+  loading.value = true
+})
+
 if ('setup' in route.query) {
   throw new Error('error in setup')
 }
@@ -27,9 +32,6 @@ if ('mounted' in route.query) {
     throw new Error('error in mounted')
   })
 }
-setTimeout(() => {
-  loading.value = false
-}, 0)
 useSeoMeta({
   title: 'Hissa',
   ogTitle: 'Hissa',
