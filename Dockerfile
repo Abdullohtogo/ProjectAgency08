@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:16
 RUN npm install pm2 -g
 WORKDIR /app/src
 COPY . .
