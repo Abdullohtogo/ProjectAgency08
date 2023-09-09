@@ -1,5 +1,9 @@
 <template>
-  <header id="header"  :style="{ backgroundColor: `rgba(255, 255, 255, ${opacity})` }" :class="{ 'bg-white shadow-header': !white }">
+  <header
+    id="header"
+    :style="{ backgroundColor: `rgba(255, 255, 255, ${opacity})` }"
+    :class="{ 'bg-white shadow-header': !white }"
+  >
     <div
       :class="white ? 'md:py-8 sm:py-7 py-6' : 'md:py-6 sm:py-5 py-4'"
       class="container flex justify-between items-center sticky z-50"
@@ -36,16 +40,16 @@
           <img src="../../../public/logo.svg" alt="logo" />
         </router-link>
       </div>
-      <ul class="gap-4 lg:gap-8 hidden md:flex">
-        <li v-for="item in menu" :key="item.id">
-          <button
-            @click="scrollTo(item.url)"
-            class="hover:text-green-400 text-sm leading-5 text-black-100 transition-all duration-300 ease-linear font-medium"
-          >
-            {{ $t(item.text) }}
-          </button>
-        </li>
-      </ul>
+      <!--      <ul class="gap-4 lg:gap-8 hidden md:flex">-->
+      <!--        <li v-for="item in menu" :key="item.id">-->
+      <!--          <button-->
+      <!--            @click="scrollTo(item.url)"-->
+      <!--            class="hover:text-green-400 text-sm leading-5 text-black-100 transition-all duration-300 ease-linear font-medium"-->
+      <!--          >-->
+      <!--            {{ $t(item.text) }}-->
+      <!--          </button>-->
+      <!--        </li>-->
+      <!--      </ul>-->
       <UILanguageSwitcher v-bind="{ variant: 'default' }" />
     </div>
     <LayoutHeaderFullMenu
@@ -73,8 +77,8 @@ onMounted(() => {
   window.addEventListener('scroll', handleScroll)
 })
 const opacity = computed(() => {
-  return yOffset.value > 10 ? 1 : yOffset.value / 100;
-});
+  return yOffset.value > 10 ? 1 : yOffset.value / 100
+})
 const showMenu = ref(false)
 const route = useRoute()
 const router = useRouter()
@@ -132,5 +136,4 @@ const menu = computed(() => {
 header {
   transition: background-color 0.3s ease-in-out;
 }
-
 </style>
