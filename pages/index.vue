@@ -1,5 +1,7 @@
 <template>
-  <SectionComingSoon class="mb-10 md:mb-[96px]" />
+  <div class="h-full">
+    <SectionComingSoon />
+  </div>
   <!-- <SectionMainIntro class="mb-7 mt-6" />
   <SectionProjectAim id="about" class="lg:mb-12 md:mb-8 mb-6" />
   <SectionMainCards id="afzalliklar" class="lg:mb-10 md:mb-8 mb-6" />

@@ -5,11 +5,11 @@
       class="absolute w-full z-20 left-0 bg-gray-100 top-[72px] h-[calc(100vh-70px)]"
     >
       <div class="container h-full flex flex-col justify-between gap-16">
-        <div class="flex items-start flex-col gap-6 mt-24">
+        <div class="flex items-start flex-col gap-4 md:gap-6 mt-16 md:mt-24">
           <button
             v-for="(item, index) in menu"
             :key="index"
-            class="flex-center flex-col gap-3 group font-semibold text-[28px] leading-130 text-black-200 hover:text-green-400 transition-all duration-300 ease-in-out"
+            class="flex-center flex-col gap-3 group font-semibold text-2xl md:text-[28px] leading-130 text-black-200 hover:text-green-400 transition-all duration-300 ease-in-out"
             @click="scrollTo(item.url)"
           >
             {{ $t(item?.text) }}
@@ -35,7 +35,7 @@ const route = useRoute()
 const router = useRouter()
 
 function scrollTo(url: string) {
-
+  console.log(route.path, 'route.path')
   if (route.path !== '/') {
     router.push('/').finally(() => {
       const section = document.getElementById(url)
