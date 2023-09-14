@@ -1,11 +1,18 @@
 <template>
   <div class="bg-white/90 h-full rounded-2xl project">
-    <!--    <pre>{{ data }}</pre>-->
     <div class="py-2 pl-3 flex items-center gap-2">
       <img
+        v-if="isImg"
         class="w-8 h-8 object-cover rounded-full"
-        :src="`${data.company?.brand_logo?.original}`"
+        :src="data.company?.brand_logo?.original"
         alt="dude, find guru"
+        @error="isImg = false"
+      />
+      <img
+        v-else
+        src="https://img.freepik.com/free-vector/bird-colorful-gradient-design-vector_343694-2506.jpg"
+        class="w-8 h-8 object-cover rounded-full"
+        alt=""
       />
       <span class="font-medium text-base text-black-100 line-clamp-1">{{
         data?.company?.name
@@ -13,7 +20,19 @@
     </div>
 
     <div class="block relative">
-      <img :src="data?.image?.file" class="object-cover" alt="" />
+      <img
+        v-if="isImg"
+        :src="data?.image?.file"
+        class="object-cover w-full"
+        alt=""
+        @error="isImg = false"
+      />
+      <img
+        v-else
+        src="https://img.freepik.com/free-vector/bird-colorful-gradient-design-vector_343694-2506.jpg"
+        class="object-cover w-full"
+        alt=""
+      />
       <div
         class="absolute py-1 px-2 bottom-3 left-3 bg-white rounded-[150px] flex items-center gap-1"
       >
@@ -172,6 +191,7 @@
 </template>
 
 <script setup lang="ts">
+const isImg = ref(true)
 interface IprojectIcon {
   id: string
   type: string
@@ -232,7 +252,7 @@ interface Props {
 defineProps<Props>()
 </script>
 
-<style scoped>
+<style>
 .project {
   backdrop-filter: blur(7px);
 }
