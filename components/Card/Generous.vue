@@ -48,7 +48,7 @@
         alt=""
         class="w-8 h-8 border border-gray-600 rounded-full"
       />
-      <p class="text-xs leading-130 text-black-100 font-semibold">
+      <p class="text-xs leading-130 text-black-100 font-semibold line-clamp-2">
         {{ item?.user?.first_name }} {{ item?.user?.last_name }}
       </p>
     </div>

@@ -7,9 +7,11 @@
         class="rounded-2xl max-h-[320px] object-cover w-full"
       />
       <div class="flex gap-2 absolute left-4 bottom-4 p-2 bg-white rounded-40">
-<!--         :style="`background-color: ${data?.category?.background_color}`"-->
+        <!--         :style="`background-color: ${data?.category?.background_color}`"-->
         <img :src="data?.category?.icon?.file" alt="icon" />
-        <p class="text-black-100 font-medium text-sm">{{ data?.category?.name }}</p>
+        <p class="text-black-100 font-medium text-sm">
+          {{ data?.category?.name }}
+        </p>
       </div>
     </div>
     <h3
@@ -293,10 +295,14 @@ const remainingDays = ref(0)
 const remainingHours = ref(0)
 const remainingMinutes = ref(0)
 const remainingSeconds = ref(0)
+
+const timeNow = new Date().getTime()
+let timeDifference = props.end_time - timeNow
+
 function startTimer() {
-  const timeNow = new Date().getTime()
-  const timeDifference = props.end_time - timeNow
   const millisecondsInOneSecond = 1000
+  timeDifference = Math.abs(timeDifference) - millisecondsInOneSecond
+
   const millisecondsInOneMinute = millisecondsInOneSecond * 60
   const millisecondsInOneHour = millisecondsInOneMinute * 60
   const millisecondsInOneDay = millisecondsInOneHour * 24
@@ -307,10 +313,10 @@ function startTimer() {
     (timeDifference % millisecondsInOneHour) / millisecondsInOneMinute
   const remainderDifferenceInSeconds =
     (timeDifference % millisecondsInOneMinute) / millisecondsInOneSecond
-  remainingDays.value = Math.floor(differenceInDays)
-  remainingHours.value = Math.floor(remainderDifferenceInHours)
-  remainingMinutes.value = Math.floor(remainderDifferenceInMinutes)
-  remainingSeconds.value = Math.floor(remainderDifferenceInSeconds)
+  remainingDays.value = Math.abs(Math.floor(differenceInDays))
+  remainingHours.value = Math.abs(Math.floor(remainderDifferenceInHours))
+  remainingMinutes.value = Math.abs(Math.floor(remainderDifferenceInMinutes))
+  remainingSeconds.value = Math.abs(Math.floor(remainderDifferenceInSeconds))
 }
 onMounted(() => {
   setInterval(() => {

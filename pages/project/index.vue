@@ -1,5 +1,5 @@
 <template>
-  <div class="md:mx-20 lg:mx-40">
+  <div class="md:mx-20 lg:mx-40 mt-6 md:mt-8 mb-8 md:mb-16">
     <div class="container">
       <div class="flex items-center justify-center flex-col pb-6 md:pb-11">
         <p class="font-medium text-green-300 text-center uppercase mb-3">
@@ -19,7 +19,6 @@
         </i18n-t>
       </div>
     </div>
-
     <div
       class="grid md:grid-cols-2 lg:grid-cols-4 flex-wrap gap-6 mb-6 md:mb-8"
     >
@@ -29,18 +28,19 @@
         :key="i"
       />
     </div>
-    <nuxt-link to="/project" class="relative cursor-pointer z-10">
-      <CommonButton
-        label="all_projects"
-        buttonStyle="flex items-center"
-        variant="primary"
-        class="mx-auto"
-      />
-    </nuxt-link>
+    <CommonButton
+      label="all_projects"
+      buttonStyle="flex items-center"
+      variant="primary"
+      class="mx-auto"
+      @click="fetchMore()"
+      v-if="projects?.length < total"
+    />
   </div>
 </template>
 <script setup lang="ts">
-const projects = ref()
+const projects = ref([])
+const total = ref(0)
 
 interface IPaginationresponse<T> {
   count: number
@@ -86,14 +86,21 @@ interface IProjectCard {
   end_time: string
   status: number
 }
+const params = reactive({ offset: 0, limit: 12 })
 const fetchprojects = () => {
   return useApi()
     .$get<IPaginationresponse<IProjectCard>>(`care/api/v1/CareProjectList/`, {
-      params: { limit: 4 },
+      params,
     })
     .then((res) => {
-      projects.value = res.results
+      projects.value = [...projects.value, ...res.results]
+      total.value = res.count
     })
+}
+
+const fetchMore = () => {
+  params.offset += params.limit
+  fetchprojects()
 }
 
 onMounted(async () => {

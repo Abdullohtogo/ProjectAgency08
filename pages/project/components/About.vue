@@ -2,7 +2,7 @@
   <div>
     <div class="sm:p-5 p-3">
       <video
-           v-if="detail?.about_video?.file"
+        v-if="detail?.about_video?.file"
         class="rounded-2xl h-[357px] mb-4"
         width="1920"
         height="357"
@@ -12,20 +12,30 @@
         :src="detail?.about_video?.file"
         controls
       />
-      <div
-        class=" text-sm text-black-200 leading-130"
-        v-html="detail?.about"
-      />
+      <div class="text-sm text-black-200 leading-130" v-html="detail?.about" />
       <div class="rounded-xl mt-6 bg-gray-300 md:max-w-[50%]">
-        <h3 class="p-3 font-semibold leading-130 text-base border-b border-gray-600">{{$t('files')}}</h3>
+        <h3
+          class="p-3 font-semibold leading-130 text-base border-b border-gray-600"
+        >
+          {{ $t('files') }}
+        </h3>
         <div class="py-2 pl-3">
-          <div v-for="(item, index) in detail?.files" :key="index" class="flex items-center gap-2 group w-full">
-            <i class="icon-document-text text-gray-400 text-2xl leading-6"/>
-            <div class="flex items-center justify-between py-2.5 border-b  border-gray-600 group-last:border-none w-full pr-3">
+          <div
+            v-for="(item, index) in detail?.files"
+            :key="index"
+            class="flex items-center gap-2 group w-full"
+          >
+            <i class="icon-document-text text-gray-400 text-2xl leading-6" />
+            <div
+              class="flex items-center justify-between py-2.5 border-b border-gray-600 group-last:border-none w-full pr-3"
+            >
               <p class="text-black-100 text-sm leading-130">
-              {{item?.file_name}}
+                {{ item?.file_name }}
               </p>
-              <a :href="item?.file" class="w-6 h-6 flex items-center justify-center text-base leading-4 icon-download text-white rounded-md bg-green-400 hover:bg-green-600 transition duration-300" />
+              <a
+                :href="item?.file"
+                class="w-6 h-6 flex items-center justify-center text-base leading-4 icon-download text-white rounded-md bg-green-400 hover:bg-green-600 transition duration-300"
+              />
             </div>
           </div>
         </div>
