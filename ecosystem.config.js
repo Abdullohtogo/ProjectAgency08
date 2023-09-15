@@ -1,8 +1,8 @@
 module.exports = {
     apps: [
         {
-            name: 'Satori Businiess Panel',
-            port: 3102,
+            name: 'Commeta Hissa Landing',
+            port: 3098,
             exec_mode: 'cluster',
             instances: '1',
             script: './.output/server/index.mjs',
