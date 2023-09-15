@@ -2,14 +2,34 @@
   <div class="bg-white/90 rounded-28 sm:p-5 p-3">
     <div v-if="data?.image" class="relative md:mb-5 sm:mb-4 mb-3">
       <img
+        v-if="imgError"
         :src="data?.image.thumbnail?.small"
+        alt=""
+        class="rounded-2xl max-h-[320px] object-contain w-full"
+        @error="imgError = false"
+      /><img
+        v-else
+        src="~/assets/images/main_image.png"
         alt=""
         class="rounded-2xl max-h-[320px] object-cover w-full"
       />
-      <div class="flex gap-2 absolute left-4 bottom-4 p-2 bg-white rounded-40">
-        <!--         :style="`background-color: ${data?.category?.background_color}`"-->
-        <img :src="data?.category?.icon?.file" alt="icon" />
-        <p class="text-black-100 font-medium text-sm">
+      <div
+        class="flex gap-1 md:gap-2 absolute left-4 bottom-4 px-1.5 p-1 md:p-2 bg-white rounded-40"
+      >
+        <!--        :style="`background-color: ${data?.category?.background_color}`"-->
+        <img
+          v-if="imgError"
+          :src="data?.category?.icon?.file"
+          alt="icon"
+          @error="imgError = false"
+        />
+        <img
+          v-else
+          src="~/assets/images/heart.png"
+          alt="icon"
+          @error="imgError = false"
+        />
+        <p class="text-black-100 font-medium text-xs md:text-sm">
           {{ data?.category?.name }}
         </p>
       </div>
@@ -152,6 +172,7 @@
             </template>
           </CommonButton>
         </div>
+
         <Transition name="fade">
           <div
             class="fixed top-0 left-0 w-full h-full z-50 bg-modal hidden opacity-0"
@@ -165,7 +186,7 @@
             >
               <span
                 @click="closeHissa()"
-                class="icon-close text-white text-2xl translate-x-7 cursor-pointer"
+                class="icon-close text-white text-2xl translate-x-1 md:translate-x-7 cursor-pointer"
               />
               <div
                 class="relative max-w-[344px] w-full overflow-hidden bg-gradient-to-b from-app-banner-1 to-app-banner-2 rounded-28 flex flex-col justify-center items-center p-6 pt-8"
@@ -229,7 +250,7 @@
             :class="{ '!block opacity-100 overflow-hidden ': showModal }"
           >
             <UIModal
-              class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 sm:max-w-[434px] w-[70%] sm:w-full"
+              class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 sm:max-w-[434px] w-[90%] sm:w-full"
               @close="toggleModal"
               :id="data?.id"
               :show="showModal"
@@ -255,7 +276,7 @@ const gatheredmoneys = ref({
 const appstore = ref(import.meta.env.VITE_APP_APP_STORE)
 const playstore = ref(import.meta.env.VITE_APP_PLAY_STORE)
 
-const ploader = ref(true)
+const imgError = ref(true)
 
 const props = defineProps({
   data: {

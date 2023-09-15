@@ -43,7 +43,9 @@
       <div class="border-t border-gray-300 pt-4 mt-4 flex justify-between">
         <div class="flex items-center gap-1 text-gray-700">
           <span class="icon-location text-base" />
-          <p class="text-sm text-gray-700">{{ detail?.region?.name }}</p>
+          <p class="text-sm text-gray-700 line-clamp-1">
+            {{ detail?.region?.name }}
+          </p>
         </div>
         <div class="flex gap-3 items-center">
           <div class="flex gap-1 text-gray-700">
