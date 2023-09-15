@@ -30,12 +30,12 @@
       />
     </div>
     <CommonButton
-      label="all_projects"
+      v-if="projects?.length < total"
+      label="show_more"
       buttonStyle="flex items-center"
       variant="primary"
       class="mx-auto"
       @click="fetchMore()"
-      v-if="projects?.length < total"
     />
   </div>
 </template>

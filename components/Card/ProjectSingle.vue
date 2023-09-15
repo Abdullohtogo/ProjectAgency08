@@ -40,7 +40,7 @@
           v-if="isImg"
           :src="data?.category?.icon?.file"
           alt=""
-          @error="isImg = false"
+          @error="handleImage"
         />
         <img v-else src="~/assets/images/heartbeat%20(1)%201.png" alt="" />
         <span class="text-xs font-medium text-black-200">{{
@@ -197,6 +197,9 @@
 </template>
 
 <script setup lang="ts">
+const handleImage = (event) => {
+  console.log('event error: ', event)
+}
 const isImg = ref(true)
 interface IprojectIcon {
   id: string
