@@ -1,6 +1,5 @@
 # Hissa Landing
 
-
 About:
 - Tailwind CSS
 - Storybook

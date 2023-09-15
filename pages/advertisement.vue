@@ -71,11 +71,18 @@
         >
           <Checkbox
             v-model="form.values.privacy_policy"
-            :url="userPrivacy"
-            label-start="user_terms"
-            label="agreements_for"
             :error="form.$v.value.privacy_policy.$error"
           >
+            <i18n-t keypath="terms_of_use_checkbox" tag="p">
+              <template #terms>
+                <a
+                  :href="termsLink"
+                  target="_blank"
+                  class="text-[#4489F7] font-medium"
+                  >{{ $t('user_terms') }}</a
+                >
+              </template>
+            </i18n-t>
           </Checkbox>
           <CommonButton
             variant="secondary"
@@ -91,12 +98,9 @@
 <script setup lang="ts">
 import { required, sameAs } from '@vuelidate/validators'
 import { useI18n } from 'vue-i18n'
+import { CONFIG } from '~/config'
 
 import Checkbox from '~/components/Common/Checkbox.vue'
-
-const userPrivacy = ref(
-  `${import.meta.env.VITE_APP_ID_URL}/help-center/privacy-policy`
-)
 const { t } = useI18n()
 
 const form = useForm(
@@ -168,4 +172,6 @@ function goToOrder() {
   const order = document.getElementById('orderAdv')
   order?.scrollIntoView({ behavior: 'smooth' })
 }
+
+const termsLink = CONFIG.ID_DOMAIN + '/help-center/privacy-policy'
 </script>
