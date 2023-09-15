@@ -10,7 +10,7 @@
       />
       <img
         v-else
-        src="https://img.freepik.com/free-vector/bird-colorful-gradient-design-vector_343694-2506.jpg"
+        src="~/assets/images/barnd_logo.png"
         class="w-8 h-8 object-cover rounded-full"
         alt=""
       />
@@ -29,21 +29,27 @@
       />
       <img
         v-else
-        src="https://img.freepik.com/free-vector/bird-colorful-gradient-design-vector_343694-2506.jpg"
+        src="~/assets/images/main_image.png"
         class="object-cover w-full"
         alt=""
       />
       <div
         class="absolute py-1 px-2 bottom-3 left-3 bg-white rounded-[150px] flex items-center gap-1"
       >
-        <img :src="data?.category?.icon?.file" alt="" />
+        <img
+          v-if="isImg"
+          :src="data?.category?.icon?.file"
+          alt=""
+          @error="isImg = false"
+        />
+        <img v-else src="~/assets/images/heartbeat%20(1)%201.png" alt="" />
         <span class="text-xs font-medium text-black-200">{{
           data?.category?.name
         }}</span>
       </div>
     </div>
 
-    <div class="flex flex-col justify-between p-3 pb-4 min-h-[305px]">
+    <div class="flex flex-col justify-between p-3 pb-4 md:min-h-[305px]">
       <div class="flex flex-col gap-3">
         <h3 class="text-[15px] text-black-200 font-semibold line-clamp-3">
           {{ data?.title }}

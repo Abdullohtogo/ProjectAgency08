@@ -14,7 +14,7 @@
       <block-pre-loader loading width="100%" height="140px" />
     </div>
 
-    <div class="flex flex-col justify-between p-3 pb-4 min-h-[305px]">
+    <div class="flex flex-col justify-between p-3 pb-4 mg:min-h-[305px]">
       <div class="flex flex-col gap-3">
         <div class="flex flex-col gap-1.5">
           <block-pre-loader

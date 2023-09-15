@@ -45,7 +45,7 @@
           </div>
         </div>
         <div
-          class="flex sm:flex-row flex-col justify-between md:gap-6 gap-5 md:mt-[21px] sm:mt-4 mt-3"
+          class="flex items-center sm:flex-row flex-col justify-between md:gap-6 gap-5 md:mt-[21px] sm:mt-4 mt-3"
         >
           <div class="">
             <CommonCheckbox
@@ -111,7 +111,7 @@ const validPhones = [
   '20',
   '77',
   '20',
-  '55'
+  '55',
 ]
 
 const isValidPhone = (val: string) => {

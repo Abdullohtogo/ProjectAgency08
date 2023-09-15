@@ -12,7 +12,7 @@
           class="text-green-500 lg:text-4xl md:text-3xl text-xl font-bold text-center max-w-[540px]"
         >
           <template #count>
-            <span class="text-white bg-green-300 rounded-xl px-2.5 pr-0 mr-2">
+            <span class="text-white bg-green-300 rounded-xl px-2.5 pr-2 mr-2">
               1000
             </span>
           </template>
