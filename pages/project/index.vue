@@ -22,6 +22,7 @@
     <div
       class="grid md:grid-cols-2 lg:grid-cols-4 flex-wrap gap-6 mb-6 md:mb-8"
     >
+      <LoaderProject v-if="!loading" v-for="i in 12" :key="i" />
       <CardProjectSingle
         v-for="(data, i) in projects"
         v-bind="{ data }"
@@ -41,6 +42,7 @@
 <script setup lang="ts">
 const projects = ref([])
 const total = ref(0)
+const loading = ref(false)
 
 interface IPaginationresponse<T> {
   count: number
@@ -95,6 +97,7 @@ const fetchprojects = () => {
     .then((res) => {
       projects.value = [...projects.value, ...res.results]
       total.value = res.count
+      loading.value = true
     })
 }
 
