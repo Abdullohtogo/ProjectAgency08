@@ -42,7 +42,7 @@
           alt=""
           @error="handleImage"
         />
-        <img v-else src="~/assets/images/heartbeat%20(1)%201.png" alt="" />
+        <img v-else src="~/assets/images/heart.png" alt="" />
         <span class="text-xs font-medium text-black-200">{{
           data?.category?.name
         }}</span>
