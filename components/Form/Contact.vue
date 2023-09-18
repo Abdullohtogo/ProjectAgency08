@@ -54,7 +54,24 @@
               :url="userPrivacy"
               :label="'agreements_for'"
               :error="$v.agreement.$error"
-            />
+            >
+              <i18n-t
+                keypath="terms_of_use_checkbox"
+                tag="p"
+                style="line-height: 1.3"
+                class="text-gray-200"
+              >
+                <template #terms>
+                  <a
+                    :href="userPrivacy"
+                    target="_blank"
+                    class="text-[#4489F7] font-medium"
+                  >
+                    {{ $t('user_terms') }}
+                  </a>
+                </template>
+              </i18n-t>
+            </CommonCheckbox>
           </div>
           <CommonButton
             customButton="sm:!w-auto !w-full"

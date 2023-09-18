@@ -1,5 +1,5 @@
 <template>
-  <div class="md:mx-20 lg:mx-40">
+  <div class="container">
     <div class="container">
       <div class="flex items-center justify-center flex-col pb-6 md:pb-11">
         <p class="font-medium text-green-300 text-center uppercase mb-3">
@@ -12,8 +12,8 @@
           class="text-green-500 lg:text-4xl md:text-3xl text-xl font-bold text-center max-w-[540px]"
         >
           <template #count>
-            <span class="text-white bg-green-300 rounded-xl px-2.5 pr-0 mr-2">
-              1000
+            <span class="text-white bg-green-300 rounded-xl px-2.5 mr-2">
+              {{ total }}
             </span>
           </template>
         </i18n-t>
@@ -43,6 +43,7 @@
 <script setup lang="ts">
 const projects = ref()
 const loading = ref(false)
+const total = ref()
 
 interface IPaginationresponse<T> {
   count: number
@@ -94,6 +95,7 @@ const fetchprojects = () => {
       params: { limit: 4 },
     })
     .then((res) => {
+      total.value = res.count
       projects.value = res.results
       loading.value = true
     })

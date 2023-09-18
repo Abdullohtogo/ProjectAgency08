@@ -1,5 +1,5 @@
 <template>
-  <div class="md:mx-20 lg:mx-40 mt-6 md:mt-8 mb-8 md:mb-16">
+  <div class="container mt-6 md:mt-8 mb-8 md:mb-16">
     <div class="container">
       <div class="flex items-center justify-center flex-col pb-6 md:pb-11">
         <p class="font-medium text-green-300 text-center uppercase mb-3">
@@ -13,7 +13,7 @@
         >
           <template #count>
             <span class="text-white bg-green-300 rounded-xl px-2.5 pr-2 mr-2">
-              1000
+              {{ total }}
             </span>
           </template>
         </i18n-t>
