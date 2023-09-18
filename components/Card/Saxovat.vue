@@ -126,7 +126,10 @@
               <div>
                 <p class="text-sm text-gray-400 text-end">{{ $t('finish') }}</p>
                 <span class="font-bold text-black-100"
-                  >{{ formatMoneyWithSpace(data?.target_money) }} UZS</span
+                  >{{
+                    formatMoneyWithSpace(parseInt(data.target_money))
+                  }}
+                  UZS</span
                 >
               </div>
             </div>
@@ -142,7 +145,7 @@
                 {{ $t('geneourses') }}:
                 <span class="text-black-100 font-semibold"
                   >{{ data?.donation_count }}
-                  <span v-if="data?.donation_count !== '0'">ta</span></span
+                  <span v-if="data?.donation_count !== 0">ta</span></span
                 >
               </p>
             </div>

@@ -2,15 +2,16 @@
   <div>
     <div class="sm:p-5 p-3">
       <video
-        v-if="detail?.about_video?.file"
+        v-if="detail?.about_video?.file && videoError"
         class="rounded-2xl h-[357px] mb-4"
         width="1920"
         height="357"
         loop
         id="myVideo"
         preload="auto"
-        :src="detail?.about_video?.file"
+        :src="videoError ? detail?.about_video?.file : '~/assets/video.MOV'"
         controls
+        :onerror="(videoError = false)"
       />
       <div class="text-sm text-black-200 leading-130" v-html="detail?.about" />
       <div class="rounded-xl mt-6 bg-gray-300 md:max-w-[50%]">
@@ -72,6 +73,7 @@ interface Props {
 
 const modalOpen = ref(false)
 const bannerOpen = ref(false)
+const videoError = ref(true)
 
 defineProps<Props>()
 </script>

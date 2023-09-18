@@ -33,7 +33,7 @@
 
 <script setup lang="ts">
 interface Props {
-  posts: Array
+  posts: () => []
   loading: boolean
   postsCount: number
 }

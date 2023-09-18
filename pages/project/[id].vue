@@ -50,7 +50,7 @@
                 :loading="postsLoading"
                 :postsCount="postCount"
                 @load-more="fetchMorePost()"
-                v-if="currentTab === 1 && postCount !== 0"
+                v-if="currentTab === 1"
               />
               <ComponentsFAQ
                 :faqs="faqs"
@@ -65,7 +65,7 @@
                 :loading="commentLoading"
                 @load-more="fetchMoreComment()"
                 :commentCount="commentCount"
-                v-if="currentTab === 3 && commentCount !== 0"
+                v-if="currentTab === 3"
               />
             </div>
           </Transition>
