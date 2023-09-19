@@ -78,7 +78,7 @@
           :loading="loadingDonat"
         />
       </div>
-      <div class="md:col-span-4">
+      <div class="md:col-span-4 hidden md:block">
         <SectionSideBar :id="route.params.id" />
       </div>
     </div>

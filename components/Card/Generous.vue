@@ -1,7 +1,14 @@
 <template>
   <div class="p-2 bg-white rounded-xl">
     <div class="flex gap-2 items-center">
-      <span class="rounded-full w-[34px] h-[34px]" v-if="!item.user?.avatar">
+      <img
+        v-if="isImgError && item?.user?.avatar?.original"
+        :src="item?.user?.avatar?.thumbnail?.medium"
+        alt=""
+        class="w-8 h-8 border border-gray-600 rounded-full"
+        @error="isImgError = false"
+      />
+      <span class="rounded-full w-[34px] h-[34px]" v-else>
         <svg
           width="34"
           height="34"
@@ -42,12 +49,6 @@
           />
         </svg>
       </span>
-      <img
-        v-else
-        :src="item?.user?.avatar?.thumbnail?.medium"
-        alt=""
-        class="w-8 h-8 border border-gray-600 rounded-full"
-      />
       <p class="text-xs leading-130 text-black-100 font-semibold line-clamp-2">
         {{ item?.user?.first_name }} {{ item?.user?.last_name }}
       </p>
@@ -73,4 +74,6 @@ interface Props {
 }
 
 defineProps<Props>()
+
+const isImgError = ref(true)
 </script>

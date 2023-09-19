@@ -13,8 +13,15 @@
         controls
         :onerror="(videoError = false)"
       />
-      <div class="text-sm text-black-200 leading-130" v-html="detail?.about" />
-      <div class="rounded-xl mt-6 bg-gray-300 md:max-w-[50%]">
+      <div
+        v-if="detail?.about"
+        class="text-sm text-black-200 leading-130"
+        v-html="detail?.about"
+      />
+      <div
+        v-if="detail?.files?.length"
+        class="rounded-xl mt-6 bg-gray-300 md:max-w-[50%]"
+      >
         <h3
           class="p-3 font-semibold leading-130 text-base border-b border-gray-600"
         >

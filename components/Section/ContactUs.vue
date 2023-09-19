@@ -208,7 +208,7 @@ const social = computed(() => {
   ]
 })
 
-const showModal = ref(true)
+const showModal = ref(false)
 
 function toggleModal() {
   showModal.value = !showModal.value
