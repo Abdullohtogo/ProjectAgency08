@@ -2,7 +2,7 @@
   <header
     id="header"
     :style="{ backgroundColor: `rgba(255, 255, 255, ${opacity})` }"
-    :class="{ 'bg-white shadow-header': !white }"
+    :class="{ 'bg-white shadow-header ': !white, 'shadow-lg': opacity !== 0 }"
   >
     <div
       :class="white ? 'md:py-8 sm:py-7 py-6' : 'md:py-6 sm:py-5 py-4'"
@@ -87,6 +87,7 @@ function scrollTo(url: string) {
   if (route.path !== '/') {
     router.push('/').finally(() => {
       const section = document.getElementById(url)
+      console.log('section:', section)
       setTimeout(() => {
         section?.scrollIntoView({
           behavior: 'smooth',
@@ -97,6 +98,7 @@ function scrollTo(url: string) {
     })
   } else {
     const section = document.getElementById(url)
+    console.log('section-else:', section)
     section?.scrollIntoView({
       behavior: 'smooth',
       inline: 'center',

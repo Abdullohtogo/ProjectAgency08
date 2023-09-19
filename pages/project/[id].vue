@@ -301,6 +301,9 @@ onMounted(async () => {
   useSeoMeta({
     title: data?.value?.title,
     ogTitle: data?.value?.title,
+    description: data?.value?.about,
+    ogDescription: data?.value?.about,
+    ogImage: data?.value?.image?.original,
     twitterTitle: data?.value?.title,
   })
 })

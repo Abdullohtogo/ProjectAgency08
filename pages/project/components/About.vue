@@ -21,24 +21,27 @@
           {{ $t('files') }}
         </h3>
         <div class="py-2 pl-3">
-          <div
+          <a
+            :href="item?.file"
+            target="_blank"
             v-for="(item, index) in detail?.files"
             :key="index"
             class="flex items-center gap-2 group w-full"
           >
             <i class="icon-document-text text-gray-400 text-2xl leading-6" />
             <div
-              class="flex items-center justify-between py-2.5 border-b border-gray-600 group-last:border-none w-full pr-3"
+              class="flex items-center py-2.5 border-b border-gray-600 group-last:border-none w-full pr-3"
             >
-              <p class="text-black-100 text-sm leading-130">
+              <p
+                class="max-w-[290px] text-black-100 text-sm leading-130 line-clamp-1"
+              >
                 {{ item?.file_name }}
               </p>
-              <a
-                :href="item?.file"
-                class="w-6 h-6 flex items-center justify-center text-base leading-4 icon-download text-white rounded-md bg-green-400 hover:bg-green-600 transition duration-300"
+              <span
+                class="ml-auto w-6 h-6 flex items-center justify-center text-base leading-4 icon-download text-white rounded-md bg-green-400 hover:bg-green-600 transition duration-300"
               />
             </div>
-          </div>
+          </a>
         </div>
       </div>
       <div class="border-t border-gray-300 pt-4 mt-4 flex justify-between">
