@@ -178,7 +178,7 @@
 
         <Transition name="fade">
           <div
-            class="fixed top-0 left-0 w-full h-full z-50 bg-modal hidden opacity-0"
+            class="fixed top-0 left-0 w-full h-full bg-modal hidden opacity-0 z-[9999999]"
             v-if="showHissa"
             @click="closeHissa()"
             :class="{ '!block opacity-100 overflow-hidden ': showHissa }"
@@ -247,8 +247,8 @@
         </Transition>
         <Transition name="fade">
           <div
-            class="fixed top-0 left-0 w-full h-full z-50 bg-modal hidden opacity-0"
-            v-if="showModal == true"
+            class="fixed top-0 left-0 w-full h-full z-[9999999] bg-modal hidden opacity-0"
+            v-if="showModal"
             @click="closeModal()"
             :class="{ '!block opacity-100 overflow-hidden ': showModal }"
           >

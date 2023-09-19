@@ -41,9 +41,17 @@
         <img src="/icons/heart-transparent.svg" alt="" />
       </div>
       <div class="z-10">
-        <img src="/icons/QR-light.svg" alt="" class="mt-8 rounded-[20px] shadow-qrlight" />
+        <img
+          src="/icons/QR-light.svg"
+          alt=""
+          class="mt-8 rounded-[20px] shadow-qrlight"
+        />
       </div>
-      <img src="/images/arm.png" class="-rotate-90 absolute -right-12 bottom-32" alt="arm">
+      <img
+        src="/images/arm.png"
+        class="-rotate-90 absolute -right-12 bottom-32"
+        alt="arm"
+      />
       <div class="mt-4 flex gap-3 w-full">
         <a
           target="_blank"

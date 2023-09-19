@@ -40,9 +40,12 @@
   </div>
 </template>
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+
 const projects = ref([])
 const total = ref(0)
 const loading = ref(false)
+const { t } = useI18n()
 
 interface IPaginationresponse<T> {
   count: number
@@ -108,5 +111,13 @@ const fetchMore = () => {
 
 onMounted(async () => {
   await fetchprojects()
+})
+
+useSeoMeta({
+  title: t('projects'),
+  ogTitle: t('projects'),
+  description: t('projects'),
+  ogDescription: t('projects'),
+  twitterTitle: t('projects'),
 })
 </script>

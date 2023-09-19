@@ -76,7 +76,7 @@
           <CommonButton
             customButton="sm:!w-auto !w-full"
             :type="'submit'"
-            :label="'send'"
+            label="send_application"
           />
         </div>
       </form>
