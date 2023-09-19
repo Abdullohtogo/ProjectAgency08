@@ -9,9 +9,9 @@
         loop
         id="myVideo"
         preload="auto"
-        :src="videoError ? detail?.about_video?.file : '~/assets/video.MOV'"
+        :src="detail?.about_video?.file"
         controls
-        :onerror="(videoError = false)"
+        @error="videoError = false"
       />
       <div class="text-sm text-black-200 leading-130" v-html="detail?.about" />
       <div class="rounded-xl mt-6 bg-gray-300 md:max-w-[50%]">
@@ -68,56 +68,20 @@
 </template>
 <script setup lang="ts">
 interface Props {
-  detail: Array
+  detail: {
+    files: {
+      file_name: string
+      file: string
+    }[]
+    region: { name: string }
+    about_video: { file: string }
+    views_count: number
+    share_count: number
+    comment_count: number
+    about: string
+  }
 }
-
-const modalOpen = ref(false)
-const bannerOpen = ref(false)
-const videoError = ref(true)
-
 defineProps<Props>()
+
+const videoError = ref(true)
 </script>
-
-<style>
-.fade-enter {
-  transition: ease-out duration-200;
-}
-.fade-enter-start {
-  opacity: 0;
-}
-.fade-enter-end {
-  opacity: 100;
-}
-.fade-leave {
-  transition: ease-out duration-100;
-}
-.fade-leave-start {
-  opacity: 100;
-}
-.fade-leave-end {
-  opacity: 0;
-}
-
-.out-enter {
-  transition: ease-out duration-300;
-}
-.out-enter-start {
-  opacity: 0;
-  transform: scale(0.75);
-}
-.out-enter-end {
-  opacity: 100;
-  transform: scale(1);
-}
-.out-leave {
-  transition: ease-out duration-200;
-}
-.out-leave-start {
-  opacity: 100;
-  transform: scale(1);
-}
-.out-leave-end {
-  opacity: 0;
-  transform: scale(0.75);
-}
-</style>
