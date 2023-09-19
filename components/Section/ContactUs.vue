@@ -112,7 +112,7 @@
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
-import { formatPhoneNumber } from '@/utils/index'
+import { formatPhoneNumber } from '@/utils'
 
 const contactInfo = ref()
 
@@ -149,7 +149,7 @@ onMounted(async () => {
     })
   }
 
-  await fetchCareContact()
+  fetchCareContact()
   await getContactInfo()
 })
 const info = computed(() => {
@@ -208,7 +208,7 @@ const social = computed(() => {
   ]
 })
 
-const showModal = ref(true)
+const showModal = ref(false)
 
 function toggleModal() {
   showModal.value = !showModal.value
