@@ -45,38 +45,37 @@
           </div>
         </div>
         <div
-          class="flex items-center sm:flex-row flex-col justify-between md:gap-6 gap-5 md:mt-[21px] sm:mt-4 mt-3"
+          class="flex items-center sm:flex-row flex-col justify-between md:mt-[21px] sm:mt-4 mt-3"
         >
-          <div class="">
-            <CommonCheckbox
-              v-model="form.agreement"
-              :label-start="'user_terms'"
-              :url="userPrivacy"
-              :label="'agreements_for'"
-              :error="$v.agreement.$error"
+          <CommonCheckbox
+            v-model="form.agreement"
+            :label-start="'user_terms'"
+            :url="userPrivacy"
+            :label="'agreements_for'"
+            :error="$v.agreement.$error"
+          >
+            <i18n-t
+              keypath="terms_of_use_checkbox"
+              tag="p"
+              style="line-height: 1.3"
+              class="text-gray-200"
             >
-              <i18n-t
-                keypath="terms_of_use_checkbox"
-                tag="p"
-                style="line-height: 1.3"
-                class="text-gray-200"
-              >
-                <template #terms>
-                  <a
-                    :href="userPrivacy"
-                    target="_blank"
-                    class="text-[#4489F7] font-medium"
-                  >
-                    {{ $t('user_terms') }}
-                  </a>
-                </template>
-              </i18n-t>
-            </CommonCheckbox>
-          </div>
+              <template #terms>
+                <a
+                  :href="userPrivacy"
+                  target="_blank"
+                  class="text-[#4489F7] font-medium"
+                >
+                  {{ $t('user_terms') }}
+                </a>
+              </template>
+            </i18n-t>
+          </CommonCheckbox>
           <CommonButton
             customButton="sm:!w-auto !w-full"
             :type="'submit'"
             label="send_application"
+            class="ml-2"
           />
         </div>
       </form>

@@ -85,20 +85,17 @@ const router = useRouter()
 
 function scrollTo(url: string) {
   if (route.path !== '/') {
-    router.push('/').finally(() => {
+    router.push('/')
+    setTimeout(() => {
       const section = document.getElementById(url)
-      console.log('section:', section)
-      setTimeout(() => {
-        section?.scrollIntoView({
-          behavior: 'smooth',
-          inline: 'center',
-          block: 'center',
-        })
-      }, 100)
-    })
+      section?.scrollIntoView({
+        behavior: 'smooth',
+        inline: 'center',
+        block: 'center',
+      })
+    }, 200)
   } else {
     const section = document.getElementById(url)
-    console.log('section-else:', section)
     section?.scrollIntoView({
       behavior: 'smooth',
       inline: 'center',

@@ -197,9 +197,9 @@
 </template>
 
 <script setup lang="ts">
-const handleImage = (event) => {
-  console.log('event error: ', event)
-}
+// const handleImage = (event) => {
+//   console.log('event error: ', event)
+// }
 const isImg = ref(true)
 interface IprojectIcon {
   id: string
