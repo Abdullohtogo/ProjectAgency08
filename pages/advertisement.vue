@@ -202,10 +202,10 @@ function goToOrder() {
 const termsLink = CONFIG.ID_DOMAIN + '/help-center/privacy-policy'
 
 useSeoMeta({
-  title: t('adv'),
-  ogTitle: t('adv'),
-  description: data.content,
-  ogDescription: data.content,
-  twitterTitle: t('adv'),
+  title: () => t('adv'),
+  ogTitle: () => t('adv'),
+  description: () => data.content,
+  ogDescription: () => data.content,
+  twitterTitle: () => t('adv'),
 })
 </script>
