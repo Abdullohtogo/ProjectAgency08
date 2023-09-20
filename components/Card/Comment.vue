@@ -1,7 +1,14 @@
 <template>
   <div class="rounded-2xl bg-gray-800 p-4">
     <div class="flex gap-2 items-center">
-      <span class="rounded-full w-[34px] h-[34px]" v-if="!item.user.avatar">
+      <img
+        v-if="item?.user?.avatar && isImgError"
+        :src="item?.user?.avatar?.thumbnail?.medium"
+        class="w-[34px] h-[34px]"
+        alt="profile"
+        @error="isImgError = false"
+      />
+      <span class="rounded-full w-[34px] h-[34px]" v-else>
         <svg
           width="34"
           height="34"
@@ -42,27 +49,22 @@
           />
         </svg>
       </span>
-      <img
-        v-else
-        :src="item?.user?.avatar"
-        class="w-[34px] h-[34px]"
-        alt="profile"
-      />
+
       <div class="flex flex-col">
         <p class="text-black-200 text-sm font-semibold leading-130">
-          {{ item?.user?.first_name }} {{ item.user.last_name }}
+          {{ item?.user?.first_name }} {{ item?.user?.last_name }}
         </p>
         <div
           class="flex items-center text-xs font-semibold mt-1 gap-1.5 text-gray-700"
         >
           <p>{{ dayjs(item?.created_at).format('HH:mm') }}</p>
           <div class="w-[3px] h-[3px] rounded-full bg-gray-700"></div>
-          <p>{{ formatMoneyWithSpace(item.money_amount) }} UZS</p>
+          <p>{{ formatMoneyWithSpace(item?.money_amount) }} UZS</p>
         </div>
       </div>
     </div>
     <p class="text-sm font-medium leading-130 text-black-200 mt-[9px]">
-      {{ item.comment }}
+      {{ item?.comment }}
     </p>
   </div>
 </template>
@@ -71,8 +73,10 @@ import dayjs from 'dayjs'
 import { formatMoneyWithSpace } from '@/utils/index'
 
 interface Props {
-  item: Array
+  item: any
 }
 
 defineProps<Props>()
+
+const isImgError = ref(true)
 </script>

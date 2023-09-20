@@ -114,10 +114,10 @@ onMounted(async () => {
 })
 
 useSeoMeta({
-  title: t('projects'),
-  ogTitle: t('projects'),
-  description: t('projects'),
-  ogDescription: t('projects'),
-  twitterTitle: t('projects'),
+  title: () => t('projects'),
+  ogTitle: () => t('projects'),
+  description: () => t('projects'),
+  ogDescription: () => t('projects'),
+  twitterTitle: () => t('projects'),
 })
 </script>
