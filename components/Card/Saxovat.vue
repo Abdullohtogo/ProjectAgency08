@@ -145,8 +145,8 @@
                 {{ $t('geneourses') }}:
                 <span class="text-black-100 font-semibold"
                   >{{ data?.donation_count }}
-                  <span v-if="data?.donation_count !== 0">ta</span></span
-                >
+                  <!--                  <span v-if="data?.donation_count !== 0">ta</span>-->
+                </span>
               </p>
             </div>
           </div>

@@ -22,7 +22,7 @@
                   @click="openItem(item.id)"
                 >
                   <h4
-                    class="font-semibold sm:leading-140 sm:text-xl text-base text-black-200 transition-300 group-hover:text-purple"
+                    class="break-words break-all font-semibold sm:leading-140 sm:text-xl text-base text-black-200 transition-300 group-hover:text-purple"
                   >
                     {{ item?.question }}
                   </h4>
