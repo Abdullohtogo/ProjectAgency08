@@ -90,27 +90,29 @@
           class="static lg:absolute lg:top-1/2 lg:-translate-y-1/2 translate-y-5"
           @open="toggleModal"
         />
-        <Transition name="fade">
-          <div
-            v-if="showModal"
-            @click="onClickOutside()"
-            class="fixed top-0 left-0 w-full h-full z-50 bg-modal hidden opacity-0"
-            :class="{ '!block opacity-100 overflow-hidden ': showModal }"
-          >
-            <FormModal
-              class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 sm:max-w-[434px] w-[70%] sm:w-full"
-              @close="toggleModal"
-              :show="showModal"
-            />
-          </div>
-        </Transition>
+        <teleport to="body">
+          <Transition name="fade">
+            <div
+              v-if="showModal"
+              @click="onClickOutside()"
+              class="fixed top-0 left-0 w-full h-full z-[9999999] bg-modal hidden opacity-0"
+              :class="{ '!block opacity-100 overflow-hidden ': showModal }"
+            >
+              <FormModal
+                class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[9999999]` sm:max-w-[434px] w-[70%] sm:w-full"
+                @close="toggleModal"
+                :show="showModal"
+              />
+            </div>
+          </Transition>
+        </teleport>
       </div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
-import { formatPhoneNumber } from '@/utils/index'
+import { formatPhoneNumber } from '@/utils'
 
 const contactInfo = ref()
 
@@ -147,7 +149,7 @@ onMounted(async () => {
     })
   }
 
-  await fetchCareContact()
+  fetchCareContact()
   await getContactInfo()
 })
 const info = computed(() => {
@@ -209,10 +211,6 @@ const social = computed(() => {
 const showModal = ref(false)
 
 function toggleModal() {
-  if (showModal.value == true) {
-    showModal.value = false
-  } else {
-    showModal.value = true
-  }
+  showModal.value = !showModal.value
 }
 </script>

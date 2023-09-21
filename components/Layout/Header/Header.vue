@@ -1,5 +1,9 @@
 <template>
-  <header id="header"  :style="{ backgroundColor: `rgba(255, 255, 255, ${opacity})` }" :class="{ 'bg-white shadow-header': !white }">
+  <header
+    id="header"
+    :style="{ backgroundColor: `rgba(255, 255, 255, ${opacity})` }"
+    :class="{ 'bg-white shadow-header ': !white, 'shadow-lg': opacity !== 0 }"
+  >
     <div
       :class="white ? 'md:py-8 sm:py-7 py-6' : 'md:py-6 sm:py-5 py-4'"
       class="container flex justify-between items-center sticky z-50"
@@ -73,24 +77,23 @@ onMounted(() => {
   window.addEventListener('scroll', handleScroll)
 })
 const opacity = computed(() => {
-  return yOffset.value > 10 ? 1 : yOffset.value / 100;
-});
+  return yOffset.value > 10 ? 1 : yOffset.value / 100
+})
 const showMenu = ref(false)
 const route = useRoute()
 const router = useRouter()
 
 function scrollTo(url: string) {
   if (route.path !== '/') {
-    router.push('/').finally(() => {
+    router.push('/')
+    setTimeout(() => {
       const section = document.getElementById(url)
-      setTimeout(() => {
-        section?.scrollIntoView({
-          behavior: 'smooth',
-          inline: 'center',
-          block: 'center',
-        })
-      }, 100)
-    })
+      section?.scrollIntoView({
+        behavior: 'smooth',
+        inline: 'center',
+        block: 'center',
+      })
+    }, 200)
   } else {
     const section = document.getElementById(url)
     section?.scrollIntoView({
@@ -132,5 +135,4 @@ const menu = computed(() => {
 header {
   transition: background-color 0.3s ease-in-out;
 }
-
 </style>

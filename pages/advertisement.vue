@@ -71,11 +71,18 @@
         >
           <Checkbox
             v-model="form.values.privacy_policy"
-            :url="userPrivacy"
-            label-start="user_terms"
-            label="agreements_for"
             :error="form.$v.value.privacy_policy.$error"
           >
+            <i18n-t keypath="terms_of_use_checkbox" tag="p">
+              <template #terms>
+                <a
+                  :href="termsLink"
+                  target="_blank"
+                  class="text-[#4489F7] font-medium"
+                  >{{ $t('user_terms') }}</a
+                >
+              </template>
+            </i18n-t>
           </Checkbox>
           <CommonButton
             variant="secondary"
@@ -86,18 +93,36 @@
       </div>
     </div>
   </div>
+
+  <div class="lg:w-[43%] md:w-2/3 w-full relative mx-auto z-[99999999999]">
+    <Transition name="fade">
+      <div
+        v-if="showModal"
+        @click="onClickOutside()"
+        class="fixed top-0 left-0 w-full h-full z-50 bg-modal hidden opacity-0"
+        :class="{ '!block opacity-100 overflow-hidden ': showModal }"
+      >
+        <FormModal
+          class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 sm:max-w-[434px] w-[70%] sm:w-full"
+          @close="toggleModal"
+          :show="showModal"
+        />
+      </div>
+    </Transition>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { required, sameAs } from '@vuelidate/validators'
+import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import Checkbox from '~/components/Common/Checkbox.vue'
+import { useApi } from '~/composables/useApi'
+import { CONFIG } from '~/config'
 
-const userPrivacy = ref(
-  `${import.meta.env.VITE_APP_ID_URL}/help-center/privacy-policy`
-)
 const { t } = useI18n()
+const showModal = ref(false)
 
 const form = useForm(
   {
@@ -133,14 +158,18 @@ const data = {
 Из этого платежа Sharh удерживает 50 000 000 сум в качестве депозита, а оставшуюся сумму предоставляет рекламодателю для показа рекламы.
 Все объявления должны соответствовать Условиям обслуживания рекламной платформы, а также Политике и рекомендациям Sharh в отношении рекламы.`,
 }
+const toggleModal = () => {
+  showModal.value = !showModal.value
+}
+
+function onClickOutside() {
+  document.body.style.overflow = 'auto'
+  showModal.value = false
+}
 
 function submit() {
   form.$v.value.$touch()
   if (!form.$v.value.$invalid) {
-    // orderRating({
-    //   ...form.values,
-    //   phone: `+998${form.values.phone.replace(/\D/g, '')}`,
-    // })
     useApi()
       .$post('/review/api/v1/front_office/OrderAdvertisingCreate/', {
         body: {
@@ -149,7 +178,8 @@ function submit() {
         },
       })
       .then(() => {
-        useCustomToast().showToast(t('order_successfully_sent'), 'success')
+        // useCustomToast().showToast(t('order_successfully_sent'), 'success')
+        showModal.value = true
         form.values = {
           phone: '',
           full_name: '',
@@ -158,9 +188,9 @@ function submit() {
         }
         form.$v.value.$reset()
       })
-      .catch((err) => {
-        useCustomToast().showToast(t(err._data.errors[0].error), 'error')
-      })
+    // .catch((err) => {
+    //   useCustomToast().showToast(t(err._data.errors[0].error), 'error')
+    // })
   }
 }
 
@@ -168,4 +198,14 @@ function goToOrder() {
   const order = document.getElementById('orderAdv')
   order?.scrollIntoView({ behavior: 'smooth' })
 }
+
+const termsLink = CONFIG.ID_DOMAIN + '/help-center/privacy-policy'
+
+useSeoMeta({
+  title: () => t('adv'),
+  ogTitle: () => t('adv'),
+  description: () => data.content,
+  ogDescription: () => data.content,
+  twitterTitle: () => t('adv'),
+})
 </script>

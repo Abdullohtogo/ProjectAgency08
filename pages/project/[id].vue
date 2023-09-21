@@ -50,7 +50,7 @@
                 :loading="postsLoading"
                 :postsCount="postCount"
                 @load-more="fetchMorePost()"
-                v-if="currentTab === 1 && postCount !== 0"
+                v-if="currentTab === 1"
               />
               <ComponentsFAQ
                 :faqs="faqs"
@@ -65,7 +65,7 @@
                 :loading="commentLoading"
                 @load-more="fetchMoreComment()"
                 :commentCount="commentCount"
-                v-if="currentTab === 3 && commentCount !== 0"
+                v-if="currentTab === 3"
               />
             </div>
           </Transition>
@@ -78,8 +78,8 @@
           :loading="loadingDonat"
         />
       </div>
-      <div class="md:col-span-4">
-        <SectionSideBar :id="route.params.slug" />
+      <div class="md:col-span-4 hidden md:block">
+        <SectionSideBar :id="route.params.id" />
       </div>
     </div>
   </div>
@@ -155,7 +155,7 @@ const faqLoading = ref(true)
 const fetchFaq = (val: string, merge?: boolean) => {
   return useApi()
     .$get<IPaginationResponse<IFaq>>(
-      `care/api/v1/landing/CareProject/${route.params.slug}/FAQList/?search=${
+      `care/api/v1/landing/CareProject/${route.params.id}/FAQList/?search=${
         val == undefined ? '' : val
       }`,
       {
@@ -191,7 +191,7 @@ const loadingDonat = ref(true)
 const fetchDonat = () => {
   return useApi()
     .$get<IPaginationResponse<IDonat>>(
-      `care/api/v1/landing/CareProject/${route.params.slug}/DonationList/`,
+      `care/api/v1/landing/CareProject/${route.params.id}/DonationList/`,
       {
         params: donatParams,
       }
@@ -226,7 +226,7 @@ const postsLoading = ref(true)
 const fetchPost = () => {
   return useApi()
     .$get<IPaginationResponse<IDonat>>(
-      `care/api/v1/${route.params.slug}/CareProjectPostList/`,
+      `care/api/v1/${route.params.id}/CareProjectPostList/`,
       {
         params: postParams,
       }
@@ -260,7 +260,7 @@ const commentLoading = ref(true)
 const fetchComment = () => {
   return useApi()
     .$get<IPaginationResponse<IComment>>(
-      `care/api/v1/landing/${route.params.slug}/CareProjectCommentList/`,
+      `care/api/v1/landing/${route.params.id}/CareProjectCommentList/`,
       {
         params: commentParams,
       }
@@ -281,9 +281,9 @@ const fetchMoreComment = () => {
   fetchComment().then(() => (commentLoading.value = false))
 }
 
-const  fetchProjectDetail = () => {
+const fetchProjectDetail = () => {
   return useApi().$get(
-    `care/api/v1/landing/CareProjectDetail/${route.params.slug}/`
+    `care/api/v1/landing/CareProjectDetail/${route.params.id}/`
   )
 }
 const { data, error } = await useAsyncData('fetchProductDetail', () =>
@@ -299,9 +299,12 @@ onMounted(async () => {
   await fetchFaq()
   await fetchPost()
   useSeoMeta({
-    title: data?.value?.title,
-    ogTitle: data?.value?.title,
-    twitterTitle: data?.value?.title,
+    title: () => data?.value?.title,
+    ogTitle: () => data?.value?.title,
+    description: () => data?.value?.about,
+    ogDescription: () => data?.value?.about,
+    ogImage: () => data?.value?.image?.original,
+    twitterTitle: () => data?.value?.title,
   })
 })
 
@@ -328,18 +331,15 @@ p:not(.text-black-100):hover {
   opacity: 0;
 }
 
-
 .scroll-style::-webkit-scrollbar {
   height: 3px;
 }
 
 .scroll-style::-webkit-scrollbar-track {
-  background: #DCE0E4;
+  background: #dce0e4;
 }
 
 .scroll-style::-webkit-scrollbar-thumb {
-  background: #8E9BA8;
+  background: #8e9ba8;
 }
-
-
 </style>
