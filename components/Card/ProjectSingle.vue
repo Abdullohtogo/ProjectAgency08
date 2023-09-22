@@ -84,7 +84,9 @@
               {{ $t('contributors') }}:
               <span class="text-gray-700 font-semibold text-sm"
                 >{{ data?.donation_count }}
-                <!--                <span v-if="data?.donation_count !== 0">ta</span> -->
+                <span v-if="data?.donation_count !== 0">{{
+                  $t('quantity')
+                }}</span>
               </span>
             </p>
           </div>

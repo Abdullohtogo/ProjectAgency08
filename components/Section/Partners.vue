@@ -37,8 +37,8 @@
         :key="item.id"
       />
       <button
-      v-if="partners.length !== 30"
-      @click="fetchMoreCompany()"
+        v-if="partners.length !== 30"
+        @click="fetchMoreCompany()"
         class="load-more py-2.5 pl-3 pr-4 flex items-center gap-2 bg-white rounded-40"
       >
         <i class="rounded-full bg-[#EBF7F1] p-1"

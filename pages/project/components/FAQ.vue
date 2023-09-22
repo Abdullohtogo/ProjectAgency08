@@ -18,18 +18,19 @@
                 ]"
               >
                 <div
-                  class="flex items-center justify-between cursor-pointer py-2 md:py-4 sm:px-5 px-2"
+                  class="flex items-center justify-between cursor-pointer py-2 md:py-4 sm:px-5 px-2 gap-2.5"
                   @click="openItem(item.id)"
                 >
                   <h4
-                    class="break-words break-all font-semibold sm:leading-140 sm:text-xl text-base text-black-200 transition-300 group-hover:text-purple"
+                    class="break-words break-all font-semibold sm:leading-140 text-sm text-black-200 transition-300 group-hover:text-purple"
                   >
                     {{ item?.question }}
                   </h4>
-                  <div class="ml-4">
+                  <div class="flex-shrink-0">
                     <img
                       src="/icons/arrow-down.svg"
                       alt=""
+                      class=""
                       :class="{
                         'rotate-180 ease-in-out': selectedItem === item.id,
                       }"

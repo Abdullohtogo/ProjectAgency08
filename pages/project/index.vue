@@ -9,7 +9,7 @@
           keypath="over_projects"
           tag="h2"
           style="line-height: 1.6"
-          class="text-green-500 lg:text-4xl md:text-3xl text-xl font-bold text-center max-w-[540px]"
+          class="text-green-500 lg:text-4xl md:text-3xl text-xl font-bold text-center max-w-[580px]"
         >
           <template #count>
             <span class="text-white bg-green-300 rounded-xl px-2.5 pr-2 mr-2">
@@ -22,7 +22,7 @@
     <div
       class="grid md:grid-cols-2 lg:grid-cols-4 flex-wrap gap-6 mb-6 md:mb-8"
     >
-      <LoaderProject v-if="!loading" v-for="i in 12" :key="i" />
+      <LoaderProject v-if="loading" v-for="i in 12" :key="i" />
       <CardProjectSingle
         v-for="(data, i) in projects"
         v-bind="{ data }"
@@ -41,19 +41,23 @@
 </template>
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import { useProjectStore } from '~/store/project'
+import { computed } from 'vue'
 
-const projects = ref([])
-const total = ref(0)
-const loading = ref(false)
 const { t } = useI18n()
+const projectStore = useProjectStore()
 
-interface IPaginationresponse<T> {
+const projects = computed(() => projectStore.projects)
+const loading = computed(() => projectStore.loading)
+const total = computed(() => projectStore.total)
+
+export interface IPaginationresponse<T> {
   count: number
   next: string
   previous: string
   results: T[]
 }
-interface IProjectCategory {
+export interface IProjectCategory {
   id: string
   name: string
   icon: {
@@ -65,7 +69,7 @@ interface IProjectCategory {
   }
   background_color: string
 }
-interface IProjectCard {
+export interface IProjectCard {
   id: number
   title: string
   company: {
@@ -92,26 +96,17 @@ interface IProjectCard {
   status: number
 }
 const params = reactive({ offset: 0, limit: 12 })
-const fetchprojects = () => {
-  return useApi()
-    .$get<IPaginationresponse<IProjectCard>>(`care/api/v1/CareProjectList/`, {
-      params,
-    })
-    .then((res) => {
-      projects.value = [...projects.value, ...res.results]
-      total.value = res.count
-      loading.value = true
-    })
-}
+
+useAsyncData(async () => {
+  if (!projects.value.length) {
+    await projectStore.fetchProjects({ params: params })
+  }
+})
 
 const fetchMore = () => {
   params.offset += params.limit
-  fetchprojects()
+  projectStore.fetchProjects({ params: params })
 }
-
-onMounted(async () => {
-  await fetchprojects()
-})
 
 useSeoMeta({
   title: () => t('projects'),
@@ -119,5 +114,12 @@ useSeoMeta({
   description: () => t('projects'),
   ogDescription: () => t('projects'),
   twitterTitle: () => t('projects'),
+})
+
+onMounted(() => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  })
 })
 </script>

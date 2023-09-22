@@ -1,6 +1,6 @@
 <template>
   <div class="h-full">
-<!--    <SectionComingSoon />-->
+    <!--    <SectionComingSoon />-->
     <SectionMainIntro class="mb-7 mt-6" />
     <SectionProjectAim id="about" class="lg:mb-12 md:mb-8 mb-6" />
     <SectionMainCards id="afzalliklar" class="lg:pb-10 md:pb-8 pb-6" />
@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts" setup>
-import {definePageMeta} from "#imports";
+import { definePageMeta } from '#imports'
 
 function scrollToSection() {
   const section = document.getElementById('contact')

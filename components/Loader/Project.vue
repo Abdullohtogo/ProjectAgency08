@@ -11,14 +11,19 @@
     </div>
 
     <div class="block relative">
-      <block-pre-loader loading width="100%" height="140px" />
+      <block-pre-loader
+        loading
+        width="100%"
+        height="140px"
+        shimmer-class="!rounded-none"
+      />
     </div>
 
-    <div class="flex flex-col justify-between p-3 pb-4 mg:min-h-[305px]">
+    <div class="flex flex-col justify-between p-3 pb-4 md:min-h-[305px]">
       <div class="flex flex-col gap-3">
         <div class="flex flex-col gap-1.5">
           <block-pre-loader
-            v-for="i in 2"
+            v-for="i in 1"
             :key="i"
             loading
             width="100%"
@@ -54,16 +59,16 @@
         <span class="block w-full h-[1px] bg-gray-300 my-3" />
         <div class="flex items-center justify-between">
           <div class="flex gap-1 items-center cursor-pointer">
-            <block-pre-loader loading width="60px" height="30px" />
+            <block-pre-loader loading width="60px" height="25px" />
           </div>
 
           <div class="flex gap-3 items-center">
             <div class="flex gap-1 items-center">
-              <block-pre-loader loading width="50px" height="30px" />
+              <block-pre-loader loading width="50px" height="25px" />
             </div>
 
             <div class="flex gap-1 items-center">
-              <block-pre-loader loading width="50px" height="30px" />
+              <block-pre-loader loading width="50px" height="25px" />
             </div>
           </div>
         </div>
