@@ -108,6 +108,7 @@ interface IPartner {
 const partnerParams = reactive({
   limit: 15,
   offset: 0,
+  show_on_care_landing: true,
 })
 const partners = ref<IPartner[]>([])
 const partnerCount = ref(0)
