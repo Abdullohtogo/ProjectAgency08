@@ -4,4 +4,5 @@ export const CONFIG = {
   APP_URL: import.meta.env.VITE_APP_APPLICATION_URL,
   APP_STORE_URL: import.meta.env.VITE_APP_APP_STORE,
   PLAY_MARKET_URL: import.meta.env.VITE_APP_PLAY_STORE,
+  REVIEW_URL: import.meta.env.VITE_APP_REVIEW_URL,
 }
