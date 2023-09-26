@@ -1,4 +1,4 @@
-<template>
+ <template>
   <div
     class="relative overflow-hidden lg:pb-[175px] pb-16 lg:pt-32 md:pt-20 pt-10"
   >
@@ -37,7 +37,7 @@
         :key="item.id"
       />
       <button
-        v-if="partners.length !== 30"
+        v-if="partners.length >15"
         @click="fetchMoreCompany()"
         class="load-more py-2.5 pl-3 pr-4 flex items-center gap-2 bg-white rounded-40"
       >

@@ -1,6 +1,6 @@
 <template>
   <a
-    :href="`${CONFIG.REVIEW_URL}/c/${item?.slug}`"
+    :href="`${reviewUrl}/c/${item?.slug}`"
     target="_blank"
     class="rounded-40 py-2.5 pl-2.5 pr-3 inline-flex items-center gap-2 bg-white w-fit shadow-partnersCard backdrop-blur-sm"
   >
@@ -10,12 +10,16 @@
 </template>
 
 <script setup lang="ts">
-import {CONFIG} from "~/config";
+import {computed} from "vue";
 
 interface Props {
   item: Array
 }
 
 const props = defineProps<Props>()
+
+const reviewUrl = computed(() => {
+  return import.meta.env.VITE_APP_REVIEW_URL
+})
 
 </script>
