@@ -2,9 +2,16 @@
   <div class="sm:p-4 p-2 rounded-2xl border border-gray-600">
     <div class="flex gap-2">
       <img
+        v-if="item?.image?.thumbnail?.small && isImgError"
         :src="item?.image?.thumbnail?.small"
         alt="logo"
-        class="border w-11 h-11 rounded-full border-blue-light"
+        @error="isImgError = false"
+      />
+      <img
+        v-else
+        class="border w-11 h-11 rounded-full border-blue-light flex-shrink-0"
+        src="~/assets/images/Logo.png"
+        alt="mehrli qullar"
       />
       <p class="text-black-100 font-semibold leading-130">
         {{ item?.name }}
@@ -41,4 +48,6 @@ interface Props {
 }
 
 defineProps<Props>()
+
+const isImgError = ref(true)
 </script>

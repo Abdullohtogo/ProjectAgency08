@@ -1,7 +1,7 @@
 <template>
   <div class="sm:p-5 p-3 !pt-6">
     <div v-if="commentCount !== 0" class="flex flex-col items-center">
-      <div class="flex flex-col gap-4">
+      <div class="w-full flex flex-col gap-4">
         <CardComment
           v-for="(card, index) in comments"
           :item="card"
@@ -9,7 +9,7 @@
         />
       </div>
       <CommonButton
-        v-if="comments.length !== commentCount"
+        v-if="comments.length < commentCount"
         @click="loadMore"
         label="load_more"
         variant="primary"

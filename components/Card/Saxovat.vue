@@ -2,14 +2,36 @@
   <div class="bg-white/90 rounded-28 sm:p-5 p-3">
     <div v-if="data?.image" class="relative md:mb-5 sm:mb-4 mb-3">
       <img
+        v-if="imgError"
         :src="data?.image.thumbnail?.small"
+        alt=""
+        class="rounded-2xl max-h-[320px] object-contain w-full"
+        @error="imgError = false"
+      /><img
+        v-else
+        src="~/assets/images/main_image.png"
         alt=""
         class="rounded-2xl max-h-[320px] object-cover w-full"
       />
-      <div class="flex gap-2 absolute left-4 bottom-4 p-2 bg-white rounded-40">
-<!--         :style="`background-color: ${data?.category?.background_color}`"-->
-        <img :src="data?.category?.icon?.file" alt="icon" />
-        <p class="text-black-100 font-medium text-sm">{{ data?.category?.name }}</p>
+      <div
+        class="flex gap-1 md:gap-2 absolute left-4 bottom-4 px-1.5 p-1 md:p-2 bg-white rounded-40"
+      >
+        <!--        :style="`background-color: ${data?.category?.background_color}`"-->
+        <img
+          v-if="imgError"
+          :src="data?.category?.icon?.file"
+          alt="icon"
+          @error="imgError = false"
+        />
+        <img
+          v-else
+          src="~/assets/images/heart.png"
+          alt="icon"
+          @error="imgError = false"
+        />
+        <p class="text-black-100 font-medium text-xs md:text-sm">
+          {{ data?.category?.name }}
+        </p>
       </div>
     </div>
     <h3
@@ -104,7 +126,10 @@
               <div>
                 <p class="text-sm text-gray-400 text-end">{{ $t('finish') }}</p>
                 <span class="font-bold text-black-100"
-                  >{{ formatMoneyWithSpace(data?.target_money) }} UZS</span
+                  >{{
+                    formatMoneyWithSpace(parseInt(data.target_money))
+                  }}
+                  UZS</span
                 >
               </div>
             </div>
@@ -120,8 +145,10 @@
                 {{ $t('geneourses') }}:
                 <span class="text-black-100 font-semibold"
                   >{{ data?.donation_count }}
-                  <span v-if="data?.donation_count !== '0'">ta</span></span
-                >
+                  <span v-if="data?.donation_count !== 0">{{
+                    $t('quantity')
+                  }}</span>
+                </span>
               </p>
             </div>
           </div>
@@ -150,9 +177,10 @@
             </template>
           </CommonButton>
         </div>
+
         <Transition name="fade">
           <div
-            class="fixed top-0 left-0 w-full h-full z-50 bg-modal hidden opacity-0"
+            class="fixed top-0 left-0 w-full h-full bg-modal hidden opacity-0 z-[9999999]"
             v-if="showHissa"
             @click="closeHissa()"
             :class="{ '!block opacity-100 overflow-hidden ': showHissa }"
@@ -163,7 +191,7 @@
             >
               <span
                 @click="closeHissa()"
-                class="icon-close text-white text-2xl translate-x-7 cursor-pointer"
+                class="icon-close text-white text-2xl translate-x-1 md:translate-x-7 cursor-pointer"
               />
               <div
                 class="relative max-w-[344px] w-full overflow-hidden bg-gradient-to-b from-app-banner-1 to-app-banner-2 rounded-28 flex flex-col justify-center items-center p-6 pt-8"
@@ -221,13 +249,13 @@
         </Transition>
         <Transition name="fade">
           <div
-            class="fixed top-0 left-0 w-full h-full z-50 bg-modal hidden opacity-0"
-            v-if="showModal == true"
+            class="fixed top-0 left-0 w-full h-full z-[9999999] bg-modal hidden opacity-0"
+            v-if="showModal"
             @click="closeModal()"
             :class="{ '!block opacity-100 overflow-hidden ': showModal }"
           >
             <UIModal
-              class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 sm:max-w-[434px] w-[70%] sm:w-full"
+              class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 sm:max-w-[434px] w-[90%] sm:w-full"
               @close="toggleModal"
               :id="data?.id"
               :show="showModal"
@@ -253,7 +281,7 @@ const gatheredmoneys = ref({
 const appstore = ref(import.meta.env.VITE_APP_APP_STORE)
 const playstore = ref(import.meta.env.VITE_APP_PLAY_STORE)
 
-const ploader = ref(true)
+const imgError = ref(true)
 
 const props = defineProps({
   data: {
@@ -293,10 +321,14 @@ const remainingDays = ref(0)
 const remainingHours = ref(0)
 const remainingMinutes = ref(0)
 const remainingSeconds = ref(0)
+
+const timeNow = new Date().getTime()
+let timeDifference = props.end_time - timeNow
+
 function startTimer() {
-  const timeNow = new Date().getTime()
-  const timeDifference = props.end_time - timeNow
   const millisecondsInOneSecond = 1000
+  timeDifference = Math.abs(timeDifference) - millisecondsInOneSecond
+
   const millisecondsInOneMinute = millisecondsInOneSecond * 60
   const millisecondsInOneHour = millisecondsInOneMinute * 60
   const millisecondsInOneDay = millisecondsInOneHour * 24
@@ -307,10 +339,10 @@ function startTimer() {
     (timeDifference % millisecondsInOneHour) / millisecondsInOneMinute
   const remainderDifferenceInSeconds =
     (timeDifference % millisecondsInOneMinute) / millisecondsInOneSecond
-  remainingDays.value = Math.floor(differenceInDays)
-  remainingHours.value = Math.floor(remainderDifferenceInHours)
-  remainingMinutes.value = Math.floor(remainderDifferenceInMinutes)
-  remainingSeconds.value = Math.floor(remainderDifferenceInSeconds)
+  remainingDays.value = Math.abs(Math.floor(differenceInDays))
+  remainingHours.value = Math.abs(Math.floor(remainderDifferenceInHours))
+  remainingMinutes.value = Math.abs(Math.floor(remainderDifferenceInMinutes))
+  remainingSeconds.value = Math.abs(Math.floor(remainderDifferenceInSeconds))
 }
 onMounted(() => {
   setInterval(() => {

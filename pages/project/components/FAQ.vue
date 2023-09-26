@@ -9,7 +9,7 @@
               <div
                 v-for="(item, index) in faqs"
                 :key="index"
-                class="group transition-300 col-span-2 md:col-span-1 rounded-xl bg-gray-800 sm:mb-4 mb-2"
+                class="group transition duration-300 col-span-2 md:col-span-1 rounded-xl bg-gray-800 sm:mb-4 mb-2"
                 :class="[
                   {
                     'bg-white border border-green-400':
@@ -18,18 +18,19 @@
                 ]"
               >
                 <div
-                  class="flex items-center justify-between cursor-pointer py-2 md:py-4 sm:px-5 px-2"
+                  class="flex items-center justify-between cursor-pointer py-2 md:py-4 sm:px-5 px-2 gap-2.5"
                   @click="openItem(item.id)"
                 >
                   <h4
-                    class="font-semibold sm:leading-140 sm:text-xl text-base text-black-200 transition-300 group-hover:text-purple"
+                    class="break-words break-all font-semibold sm:leading-140 text-sm text-black-200 transition-300 group-hover:text-purple"
                   >
                     {{ item?.question }}
                   </h4>
-                  <div class="ml-4">
+                  <div class="flex-shrink-0">
                     <img
                       src="/icons/arrow-down.svg"
                       alt=""
+                      class=""
                       :class="{
                         'rotate-180 ease-in-out': selectedItem === item.id,
                       }"
@@ -37,9 +38,14 @@
                   </div>
                 </div>
 
-                <CollapseTransition>
-                  <div v-if="selectedItem === item.id" class="sm:p-4 p-2 pt-0">
-                    <p class="text-black-200 sm:text-sm text-xs leading-140">
+                <CollapseTransition class="transition duration-300">
+                  <div
+                    v-if="selectedItem === item.id"
+                    class="sm:p-4 p-2 pt-0 transition duration-300"
+                  >
+                    <p
+                      class="text-black-200 sm:text-sm text-xs leading-140 break-words break-all"
+                    >
                       {{ item?.answer }}
                     </p>
                   </div>
