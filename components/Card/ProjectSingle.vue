@@ -2,18 +2,11 @@
   <div class="bg-white/90 h-full rounded-2xl project">
     <div class="py-2 pl-3 flex items-center gap-2">
       <img
-        v-if="isImg"
         class="w-8 h-8 object-cover rounded-full"
-        :src="data.company?.brand_logo?.original"
-        alt="dude, find guru"
-        @error="isImg = false"
+        v-lazy="{src: data?.company?.brand_logo?.original}"
+        :alt="data?.company?.name"
       />
-      <img
-        v-else
-        src="~/assets/images/barnd_logo.png"
-        class="w-8 h-8 object-cover rounded-full"
-        alt=""
-      />
+
       <span class="font-medium text-base text-black-100 line-clamp-1">{{
         data?.company?.name
       }}</span>
@@ -23,14 +16,14 @@
       <img
         v-if="isImg"
         :src="data?.image?.file"
-        class="object-cover w-full"
+        class="object-cover w-full aspect-video	"
         alt=""
         @error="isImg = false"
       />
       <img
         v-else
         src="~/assets/images/main_image.png"
-        class="object-cover w-full"
+        class="object-cover w-full aspect-video	"
         alt=""
       />
       <div
@@ -40,7 +33,6 @@
           v-if="isImg"
           :src="data?.category?.icon?.file"
           alt=""
-          @error="handleImage"
         />
         <img v-else src="~/assets/images/heart.png" alt="" />
         <span class="text-xs font-medium text-black-200">{{
