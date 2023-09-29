@@ -17,7 +17,7 @@
             type="text"
             :error="$v.name.$error"
             v-model="form.name"
-            input-class="!p-[9px] !sm:p-3"
+            inputClass="!p-[9px] !sm:p-3"
           />
           <ClientOnly>
             <Input
@@ -28,7 +28,7 @@
               src="/icons/flag.svg"
               v-maska="'## ### ## ##'"
               :error="$v.phoneNumber.$error"
-              input-class="!p-1.5 border border-green bg-yellow"
+              inputClass="!p-1.5"
               >+998</Input
             >
           </ClientOnly>

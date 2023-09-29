@@ -34,6 +34,12 @@ export default defineNuxtConfig({
           content: '/og.png',
         },
         {
+          hid: 'og:image',
+          name: 'og:image',
+          property: 'og:image',
+          content: '/og.png',
+        },
+        {
           hid: 'og:url',
           property: 'og:url',
           content: 'https://hissa-dev.commeta.uz/',

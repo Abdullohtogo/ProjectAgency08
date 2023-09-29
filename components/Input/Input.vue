@@ -4,7 +4,7 @@
       $t(label)
     }}</label>
     <div
-      :class="(error ? '!border-red' : '', inputClass)"
+      :class="[error ? '!border-red' : '', inputClass]"
       class="bg-gray-300 rounded-lg transition transition-300 flex sm:p-3 p-1.5 h-full border border-transparent focus-within:border-green-400"
     >
       <img class="mr-2" :src="src" alt="" v-if="src" />

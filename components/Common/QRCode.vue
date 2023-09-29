@@ -1,9 +1,9 @@
 <template>
   <div>
     <div
-      class="w-full border-2 bg-green-500 border-[#27A44A] p-2.5 relative rounded-xl qr"
+      class="border-2 bg-green-500 border-[#27A44A] p-2.5 relative rounded-xl qr"
       :class="{
-        '!bg-white  !max-w-[180px] !max-h-[180px]': light,
+        '!bg-white w-full  !max-w-[180px] !max-h-[180px]': light,
         'w-[107px] h-[107px]': dark,
       }"
     >
