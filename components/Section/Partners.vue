@@ -1,4 +1,4 @@
- <template>
+<template>
   <div
     class="relative overflow-hidden lg:pb-[175px] pb-16 lg:pt-32 md:pt-20 pt-10"
   >
@@ -37,7 +37,7 @@
         :key="item.id"
       />
       <button
-        v-if="partners.length >15"
+        v-if="partners.length > 15"
         @click="fetchMoreCompany()"
         class="load-more py-2.5 pl-3 pr-4 flex items-center gap-2 bg-white rounded-40"
       >
@@ -69,7 +69,7 @@
       </button>
     </div>
     <div
-      class="container flex sm:gap-9 gap-3 mt-11 justify-center relative z-10"
+      class="container flex-col md:flex-row w-[90%] md:w-auto flex sm:gap-9 gap-4 mt-8 md:mt-11 justify-center relative z-10"
     >
       <CommonButton
         @click="$emit('scroll')"
@@ -77,8 +77,8 @@
         variant="primary"
         customButton="!px-[45px]"
       />
-      <a :href="businePanel" target="_blank">
-        <CommonButton label="get_with_us" variant="secondary" />
+      <a :href="businePanel" target="_blank" class="w-full md:w-auto">
+        <CommonButton label="get_with_us" variant="secondary" class="w-full" />
       </a>
     </div>
     <div class="absolute bottom-0 left-1/2 -translate-x-1/2 z-0">

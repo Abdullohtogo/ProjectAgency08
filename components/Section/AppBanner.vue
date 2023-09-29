@@ -14,7 +14,8 @@
           {{ $t('check_founds_on_phone') }}
         </p>
         <div class="flex gap-4 mt-7">
-          <img src="/icons/QR.svg" alt="qr" />
+          <!--          <img src="/icons/QR.svg" alt="qr" /> -->
+          <QRCode dark />
           <div class="flex flex-col justify-between">
             <a
               target="_blank"
@@ -33,7 +34,9 @@
           </div>
         </div>
       </div>
-      <div class="absolute lg:block hidden -bottom-[244px] 2xl:-right-[100px] -right-[214px]">
+      <div
+        class="absolute lg:block hidden -bottom-[244px] 2xl:-right-[100px] -right-[214px]"
+      >
         <img
           src="/images/phones.png"
           class="max-w-[900px] max-h-[778px]"
@@ -45,13 +48,15 @@
       </div>
     </div>
     <div
-      class="absolute bottom-0 lg:left-1/4 md:left-[35%] sm:left-[40%] sm:block hidden"
+      class="absolute bottom-0 lg:left-[32%] md:left-[35%] sm:left-[40%] sm:block hidden"
     >
       <img src="/images/arm.png" alt="" />
     </div>
   </div>
 </template>
 <script setup lang="ts">
+import QRCode from '~/components/Common/QRCode.vue'
+
 const appstore = ref(import.meta.env.VITE_APP_APP_STORE)
 const playstore = ref(import.meta.env.VITE_APP_PLAY_STORE)
 </script>

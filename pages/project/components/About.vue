@@ -25,7 +25,7 @@
         <h3
           class="p-3 font-semibold leading-130 text-base border-b border-gray-600"
         >
-          {{ $t('files') }}
+          {{ $t('care_mobile_files') }}
         </h3>
         <div class="py-2 pl-3">
           <a

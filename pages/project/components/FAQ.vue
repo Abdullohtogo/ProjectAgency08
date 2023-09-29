@@ -4,7 +4,7 @@
     <Transition mode="out-in" name="fade">
       <div :key="faqCount !== 0">
         <div v-if="faqCount !== 0">
-          <div class=" ">
+          <CollapseTransition class="transition duration-300">
             <div class="grid w-full items-start gap-y-2 gap-x-4 sm:mt-4 mt-3">
               <div
                 v-for="(item, index) in faqs"
@@ -52,10 +52,10 @@
                 </CollapseTransition>
               </div>
             </div>
-          </div>
+          </CollapseTransition>
           <CommonButton
             @click="$emit('loadMore', search)"
-            v-if="faqs.length !== faqCount"
+            v-if="faqs.length < faqCount"
             label="load_more"
             variant="primary"
             class="mx-auto"
@@ -76,7 +76,7 @@
             {{ $t('no_faq') }}
           </p>
           <p class="text-[#8E9BA8] leading-130 text-base">
-            {{ $t('no_project_like_this') }}
+            {{ $t('no_faq_this_project') }}
           </p>
         </div>
       </div>
@@ -85,6 +85,7 @@
 </template>
 <script setup lang="ts">
 import CommonSearch from '@/components/Common/Search.vue'
+import CollapseTransition from '@ivanv/vue-collapse-transition/src/CollapseTransition.vue'
 
 interface Props {
   faqCount: number

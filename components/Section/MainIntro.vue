@@ -22,10 +22,10 @@
                 keypath="prlatform_for"
                 tag="h2"
                 style="line-height: 1.3"
-                class="md:text-3xl sm:text-2xl text-xl lg:text-[42px] lg:leading-10 relative font-bold  text-green-500 lg:max-w-[1090px]"
+                class="md:text-3xl uppercase sm:text-2xl text-xl lg:text-[42px] lg:leading-10 relative font-bold text-green-500 lg:max-w-[1090px]"
               >
                 <template #store>
-                  <span class="underlined relative">
+                  <span class="underlined">
                     {{ $t('hissa') }}
                   </span>
                 </template>
@@ -84,6 +84,7 @@
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
+
 const appstore = ref(import.meta.env.VITE_APP_APP_STORE)
 const playstore = ref(import.meta.env.VITE_APP_PLAY_STORE)
 const items = [
@@ -105,9 +106,11 @@ const items = [
 ]
 </script>
 
-<style>
+<style scoped>
 .underlined {
+  display: inline-block;
   z-index: 1;
+  position: relative;
 }
 
 .underlined::before {
@@ -116,9 +119,9 @@ const items = [
   z-index: -1;
   left: 0;
   bottom: 6px;
-  height: 0;
+  height: 8px;
   width: 103%;
-  border-bottom: 8px solid #16cc53;
+  background: #16cc53;
   transition: width 0.3s ease;
 }
 
@@ -136,7 +139,8 @@ const items = [
 
 @media only screen and (max-width: 640px) {
   .underlined::before {
-    bottom: -1px;
+    bottom: 4px;
+    height: 4px;
   }
 }
 </style>

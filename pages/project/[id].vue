@@ -2,7 +2,9 @@
   <div class="container sm:mt-6 mt-3 sm:mb-16 mb-4">
     <div class="md:grid flex flex-col grid-cols-12 gap-6">
       <div class="md:col-span-8">
-        <CardSaxovat :data="data" :end_time="new Date(data?.end_time)" />
+        <CollapseTransition class="transition duration-300">
+          <CardSaxovat :data="data" :end_time="new Date(data?.end_time)" />
+        </CollapseTransition>
         <div class="sm:rounded-28 rounded-2xl bg-white backdrop-filter mt-5">
           <div class="border-b border-gray-300">
             <div
@@ -46,7 +48,7 @@
             <div :key="currentTab">
               <ComponentsAbout :detail="data" v-if="currentTab === 0" />
               <ComponentsPosts
-                :posts="posts"
+                v-bind="{ data, posts }"
                 :loading="postsLoading"
                 :postsCount="postCount"
                 @load-more="fetchMorePost()"
@@ -92,6 +94,7 @@ import ComponentsAbout from '@/pages/project/components/About.vue'
 import ComponentsComments from '@/pages/project/components/Comments.vue'
 import ComponentsFAQ from '@/pages/project/components/FAQ.vue'
 import ComponentsPosts from '@/pages/project/components/Posts.vue'
+import CollapseTransition from '@ivanv/vue-collapse-transition/src/CollapseTransition.vue'
 
 const { t } = useI18n()
 const route = useRoute()
@@ -114,7 +117,7 @@ const tabs = [
   },
   {
     id: 3,
-    tab: 'Izohlar',
+    tab: 'comments',
     current: false,
   },
 ]

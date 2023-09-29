@@ -41,11 +41,7 @@
         <img src="/icons/heart-transparent.svg" alt="" />
       </div>
       <div class="z-10">
-        <img
-          src="/icons/QR-light.svg"
-          alt=""
-          class="mt-8 rounded-[20px] shadow-qrlight"
-        />
+        <QRCode light class="mt-5 md:mt-8" />
       </div>
       <img
         src="/images/arm.png"
@@ -73,6 +69,7 @@
 </template>
 <script setup lang="ts">
 import { CONFIG } from '~/config'
+import QRCode from '~/components/Common/QRCode.vue'
 
 interface Props {
   id: string

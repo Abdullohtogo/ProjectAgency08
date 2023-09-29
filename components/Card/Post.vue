@@ -4,7 +4,7 @@
       <img
         v-if="item?.image?.thumbnail?.small && isImgError"
         :src="item?.image?.thumbnail?.small"
-        alt="logo"
+        class="border w-11 h-11 rounded-full border-blue-light flex-shrink-0 inline-flex"
         @error="isImgError = false"
       />
       <img
@@ -14,9 +14,9 @@
         alt="mehrli qullar"
       />
       <p class="text-black-100 font-semibold leading-130">
-        {{ item?.name }}
-        <span class="text-gray-400 font-normal text-sm mt-2 block">
-          {{ item?.sphere }}
+        {{ data.company?.name }}
+        <span class="text-gray-400 font-normal text-sm mt-[5px] block">
+          {{ data.category?.name }}
         </span>
       </p>
     </div>
@@ -37,14 +37,18 @@
     />
     <div class="sm:mt-3 mt-2 flex gap-1 items-center">
       <img src="/icons/calendar.svg" alt="" />
-      <p class="text-sm text-gray-400">{{ item?.published_at }}</p>
+      <p class="text-sm text-gray-400">
+        {{ dayjs(item?.published_at).format('DD.MM.YYYY, HH:mm') }}
+      </p>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import dayjs from 'dayjs'
 interface Props {
   item: Array
+  data: object
 }
 
 defineProps<Props>()

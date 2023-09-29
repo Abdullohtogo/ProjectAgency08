@@ -19,7 +19,7 @@
       />
     </div>
 
-    <div class="flex flex-col justify-between p-3 pb-4 md:min-h-[305px]">
+    <div class="flex flex-col justify-between p-3 pb-4 md:min-h-[305px] gap-2">
       <div class="flex flex-col gap-3">
         <div class="flex flex-col gap-1.5">
           <block-pre-loader

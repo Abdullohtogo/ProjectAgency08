@@ -1,8 +1,10 @@
 <template>
   <div class="flex flex-col gap-2">
-    <label class="font-medium leading-130 text-[#596066]">{{ $t(label) }}</label>
+    <label class="font-medium leading-130 text-[#596066]">{{
+      $t(label)
+    }}</label>
     <div
-      :class="(inputClass, error ? '!border-red' : '')"
+      :class="(error ? '!border-red' : '', inputClass)"
       class="bg-gray-300 rounded-lg transition transition-300 flex sm:p-3 p-1.5 h-full border border-transparent focus-within:border-green-400"
     >
       <img class="mr-2" :src="src" alt="" v-if="src" />

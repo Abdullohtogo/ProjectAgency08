@@ -9,7 +9,9 @@
       <h3 class="lg:text-[32px] text-2xl font-bold text-black-100 mt-1">
         {{ $t(item.title) }}
       </h3>
-      <p class="text-xs leading-128 text-gray-200 mt-4">{{ $t(item.text) }}</p>
+      <p class="text-xs leading-128 text-gray-200 mt-4 relative z-50">
+        {{ $t(item.text) }}
+      </p>
     </div>
     <div class="absolute right-0 bottom-0">
       <img :src="item.src" alt="icon" />

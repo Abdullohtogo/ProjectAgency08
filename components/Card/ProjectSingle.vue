@@ -3,7 +3,7 @@
     <div class="py-2 pl-3 flex items-center gap-2">
       <img
         class="w-8 h-8 object-cover rounded-full"
-        v-lazy="{src: data?.company?.brand_logo?.original}"
+        v-lazy="{ src: data?.company?.brand_logo?.original }"
         :alt="data?.company?.name"
       />
 
@@ -16,24 +16,20 @@
       <img
         v-if="isImg"
         :src="data?.image?.file"
-        class="object-cover w-full aspect-video	"
+        class="object-cover w-full aspect-video"
         alt=""
         @error="isImg = false"
       />
       <img
         v-else
         src="~/assets/images/main_image.png"
-        class="object-cover w-full aspect-video	"
+        class="object-cover w-full aspect-video"
         alt=""
       />
       <div
         class="absolute py-1 px-2 bottom-3 left-3 bg-white rounded-[150px] flex items-center gap-1"
       >
-        <img
-          v-if="isImg"
-          :src="data?.category?.icon?.file"
-          alt=""
-        />
+        <img v-if="isImg" :src="data?.category?.icon?.file" alt="" />
         <img v-else src="~/assets/images/heart.png" alt="" />
         <span class="text-xs font-medium text-black-200">{{
           data?.category?.name
@@ -41,7 +37,7 @@
       </div>
     </div>
 
-    <div class="flex flex-col justify-between p-3 pb-4 md:min-h-[305px]">
+    <div class="flex flex-col justify-between p-3 pb-4 md:min-h-[305px] gap-2">
       <div class="flex flex-col gap-3">
         <h3 class="text-[15px] text-black-200 font-semibold line-clamp-3">
           {{ data?.title }}

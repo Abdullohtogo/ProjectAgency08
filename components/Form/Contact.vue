@@ -17,6 +17,7 @@
             type="text"
             :error="$v.name.$error"
             v-model="form.name"
+            input-class="!p-[9px] !sm:p-3"
           />
           <ClientOnly>
             <Input
@@ -27,6 +28,7 @@
               src="/icons/flag.svg"
               v-maska="'## ### ## ##'"
               :error="$v.phoneNumber.$error"
+              input-class="!p-1.5 border border-green bg-yellow"
               >+998</Input
             >
           </ClientOnly>
@@ -75,7 +77,7 @@
             customButton="sm:!w-auto !w-full"
             :type="'submit'"
             label="send_application"
-            class="ml-2"
+            class="ml-0 mt-2 md:ml-2 md:mt-0"
           />
         </div>
       </form>
@@ -87,10 +89,12 @@
 import { useVuelidate } from '@vuelidate/core'
 import { required } from '@vuelidate/validators'
 import { reactive, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 const name = ref('')
 const phone_number = ref('')
 const message = ref('')
+const { t } = useI18n()
 
 interface IContactForm {
   name?: string
@@ -166,14 +170,12 @@ const submitForm = () => {
           message: form?.message,
         },
       })
-      .finally(() => {
-        form.agreement = false
-        form.message = ''
-        form.name = ''
-        form.phoneNumber = ''
-        $v.value.$reset()
-      })
+      .then((res) => emit('open'))
       .catch((err) => {
+        useCustomToast().showToast(
+          t('review_business_error_in_company_edit'),
+          'error'
+        )
         if (err?.status === 500) {
           console.log('server_error')
         }
@@ -181,7 +183,13 @@ const submitForm = () => {
           console.log('u_need_to_auth')
         }
       })
-    emit('open')
+      .finally(() => {
+        form.agreement = false
+        form.message = ''
+        form.name = ''
+        form.phoneNumber = ''
+        $v.value.$reset()
+      })
   }
 }
 </script>

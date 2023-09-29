@@ -49,6 +49,7 @@
     "dayjs": "^1.11.9",
     "maska": "^1.5.0",
     "nuxt-security": "^0.14.4",
+    "qrcanvas-vue": "^3.0.0",
     "vee-validate": "^4.11.1",
     "vue-awesome-countdown": "^1.1.4",
     "vue-toastification": "^2.0.0-rc.5",

@@ -4,7 +4,7 @@
   >
     <div class="container w-full">
       <div
-        class="flex w-full justify-between pb-4 lg:pb-0 flex-col md:flex-row"
+        class="flex w-full justify-between gap-0 md:gap-6 pb-4 lg:pb-0 flex-col md:flex-row"
       >
         <div class="">
           <router-link to="/">
@@ -17,7 +17,7 @@
             class="flex lg:flex-row flex-col md:gap-5 gap-3 lg:mt-[56px] md:mt-10 sm:mt-6 mt-3 lg:mb-10 md:mb-8 sm:mb-6 mb-3 lg:items-end"
           >
             <div class="">
-              <img src="@/public/icons/QR.svg" class="qr" alt="qr" />
+              <QRCode dark />
             </div>
             <div>
               <p
@@ -51,7 +51,7 @@
           </div>
         </div>
         <div
-          class="flex lg:flex-row md:flex-row sm:flex-row flex-col lg:justify-between md:justify-normal sm:justify-between xl:gap-[125px] gap-5"
+          class="flex md:flex-row flex-col md:justify-between sm:justify-between xl:gap-[125px] gap-5 flex-wrap"
         >
           <div>
             <p
@@ -68,7 +68,9 @@
                 <a v-if="item.id == 3" target="_blank" :href="item.url">{{
                   $t(item.text)
                 }}</a>
-                <button v-else @click="scrollTo(item.url)">{{ $t(item.text) }}</button>
+                <button v-else @click="scrollTo(item.url)">
+                  {{ $t(item.text) }}
+                </button>
               </li>
             </ul>
           </div>
@@ -143,12 +145,12 @@
   </div>
 </template>
 <script setup lang="ts">
-import { useCareContact } from '@/composables/useCareContact'
-import { resolveDirective } from 'nuxt/dist/app/compat/capi'
 import { formatPhoneNumber } from '@/utils/index'
+import QRCode from '~/components/Common/QRCode.vue'
 
 const appstore = ref(import.meta.env.VITE_APP_APP_STORE)
 const playstore = ref(import.meta.env.VITE_APP_PLAY_STORE)
+
 onMounted(() => {
   function fetchCareContact() {
     return new Promise((resolve, reject) => {

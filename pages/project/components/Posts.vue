@@ -4,6 +4,7 @@
       v-for="(card, index) in posts"
       :item="card"
       :key="index"
+      v-bind="{ data }"
       class="sm:mb-4 mb-2"
     />
     <CommonButton
@@ -26,7 +27,7 @@
       {{ $t('no_posts') }}
     </p>
     <p class="text-[#8E9BA8] leading-130 text-base">
-      {{ $t('no_project_like_this') }}
+      {{ $t('no_posts_this_project') }}
     </p>
   </div>
 </template>
@@ -36,6 +37,7 @@ interface Props {
   posts: () => []
   loading: boolean
   postsCount: number
+  data?: object
 }
 const emit = defineEmits(['loadMore'])
 function loadMore() {

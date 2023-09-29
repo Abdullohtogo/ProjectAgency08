@@ -1,11 +1,11 @@
 <template>
   <div class="bg-white/90 rounded-28 sm:p-5 p-3">
-    <div v-if="data?.image" class="relative md:mb-5 sm:mb-4 mb-3">
+    <div v-if="data?.image" class="relative md:mb-5 sm:mb-4 mb-3 max-h-[320px]">
       <img
         v-if="imgError"
         :src="data?.image.thumbnail?.small"
         alt=""
-        class="rounded-2xl max-h-[320px] object-contain w-full"
+        class="rounded-2xl max-h-[320px] h-full object-cover w-full"
         @error="imgError = false"
       /><img
         v-else
@@ -210,12 +210,8 @@
                 <div class="absolute -right-5">
                   <img src="/icons/heart-transparent.svg" alt="" />
                 </div>
-                <div class="z-10">
-                  <img
-                    src="/icons/QR-light.svg"
-                    alt=""
-                    class="mt-8 shadow-qrlight rounded-[20px]"
-                  />
+                <div>
+                  <QRCode light class="mt-5 md:mt-8" />
                 </div>
                 <img
                   src="/images/arm.png"
@@ -271,6 +267,7 @@ import { ref } from 'vue'
 import VueAwesomeCountdown from 'vue-awesome-countdown'
 
 import { formatMoneyWithSpace } from '@/utils/index'
+import QRCode from '~/components/Common/QRCode.vue'
 
 const gatheredmoneys = ref({
   percentage: 21,

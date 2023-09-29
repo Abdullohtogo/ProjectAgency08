@@ -21,7 +21,9 @@ import { useRoute } from 'vue-router'
 const route = useRoute()
 const loading = ref(false)
 onMounted(() => {
-  loading.value = true
+  setTimeout(() => {
+    loading.value = true
+  }, 200)
 })
 
 if ('setup' in route.query) {
