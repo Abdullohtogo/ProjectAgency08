@@ -6,7 +6,7 @@ export default defineNuxtPlugin(() => {
     integrations: [
       new Sentry.BrowserTracing({
         // Set 'tracePropagationTargets' to control for which URLs distributed tracing should be enabled
-        tracePropagationTargets: ['localhost'],
+        tracePropagationTargets: ['hissa-dev.commeta.uz', 'hissa.commeta.uz', 'hissa.uz'],
       }),
       new Sentry.Replay(),
     ],
