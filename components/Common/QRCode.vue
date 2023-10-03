@@ -32,7 +32,7 @@ image.src = '/icons/heart.png'
 
 const options = ref({
   cellSize: 12,
-  data: import.meta.env.VITE_APP_APP_STORE,
+  data: import.meta.env.VITE_APP_QR_CODE_URL,
   logo: image,
 })
 </script>
