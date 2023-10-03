@@ -10,7 +10,7 @@
         >
           {{ $t('all_founds_on_ur_hands') }}
         </h2>
-        <p class="mt-2 text-base leading-130 text-green-200">
+        <p class="mt-2 text-base leading-130 text-green-200 z-10">
           {{ $t('check_founds_on_phone') }}
         </p>
         <div class="flex gap-4 mt-7">
@@ -35,11 +35,11 @@
         </div>
       </div>
       <div
-        class="absolute lg:block hidden -bottom-[244px] 2xl:-right-[100px] -right-[214px]"
+        class="absolute lg:block hidden -bottom-[244px] right-[-2rem] 2xl:-right-[100px]"
       >
         <img
           src="/images/phones.png"
-          class="max-w-[900px] max-h-[778px]"
+          class="lg:max-w-[800px] xl:max-w-[900px] max-h-[778px]"
           alt=""
         />
       </div>
