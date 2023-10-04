@@ -12,7 +12,7 @@ build-dev:
   stage: build-dev
   script:    
     - echo "Building development $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
-    - cp .env.example .env
+    - cp .env.dev.example .env
     - docker build . -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
     - echo "DONE"
   tags:
