@@ -3,13 +3,6 @@ export default defineNuxtConfig({
   ssr: true,
   app: {
     head: {
-      link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' },
-        {
-          rel: 'canonical',
-          href: 'https://hissa-dev.commeta.uz/',
-        },
-      ],
       title: 'Hissa',
       meta: [
         { charset: 'utf-8' },
@@ -53,6 +46,13 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'en',
       },
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' },
+        {
+          rel: 'canonical',
+          href: 'https://hissa-dev.commeta.uz/',
+        },
+      ],
     },
   },
   css: ['@/assets/styles/main.css'],
@@ -83,34 +83,3 @@ export default defineNuxtConfig({
     payloadExtraction: false,
   },
 })
-
-// head: {
-//     htmlAttrs: {
-//         lang: 'en',
-//     },
-//     link: [
-//         {
-//             rel: "icon",
-//             type: "image/x-icon",
-//             href: "/favicon.svg",
-//         },
-//     ],
-//     meta: [
-//         {
-//             name: 'description',
-//             content: "O'z hissangizni biz bilan birga qo'shing!",
-//         },
-//         // { name: 'keywords', content: 'учебное учреждение, oliy talim, университет, university, образование, экономический университет' },
-//         { hid: 'author', property: "author", content: "" },
-//         { hid: 'og:locale', property: "og:locale", content: "uz_UZ" },
-//         { hid: 'og:type', property: "og:type", content: "website" },
-//         { property: 'og:description', content: "O'z hissangizni biz bilan birga qo'shing!", },
-//         { hid: 'og:image', property: 'og:image', content: '/og.png' },
-//         // Twitter Cards
-//         { name: "twitter:card", content: "summary_large_image" },
-//         { name: 'twitter:description', content: "O'z hissangizni biz bilan birga qo'shing!", },
-//         { name: "twitter:creator", content: "@hissa" },
-//         { name: "twitter:site", content: "@hissa" },
-//         { hid: 'twitter:image', name: 'twitter:image', content: '/og.png' },
-//     ]
-// },
