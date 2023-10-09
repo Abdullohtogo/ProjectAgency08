@@ -30,7 +30,7 @@
             class="w-full"
             v-model="form.values.full_name"
             :error="form.$v.value.full_name.$error"
-            :placeholder="$t('enter_full_name')"
+            :placeholder="$t('care_frontoffice_enter_full_name')"
           />
           <Input
             class="w-full"
