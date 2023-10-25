@@ -22,7 +22,7 @@
           {{ $t('we_will_check_ur_request') }}
         </p>
         <CommonButton
-          label="go_back"
+          label="go_back_care_landing"
           class="w-full"
           buttonStyle="font-semibold md:text-base sm:text-sm text-xs"
           variant="darker"

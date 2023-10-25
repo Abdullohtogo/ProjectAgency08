@@ -1,6 +1,6 @@
 <template>
   <button
-  :disabled="disabled"
+    :disabled="disabled"
     :type="type"
     class="md:py-2.5 py-2 md:px-5 px-1.5 rounded-xl relative border font-semibold transition-all duration-300 ease-in-out flex gap-2 items-center justify-center"
     :class="[
