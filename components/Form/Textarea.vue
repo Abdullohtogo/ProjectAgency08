@@ -1,18 +1,17 @@
 <template>
   <div
-      class="bg-gray-100 rounded border border-transparent transition-300 focus-within:border-green-400 flex flex-col items-end justify-between rounded"
-      :class="{ '!border-red ': error }"
+    class="bg-gray-100 rounded border border-transparent transition-300 focus-within:border-green-400 flex flex-col items-end justify-between rounded"
+    :class="{ '!border-red ': error }"
   >
-
     <textarea
-        v-bind="{ type, placeholder, maxlength, minlength, rows }"
-        :id="id"
-        v-model="inputValue"
-        class="w-full h-full text-base sm:text-sm p-3 text-dark bg-transparent outline-none placeholder:text-gray resize-none"
-        :class="inputClass"
-        rows="5"
-        @blur="$emit('blur', $event)"
-        @input="handleInput"
+      v-bind="{ type, placeholder, maxlength, minlength, rows }"
+      :id="id"
+      v-model="inputValue"
+      class="w-full h-full text-base sm:text-sm p-3 text-dark bg-transparent outline-none placeholder:text-gray resize-none"
+      :class="inputClass"
+      rows="5"
+      @blur="$emit('blur', $event)"
+      @input="handleInput"
     />
     <span v-if="maxlength" class="text-[#C6CFD7] text-xs mb-1 mr-2 mt-0.5">
       {{ inputValue.length }} / {{ maxlength }}</span
@@ -21,8 +20,8 @@
 </template>
 
 <script lang="ts" setup>
-import { TClassName } from '~/types/common'
-import { TInputTypes } from '~/types/components/input'
+import { type TClassName } from '~/types/common'
+import { type TInputTypes } from '~/types/components/input'
 
 interface Props {
   inputClass?: TClassName
@@ -41,7 +40,7 @@ const props = withDefaults(defineProps<Props>(), {
   placeholder: '',
   maxlength: '',
   minlength: '',
-  rows: 5
+  rows: 5,
 })
 
 interface Emits {
@@ -51,10 +50,10 @@ interface Emits {
 const emit = defineEmits<Emits>()
 
 watch(
-    () => props.modelValue,
-    (v) => {
-      inputValue.value = v || ''
-    }
+  () => props.modelValue,
+  (v) => {
+    inputValue.value = v || ''
+  }
 )
 
 const inputValue = ref<string>(props.modelValue || '')

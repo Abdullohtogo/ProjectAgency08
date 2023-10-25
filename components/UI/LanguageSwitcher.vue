@@ -95,12 +95,12 @@ function handleDropdownToggle(val: boolean) {
   showDropdown.value = val
 }
 const changeLocale = (lang: string) => {
-  // locale.value = lang
+  locale.value = lang
   showDropdown.value = false
   const _locale = useCookie('locale')
   if (_locale.value !== lang) {
     _locale.value = lang
-    window.location.reload()
+    // window.location.reload()
   }
 }
 // function changeLocale(_locale: string) {

@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts" setup>
-import { TClassName } from '~/types/common'
+import { type TClassName } from '@/types/common'
 
 interface Props {
   headClass?: TClassName
