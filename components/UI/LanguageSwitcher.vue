@@ -28,20 +28,19 @@
     <template #body>
       <div v-for="(lang, index) in languages" :key="index" class="w-full">
         <div
-            class="flex items-center justify-between gap-4 py-3 pl-4 pr-2 cursor-pointer transition-300 hover:bg-gray-900"
-            @click="changeLocale(lang?.code)"
+          class="flex items-center justify-between gap-4 py-3 pl-4 pr-2 cursor-pointer transition-300 hover:bg-gray-900"
+          @click="changeLocale(lang?.code)"
         >
           <span class="text-base font-semibold text-dark">
             {{ lang.name }}
           </span>
           <img
-              v-if="lang?.code === currentLanguage?.code"
-              src="@/public/icons/trick.svg"
-              alt="trick icon"
+            v-if="lang?.code === currentLanguage?.code"
+            src="@/public/icons/trick.svg"
+            alt="trick icon"
           />
         </div>
       </div>
-
     </template>
   </UIDropdown>
 </template>
@@ -100,7 +99,7 @@ const changeLocale = (lang: string) => {
   const _locale = useCookie('locale')
   if (_locale.value !== lang) {
     _locale.value = lang
-    // window.location.reload()
+    window.location.reload()
   }
 }
 // function changeLocale(_locale: string) {
