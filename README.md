@@ -2,7 +2,6 @@
 
 About:
 - Tailwind CSS
-- Storybook
 - TypeScript support
 - i18n
 

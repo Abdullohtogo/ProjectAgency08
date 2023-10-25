@@ -8,7 +8,6 @@ module.exports = {
   extends: [
     "eslint:recommended",
     "plugin:vue/vue3-essential",
-    "plugin:storybook/recommended",
     "plugin:markdown/recommended",
   ],
   parserOptions: {

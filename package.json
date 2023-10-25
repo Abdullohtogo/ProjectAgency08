@@ -11,7 +11,6 @@
     "lint:js:fix": "eslint --fix --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint:style:fix": "stylelint \"**/*.{vue,css}\" --fix --ignore-path .gitignore",
     "lint": "yarn lint:js && yarn lint:style",
-    "storybook": "start-storybook -p 6006",
     "prepare": "husky install"
   },
   "devDependencies": {
@@ -19,9 +18,6 @@
     "@commitlint/config-conventional": "^17.4.2",
     "@nuxtjs/eslint-config": "^3.1.0",
     "@nuxtjs/tailwindcss": "^6.6.5",
-    "@storybook/addon-essentials": "^6.3.12",
-    "@storybook/addon-postcss": "^2.0.0",
-    "@storybook/vue3": "^6.3.12",
     "autoprefixer": "^10.4.13",
     "eslint": "8.22.0",
     "eslint-config-prettier": "^8.3.0",
@@ -29,13 +25,11 @@
     "eslint-plugin-markdown": "^2.2.1",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
-    "eslint-plugin-storybook": "^0.5.12",
     "eslint-plugin-vue": "^8.0.3",
     "husky": "^8.0.3",
     "nuxt": "^3.2.0",
     "postcss": "^8.4.19",
     "prettier": "^2.5.0",
-    "storybook-builder-vite": "^0.1.5",
     "tailwindcss": "^3.2.4",
     "vue-gtag-next": "^1.14.0",
     "vue-i18n": "^9.2.2"
