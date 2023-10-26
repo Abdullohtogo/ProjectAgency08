@@ -1,7 +1,7 @@
 <template>
   <div class="relative max-md:min-h-screen">
     <LayoutHeader />
-    <UI404 />
+    <CommonError404 />
   </div>
 </template>
 

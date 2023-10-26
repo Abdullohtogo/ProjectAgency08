@@ -19,7 +19,7 @@
       @click="copy"
       class="bg-[#27a44a1a] z-10 w-[28px] h-[28px] rounded-[4px] mr-1.5 shrink-0 relative flex items-center justify-center icon-copy text-base leading-[24px] text-green-400 cursor-pointer md:hover:opacity-80 transition-all duration-300"
     >
-      <UITooltip :show="showTooltip">{{ $t('copied') }}</UITooltip>
+      <BaseTooltip :show="showTooltip">{{ $t('copied') }}</BaseTooltip>
     </span>
   </div>
 </template>

@@ -539,7 +539,7 @@
             @click="closeModal()"
             :class="{ '!block opacity-100 overflow-hidden ': showModal }"
           >
-            <UIModal
+            <BaseModal
               class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 sm:max-w-[434px] w-[90%] sm:w-full"
               @close="toggleModal"
               :id="data?.id"
