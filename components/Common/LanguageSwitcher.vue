@@ -36,7 +36,7 @@
           </span>
           <img
             v-if="lang?.code === currentLanguage?.code"
-            src="@/public/icons/trick.svg"
+            src="../../public/icons/trick.svg"
             alt="trick icon"
           />
         </div>

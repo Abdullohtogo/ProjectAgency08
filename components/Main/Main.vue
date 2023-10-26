@@ -21,6 +21,7 @@
 import {computed} from 'vue';
 
 import {advantageInfo} from "~/data/advantageCard";
+import ClibBoard from "~/components/Widget/ClibBoard.vue";
 
 function scrollToSection() {
   const section = document.getElementById('contact')

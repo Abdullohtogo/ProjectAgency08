@@ -186,7 +186,7 @@
 </template>
 
 <script setup lang="ts">
-import ClibBoard from '~/components/UI/ClibBoard.vue'
+import ClibBoard from '~/components/Widget/ClibBoard.vue'
 
 interface Props {
   show: boolean

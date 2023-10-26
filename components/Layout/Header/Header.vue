@@ -50,7 +50,7 @@
           </button>
         </li>
       </ul>
-      <UILanguageSwitcher v-bind="{ variant: 'default' }" />
+      <CommonLanguageSwitcher v-bind="{ variant: 'default' }" />
     </div>
     <LayoutHeaderFullMenu
       :open-menu="showMenu"
