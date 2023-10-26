@@ -3,10 +3,10 @@
     class="rounded-36 border-4 border-white bg-white md:mx-11 mx-5 relative overflow-hidden lg:pt-[248px] md:pt-[122px] sm:py-12 p-6 px-4"
   >
     <div class="absolute top-0 right-0 z-0 w-[48%] md:block hidden">
-      <img src="@/public/icons/main-line.svg" alt="line" />
+      <img src="../../public/icons/main-line.svg" alt="line" />
     </div>
     <img
-      src="@/public/icons/green-elipse.svg"
+      src="../../public/icons/green-elipse.svg"
       class="absolute top-0 left-0"
       alt="green-elipse"
     />
@@ -37,14 +37,14 @@
             <div class="flex gap-3">
               <a target="_blank" :href="appstore">
                 <img
-                  src="@/public/icons/Appstore.svg"
+                  src="../../public/icons/Appstore.svg"
                   alt=""
                   class="cursor-pointer hover:opacity-80 transition-all duration-300 ease-in-out"
                 />
               </a>
               <a target="_blank" :href="playstore">
                 <img
-                  src="@/public/icons/Playmarket.svg"
+                  src="../../public/icons/Playmarket.svg"
                   alt=""
                   class="cursor-pointer hover:opacity-80 transition-all duration-300 ease-in-out"
                 />
@@ -69,14 +69,14 @@
         <div class="w-[60%] relative hidden lg:block">
           <img
             class="absolute -top-24 left-0 z-10"
-            src="@/public/icons/main-heart.svg"
+            src="../../public/icons/main-heart.svg"
             alt=""
           />
         </div>
       </div>
     </div>
     <img
-      src="@/public/icons/yellow-elipse.svg"
+      src="../../public/icons/yellow-elipse.svg"
       class="absolute bottom-0 right-0"
       alt="yellow-elipse"
     />

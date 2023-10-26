@@ -43,7 +43,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import CommonBlockPreloader from '@/components/Common/BlockPreloader.vue'
+import CommonBlockPreloader from '~/components/Common/BlockPreloader.vue'
 
 interface Props {
   data: Array

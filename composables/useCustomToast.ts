@@ -1,6 +1,6 @@
 import * as pkg from 'vue-toastification'
 
-import { UIToast } from '#components'
+import { BaseToast } from '#components'
 
 const { useToast } = pkg
 
@@ -12,7 +12,7 @@ export const useCustomToast = () => {
     type: 'success' | 'error' | 'warning' | 'info'
   ) => {
     toast({
-      component: UIToast,
+      component: BaseToast,
       props: {
         title,
         type,

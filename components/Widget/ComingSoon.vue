@@ -4,10 +4,10 @@
       <div
         class="absolute top-[45%] right-0 translate-y-[-50%] z-0 w-[48%] md:block hidden"
       >
-        <img src="@/public/icons/main-line.svg" alt="line" />
+        <img src="../../public/icons/main-line.svg" alt="line" />
       </div>
       <img
-        src="@/public/icons/green-elipse.svg"
+        src="../../public/icons/green-elipse.svg"
         class="absolute top-0 left-0"
         alt="green-elipse"
       />
@@ -47,7 +47,7 @@
           <div class="w-[60%] relative hidden lg:block">
             <img
               class="absolute -top-24 left-0 z-10"
-              src="@/public/images/coming-soon-phone.png"
+              src="../../public/images/coming-soon-phone.png"
               alt="phone"
             />
           </div>

@@ -72,7 +72,7 @@
             </div>
           </Transition>
         </div>
-        <SectionGenerous
+        <WidgetGenerous
           v-if="donatCount !== 0"
           :data="donats"
           @load-more="fetchMoreDonat"
@@ -81,7 +81,7 @@
         />
       </div>
       <div class="md:col-span-4 hidden md:block">
-        <SectionSideBar :id="route.params.id" />
+        <WidgetSideBar :id="route.params.id" />
       </div>
     </div>
   </div>

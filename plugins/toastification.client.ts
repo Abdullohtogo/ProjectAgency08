@@ -2,7 +2,7 @@ import 'vue-toastification/dist/index.css'
 
 import Toast from 'vue-toastification'
 
-import { UIToast } from '#components'
+import { BaseToast } from '#components'
 
 const options = {
   position: 'top-right',
@@ -19,7 +19,7 @@ const options = {
   rtl: false,
   maxToasts: 3,
   newestOnTop: true,
-  component: UIToast,
+  component: BaseToast,
 }
 
 export default defineNuxtPlugin((nuxtApp) => {
