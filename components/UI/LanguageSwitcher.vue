@@ -1,5 +1,5 @@
 <template>
-  <UIDropdown
+  <BaseDropdown
     :show="showDropdown"
     :head-class="[
       'flex items-center gap-1 text-gray-700 group transition transition-300 cursor-pointer py-2',
@@ -42,7 +42,7 @@
         </div>
       </div>
     </template>
-  </UIDropdown>
+  </BaseDropdown>
 </template>
 
 <script lang="ts" setup>
