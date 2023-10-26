@@ -5,27 +5,9 @@
 </template>
 
 <script setup lang="ts">
-const cards = [
-  {
-    id: 1,
-    title: 'realibility',
-    text: 'online_platfor_build_for',
-    src: '/images/circle-lock.png',
-    link: '/',
-  },
-  {
-    id: 2,
-    title: 'transparency',
-    text: 'online_platfor_build_for',
-    link: '/',
-    src: '/images/circle-search.png',
-  },
-  {
-    id: 3,
-    title: 'simplicity',
-    text: 'online_platfor_build_for',
-    src: '/images/circle-heart.png',
-    link: '/',
-  },
-]
+import {computed} from 'vue';
+
+import {advantageInfo} from "~/data/advantageCard";
+
+const cards = computed(() => advantageInfo())
 </script>
