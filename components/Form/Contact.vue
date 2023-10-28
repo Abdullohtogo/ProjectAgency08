@@ -41,7 +41,7 @@
               :maxlength="500"
               :error="$v.message.$error"
               :class="$v.message.$error ? '!border-red' : ''"
-              class="custom-checkbox transition transition-300 md:h-[130px] sm:h-[100px] h-[80px] mt-2 bg-gray-300 sm:p-3 p-1.5 rounded-lg border border-transparent focus-within:border-green-400 outline-0 w-full caret-green-400 resize-none placeholder:text-sm"
+              class="custom-checkbox transition transition-300 md:h-[130px] sm:h-[100px] h-20 mt-2 bg-gray-300 sm:p-3 p-1.5 rounded-lg border border-transparent focus-within:border-green-400 outline-0 w-full caret-green-400 resize-none placeholder:text-sm"
               :placeholder="$t('write_issue')"
             ></textarea>
           </div>

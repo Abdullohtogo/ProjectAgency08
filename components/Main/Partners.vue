@@ -31,18 +31,19 @@
       </p>
     </div>
     <div class="flex flex-wrap gap-5 mt-8 mx-11 justify-center relative z-10">
-      <PartnerCompanyCard
-        v-for="item in partners"
-        :item="item"
-        :key="item.id"
-      />
+        <PartnerCompanyCard
+          v-for="item in partners"
+          :item="item"
+          :key="item.id"
+        />
       <button
         v-if="partners.length > 15"
         @click="fetchMoreCompany()"
         class="load-more py-2.5 pl-3 pr-4 flex items-center gap-2 bg-white rounded-40"
       >
         <i class="rounded-full bg-[#EBF7F1] p-1"
-          ><svg
+          >
+          <svg
             width="29"
             height="28"
             viewBox="0 0 29 28"
@@ -65,7 +66,7 @@
             />
           </svg>
         </i>
-        <p class="font-medium text-black-100">{{ $t('more') }}</p>
+        <span class="font-medium text-black-100">{{ $t('more') }}</span>
       </button>
     </div>
     <div
@@ -82,7 +83,7 @@
       </a>
     </div>
     <div class="absolute bottom-0 left-1/2 -translate-x-1/2 z-0">
-      <img src="/icons/Uzbekistan.svg" alt="" />
+      <img src="/icons/Uzbekistan.svg" alt="uzbImg" />
     </div>
   </div>
 </template>
@@ -139,6 +140,6 @@ onMounted(() => {
 
 <style scoped>
 .load-more {
-  box-shadow: 0px 10px 48px 0px rgba(16, 16, 16, 0.1);
+  box-shadow: 0 10px 48px 0 rgba(16, 16, 16, 0.1);
 }
 </style>

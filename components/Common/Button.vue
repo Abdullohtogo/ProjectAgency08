@@ -60,7 +60,7 @@ button[disabled] {
   border: 1px solid #e5ecdf;
   background-color: #e5ecdf;
   color: #808f7c;
-  ont-size: 14px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 600;
   line-height: 24px; /* 171.429% */

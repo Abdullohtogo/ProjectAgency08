@@ -8,7 +8,7 @@
       >
         <div class="">
           <router-link to="/">
-            <img src="@/public/logo.svg" alt="" />
+            <img src="@/public/logo.svg" alt="logoImg" />
           </router-link>
           <p class="md:mt-5 mt-3 text-gray-200 max-w-[497px] leading-130">
             {{ $t('saxovat_terms') }}

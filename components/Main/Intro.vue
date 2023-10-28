@@ -38,14 +38,14 @@
               <a target="_blank" :href="appstore">
                 <img
                   src="../../public/icons/Appstore.svg"
-                  alt=""
+                  alt="appstoreLogo"
                   class="cursor-pointer hover:opacity-80 transition-all duration-300 ease-in-out"
                 />
               </a>
               <a target="_blank" :href="playstore">
                 <img
                   src="../../public/icons/Playmarket.svg"
-                  alt=""
+                  alt="playMarketLogo"
                   class="cursor-pointer hover:opacity-80 transition-all duration-300 ease-in-out"
                 />
               </a>

@@ -51,17 +51,15 @@ const shimmerStyles = computed(() => {
 
 <style scoped>
 .skeleton {
-  background: #dddbdd;
-  background-image: linear-gradient(
-    to right,
-    rgba(194, 198, 204, 0.3) 5.93%,
-    rgba(255, 255, 255, 0.42) 26.56%,
-    rgba(194, 198, 204, 0.3) 62.69%
-  );
   width: 100%;
   height: 100%;
   border-radius: var(--border-radius);
-  background-repeat: no-repeat;
+  background: #dddbdd linear-gradient(
+      to right,
+      rgba(194, 198, 204, 0.3) 5.93%,
+      rgba(255, 255, 255, 0.42) 26.56%,
+      rgba(194, 198, 204, 0.3) 62.69%
+  ) no-repeat;
   background-size: var(--width) var(--height);
   display: inline-block;
   position: relative;

@@ -38,6 +38,6 @@ const options = ref({
 </script>
 <style>
 .qr {
-  box-shadow: 0px 4.279999732971191px 20px 0px rgba(39, 164, 74, 0.3);
+  box-shadow: 0 4.279999732971191px 20px 0 rgba(39, 164, 74, 0.3);
 }
 </style>

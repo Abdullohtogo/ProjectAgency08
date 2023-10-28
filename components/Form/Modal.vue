@@ -4,7 +4,7 @@
       <div class="mb-2 flex justify-end">
         <img
           src="/icons/close.svg"
-          alt=""
+          alt="closeImg"
           @click="close"
           class="hover:cursor-pointer"
         />

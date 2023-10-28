@@ -1,6 +1,6 @@
 <template>
   <label
-    class="group inline-flex items-center relative select-none min-h-[20px]"
+    class="group inline-flex items-center relative select-none min-h-5"
     :class="disabled ? 'cursor-not-allowed' : 'cursor-pointer'"
   >
     <input

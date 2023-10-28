@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-gray-100 rounded border border-transparent transition-300 focus-within:border-green-400 flex flex-col items-end justify-between rounded"
+    class="bg-gray-100 border border-transparent transition-300 focus-within:border-green-400 flex flex-col items-end justify-between rounded"
     :class="{ '!border-red ': error }"
   >
     <textarea
