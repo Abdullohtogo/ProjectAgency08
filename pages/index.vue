@@ -19,34 +19,14 @@
 </template>
 
 <script lang="ts" setup>
+import {computed} from 'vue';
+
 import { definePageMeta } from '#imports'
+import {advantageInfo} from "~/data/advantages";
 
 definePageMeta({
   layout: 'custom',
 })
-const cards = [
-  {
-    id: 1,
-    title: 'realibility',
-    text: 'online_platfor_build_for',
-    src: '/images/circle-lock.png',
-    link: '/',
-  },
-  {
-    id: 2,
-    title: 'transparency',
-    text: 'online_platfor_build_for',
-    link: '/',
-    src: '/images/circle-search.png',
-  },
-  {
-    id: 3,
-    title: 'simplicity',
-    text: 'online_platfor_build_for',
-    src: '/images/circle-heart.png',
-    link: '/',
-  },
-]
 
 function scrollToSection() {
   const section = document.getElementById('contact')
@@ -61,4 +41,7 @@ function scrollToSection() {
     block: 'center',
   })
 }
+
+const cards = computed(() => advantageInfo())
+
 </script>
