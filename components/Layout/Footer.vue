@@ -16,7 +16,7 @@
           <div
             class="flex lg:flex-row flex-col md:gap-5 gap-3 lg:mt-[56px] md:mt-10 sm:mt-6 mt-3 lg:mb-10 md:mb-8 sm:mb-6 mb-3 lg:items-end"
           >
-            <div class="">
+            <div>
               <QRCode dark />
             </div>
             <div>
@@ -82,15 +82,15 @@
             </p>
             <ul class="mt-3 flex flex-col gap-3">
               <li
-                v-for="item in contact"
+                v-for="item in contactInfoDetails"
                 :key="item.id"
                 class="flex items-center group gap-2"
               >
                 <span
                   :class="`icon-${item.type}`"
                   class="text-xl text-gray-400 transition transition-300 group-hover:text-green-400"
-                />
-                <a
+                  />
+                  <a
                   :href="item.url"
                   :target="item.id == 3 ? '_blank' : ''"
                   class="text-black-100 transition-all duration-300 ease-in-out leading-130"
@@ -108,12 +108,12 @@
                 <a
                   :href="item.url"
                   target="_blank"
-                  v-for="item in share"
+                  v-for="item in contactSocialDetails"
                   :key="item.id"
                   v-tooltip.top="item?.name"
-                  class="hover:opacity-80 transition-all duration-300"
+                  class="hover:opacity-80 bg-green-500 cursor-pointer transition-all duration-300"
                 >
-                  <img :src="item.src" alt="icon" />
+                  <img :src="item.src" alt="">
                 </a>
               </div>
             </div>
@@ -145,46 +145,12 @@
   </div>
 </template>
 <script setup lang="ts">
-import { formatPhoneNumber } from '@/utils/index'
 import QRCode from '~/components/Common/QRCode.vue'
+import {useProjectContact} from "~/composables/useProjectContact";
 
 const appstore = ref(import.meta.env.VITE_APP_APP_STORE)
 const playstore = ref(import.meta.env.VITE_APP_PLAY_STORE)
 
-onMounted(() => {
-  function fetchCareContact() {
-    return new Promise((resolve, reject) => {
-      useApi()
-        .$get('care/api/v1/CareContact/')
-        .then((res: any) => {
-          contacts.value = res
-          resolve(res)
-        })
-        .catch((err) => {
-          reject(err?.data)
-          console.log(err)
-        })
-    })
-  }
-  function getContactInfo() {
-    return new Promise((resolve, reject) => {
-      useApi()
-        .$get('care/api/v1/landing/ContactInfo/')
-        .then((res) => {
-          resolve(res)
-          contactInfo.value = res
-        })
-        .catch((err) => {
-          reject(err?.data)
-          console.log(err)
-        })
-    })
-  }
-
-  getContactInfo()
-  fetchCareContact()
-})
-const contacts = ref()
 const businePanel = import.meta.env.VITE_APP_BUSINESS_PANEL
 const router = useRouter()
 const route = useRoute()
@@ -231,60 +197,11 @@ const main = [
     url: 'contact',
   },
 ]
-const contactInfo = ref()
 
-const contact = computed(() => {
-  return [
-    {
-      id: 1,
-      text: formatPhoneNumber(contactInfo.value?.phone),
-      url: `tel: ${contactInfo.value?.phone}`,
-      type: 'call',
-    },
-    {
-      id: 2,
-      text: contactInfo?.value?.email,
-      url: `mailto:${contactInfo?.value?.email}`,
-      type: 'sms',
-    },
-    {
-      id: 3,
-      text: contactInfo.value?.address,
-      url: 'https://goo.gl/maps/Gn5ieiks1NbMdLQU6',
-      src: '/icons/location.svg',
-      type: 'location',
-    },
-  ]
-})
+const { fetchInfo, contactInfoDetails, contactSocialDetails } = useProjectContact()
 
-const share = computed(() => {
-  return [
-    {
-      id: 1,
-      url: contacts.value?.telegram,
-      name: 'Telegram',
-      src: '/icons/telegram.svg',
-    },
-    {
-      id: 2,
-      url: contacts.value?.twitter,
-      src: '/icons/twitter.svg',
-      name: 'X (Twitter)',
-    },
-    {
-      id: 3,
-      url: contacts.value?.youtube,
-      src: '/icons/youtube.svg',
-      name: 'YouTube',
-    },
-    {
-      id: 4,
-      url: contacts.value?.instagram,
-      src: '/icons/instagram.svg',
-      name: 'Instagram',
-    },
-  ]
-})
+fetchInfo()
+
 const userPrivacy = ref(
   `${import.meta.env.VITE_APP_ID_URL}/help-center/privacy-policy`
 )
@@ -300,6 +217,6 @@ const links = reactive([
 
 <style>
 .qr {
-  box-shadow: 0px 4.279999732971191px 20px 0px rgba(39, 164, 74, 0.3);
+  box-shadow: 0 4px 20px 0 rgba(39, 164, 74, 0.3);
 }
 </style>

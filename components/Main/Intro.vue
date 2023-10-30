@@ -25,7 +25,7 @@
                 class="md:text-3xl uppercase sm:text-2xl text-xl lg:text-[42px] lg:leading-10 relative font-bold text-green-500 lg:max-w-[1090px]"
               >
                 <template #store>
-                  <span class="underlined">
+                  <span class="underlined z-10 inline-block relative">
                     {{ $t('hissa') }}
                   </span>
                 </template>
@@ -107,11 +107,6 @@ const items = [
 </script>
 
 <style scoped>
-.underlined {
-  display: inline-block;
-  z-index: 1;
-  position: relative;
-}
 
 .underlined::before {
   content: '';

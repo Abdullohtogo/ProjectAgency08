@@ -17,7 +17,7 @@
             :href="item?.url"
             target="_blank"
             class="sm:p-3 p-1.5 group flex items-center gap-2 rounded-40 transition transition-300 hover:border-white border border-white/20"
-            v-for="item in info"
+            v-for="item in contactInfoDetails"
             :key="item?.id"
           >
             <img :src="item?.src" alt="icon" class="w-[42px] h-[42px]" />
@@ -40,16 +40,16 @@
           <p class="text-sm text-white mb-2 font-semibold">
             {{ $t('we_on_social') }}
           </p>
-          <div class="flex flex-row md:gap-3 gap-2">
+          <div class=" flex flex-row md:gap-3 gap-2">
             <a
               target="_blank"
               :href="item.url"
-              class="p-2 rounded-full group transition transition-300 hover:bg-[#33573e] bg-[#e8f0fe33]"
-              v-for="item in social"
+              class="p-2 w-10 text-center text-white rounded-full group transition transition-300 hover:bg-[#33573e] bg-[#e8f0fe33]"
+              v-for="item in contactSocialDetails"
               v-tooltip.top="item.name"
               :key="item.id"
             >
-              <img :src="item.src" alt="social-icon" />
+              <img :src="item.src" alt="">
             </a>
           </div>
         </div>
@@ -81,101 +81,17 @@
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
-import { formatPhoneNumber } from '@/utils'
 
-const contactInfo = ref()
+import {useProjectContact} from "~/composables/useProjectContact";
 
 function onClickOutside() {
   document.body.style.overflow = 'auto'
   showModal.value = false
 }
-const contacts = ref()
 
-const fetchCareContact = () => {
-  useApi()
-    .$get('care/api/v1/CareContact/')
-    .then((res: any) => {
-      contacts.value = res
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-}
+const { fetchInfo, contactInfoDetails, contactSocialDetails } = useProjectContact()
 
-onMounted(async () => {
-  function getContactInfo() {
-    return new Promise((resolve, reject) => {
-      useApi()
-        .$get('care/api/v1/landing/ContactInfo/')
-        .then((res) => {
-          resolve(res)
-          contactInfo.value = res
-        })
-        .catch((err) => {
-          reject(err?.data)
-          console.log(err)
-        })
-    })
-  }
-
-  fetchCareContact()
-  await getContactInfo()
-})
-const info = computed(() => {
-  return [
-    {
-      id: 1,
-      src: '/icons/location1.svg',
-      title: 'location',
-      text: contactInfo.value?.address,
-      icon: '/icons/openin.svg',
-      url: 'https://goo.gl/maps/Gn5ieiks1NbMdLQU6',
-    },
-    {
-      id: 2,
-      src: '/icons/phone.svg',
-      title: 'our_phone_num',
-      text: formatPhoneNumber(contactInfo?.value?.phone),
-      url: `tel:${contactInfo?.value?.phone}`,
-    },
-    {
-      id: 3,
-      src: '/icons/email.svg',
-      title: 'email',
-      text: contactInfo?.value?.email,
-      url: `mailto:${contactInfo?.value?.email}`,
-    },
-  ]
-})
-
-const social = computed(() => {
-  return [
-    {
-      id: 1,
-      url: contacts.value?.instagram,
-      src: '/icons/instagram1.svg',
-      name: 'Instagram',
-    },
-    {
-      id: 2,
-      url: contacts.value?.youtube,
-      src: '/icons/youtube1.svg',
-      name: 'YouTube',
-    },
-    {
-      id: 3,
-      url: contacts.value?.twitter,
-      src: '/icons/twitter1.svg',
-      name: 'X (Twitter)',
-    },
-    {
-      id: 4,
-      url: contacts.value?.telegram,
-      name: 'Telegram',
-      src: '/icons/telegram1.svg',
-    },
-  ]
-})
+fetchInfo()
 
 const showModal = ref(false)
 
