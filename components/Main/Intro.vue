@@ -25,7 +25,7 @@
                 class="md:text-3xl uppercase sm:text-2xl text-xl lg:text-[42px] lg:leading-10 relative font-bold text-green-500 lg:max-w-[1090px]"
               >
                 <template #store>
-                  <span class="underlined z-10 inline-block relative">
+                  <span class="underlined before:h-2 before:content-[''] before:bg-green-300 before:w-[103%] z-10 inline-block relative before:absolute before:-z-10 before:left-0 before:bottom-1.5">
                     {{ $t('hissa') }}
                   </span>
                 </template>
@@ -107,18 +107,6 @@ const items = [
 </script>
 
 <style scoped>
-
-.underlined::before {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  left: 0;
-  bottom: 6px;
-  height: 8px;
-  width: 103%;
-  background: #16cc53;
-  transition: width 0.3s ease;
-}
 
 @media only screen and (max-width: 1024px) {
   .underlined::before {
