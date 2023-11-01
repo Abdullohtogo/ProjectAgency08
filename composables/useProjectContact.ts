@@ -7,8 +7,10 @@ export function useProjectContact() {
     const store = useContactStore()
     const contactInfo = computed(() => store.contactInfo)
     const contactSocials = computed(() => store.contactSocials)
-    const fetchInfo = async  () => {
+    const fetchContactInfo = async  () => {
         await store.fetchContactInfo()
+    }
+    const fetchSocialsInfo = async  () => {
         await store.fetchSocialsInfo()
     }
     const contactInfoDetails = computed(() => [
@@ -63,7 +65,8 @@ export function useProjectContact() {
         ]
     )
     return {
-        fetchInfo,
+        fetchContactInfo,
+        fetchSocialsInfo,
         contactInfoDetails,
         contactSocialDetails
     }

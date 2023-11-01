@@ -7,10 +7,10 @@
           v-for="card in cards"
           :card="card" :key="card.id"
           id="afzalliklar"
-          class="lg:pb-10 md:pb-8 pb-6" />
+          class="lg:pb-10 md:pb-8 pb-6"
+      />
     </div>
-
-    <!-- <MainProjectsBlock  class="my-8 md:my-16" /> -->
+    <MainProjectsBlock  class="my-8 md:my-16" />
     <WidgetAppBanner id="ilova" />
     <MainPartners id="fonds" @scroll="scrollToSection()" class="mb-10" />
     <MainContactUs id="contact" class="mb-[96px]" />

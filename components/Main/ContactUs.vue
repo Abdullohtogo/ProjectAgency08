@@ -89,9 +89,10 @@ function onClickOutside() {
   showModal.value = false
 }
 
-const { fetchInfo, contactInfoDetails, contactSocialDetails } = useProjectContact()
+const { fetchContactInfo, fetchSocialsInfo, contactInfoDetails, contactSocialDetails } = useProjectContact()
 
-fetchInfo()
+fetchSocialsInfo()
+fetchContactInfo()
 
 const showModal = ref(false)
 

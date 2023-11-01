@@ -15,7 +15,7 @@
         </p>
         <div class="flex gap-4 mt-7">
           <!--          <img src="/icons/QR.svg" alt="qr" /> -->
-          <QRCode dark />
+          <QRCode light />
           <div class="flex flex-col justify-between">
             <a
               target="_blank"

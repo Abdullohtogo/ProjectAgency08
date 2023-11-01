@@ -1,33 +1,40 @@
-import { defineStore } from 'pinia'
-import { IProjectCard, IPaginationresponse } from '~/pages/project/index.vue'
+import { defineStore } from 'pinia';
+import { ref } from 'vue';
 
-export const useProjectStore = defineStore('projectStore', {
-    state: () => ({
-        projects: [] as IProjectCard[],
-        total: 0 as number,
-        loading: true as boolean,
-    }),
+import { useApi } from '~/composables/useApi';
 
-    actions: {
-        fetchProjects(params: any) {
-            return new Promise<IPaginationresponse<IProjectCard[]>>(
-                (resolve, reject) => {
-                    useApi()
-                        .$get('care/api/v1/CareProjectList/', params)
-                        .then((res: IPaginationresponse<IProjectCard[]>) => {
-                            if (this.projects.length < this.total) {
-                                this.projects = [...this.projects, ...res.results]
-                            } else this.projects = res.results
-                            console.log(res, 'projects all: ')
-                            this.total = res.count
-                            this.loading = false
-                            resolve(res)
-                        })
-                        .catch((err) => {
-                            reject(err?.data)
-                        })
-                }
-            )
-        },
-    },
-})
+export const useProjectStore = defineStore('common', () => {
+    const projects = ref([]);
+    const total = ref(0);
+    const loading = ref(false);
+
+    const fetchProjectsInfo = () => {
+        loading.value = true; // Set loading to true before making the API call
+        return new Promise((resolve, reject) => {
+            useApi()
+                .$get('care/api/v1/CareProjectList/')
+                .then((res) => {
+                    if (projects.value.length < total.value) {
+                        projects.value = [...projects.value, ...res.results];
+                    } else {
+                        projects.value = res.results;
+                    }
+                    total.value = res.count;
+                    loading.value = true;
+                    resolve(res);
+                })
+                .catch((err) => {
+                    loading.value = false;
+                    reject(err?.data);
+                });
+        });
+    };
+
+
+    return {
+        projects,
+        total,
+        loading,
+        fetchProjectsInfo,
+    };
+});

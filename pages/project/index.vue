@@ -6,10 +6,10 @@
           {{ $t('projects') }}
         </p>
         <i18n-t
-          keypath="over_projects"
-          tag="h2"
-          style="line-height: 1.6"
-          class="text-green-500 lg:text-4xl md:text-3xl text-xl font-bold text-center max-w-[580px]"
+            keypath="over_projects"
+            tag="h2"
+            style="line-height: 1.6"
+            class="text-green-500 lg:text-4xl md:text-3xl text-xl font-bold text-center max-w-[580px]"
         >
           <template #count>
             <span class="text-white bg-green-300 rounded-xl px-2.5 pr-2 mr-2">
@@ -20,28 +20,28 @@
       </div>
     </div>
     <div
-      class="grid md:grid-cols-2 lg:grid-cols-4 flex-wrap gap-6 mb-6 md:mb-8"
+        class="grid md:grid-cols-2 lg:grid-cols-4 flex-wrap gap-6 mb-6 md:mb-8"
     >
-      <LoaderProject v-if="loading" v-for="i in 12" :key="i" />
+      <LoaderProject v-if="!loading" v-for="i in 12" :key="i" />
       <CardProjectSingle
-        v-for="(data, i) in projects"
-        v-bind="{ data }"
-        :key="i"
+          v-for="(data, i) in projects"
+          v-bind="{ data }"
+          :key="i"
       />
     </div>
     <CommonButton
-      v-if="projects?.length < total"
-      label="show_more"
-      buttonStyle="flex items-center"
-      variant="primary"
-      class="mx-auto"
-      @click="fetchMore()"
+        v-if="projects?.length < total"
+        label="show_more"
+        buttonStyle="flex items-center"
+        variant="primary"
+        class="mx-auto"
+        @click="fetchMore()"
     />
   </div>
 </template>
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { useProjectStore } from '~/store/contactInfo'
+import { useProjectStore } from '~/store/project'
 import { computed } from 'vue'
 
 const { t } = useI18n()
@@ -99,13 +99,13 @@ const params = reactive({ offset: 0, limit: 12 })
 
 useAsyncData(async () => {
   if (!projects.value.length) {
-    await projectStore.fetchProjects({ params: params })
+    await projectStore.fetchProjectsInfo({ params: params })
   }
 })
 
 const fetchMore = () => {
   params.offset += params.limit
-  projectStore.fetchProjects({ params: params })
+  projectStore.fetchProjectsInfo({ params: params })
 }
 
 useSeoMeta({

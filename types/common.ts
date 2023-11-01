@@ -13,3 +13,9 @@ export interface TDefaultResponse<T> {
   last_update_date?: string
   results: T[]
 }
+export interface IPaginationresponse<T> {
+  count: number
+  next: string
+  previous: string
+  results: T[]
+}
