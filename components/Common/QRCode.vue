@@ -3,9 +3,10 @@
     <div
       class="border-2 bg-green-500 border-[#27A44A] p-2.5 relative rounded-xl qr"
       :class="{
-        '!bg-white w-[107px] h-[107px]': light,
+        '!bg-white w-full  !max-w-[180px] !max-h-[180px] border-[2px] border-[#CEDBD1]': light,
         'w-[107px] h-[107px]': dark,
       }"
+
     >
       <QRCanvas :options="options" style="width: 100%; height: 100%" />
       <img

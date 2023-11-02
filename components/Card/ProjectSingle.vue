@@ -216,7 +216,7 @@ interface IProjectCompany {
     }
   }
 }
-interface IProjectCard {
+interface IProjec {
   id: number
   title: string
   company: IProjectCompany
@@ -245,7 +245,7 @@ interface IProjectCard {
   status: number
 }
 interface Props {
-  data: IProjectCard
+  data: IProjec
 }
 
 defineProps<Props>()

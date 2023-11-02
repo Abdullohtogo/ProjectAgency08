@@ -15,14 +15,14 @@
         </p>
         <div class="flex gap-4 mt-7">
           <!--          <img src="/icons/QR.svg" alt="qr" /> -->
-          <QRCode light />
+          <QRCode light :class="'w-[107px] h-[107px]'"/>
           <div class="flex flex-col justify-between">
             <a
               target="_blank"
               :href="appstore"
               class="cursor-pointer hover:opacity-80 transition-all duration-300"
             >
-              <img src="/icons/Appstore1.svg" alt="" />
+              <img src="/icons/Appstore1.svg" alt="appimg" />
             </a>
             <a
               target="_blank"
@@ -55,6 +55,8 @@
   </div>
 </template>
 <script setup lang="ts">
+import {ref} from 'vue'
+
 import QRCode from '~/components/Common/QRCode.vue'
 
 const appstore = ref(import.meta.env.VITE_APP_APP_STORE)

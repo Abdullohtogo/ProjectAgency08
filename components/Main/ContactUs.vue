@@ -30,7 +30,7 @@
               >
                 <p>{{ item?.text }}</p>
                 <i v-if="item?.icon">
-                  <img src="/icons/openin.svg" alt="openin">
+                  <img src="/icons/openin.svg" alt="openin" />
                 </i>
               </div>
             </div>
@@ -40,7 +40,7 @@
           <p class="text-sm text-white mb-2 font-semibold">
             {{ $t('we_on_social') }}
           </p>
-          <div class=" flex flex-row md:gap-3 gap-2">
+          <div class="flex flex-row md:gap-3 gap-2">
             <a
               target="_blank"
               :href="item.url"
@@ -49,7 +49,7 @@
               v-tooltip.top="item.name"
               :key="item.id"
             >
-              <img :src="item.src" alt="">
+              <img :src="item.src" alt="" />
             </a>
           </div>
         </div>
@@ -82,17 +82,24 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-import {useProjectContact} from "~/composables/useProjectContact";
+import { useProjectContact } from '~/composables/useProjectContact'
 
 function onClickOutside() {
   document.body.style.overflow = 'auto'
   showModal.value = false
 }
 
-const { fetchContactInfo, fetchSocialsInfo, contactInfoDetails, contactSocialDetails } = useProjectContact()
+const {
+  fetchContactInfo,
+  fetchSocialsInfo,
+  contactInfoDetails,
+  contactSocialDetails,
+} = useProjectContact()
 
-fetchSocialsInfo()
-fetchContactInfo()
+onBeforeMount(() => {
+  fetchSocialsInfo()
+  fetchContactInfo()
+})
 
 const showModal = ref(false)
 

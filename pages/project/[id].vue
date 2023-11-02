@@ -81,7 +81,7 @@
         />
       </div>
       <div class="md:col-span-4 hidden md:block">
-        <WidgetSideBar :id="route.params.id" />
+        <WidgetSideBar :id="route.params.id.toString()" />
       </div>
     </div>
   </div>

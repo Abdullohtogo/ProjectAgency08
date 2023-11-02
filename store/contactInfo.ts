@@ -3,8 +3,9 @@ import { ref } from 'vue'
 
 import {useApi} from "~/composables/useApi";
 import { isEmptyObject } from '~/utils/functions/common'
+import {ISocial, IContactInfo} from "~/types/contact";
 
-export const useContactStore = defineStore('common', () => {
+export const useContactStore = defineStore('contact', () => {
     const contactInfo = ref()
     const contactSocials = ref()
 
@@ -16,7 +17,7 @@ export const useContactStore = defineStore('common', () => {
         return new Promise((resolve, reject) => {
             useApi()
                 .$get('care/api/v1/landing/ContactInfo/')
-                .then((res) => {
+                .then((res: IContactInfo) => {
                     contactInfo.value = res
                     resolve(res)
                 })
@@ -31,13 +32,13 @@ export const useContactStore = defineStore('common', () => {
         if (isEmptyObject(contactSocials.value)) {
             return contactSocials.value
         }
-
         return new Promise((resolve, reject) => {
             useApi()
                 .$get('care/api/v1/CareContact/')
-                .then((res) => {
+                .then((res: ISocial) => {
                     contactSocials.value = res
                     resolve(res)
+                    console.log(typeof  res)
                 })
                 .catch((err) => {
                     reject(err?.data)
