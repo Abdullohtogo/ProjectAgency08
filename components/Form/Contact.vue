@@ -76,7 +76,7 @@
           <CommonButton
             customButton="sm:!w-auto !w-full"
             :type="'submit'"
-            label="send_application"
+            label="send"
             class="ml-0 mt-2 md:ml-2 md:mt-0"
           />
         </div>
