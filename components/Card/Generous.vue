@@ -3,8 +3,8 @@
     <div class="flex gap-2 items-center">
       <img
         v-if="isImgError && item?.user?.avatar?.original"
-        :src="item?.user?.avatar?.thumbnail?.medium"
-        alt=""
+        :src="item?.user?.avatar?.thumbnail?.medium || '/avatar.svg'"
+        alt="userImg"
         class="w-8 h-8 border border-gray-600 rounded-full"
         @error="isImgError = false"
       />
