@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white/90 h-full rounded-2xl project">
+  <div class="bg-white/90 h-full rounded-2xl project backdrop-blur">
     <div class="py-2 pl-3 flex items-center gap-2">
       <img
         class="w-8 h-8 object-cover rounded-full"
@@ -187,72 +187,16 @@
 </template>
 
 <script setup lang="ts">
-// const handleImage = (event) => {
-//   console.log('event error: ', event)
-// }
+import {IProject} from "~/types/project";
+
 const isImg = ref(true)
-interface IprojectIcon {
-  id: string
-  type: string
-  file_name: string
-  file: string
-  file_size: string
-}
-interface IProjectCategory {
-  id: string
-  name: string
-  icon: IprojectIcon
-  background_color: string
-}
-interface IProjectCompany {
-  id: string
-  name: string
-  brand_logo: {
-    original: string
-    thumbnail: {
-      large: string
-      medium: string
-      small: string
-    }
-  }
-}
-interface IProjec {
-  id: number
-  title: string
-  company: IProjectCompany
-  category: IProjectCategory
-  image: IprojectIcon
-  region: {
-    id: string
-    soato: string
-    name: string
-  }
-  target_money: string
-  gained_money: string
-  gained_money_in_percent: number
-  about: string
-  is_favorite: boolean
-  user_donation_amount: string
-  donation_count: number
-  share_count: number
-  comment_count: number
-  views_count: number
-  is_active: number
-  is_project_report_ready: string
-  is_following_company: boolean
-  created_at: string
-  end_time: string
-  status: number
-}
 interface Props {
-  data: IProjec
+  data: IProject
 }
 
 defineProps<Props>()
 </script>
 
 <style>
-.project {
-  backdrop-filter: blur(7px);
-}
+
 </style>
