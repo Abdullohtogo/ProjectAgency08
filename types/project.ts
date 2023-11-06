@@ -36,3 +36,33 @@ export interface IProject {
     end_time: string
     status: number
 }
+export interface IPartner {
+    count: number
+    next: string
+    prev: string
+    results: []
+}
+export interface IFaq {
+    count: number
+    next: string
+    prev: string
+    results: []
+}
+export interface IDonat {
+    count: number
+    next: string
+    prev: string
+    results: []
+}
+export interface IPost {
+    count: number
+    next: string
+    prev: string
+    results: []
+}
+export interface IComment {
+    count: number
+    next: string
+    prev: string
+    results: []
+}

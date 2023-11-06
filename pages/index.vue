@@ -22,7 +22,7 @@
 import {computed} from 'vue';
 
 import { definePageMeta } from '#imports'
-import {advantageInfo} from "~/data/advantages";
+import {advantageCardInfo} from "~/data/maincards";
 
 definePageMeta({
   layout: 'custom',
@@ -42,6 +42,6 @@ function scrollToSection() {
   })
 }
 
-const cards = computed(() => advantageInfo())
+const cards = computed(() => advantageCardInfo())
 
 </script>

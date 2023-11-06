@@ -56,12 +56,12 @@
           >
             <div
               class="flex sm:gap-2 gap-0.5 items-center"
-              v-for="item in items"
-              :key="item.id"
+              v-for="advantage in advantages"
+              :key="advantage.id"
             >
-              <img :src="item.url" alt="icon" />
+              <img :src="advantage.url" alt="icon" />
               <p class="font-medium text-black-100 sm:text-base text-sm">
-                {{ $t(item.text) }}
+                {{ $t(advantage.text) }}
               </p>
             </div>
           </div>
@@ -83,27 +83,13 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed,ref } from 'vue'
+
+import {introAdvantageInfo} from "~/data/maincards";
 
 const appstore = ref(import.meta.env.VITE_APP_APP_STORE)
 const playstore = ref(import.meta.env.VITE_APP_PLAY_STORE)
-const items = [
-  {
-    id: 1,
-    text: 'realibility',
-    url: '/icons/shield-tick.svg',
-  },
-  {
-    id: 2,
-    text: 'transparency',
-    url: '/icons/search-status.svg',
-  },
-  {
-    id: 3,
-    text: 'simplicity',
-    url: '/icons/heart.svg',
-  },
-]
+const advantages = computed(() => introAdvantageInfo())
 </script>
 
 <style scoped>

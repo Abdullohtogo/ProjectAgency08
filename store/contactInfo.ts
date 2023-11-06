@@ -38,7 +38,6 @@ export const useContactStore = defineStore('contact', () => {
                 .then((res: ISocial) => {
                     contactSocials.value = res
                     resolve(res)
-                    console.log(typeof  res)
                 })
                 .catch((err) => {
                     reject(err?.data)

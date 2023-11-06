@@ -90,6 +90,8 @@
 import { onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
+import {IPaginationresponse} from "~/types/common";
+import {IFaq, IDonat, IPost, IComment} from "~/types/project";
 import ComponentsAbout from '@/pages/project/components/About.vue'
 import ComponentsComments from '@/pages/project/components/Comments.vue'
 import ComponentsFAQ from '@/pages/project/components/FAQ.vue'
@@ -138,26 +140,14 @@ const faqParams = reactive({
   offset: 0,
 })
 
-interface IPaginationResponse<T> {
-  count: number
-  next: string
-  prev: string
-  results: T[]
-}
 
-interface IFaq {
-  count: number
-  next: string
-  prev: string
-  results: []
-}
 
 const faqs = ref<IFaq[]>([])
 const faqCount = ref(0)
 const faqLoading = ref(true)
 const fetchFaq = (val: string, merge?: boolean) => {
   return useApi()
-    .$get<IPaginationResponse<IFaq>>(
+    .$get<IPaginationresponse<IFaq>>(
       `care/api/v1/landing/CareProject/${route.params.id}/FAQList/?search=${
         val == undefined ? '' : val
       }`,
@@ -181,19 +171,14 @@ const fetchMoreFaq = (val) => {
   fetchFaq(val, true).then(() => (faqLoading.value = false))
 }
 
-interface IDonat {
-  count: number
-  next: string
-  prev: string
-  results: []
-}
+
 
 const donats = ref<IDonat[]>([])
 const donatCount = ref(0)
 const loadingDonat = ref(true)
 const fetchDonat = () => {
   return useApi()
-    .$get<IPaginationResponse<IDonat>>(
+    .$get<IPaginationresponse<IDonat>>(
       `care/api/v1/landing/CareProject/${route.params.id}/DonationList/`,
       {
         params: donatParams,
@@ -215,12 +200,7 @@ const fetchMoreDonat = () => {
   fetchDonat().then(() => (loadingDonat.value = false))
 }
 
-interface IPost {
-  count: number
-  next: string
-  prev: string
-  results: []
-}
+
 
 const postError = ref()
 const posts = ref<IPost[]>([])
@@ -228,7 +208,7 @@ const postCount = ref(0)
 const postsLoading = ref(true)
 const fetchPost = () => {
   return useApi()
-    .$get<IPaginationResponse<IDonat>>(
+    .$get<IPaginationresponse<IDonat>>(
       `care/api/v1/${route.params.id}/CareProjectPostList/`,
       {
         params: postParams,
@@ -250,19 +230,14 @@ const fetchMorePost = () => {
   fetchPost().then(() => (postsLoading.value = false))
 }
 
-interface IComment {
-  count: number
-  next: string
-  prev: string
-  results: []
-}
+
 
 const comments = ref<IComment[]>([])
 const commentCount = ref(0)
 const commentLoading = ref(true)
 const fetchComment = () => {
   return useApi()
-    .$get<IPaginationResponse<IComment>>(
+    .$get<IPaginationresponse<IComment>>(
       `care/api/v1/landing/${route.params.id}/CareProjectCommentList/`,
       {
         params: commentParams,
@@ -295,7 +270,6 @@ const { data, error } = await useAsyncData('fetchProductDetail', () =>
 if (error.value) {
   showError({ statusCode: 404 })
 }
-
 onMounted(async () => {
   await fetchComment()
   await fetchDonat()

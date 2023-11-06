@@ -89,23 +89,12 @@
 </template>
 <script setup lang="ts">
 import PartnerCompanyCard from '~/components/Card/PartnerCompany.vue'
+import {IPaginationresponse} from "~/types/common";
+import {IPartner} from "~/types/project";
 
 const businePanel = import.meta.env.VITE_APP_BUSINESS_PANEL
 defineEmits(['scroll'])
 
-interface IPaginationResponse<T> {
-  count: number
-  next: string
-  prev: string
-  results: T[]
-}
-
-interface IPartner {
-  count: number
-  next: string
-  prev: string
-  results: []
-}
 const partnerParams = reactive({
   limit: 15,
   offset: 0,
@@ -116,7 +105,7 @@ const partnerCount = ref(0)
 
 const fetchCompany = () => {
   return useApi()
-    .$get<IPaginationResponse<IPartner>>(`care/api/v1/CompanyList/`, {
+    .$get<IPaginationresponse<IPartner>>(`care/api/v1/CompanyList/`, {
       params: partnerParams,
     })
     .then((res) => {
