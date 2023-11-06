@@ -158,30 +158,13 @@ export const useProjectStore = defineStore('projects', () => {
         fetchCommentInfo().then(() => (commentLoading.value = false))
     }
   return {
-    projects,
-    faqs,
-    donats,
-    faqCount,
-    posts,
-    postsLoading,
-    postCount,
-    donatCount,
-    projectsCount,
-    projectsLoading,
-    donatLoading,
-    faqLoading,
-    faqParams,
-    comments,
-    commentCount,
-    commentLoading,
-    fetchProjectsInfo,
-    fetchFaqInfo,
-    fetchMoreFaq,
-    fetchDonatInfo,
-    fetchMoreDonat,
-    fetchCommentInfo,
-    fetchMoreComment,
-    fetchPostInfo,
-    fetchMorePost,
+      projects, projectsCount, projectsLoading, // projects
+      faqs,faqCount,faqLoading, // FAQ
+      donats,donatCount,donatLoading,// Donating
+      posts, postsLoading, postCount, // Posts
+      comments, commentCount, commentLoading, // Comments
+      fetchProjectsInfo, fetchFaqInfo, fetchMoreFaq, fetchDonatInfo, // Fetching functions
+      fetchMoreDonat, fetchCommentInfo, fetchMoreComment, fetchPostInfo,
+      fetchMorePost,
   }
 })
