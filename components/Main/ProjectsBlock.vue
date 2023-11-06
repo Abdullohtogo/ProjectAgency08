@@ -49,8 +49,8 @@ import { useProjectStore } from '~/store/project';
 const projectStore = useProjectStore();
 
 const projects = computed(() => projectStore.projects)
-const loading = computed(() => projectStore.loading)
-const total = computed(() => projectStore.total)
+const loading = computed(() => projectStore.projectsLoading)
+const total = computed(() => projectStore.projectsCount)
 const params = reactive({ offset: 0, limit: 4 })
 useAsyncData(async () => {
   if (!projects.value.length) {

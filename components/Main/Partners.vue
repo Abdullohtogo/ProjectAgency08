@@ -31,18 +31,17 @@
       </p>
     </div>
     <div class="flex flex-wrap gap-5 mt-8 mx-11 justify-center relative z-10">
-        <PartnerCompanyCard
-          v-for="item in partners"
-          :item="item"
-          :key="item.id"
-        />
+      <PartnerCompanyCard
+        v-for="item in partners"
+        :item="item"
+        :key="item.id"
+      />
       <button
         v-if="partners.length > 15"
         @click="fetchMoreCompany()"
         class="load-more py-2.5 pl-3 pr-4 flex items-center gap-2 bg-white rounded-40"
       >
-        <i class="rounded-full bg-[#EBF7F1] p-1"
-          >
+        <i class="rounded-full bg-[#EBF7F1] p-1">
           <svg
             width="29"
             height="28"
@@ -89,8 +88,8 @@
 </template>
 <script setup lang="ts">
 import PartnerCompanyCard from '~/components/Card/PartnerCompany.vue'
-import {IPaginationresponse} from "~/types/common";
-import {IPartner} from "~/types/project";
+// import { type IPaginationresponse } from '~/types/common'
+// import {IPartner} from "~/types/project";
 
 const businePanel = import.meta.env.VITE_APP_BUSINESS_PANEL
 defineEmits(['scroll'])

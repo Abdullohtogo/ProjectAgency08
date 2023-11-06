@@ -1,322 +1,210 @@
-<template>
-  <div class="container sm:mt-6 mt-3 sm:mb-16 mb-4">
-    <div class="md:grid flex flex-col grid-cols-12 gap-6">
-      <div class="md:col-span-8">
-        <CollapseTransition class="transition duration-300">
-          <CardSaxovat :data="data" :end_time="new Date(data?.end_time)" />
-        </CollapseTransition>
-        <div class="sm:rounded-28 rounded-2xl bg-white backdrop-filter mt-5">
-          <div class="border-b border-gray-300">
-            <div
-              class="pt-4 md:px-5 sm:px-4 px-3 md:justify-start items-center flex md:gap-6 gap-3 w-full overflow-x-auto overflow-y-hidden scroll-style max-md:pb-1"
-            >
-              <button
-                v-for="(item, index) in tabs"
-                :key="index"
-                @click="activate(index)"
-                class="text-gray-200 sm:text-base text-sm font-semibold leading-130 cursor-pointer relative pb-2 whitespace-nowrap shrink-0"
-                :class="{ '!text-black-100': currentTab === item.id }"
+  <template>
+    <div class="container sm:mt-6 mt-3 sm:mb-16 mb-4">
+      <div class="md:grid flex flex-col grid-cols-12 gap-6">
+        <div class="md:col-span-8">
+          <CollapseTransition class="transition duration-300">
+            <CardSaxovat :data="data" :end_time="new Date(data?.end_time)" />
+          </CollapseTransition>
+          <div class="sm:rounded-28 rounded-2xl bg-white backdrop-filter mt-5">
+            <div class="border-b border-gray-300">
+              <div
+                class="pt-4 md:px-5 sm:px-4 px-3 md:justify-start items-center flex md:gap-6 gap-3 w-full overflow-x-auto overflow-y-hidden scroll-style max-md:pb-1"
               >
-                {{ $t(item.tab) }}
-                <span
-                  v-if="currentTab === item.id"
-                  class="absolute -bottom-[0.5px] left-0 w-full h-0.5 bg-green-400 rounded-t-md"
-                ></span>
-                <span
-                  v-if="item.id !== 0 && item.id !== null"
-                  :class="
-                    currentTab == item.id
-                      ? 'text-green-400 bg-green-100'
-                      : 'bg-gray-300 text-gray-400'
-                  "
-                  class="text-xs font-medium leading-130 transition transition-300 py-0.5 px-1.5 rounded-md"
+                <button
+                  v-for="(item, index) in tabs"
+                  :key="index"
+                  @click="activate(index)"
+                  class="text-gray-200 sm:text-base text-sm font-semibold leading-130 cursor-pointer relative pb-2 whitespace-nowrap shrink-0"
+                  :class="{ '!text-black-100': currentTab === item.id }"
                 >
-                  {{
-                    index == 1
-                      ? postCount
-                      : '' || index == 2
-                      ? faqCount
-                      : '' || index == 3
-                      ? comments.length
-                      : ''
-                  }}
-                </span>
-              </button>
+                  {{ $t(item.tab) }}
+                  <span
+                    v-if="currentTab === item.id"
+                    class="absolute -bottom-[0.5px] left-0 w-full h-0.5 bg-green-400 rounded-t-md"
+                  ></span>
+                  <span
+                    v-if="item.id !== 0 && item.id !== null"
+                    :class="
+                      currentTab == item.id
+                        ? 'text-green-400 bg-green-100'
+                        : 'bg-gray-300 text-gray-400'
+                    "
+                    class="text-xs font-medium leading-130 transition transition-300 py-0.5 px-1.5 rounded-md"
+                  >
+                    {{
+                      index == 1
+                        ? postCount
+                        : '' || index == 2
+                        ? faqsCount
+                        : '' || index == 3
+                        ? comments.length
+                        : ''
+                    }}
+                  </span>
+                </button>
+              </div>
             </div>
+            <Transition mode="out-in" name="fade">
+              <div :key="currentTab">
+                <ComponentsAbout :detail="data" v-if="currentTab === 0" />
+                <ComponentsPosts
+                  v-bind="{ data, posts }"
+                  :loading="postsLoading"
+                  :postsCount="postCount"
+                  @load-more="projectStore.fetchMorePost"
+                  v-if="currentTab === 1"
+                />
+                <ComponentsFAQ
+                  :faqs="faqs"
+                  :loading="faqsLoading"
+                  :faqCount="faqsCount"
+                  @on-type="projectStore.fetchFaqInfo"
+                  @load-more="projectStore.fetchMoreFaq"
+                  v-if="currentTab === 2"
+                />
+                <ComponentsComments
+                  :comments="comments"
+                  :loading="commentLoading"
+                  @load-more="projectStore.fetchMoreComment"
+                  :commentCount="commentCount"
+                  v-if="currentTab === 3"
+                />
+              </div>
+            </Transition>
           </div>
-          <Transition mode="out-in" name="fade">
-            <div :key="currentTab">
-              <ComponentsAbout :detail="data" v-if="currentTab === 0" />
-              <ComponentsPosts
-                v-bind="{ data, posts }"
-                :loading="postsLoading"
-                :postsCount="postCount"
-                @load-more="fetchMorePost()"
-                v-if="currentTab === 1"
-              />
-              <ComponentsFAQ
-                :faqs="faqs"
-                :loading="faqLoading"
-                :faqCount="faqCount"
-                @on-type="fetchFaq"
-                @load-more="fetchMoreFaq"
-                v-if="currentTab === 2"
-              />
-              <ComponentsComments
-                :comments="comments"
-                :loading="commentLoading"
-                @load-more="fetchMoreComment()"
-                :commentCount="commentCount"
-                v-if="currentTab === 3"
-              />
-            </div>
-          </Transition>
+          <WidgetGenerous
+            v-if="donatCount !== 0"
+            :data="donats"
+            @load-more="projectStore.fetchMoreDonat"
+            :donatCount="donatCount"
+            :loading="donatLoading"
+          />
         </div>
-        <WidgetGenerous
-          v-if="donatCount !== 0"
-          :data="donats"
-          @load-more="fetchMoreDonat"
-          :donatCount="donatCount"
-          :loading="loadingDonat"
-        />
-      </div>
-      <div class="md:col-span-4 hidden md:block">
-        <WidgetSideBar :id="route.params.id.toString()" />
+        <div class="md:col-span-4 hidden md:block">
+          <WidgetSideBar :id="route.params.id.toString()" />
+        </div>
       </div>
     </div>
-  </div>
-</template>
-<script setup lang="ts">
-import { onMounted, ref } from 'vue'
-import { useI18n } from 'vue-i18n'
-import { useRoute, useRouter } from 'vue-router'
-import {IPaginationresponse} from "~/types/common";
-import {IFaq, IDonat, IPost, IComment} from "~/types/project";
-import ComponentsAbout from '@/pages/project/components/About.vue'
-import ComponentsComments from '@/pages/project/components/Comments.vue'
-import ComponentsFAQ from '@/pages/project/components/FAQ.vue'
-import ComponentsPosts from '@/pages/project/components/Posts.vue'
-import CollapseTransition from '@ivanv/vue-collapse-transition/src/CollapseTransition.vue'
+  </template>
+  <script setup lang="ts">
+  import {computed, onMounted, reactive, ref} from 'vue'
+  import { useI18n } from 'vue-i18n'
+  import { useRoute, useRouter } from 'vue-router'
+  import {useProjectStore} from "~/store/project";
+  import ComponentsAbout from '@/pages/project/components/About.vue'
+  import ComponentsComments from '@/pages/project/components/Comments.vue'
+  import ComponentsFAQ from '@/pages/project/components/FAQ.vue'
+  import ComponentsPosts from '@/pages/project/components/Posts.vue'
+  import CollapseTransition from '@ivanv/vue-collapse-transition/src/CollapseTransition.vue'
+  import {useAsyncData} from "#app/composables/asyncData";
 
-const { t } = useI18n()
-const route = useRoute()
-const currentTab = ref(0)
-const tabs = [
-  {
-    id: 0,
-    tab: 'ab_saxovat',
-    current: true,
-  },
-  {
-    id: 1,
-    tab: 'posts',
-    current: false,
-  },
-  {
-    id: 2,
-    tab: 'faq',
-    current: false,
-  },
-  {
-    id: 3,
-    tab: 'comments',
-    current: false,
-  },
-]
-const donatParams = reactive({
-  limit: 8,
-  offset: 0,
-})
-const postParams = reactive({
-  limit: 3,
-  offset: 0,
-})
-const commentParams = reactive({
-  limit: 10,
-  offset: 0,
-})
-const faqParams = reactive({
-  limit: 10,
-  offset: 0,
-})
+  const { t } = useI18n()
+  const route = useRoute()
+  const currentTab = ref(0)
+  const tabs = [
+    {
+      id: 0,
+      tab: 'ab_saxovat',
+      current: true,
+    },
+    {
+      id: 1,
+      tab: 'posts',
+      current: false,
+    },
+    {
+      id: 2,
+      tab: 'faq',
+      current: false,
+    },
+    {
+      id: 3,
+      tab: 'comments',
+      current: false,
+    },
+  ]
 
 
+  const faqs = computed(() => projectStore.faqs)
+  const faqsLoading = computed(() => projectStore.faqLoading)
+  const faqsCount = computed(() => projectStore.faqCount)
 
-const faqs = ref<IFaq[]>([])
-const faqCount = ref(0)
-const faqLoading = ref(true)
-const fetchFaq = (val: string, merge?: boolean) => {
-  return useApi()
-    .$get<IPaginationresponse<IFaq>>(
-      `care/api/v1/landing/CareProject/${route.params.id}/FAQList/?search=${
-        val == undefined ? '' : val
-      }`,
-      {
-        params: faqParams,
-      }
-    )
-    .then((res) => {
-      faqCount.value = res.count
-      faqLoading.value = false
-      faqs.value = res.results
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-}
+  const donats = computed(() => projectStore.donats)
+  const donatLoading = computed(() => projectStore.donatLoading)
+  const donatCount = computed(() => projectStore.donatCount)
 
-const fetchMoreFaq = (val) => {
-  faqParams.limit += 10
-  faqLoading.value = true
-  fetchFaq(val, true).then(() => (faqLoading.value = false))
-}
+  const posts = computed(() => projectStore.posts)
+  const postsLoading = computed(() => projectStore.postsLoading)
+  const postCount = computed(() => projectStore.postCount)
+
+  const comments = computed(() => projectStore.comments)
+  const commentLoading = computed(() => projectStore.commentLoading)
+  const commentCount = computed(() => projectStore.commentCount)
 
 
-
-const donats = ref<IDonat[]>([])
-const donatCount = ref(0)
-const loadingDonat = ref(true)
-const fetchDonat = () => {
-  return useApi()
-    .$get<IPaginationresponse<IDonat>>(
-      `care/api/v1/landing/CareProject/${route.params.id}/DonationList/`,
-      {
-        params: donatParams,
-      }
-    )
-    .then((res) => {
-      donatCount.value = res.count
-      donats.value = [...donats.value, ...res.results]
-      loadingDonat.value = false
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-}
-
-const fetchMoreDonat = () => {
-  donatParams.offset += donatParams.limit
-  loadingDonat.value = true
-  fetchDonat().then(() => (loadingDonat.value = false))
-}
-
-
-
-const postError = ref()
-const posts = ref<IPost[]>([])
-const postCount = ref(0)
-const postsLoading = ref(true)
-const fetchPost = () => {
-  return useApi()
-    .$get<IPaginationresponse<IDonat>>(
-      `care/api/v1/${route.params.id}/CareProjectPostList/`,
-      {
-        params: postParams,
-      }
-    )
-    .then((res) => {
-      postCount.value = res.count
-      posts.value = [...posts.value, ...res.results]
-      postsLoading.value = false
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-}
-
-const fetchMorePost = () => {
-  postParams.offset += postParams.limit
-  postsLoading.value = true
-  fetchPost().then(() => (postsLoading.value = false))
-}
-
-
-
-const comments = ref<IComment[]>([])
-const commentCount = ref(0)
-const commentLoading = ref(true)
-const fetchComment = () => {
-  return useApi()
-    .$get<IPaginationresponse<IComment>>(
-      `care/api/v1/landing/${route.params.id}/CareProjectCommentList/`,
-      {
-        params: commentParams,
-      }
-    )
-    .then((res) => {
-      commentCount.value = res.count
-      comments.value = [...comments.value, ...res.results]
-      commentLoading.value = false
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-}
-
-const fetchMoreComment = () => {
-  commentLoading.value = true
-  commentParams.offset += commentParams.limit
-  fetchComment().then(() => (commentLoading.value = false))
-}
-
-const fetchProjectDetail = () => {
-  return useApi().$get(
-    `care/api/v1/landing/CareProjectDetail/${route.params.id}/`
-  )
-}
-const { data, error } = await useAsyncData('fetchProductDetail', () =>
-  fetchProjectDetail()
-)
-if (error.value) {
-  showError({ statusCode: 404 })
-}
-onMounted(async () => {
-  await fetchComment()
-  await fetchDonat()
-  await fetchFaq()
-  await fetchPost()
-  useSeoMeta({
-    title: () => data?.value?.title,
-    ogTitle: () => data?.value?.title,
-    description: () => data?.value?.about,
-    ogDescription: () => data?.value?.about,
-    ogImage: () => data?.value?.image?.original,
-    twitterTitle: () => data?.value?.title,
+  const projectStore = useProjectStore()
+  useAsyncData(async () => {
+    if (!faqs.value.length) {
+      await projectStore.fetchFaqInfo('', false, '1e64c35f-09d6-4354-a64e-82020086ede5')
+      await projectStore.fetchDonatInfo('1e64c35f-09d6-4354-a64e-82020086ede5')
+      await projectStore.fetchPostInfo('1e64c35f-09d6-4354-a64e-82020086ede5')
+      await projectStore.fetchCommentInfo('1e64c35f-09d6-4354-a64e-82020086ede5')
+    }
   })
-})
 
-function activate(index) {
-  currentTab.value = index
-}
-</script>
-<style scoped>
-p {
-  transition: color 0.3s ease-in-out;
-}
 
-p:not(.text-black-100):hover {
-  color: #6b7280;
-}
+  const fetchProjectDetail = () => {
+    return useApi().$get(
+      `care/api/v1/landing/CareProjectDetail/${route.params.id}/`
+    )
+  }
+  const { data, error } = await useAsyncData('fetchProductDetail', () =>
+    fetchProjectDetail()
+  )
+  if (error.value) {
+    showError({ statusCode: 404 })
+  }
+    useSeoMeta({
+      title: () => data?.value?.title,
+      ogTitle: () => data?.value?.title,
+      description: () => data?.value?.about,
+      ogDescription: () => data?.value?.about,
+      ogImage: () => data?.value?.image?.original,
+      twitterTitle: () => data?.value?.title,
+    })
 
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.5s ease;
-}
+  function activate(index: number) {
+    currentTab.value = index
+  }
+  </script>
+  <style scoped>
+  p {
+    transition: color 0.3s ease-in-out;
+  }
 
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-}
+  p:not(.text-black-100):hover {
+    color: #6b7280;
+  }
+  .v-enter-active,
 
-.scroll-style::-webkit-scrollbar {
-  height: 3px;
-}
+  .v-leave-active {
+    transition: opacity 0.5s ease;
+  }
 
-.scroll-style::-webkit-scrollbar-track {
-  background: #dce0e4;
-}
+  .v-enter-from,
+  .v-leave-to {
+    opacity: 0;
+  }
 
-.scroll-style::-webkit-scrollbar-thumb {
-  background: #8e9ba8;
-}
-</style>
+  .scroll-style::-webkit-scrollbar {
+    height: 3px;
+  }
+
+  .scroll-style::-webkit-scrollbar-track {
+    background: #dce0e4;
+  }
+
+  .scroll-style::-webkit-scrollbar-thumb {
+    background: #8e9ba8;
+  }
+  </style>
