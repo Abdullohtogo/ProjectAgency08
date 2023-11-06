@@ -10,9 +10,11 @@ module.exports = {
     "plugin:vue/vue3-essential",
     "plugin:markdown/recommended",
   ],
+  parser: "@babel/eslint-parser",
   parserOptions: {
     ecmaVersion: 2020,
   },
+  babelOptions: {},
   plugins: ["simple-import-sort", "import"],
   rules: {
     "no-console": "warn",
