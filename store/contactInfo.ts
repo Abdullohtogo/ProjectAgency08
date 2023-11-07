@@ -3,7 +3,7 @@ import { ref } from 'vue'
 
 import {useApi} from "~/composables/useApi";
 import { isEmptyObject } from '~/utils/functions/common'
-import {ISocial, IContactInfo} from "~/types/contact";
+import type {ISocial, IContactInfo} from "~/types/contact";
 
 export const useContactStore = defineStore('contact', () => {
     const contactInfo = ref()

@@ -88,8 +88,8 @@
 </template>
 <script setup lang="ts">
 import PartnerCompanyCard from '~/components/Card/PartnerCompany.vue'
-// import { type IPaginationresponse } from '~/types/common'
-// import {IPartner} from "~/types/project";
+import type {IPaginationresponse } from '~/types/common'
+import type {IPartner} from "~/types/project";
 
 const businePanel = import.meta.env.VITE_APP_BUSINESS_PANEL
 defineEmits(['scroll'])

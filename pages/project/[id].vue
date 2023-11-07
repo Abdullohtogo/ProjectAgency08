@@ -87,9 +87,9 @@
     </div>
   </template>
   <script setup lang="ts">
-  import {computed, onMounted, reactive, ref} from 'vue'
+  import {computed, ref} from 'vue'
   import { useI18n } from 'vue-i18n'
-  import { useRoute, useRouter } from 'vue-router'
+  import { useRoute } from 'vue-router'
   import {useProjectStore} from "~/store/project";
   import ComponentsAbout from '@/pages/project/components/About.vue'
   import ComponentsComments from '@/pages/project/components/Comments.vue'
