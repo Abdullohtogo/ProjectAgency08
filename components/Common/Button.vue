@@ -2,7 +2,7 @@
   <button
     :disabled="disabled"
     :type="type"
-    class="md:py-2.5 py-2 md:px-5 rounded-xl relative border font-semibold transition-all duration-300 ease-in-out flex gap-2 items-center justify-center"
+    class="md:py-2.5 py-2 md:px-5 rounded-xl relative border disabled:leading-6 disabled:text-sm disabled:border-gray-600 disabled:text-gray-400 disabled:bg-gray-600 font-semibold transition-all duration-300 ease-in-out flex gap-2 items-center justify-center"
     :class="[
       buttonStyle,
       customButton,
@@ -55,14 +55,5 @@ const buttonStyle = computed(() => {
 </script>
 
 <style>
-button:disabled,
-button[disabled] {
-  border: 1px solid #e5ecdf;
-  background-color: #e5ecdf;
-  color: #808f7c;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 24px; /* 171.429% */
-}
+
 </style>
