@@ -4,10 +4,10 @@
     :type="type"
     class="md:py-2.5 py-2 md:px-5 rounded-xl relative border disabled:leading-6 disabled:text-sm disabled:border-gray-600 disabled:text-gray-400 disabled:bg-gray-600 font-semibold transition-all duration-300 ease-in-out flex gap-2 items-center justify-center"
     :class="[
-      buttonStyle,
+      variants[variant],
       customButton,
       {
-        'pointer-events-none': loading,
+        '!pointer-events-none': loading,
       },
       buttonVariantClass,
     ]"
@@ -22,15 +22,17 @@
 </template>
 
 <script lang="ts" setup>
+type TButtonVariants =
+  | 'primary'
+  | 'secondary'
+  | 'darker'
+
 interface Props {
-  label: {
-    type: string
-    required: true
-  }
+  label: string
   customButton: string
   type: string
   disabled: boolean
-  variant?: 'primary' | 'secondary' | 'darker'
+  variant?: TButtonVariants
   loading?: boolean
 }
 
@@ -40,20 +42,13 @@ const props = withDefaults(defineProps<Props>(), {
   variant: 'primary',
 })
 
-const buttonStyle = computed(() => {
-  switch (props.variant) {
-    case 'primary':
-      return 'bg-white border-green-400 text-green-400 hover:bg-green-100'
-    case 'secondary':
-      return 'text-purple bg-green-400 border-green-400 text-white hover:bg-green-600'
-    case 'darker':
-      return 'text-green-400 bg-green-100 border-transparent hover:bg-green-light'
-    default:
-      return 'bg-green'
-  }
-})
+const variants: Record<TButtonVariants, string> = {
+  primary: 'bg-white border-green-400 text-green-400 hover:bg-green-100',
+  secondary: 'text-purple bg-green-400 border-green-400 text-white hover:bg-green-600',
+  darker:  'text-green-400 bg-green-100 border-transparent hover:bg-green-light',
+}
 </script>
 
 <style>
-
+body{z-index: 1;}
 </style>
