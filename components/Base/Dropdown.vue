@@ -22,18 +22,17 @@
 </template>
 
 <script lang="ts" setup>
-import { type TClassName } from '~/types/common'
+import type { TClassName } from '~/types/common'
 
 interface Props {
   headClass?: TClassName
   bodyClass?: TClassName
-  show?: boolean | undefined
+  show?: boolean
   withTrigger?: boolean
 }
 const props = withDefaults(defineProps<Props>(), {
-  show: undefined,
-  headClass: '',
-  bodyClass: '',
+  headClass: undefined,
+  bodyClass: undefined,
 })
 
 interface Emits {
@@ -45,7 +44,7 @@ const showBody = ref(props.show ?? false)
 
 function toggleShow() {
   if (!props.withTrigger) {
-    if (props.show === undefined) {
+    if (typeof props.show === 'undefined') {
       showBody.value = !showBody.value
     } else {
       emit('toggle', !props.show)
@@ -55,7 +54,7 @@ function toggleShow() {
 
 function handleFocusOut(e: FocusEvent) {
   if (e?.target?.dataset?.dropdown) {
-    if (props.show === undefined) {
+    if (typeof props.show === 'undefined') {
       showBody.value = false
     } else {
       emit('toggle', false)

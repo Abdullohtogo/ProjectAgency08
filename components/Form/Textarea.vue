@@ -20,8 +20,8 @@
 </template>
 
 <script lang="ts" setup>
-import { type TClassName } from '~/types/common'
-import { type TInputTypes } from '~/types/components/input'
+import type { TClassName } from '~/types/common'
+import type { TInputTypes } from '~/types/components/input'
 
 interface Props {
   inputClass?: TClassName

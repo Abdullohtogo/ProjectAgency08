@@ -63,7 +63,7 @@
 </template>
 <script lang="ts" setup>
 import dayjs from 'dayjs'
-import { formatMoneyWithSpace } from '@/utils/index'
+import { formatMoneyWithSpace } from '@/utils'
 interface Props {
   item: {
     id: number

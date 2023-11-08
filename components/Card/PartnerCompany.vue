@@ -17,7 +17,7 @@
 import { computed } from 'vue'
 
 interface Props {
-  item: Array
+  item: []
 }
 
 const props = defineProps<Props>()

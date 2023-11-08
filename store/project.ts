@@ -2,8 +2,8 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
 import { useApi } from '~/composables/useApi'
-import {IPaginationresponse} from '~/types/common'
-import type {IFaq, IProject, IDonat, IPost, IComment} from '~/types/project'
+import type { IPaginationresponse } from '~/types/common'
+import type { IFaq, IProject, IDonat, IPost, IComment } from '~/types/project'
 
 export const useProjectStore = defineStore('projects', () => {
   const projects = ref<IProject[]>([])

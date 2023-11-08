@@ -1,6 +1,6 @@
 import * as pkg from 'vue-toastification'
 
-import { BaseToast } from '#components'
+import { BaseToast  } from "#components";
 
 const { useToast } = pkg
 

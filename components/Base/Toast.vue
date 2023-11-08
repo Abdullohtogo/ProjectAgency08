@@ -20,6 +20,7 @@ interface Props {
   title: string
 }
 defineProps<Props>()
+
 const images = computed(() => {
   return {
     success: '/icons/toast/success.svg',
@@ -29,8 +30,3 @@ const images = computed(() => {
   }
 })
 </script>
-<style>
-.toast {
-  box-shadow: 0px 8px 20px rgba(18, 28, 37, 0.16);
-}
-</style>
