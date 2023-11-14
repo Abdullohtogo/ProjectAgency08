@@ -1,160 +1,30 @@
-@import url("../icomoon/style.css");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300&family=Poppins:wght@500&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-    font-family: 'Rubik';
-    src: url('public/fonts/Roboto-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Rubik';
-    src: url('public/fonts/Roboto-Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Rubik';
-    src: url('public/fonts/Roboto-Medium.ttf') format('truetype');
-    font-weight: 500;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Rubik';
-    src: url('public/fonts/Roboto-Light.ttf') format('truetype');
-    font-weight: 300;
-    font-style: normal;
-}
-
-
-*:focus:not(.focus-visible) {
-  outline: none;
-}
-
-body {
-    background-color: #F5F6F7;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-    transition: opacity 0.3s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-    opacity: 0;
-}
-
-/*! Toastification !*/
-.Vue-Toastification__toast {
-    padding: 0 !important;
-    display: flex;
-    align-items: flex-start;
-    overflow: visible !important;
-    border-radius: 12px !important;
-    min-height: auto !important;
-    box-shadow: 0 8px 20px rgba(18, 28, 37, 0.16) !important;
-    justify-content: space-between !important;
-    background: #151516CC !important;
-}
-
-@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
-    .Vue-Toastification__toast {
-        backdrop-filter: blur(10px);
+@layer components {
+    .card:hover .card-item{
+        color: #EA3A60;
     }
-}
-
-@media screen and (max-width: 600px) {
-    .Vue-Toastification__toast {
-        margin-top: 15px !important;
+    .card:hover .socials{
+        display: flex;
     }
-}
-@media screen and (max-width: 768px) {
-    .Vue-Toastification__toast {
-        width: calc(100% - 32px) !important;
+    body {
+        /*background: black;*/
+        overflow-x: hidden;
     }
-    .Vue-Toastification__container {
-        align-items: center !important;
-
+    .fix{
+        position: fixed;
     }
-}
-
-.Vue-Toastification__toast-body {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 13px !important;
-    line-height: 16px !important;
-    color: #2a2a2a;
-    white-space: pre-line !important;
-}
-
-.Vue-Toastification__close-button {
-    padding-left: 0 !important;
-    color: #898b8b !important;
-    margin-right: 16px !important;
-    margin-top: 12px !important;
-    border: none !important;
-}
-.Vue-Toastification__icon {
-    display: none !important;
-}
-
-.static-text > * {
-    margin-bottom: 24px !important;
-}
-.static-text p,
-.static-text li {
-    text-align: justify;
-    font-size: 16px;
-    color: #121C25;
-}
-.static-text ol,
-.static-text ul {
-    padding-left: 16px;
-}
-.static-text ul li {
-    list-style: disc;
-    position: relative;
-}
-.static-text ol li {
-    list-style: auto;
-}
-.static-text a{
-    color: #4489F7;
-}
-.static-text a:hover{
-    text-decoration: underline;
-}
-.static-text img {
-    width: 100%;
-    max-height: 438px;
-    border-radius: 8px;
-}
-.static-text b {
-    font-weight: 500;
-}
-
-.static-text h4{
-    color: #4489F7;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 130%;
-    padding-bottom: 12px;
-    margin-bottom: 12px !important;
-    position: relative;
-}
-.static-text h4:after{
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    background: #4489F7;
-    height: 1px;
-    width: 130px;
+    html{
+        scroll-behavior: smooth;
+    }
+    .line{
+        line-height: 30px;
+    }
+    .line-1{
+        line-height: 30px;
+    }
 }

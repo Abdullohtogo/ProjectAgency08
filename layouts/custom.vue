@@ -1,9 +1,11 @@
 <template>
   <div>
-    <LayoutHeader :white="true" class="fixed w-full z-[1000]" />
-    <div class="md:pt-[88px] pt-[72px]">
-      <slot></slot>
-    </div>
-    <LayoutFooter />
+    <Navbar/>
+  </div>
+  <div>
+    <slot/>
+  </div>
+  <div>
+    <Footer/>
   </div>
 </template>
