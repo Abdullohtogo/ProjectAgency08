@@ -1,5 +1,5 @@
 <template>
-  <section class="mt-[170px] lg:flex-row flex-col flex xl:gap-8 lg:gap-1">
+  <section class="mt-[170px] lg:flex-row flex-col flex xl:gap-8 lg:gap-1 container mx-auto">
     <img src="" alt="" />
     <img
       src="/images/coreFeaturesImg.jpg"
@@ -8,7 +8,7 @@
     />
     <div class="mt-[65px] w-full">
       <p
-        class="uppercase text-pinkRed text-[14px] font-semibold mb-[5px] text-center lg:text-start"
+        class="uppercase text-pink text-[14px] font-semibold mb-[5px] text-center lg:text-start"
       >
         Core features
       </p>

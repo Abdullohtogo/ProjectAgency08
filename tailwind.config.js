@@ -1,80 +1,51 @@
-module.exports = {
+/** @type {import("tailwindcss").Config} */
+export default {
     content: [
-        './components/**/*.{vue,js,ts}',
-        './directives/**/*.{js,ts}',
-        './layouts/**/*.vue',
-        './pages/**/*.vue',
-        './plugins/**/*.{js,ts}',
-        './nuxt.config.{js,ts}',
-        './app.vue',
+        "./components/**/*.{js,vue,ts}",
+        "./layouts/**/*.vue",
+        "./pages/**/*.vue",
+        "./plugins/**/*.{js,ts}",
+        "./app.vue",
+        "./error.vue",
     ],
-    mode: 'jit',
+    devtools: { enabled: true },
+    css: ['/assets/styles/main.css'],
     theme: {
-        container: {
-            center: true,
-            padding: '16px',
-            screens: ['1280px']
+        extend: {},
+        colors:{
+            dark:{
+                DEFAULT:"#02073E"
+            },
+            pink:{
+                DEFAULT:"#EA3A60"
+            },
+            white:{
+                DEFAULT:"#FFF"
+            },
+            gray:{
+                DEFAULT:"#777171",
+                100:"#e0e0e0",
+                200:"#E5ECF4",
+                300:'#e6e6fa',
+                400:"#F7F8FB",
+                500:"#343D48"
+
+            },
+            yellow:{
+                DEFAULT:'#FFA740',
+            },
+            blue:{
+                DEFAULT:'#2563FF',
+                100:'rgba(129,157,236,0.78)'
+            }
         },
-        extend: {
-            colors: {
-                red: '#FF0000',
-                gray: {
-                    100: '#F5F6F7',
-                    200: '#5C6659',
-                    300: '#F6F7F5',
-                    400: '#808F7C',
-                    500: '#CDD7C6',
-                    600: '#E5ECDF',
-                    700: '#939694',
-                    800: '#F5F7F6',
-                    900: '#ECF3FA'
-                },
-                green: {
-                    light: '#D8EFDE',
-                    100: '#EBF7F1',
-                    200: '#A7D2B5',
-                    300: '#16CC53',
-                    400: '#27A44A',
-                    500: '#0C3317',
-                    600: '#149137',
-                },
-                black: {
-                    100: '#090E14',
-                    200: '#292E2A',
-                },
-                blue: {
-                  light: '#E4ECF7',
-                },
-            },
-            gradientColorStops: {
-                'app-banner-1': '#27A44A',
-                'app-banner-2': '#121C25',
-            },
-            borderRadius: {
-                28: '28px',
-                36: '36px',
-                40: '40px',
-            },
-            boxShadow: {
-                partners: "0px 4px 30px 0px rgba(22, 204, 83, 0.20)",
-                partnersCard: "0px 10px 48px 0px rgba(16, 16, 16, 0.10)",
-                formCard: "0px 10px 48px 0px rgba(16, 16, 16, 0.10)",
-                qrlight: "0px 4px 50px 0px rgba(39, 164, 74, 0.60)",
-                header: '0px 4px 20px 0px rgba(125, 132, 141, 0.10), 0px 3px 6px 0px rgba(125, 132, 141, 0.06)',
-            },
-            lineHeight: {
-                130: '130%',
-                128: "128%",
-                120: '120%',
-                140: '140%',
-            },
-            fontSize: {
-              '2xs': '10px'
-            },
-            backgroundColor: {
-              modal: "rgba(9, 14, 20, 0.60)",
-            },
+        screens:{
+            xs:'300px',
+            sm:'480px',
+            md:'710px',
+            lg:'940px',
+            xl:'1100px'
         },
     },
     plugins: [],
-}
+};

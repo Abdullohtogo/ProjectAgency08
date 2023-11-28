@@ -1,23 +1,26 @@
 <template>
   <div>
     <IntroPage/>
-    <div class="container mx-auto">
+    <div>
       <FeatureOfProductsPage/>
       <ServicePage/>
       <UsefulFeaturesPage/>
       <CoreFeatures/>
     </div>
     <FunctionsPage/>
-    <div class="container mx-auto">
+    <div>
       <PricingPlan/>
-<!--      <pricing-plan-layout/>-->
       <TeamMembersPage/>
       <TestimonialsPage/>
       <SubscribeBlogPage/>
       <BlogsPage/>
     </div>
   </div>
+<!--  <Footer/>-->
 </template>
 
 <script lang="ts" setup>
+definePageMeta({
+  layout:'custom',
+})
 </script>

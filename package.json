@@ -1,8 +1,10 @@
 {
+  "type": "module",
+  "module": "commonjs",
   "private": true,
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev && yarn  husky install",
+    "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
@@ -10,13 +12,9 @@
     "lint:style": "stylelint \"**/*.{vue,css}\" --ignore-path .gitignore",
     "lint:js:fix": "eslint --fix --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint:style:fix": "stylelint \"**/*.{vue,css}\" --fix --ignore-path .gitignore",
-    "lint": "yarn lint:js && yarn lint:style",
-    "prepare": "husky install"
+    "lint": "yarn lint:js && yarn lint:style"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.4.2",
-    "@commitlint/config-conventional": "^17.4.2",
-    "@nuxtjs/eslint-config": "^3.1.0",
     "@nuxtjs/tailwindcss": "^6.6.5",
     "@types/node": "^20.8.10",
     "autoprefixer": "^10.4.13",
@@ -27,28 +25,26 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "eslint-plugin-vue": "^8.0.3",
-    "husky": "^8.0.3",
     "nuxt": "^3.2.0",
     "postcss": "^8.4.19",
     "prettier": "^2.5.0",
-    "tailwindcss": "^3.2.4",
     "vue-gtag-next": "^1.14.0",
-    "vue-i18n": "^9.2.2"
+    "vue-i18n": "^9.2.2",
+    "vue-router": "^4.2.5"
   },
   "dependencies": {
     "@babel/eslint-parser": "^7.22.15",
     "@ivanv/vue-collapse-transition": "^1.0.2",
     "@pinia/nuxt": "^0.4.3",
-    "@sentry/browser": "^7.70.0",
     "@vuelidate/core": "^2.0.3",
     "@vuelidate/validators": "^2.0.3",
-    "dayjs": "^1.11.9",
-    "maska": "^1.5.0",
     "nuxt-security": "^0.14.4",
-    "qrcanvas-vue": "^3.0.0",
-    "vee-validate": "^4.11.1",
-    "vue-awesome-countdown": "^1.1.4",
-    "vue-toastification": "^2.0.0-rc.5",
+    "swiper": "^11.0.4",
+    "tailwindcss": "^3.3.5",
+    "vue": "^3.3.8",
+    "vue-burger-menu": "^2.0.5",
+    "vue3-carousel": "^0.3.1",
+    "vue3-carousel-nuxt": "^1.1.0",
     "vue3-lazyload": "^0.3.8"
   }
 }

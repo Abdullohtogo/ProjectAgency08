@@ -1,29 +1,53 @@
 <template>
-  <div class="fixed w-full bg-white z-30 transition-all">
-    <div class="flex container mx-auto">
-      <div class="w-full mt-[25px] mb-[25px] justify-between flex">
-        <logo/>
-        <div class="mt-3 gap-7 lg:flex hidden">
-          <NuxtLink to="#home" class="text-[16px] text-darkBlue">Home</NuxtLink>
-          <NuxtLink to="#" class="text-[16px] text-darkBlue">Advertise</NuxtLink>
-          <NuxtLink to="#pricing" class="text-[16px] text-darkBlue">Support</NuxtLink>
-          <NuxtLink to="#contact" class="text-[16px] text-darkBlue">Contact</NuxtLink>
+  <section class="bg-white w-full fixed h-[80px] z-50">
+    <div class="mx-auto container">
+      <div class="flex justify-between w-full mt-4 z-50">
+        <BaseExtraLogo />
+        <div class="md:gap-6 md:flex mt-3 hidden">
+          <NuxtLink to="#home" class="font-semibold hover:text-pink transition-all text-dark"
+            >Home</NuxtLink
+          >
+          <NuxtLink to="#addvertise" class="font-semibold hover:text-pink transition-all text-dark"
+            >Advertise
+          </NuxtLink>
+          <NuxtLink to="#pricing" class="font-semibold hover:text-pink transition-all text-dark"
+            >Support
+          </NuxtLink>
+          <NuxtLink to="#contact" class="font-semibold  hover:text-pink transition-all text-dark"
+            >Contact
+          </NuxtLink>
         </div>
-        <Button text="Qozi"/>
+        <div>
+          <BaseButtonsButton text="Get Started" class="md:block hidden" />
+          <button @click="toggleModal" class="z-30 block md:hidden">
+            <img src="/icons/bars.svg" alt="" class="w-[40px] mt-1" />
+          </button>
+        </div>
       </div>
-      <button class="lg:hidden text-darkBlue flex"><img src="/Icons/bars.svg" class="mt-7 ml-1 w-10 h-10" alt=""></button>
     </div>
+  </section>
+  <div class="bg-white md:hidden block">
+        <transition name="slide">
+          <div v-if="isModalOpened" class="w-full h-[100vh] top-0 left-0 items-center justify-center fixed z-40">
+            <div class="w-full bg-white flex flex-col p-[20px] absolute top-[70px]">
+              <NuxtLink to="#home" class="text-center text-[18px] p-[30px] hover:bg-gray-100 transition-all">Home</NuxtLink>
+              <NuxtLink to="#addvertise" class="text-center text-[18px] p-[30px] hover:bg-gray-100 transition-all">Advertise</NuxtLink>
+              <NuxtLink to="#pricing" class="text-center text-[18px] p-[30px] hover:bg-gray-100 transition-all">Support</NuxtLink>
+              <NuxtLink to="#contact" class="text-center text-[18px] p-[30px] hover:bg-gray-100 transition-all">Contact</NuxtLink>
+              <BaseButtonsButton text="Get Started" class="mt-2 mx-auto w-[140px] h-[60px] text-[18px]" />
+            </div>
+          </div>
+        </transition>
   </div>
-<!--  <div class="lg:hidden flex flex-col mt-6 w-full h-full bg-white " >-->
-<!--    <NuxtLink to="#" class="text-[16px] text-darkBlue text-center w-full hover:bg-gray-100 transition-all rounded-2xl h-20"><div class="h-6"></div>Home</NuxtLink>-->
-<!--    <NuxtLink to="#" class="text-[16px] text-darkBlue text-center w-full hover:bg-gray-100 transition-all rounded-2xl h-20"><div class="h-6"></div>Advertise</NuxtLink>-->
-<!--    <NuxtLink to="#" class="text-[16px] text-darkBlue text-center w-full hover:bg-gray-100 transition-all rounded-2xl h-20"><div class="h-6"></div>Support</NuxtLink>-->
-<!--    <NuxtLink to="#" class="text-[16px] text-darkBlue text-center w-full hover:bg-gray-100 transition-all rounded-2xl h-20"><div class="h-6"></div>Contact</NuxtLink>-->
-<!--  </div>-->
 </template>
-<script setup lang="js">
-import Logo from "~/components/Base/extra/logo.vue";
-import Button from "~/components/Base/Buttons/Button.vue";
 
+<script setup>
+import { ref } from 'vue';
+
+const isModalOpened = ref(false);
+
+const toggleModal = () => {
+  isModalOpened.value = !isModalOpened.value;
+};
 
 </script>
