@@ -1,6 +1,6 @@
 <template>
   <section class="bg-pink mt-[200px]" id="addvertise">
-    <div class="container mx-auto">
+    <div class="container mx-auto pb-1.5">
       <img src="/shapes/FunctionsShape.png" class="absolute opacity-10 md:left-64 lg:left-80 xl:left-[600px] hidden md:block" alt="">
       <img src="/shapes/FunctionShape4.png" class="absolute opacity-10 md:-left-4 -translate-y-10 hidden md:block" alt="">
       <p class="uppercase text-white text-[14px] text-center pt-[66px] font-semibold mb-[5px]">Whats the function</p>
@@ -41,7 +41,6 @@
       </div>
       <img src="/shapes/FunctionsShape3.png" alt="" class="absolute opacity-10 -translate-y-28 xl:right-[500px] md:right-40 sm:right-20 lg:right-64 xs:right-80 right-10 hidden md:block">
       <img src="/shapes/FunctionsShape2.png" class="absolute opacity-10 -translate-y-[450px] right-0 hidden md:block" alt="">
-      <br>
     </div>
   </section>
 </template>

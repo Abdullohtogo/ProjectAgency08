@@ -1,7 +1,6 @@
 <template>
   <section class="">
     <div class="w-full xl:mb-28 lg:mb-40 mb-40 md:mb-1" id="home">
-      <br>
       <div class="w-full mt-[120px] z-40">
         <h1 class="text-center lg:text-[70px] md:text-[48px] font-semibold mx-auto md:w-[550px] lg:w-[804px] sm:text-[36px] sm:w-[400px] text-[26px] w-[260px]">Top Quality Digital Products To Explore</h1>
         <p class="text-center lg:w-[502px] md:w-[450px] lg:text-[18px] lg:line-[34px] md:text-[16px] sm:line-1 mt-[30px] mx-auto sm:w-[350px] w-[250px] text-[13px] sm:text-[15px]">Get your blood tests delivered at let home collect sample from the victory of the managments that supplies

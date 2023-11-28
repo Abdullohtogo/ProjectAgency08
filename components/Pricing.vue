@@ -11,7 +11,6 @@
           Amazing useful features
         </h1>
       </div>
-      <br />
       <div class="w-[302px] h-[62px] bg-gray-400 mx-auto">
         <ul class="flex">
           <li
