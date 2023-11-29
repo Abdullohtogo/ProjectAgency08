@@ -16,5 +16,5 @@
   </section>
 </template>
 <script setup lang="ts">
-import Logo from "~/components/Base/extra/logo.vue";
+import Logo from "~/components/Base/Extra/logo.vue";
 </script>

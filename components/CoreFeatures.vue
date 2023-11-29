@@ -2,7 +2,7 @@
   <section class="mt-[170px] lg:flex-row flex-col flex xl:gap-8 lg:gap-1 container mx-auto">
     <img src="" alt="" />
     <img
-      src="/images/coreFeaturesImg.jpg"
+      src="/images/AstonAagar.jpg"
       alt=""
       class="rounded-md lg:hidden lg:md:block mx-auto h-full w-[550px]"
     />
@@ -28,7 +28,7 @@
       </div>
     </div>
     <img
-      src="/images/coreFeaturesImg.jpg"
+      src="/images/AstonAagar.jpg"
       alt=""
       class="rounded-md hidden lg:inline-block h-full w-[500px] xl:w-full xl:mt-0 lg:mt-10"
     />

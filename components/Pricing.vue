@@ -59,7 +59,7 @@
                   </h3>
                   <div class="mx-7 md:mx-0">
                     <MainButton
-                      text="Start free trail"
+                      text="Create Account"
                       class="ml-7 mx-auto mt-[35px]"
                     />
                   </div>
@@ -104,7 +104,7 @@
                   </h3>
                   <div class="mx-7 md:mx-0">
                     <MainButton
-                      text="Start free trail"
+                      text="Create Account"
                       class="ml-7 mx-auto mt-[35px]"
                     />
                   </div>
@@ -179,7 +179,7 @@
                   </h3>
                   <div class="mx-7 md:mx-0">
                     <MainButton
-                      text="Start free trail"
+                      text="Create Account"
                       class="ml-7 mx-auto mt-[35px]"
                     />
                   </div>
@@ -224,7 +224,7 @@
                   </h3>
                   <div class="mx-7 md:mx-0">
                     <MainButton
-                      text="Start free trail"
+                      text="Create Account"
                       class="ml-7 mx-auto mt-[35px]"
                     />
                   </div>

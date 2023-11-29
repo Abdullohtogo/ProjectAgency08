@@ -1,25 +1,27 @@
 <template>
   <div>
-    <IntroPage/>
+    <Intro/>
     <div>
-      <FeatureOfProductsPage/>
-      <ServicePage/>
-      <UsefulFeaturesPage/>
+      <FeatureOfProducts/>
+      <Service/>
+      <UsefulFeatures/>
       <CoreFeatures/>
     </div>
-    <FunctionsPage/>
+    <Functions/>
     <div>
-      <PricingPlan/>
-      <TeamMembersPage/>
-      <TestimonialsPage/>
-      <SubscribeBlogPage/>
-      <BlogsPage/>
+      <Pricing/>
+      <TeamMembers/>
+      <Testimonials/>
+      <OurBlog/>
+      <SubscribeBlog/>
+      <Blogs/>
     </div>
   </div>
 <!--  <Footer/>-->
 </template>
 
 <script lang="ts" setup>
+
 definePageMeta({
   layout:'custom',
 })

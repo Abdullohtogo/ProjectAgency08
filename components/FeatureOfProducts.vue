@@ -1,5 +1,5 @@
 <template>
-  <section class="mt-[210px] sm:mt-[100px] mb-[180px] md:mx-10 ">
+  <section class="mt-[120px] md:mt-36 sm:mt-[150px] mb-[180px] md:mx-10 ">
     <div class="w-full">
       <p class="text-center text-pink md:text-[16px] text-[13.5px] uppercase font-semibold">Whats the function</p>
       <h2 class="md:text-[36px] text-2xl text-center font-semibold">Meet the feature of product</h2>
