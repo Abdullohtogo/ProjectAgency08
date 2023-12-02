@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "@babel/eslint-parser": "^7.22.15",
+    "@headlessui/vue": "^1.7.16",
     "@ivanv/vue-collapse-transition": "^1.0.2",
     "@pinia/nuxt": "^0.4.3",
     "@vuelidate/core": "^2.0.3",
@@ -45,6 +46,7 @@
     "vue-burger-menu": "^2.0.5",
     "vue3-carousel": "^0.3.1",
     "vue3-carousel-nuxt": "^1.1.0",
-    "vue3-lazyload": "^0.3.8"
+    "vue3-lazyload": "^0.3.8",
+    "vue3-use-modal": "^0.0.3"
   }
 }

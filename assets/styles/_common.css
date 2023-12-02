@@ -1,0 +1,77 @@
+.card:hover .card-item {
+  color: #ea3a60;
+}
+
+.card:hover .socials {
+  display: flex;
+}
+
+body {
+  overflow-x: hidden;
+    font-family: "DM Sans", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.active {
+  @apply bg-white;
+}
+.background {
+  background-image: url("/public/images/serviceImg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+li {
+  @apply w-[146px] h-[50px] text-center m-1.5;
+}
+ul {
+  cursor: pointer;
+}
+button {
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+input {
+  font-size: 1.1rem;
+  font-weight: 500;
+  @apply text-pink;
+}
+
+input:focus {
+  outline: 2px solid white;
+}
+
+input::placeholder {
+  @apply text-pink;
+}
+
+/* Button on top of the Input.vue */
+.wrapper {
+  margin-top: 40px;
+  width: 600px;
+  max-width: 100%;
+  position: relative;
+}
+
+.wrapper input {
+  background: white;
+  border: 2px solid white;
+  border-radius: 50px;
+  padding: 1rem 2rem;
+  width: 100%;
+}
+
+.wrapper button {
+  aspect-ratio: 1;
+  height: 80%;
+  position: absolute;
+  top: 10%;
+  right: 5px;
+}

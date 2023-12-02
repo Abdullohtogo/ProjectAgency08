@@ -22,6 +22,8 @@
 
 <script lang="ts" setup>
 
+import Modal from "~/components/Base/Extra/Modal.vue";
+
 definePageMeta({
   layout:'custom',
 })

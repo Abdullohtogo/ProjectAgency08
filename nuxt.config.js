@@ -17,6 +17,7 @@ export default defineNuxtConfig({
 
   plugins: [
     { src: '~/plugins/vue-burger-menu.js', ssr: false },
+    { src: '~/plugins/modalPlugin', mode: 'client' },
   ],
   carousel: {
     prefix: 'MyPrefix'

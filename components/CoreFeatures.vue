@@ -1,8 +1,7 @@
 <template>
-  <section class="mt-[170px] lg:flex-row flex-col flex xl:gap-8 lg:gap-1 container mx-auto">
-    <img src="" alt="" />
+  <section class="mt-[170px] lg:flex-row flex-col flex xl:gap-1 lg:gap-1 container mx-auto">
     <img
-      src="/images/AstonAagar.jpg"
+      src="/images/coreFeaturesImg.png"
       alt=""
       class="rounded-md lg:hidden lg:md:block mx-auto h-full w-[550px]"
     />
@@ -13,7 +12,7 @@
         Core features
       </p>
       <h1
-        class="font-semibold xl:text-[48px] md:text-[36px] text-[28px] lg:mx-0 lg:w-[420px] mb-8 text-center lg:text-start mx-auto"
+        class="font-semibold xl:text-[48px] md:text-[36px] text-[28px] lg:mx-0 lg:w-[500px] mb-8 text-center lg:text-start mx-auto"
       >
         Smart Jackpots that you may love this anytime & anywhere
       </h1>
@@ -27,11 +26,14 @@
         <MainButton text="Explore" class="mt-8" />
       </div>
     </div>
-    <img
-      src="/images/AstonAagar.jpg"
-      alt=""
-      class="rounded-md hidden lg:inline-block h-full w-[500px] xl:w-full xl:mt-0 lg:mt-10"
-    />
+    <div class="w-full">
+      <img
+        src="/images/coreFeaturesImg.png"
+        alt=""
+        class="rounded-md hidden lg:inline-block h-full w-[500px] xl:w-full xl:mt-0 lg:mt-10"
+      />
+      <BaseExtraShape2 class="absolute -z-20 -translate-y-64 translate-x-80 hidden lg:block"/>
+    </div>
   </section>
 </template>
 <script setup lang="ts">

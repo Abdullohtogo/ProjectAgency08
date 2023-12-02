@@ -10,9 +10,9 @@
         </div>
       </div>
       <div class="flex mt-5">
-        <img src="/shapes/IntroShape1.png" alt="" class="absolute md:w-[400px] lg:w-[600px]  lg:top-[300px] w-[250px] sm:w-[350px] md:top-[400px] sm:top-[450px] top-[420px] z-0">
-        <img src="/images/introImg.png" alt="" class="mx-auto z-10 w-[850px] lg:mt-[50px] md:mt-[50px]">
-        <img src="/shapes/IntroShape2.png" alt="" class="absolute lg:right-0 md:-right-1 right-0 md:w-[400px] sm:w-[350px] w-[250px] md:top-[700px] lg:top-[640px] sm:top-[470px] top-[415px] lg:w-[500px] z-0">
+        <img src="/shapes/IntroShape1.png" alt="" class="absolute md:w-[400px] lg:w-[600px]  lg:top-[300px] w-[250px] sm:w-[350px] md:top-[400px] sm:top-[450px] top-[420px] z-0"/>
+        <img src="/images/introImg.png" alt="" class="mx-auto z-10 w-[850px] lg:mt-[50px] md:mt-[50px]"/>
+        <img src="/shapes/IntroShape2.png" alt="" class="absolute lg:right-0 md:-right-1 right-0 md:w-[400px] sm:w-[350px] w-[250px] md:top-[700px] lg:top-[640px] sm:top-[470px] top-[415px] lg:w-[500px] z-0"/>
       </div>
     </div>
   </section>

@@ -1,9 +1,8 @@
 <template>
   <div class="wrapper">
-    <input type="text" placeholder="Enter your email" />
-    <MainButton text="subscribe"/>
+    <input type="text" placeholder="Enter your email" class="placeholder-pink font-bold"/>
+    <BaseButtonsMainButton text="subscribe"/>
   </div>
 </template>
 <script setup lang="ts">
-import MainButton from "~/components/Base/Buttons/MainButton.vue";
 </script>

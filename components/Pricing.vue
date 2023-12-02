@@ -32,7 +32,39 @@
           <div
             class="grid lg:grid-cols-3 gap-10 xl:gap-10 lg:gap-5 sm:mx-auto justify-center mx-[1.5px] mt-14 mb-18"
           >
-            <BaseExtraPricingPlanComponent title="Free Plan" desc="For Small teams or office" price="$0" price-type="/Monthly"/>
+            <div
+              class="sm:w-[350px] w-[300px] lg:w-[300px] h-[540px] border-gray-200 border-[1px] rounded-md lg:mb-[180px] hover:shadow-xl transition-all"
+            >
+              <div class="m-[45px]">
+                <h3 class="text-[22px] font-bold">Free Plan</h3>
+                <p class="text-[16px] mb-[40px]">For Small teams or office</p>
+                <div class="flex flex-col gap-5">
+                  <p class="flex gap-3">
+                    <img src="/icons/tick.svg" alt="" />Drag & Drop Builder
+                  </p>
+                  <p class="flex gap-3">
+                    <img src="/icons/tick.svg" alt="" />100's of Templates
+                  </p>
+                  <p class="flex gap-3">
+                    <img src="/icons/tick.svg" alt="" />Blog Support Tools
+                  </p>
+                  <p class="flex gap-3">
+                    <img src="/icons/tick.svg" alt="" />eCommerce Store
+                  </p>
+                </div>
+                <div class="mt-[35px] mx-auto w-[210px]">
+                  <h3 class="font-bold text-[30px] text-center">
+                    $0<span class="text-[16px] font-normal">/Monthly</span>
+                  </h3>
+                  <div class="mx-7 md:mx-0">
+                    <MainButton
+                      text="Start free trail"
+                      class="ml-7 mx-auto mt-[35px]"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
             <div
               class="sm:w-[350px] lg:w-[300px] w-[300px] h-[540px] border-gray-200 border-[1px] rounded-md hover:shadow-xl transition-all"
             >
