@@ -35,5 +35,5 @@
   </section>
 </template>
 <script setup lang="ts">
-import Modal from "~/components/Base/Extra/Modal.vue";
+import Modal from "~/components/Base/extra/Modal.vue";
 </script>

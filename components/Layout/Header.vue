@@ -17,8 +17,8 @@
             >Contact
           </NuxtLink>
         </div>
-        <div>
-          <BaseButtonsButton text="Get Started" class="md:block hidden" />
+        <div class="flex">
+          <BaseButton variant="secondary" text="Get Started" class="hidden md:block"/>
           <button @click="toggleModal" class="z-30 block md:hidden">
             <img src="/icons/bars.svg" alt="" class="w-[40px] mt-1" />
           </button>
@@ -34,7 +34,7 @@
               <NuxtLink to="#addvertise" class="text-center text-[18px] p-[30px] hover:bg-gray-100 transition-all">Advertise</NuxtLink>
               <NuxtLink to="#pricing" class="text-center text-[18px] p-[30px] hover:bg-gray-100 transition-all">Support</NuxtLink>
               <NuxtLink to="#contact" class="text-center text-[18px] p-[30px] hover:bg-gray-100 transition-all">Contact</NuxtLink>
-              <BaseButtonsButton text="Get Started" class="mt-2 mx-auto w-[140px] h-[60px] text-[18px]" />
+              <BaseButton text="Get Started" class="mt-2 mx-auto w-[140px] h-[60px] text-[18px]" />
             </div>
           </div>
         </transition>
@@ -42,8 +42,6 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-
 const isModalOpened = ref(false);
 
 const toggleModal = () => {

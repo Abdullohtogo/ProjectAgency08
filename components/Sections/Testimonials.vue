@@ -7,39 +7,16 @@
     <div class="custom-slider relative">
       <Swiper
         v-bind="{ modules }"
-        :breakpoints="{
-        '300':{
-          slidesPerView: .7,
-          spaceBetween: 15,
-        },
-        '480': {
-          slidesPerView: 1.1,
-          spaceBetween: 20,
-        },
-        '710': {
-          slidesPerView: 1.5,
-          spaceBetween: 40,
-        },
-        '940': {
-          slidesPerView: 2,
-          spaceBetween: 50,
-        },
-        '1100': {
-          slidesPerView: 2.5,
-          spaceBetween: 50,
-        },
-    }"
-        :settings="swiperOptions"
+        :breakpoints="swiperOptions.breakpoints"
         ref="swiperEl"
         @swiper="onInit"
-        @slideChange="onSlideChange"
       >
         <SwiperSlide v-for="(slide, index) in slides" :key="index">
-          <div class="w-[422px] h-[402px] hover:shadow-xl transition-all border-[1px] border-gray-200">
-            <div class="mx-auto w-[368px] mt-[35px]">
+          <div class="sm:w-[422px] h-[402px] xs:w-[350px] hover:shadow-xl transition-all border-[1px] border-gray-200">
+            <div class="w-[368px] mt-[35px] lg:mx-auto xs:mx-4">
               <img src="/shapes/stars.svg" alt="">
               <h4 class="font-bold mt-6 mb-4">{{ slide.title }}</h4>
-              <p class="w-[368px] line text-[18px]">{{ slide.description }}</p>
+              <p class="line w-[320px] text-[18px]">{{ slide.description }}</p>
               <div class="mt-[35px] flex gap-2">
                 <img :src="slide.image" alt="">
                 <div class="">
@@ -53,11 +30,6 @@
               </div>
             </div>
           </div>
-<!--          <img :src="slide.image" alt="Slide Image"/>-->
-<!--          <div class="slide-content">-->
-<!--            <h3></h3>-->
-<!--            <p>{{ slide.description }}</p>-->
-<!--          </div>-->
         </SwiperSlide>
       </Swiper>
       <div class="absolute flex items-center gap-5 translate-y-10 -bottom-10 left-0 xl:mx-[500px] lg:mx-[400px] md:mx-72 sm:mx-48 xs:mx-10">
@@ -101,11 +73,11 @@ const slides = [
 const swiperOptions = {
   breakpoints :{
     '300': {
-      slidesPerView: 1,
-      spaceBetween: 20,
+      slidesPerView: 0.8,
+      spaceBetween: 30,
     },
     '480': {
-      slidesPerView: 1,
+      slidesPerView: 1.3,
       spaceBetween: 20,
     },
     '710': {

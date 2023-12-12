@@ -57,7 +57,7 @@
                     $0<span class="text-[16px] font-normal">/Monthly</span>
                   </h3>
                   <div class="mx-7 md:mx-0">
-                    <MainButton
+                    <BaseButton
                       text="Start free trail"
                       class="ml-7 mx-auto mt-[35px]"
                     />
@@ -90,7 +90,7 @@
                     $15<span class="text-[16px] font-normal">/Monthly</span>
                   </h3>
                   <div class="mx-7 md:mx-0">
-                    <MainButton
+                    <BaseButton
                       text="Create Account"
                       class="ml-7 mx-auto mt-[35px]"
                     />
@@ -135,7 +135,7 @@
                     $24<span class="text-[16px] font-normal">/Monthly</span>
                   </h3>
                   <div class="mx-7 md:mx-0">
-                    <MainButton
+                    <BaseButton
                       text="Create Account"
                       class="ml-7 mx-auto mt-[35px]"
                     />
@@ -177,7 +177,7 @@
                     $0<span class="text-[16px] font-normal">/Annual</span>
                   </h3>
                   <div class="mx-7 md:mx-0">
-                    <MainButton
+                    <BaseButton
                       text="Start free trail"
                       class="ml-7 mx-auto mt-[35px]"
                     />
@@ -210,7 +210,7 @@
                     $150<span class="text-[16px] font-normal">/Annual</span>
                   </h3>
                   <div class="mx-7 md:mx-0">
-                    <MainButton
+                    <BaseButton
                       text="Create Account"
                       class="ml-7 mx-auto mt-[35px]"
                     />
@@ -255,7 +255,7 @@
                     $240<span class="text-[16px] font-normal">/Annual</span>
                   </h3>
                   <div class="mx-7 md:mx-0">
-                    <MainButton
+                    <BaseButton
                       text="Create Account"
                       class="ml-7 mx-auto mt-[35px]"
                     />
@@ -273,7 +273,6 @@
   </section>
 </template>
 <script setup>
-import MainButton from '~/components/Base/Buttons/MainButton.vue'
 </script>
 <script>
 export default {

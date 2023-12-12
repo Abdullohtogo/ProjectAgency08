@@ -23,7 +23,7 @@
         the managments that supplies best design system guidelines ever.
       </p>
       <div class="w-[100px] md:w-[150px] lg:mx-0 mx-auto">
-        <MainButton text="Explore" class="mt-8" />
+        <BaseButton text="Explore" class="mt-8" />
       </div>
     </div>
     <div class="w-full">
@@ -37,5 +37,4 @@
   </section>
 </template>
 <script setup lang="ts">
-import MainButton from '~/components/Base/Buttons/MainButton.vue'
 </script>

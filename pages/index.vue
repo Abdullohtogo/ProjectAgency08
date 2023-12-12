@@ -1,30 +1,20 @@
 <template>
   <div>
-    <Intro/>
+    <SectionsIntro/>
     <div>
-      <FeatureOfProducts/>
-      <Service/>
-      <UsefulFeatures/>
-      <CoreFeatures/>
+      <SectionsFeatureOfProducts/>
+      <SectionsService/>
+      <SectionsUsefulFeatures/>
+      <SectionsCoreFeatures/>
     </div>
-    <Functions/>
+    <SectionsFunctions/>
     <div>
-      <Pricing/>
-      <TeamMembers/>
-      <Testimonials/>
-      <OurBlog/>
-      <SubscribeBlog/>
-      <Blogs/>
+      <SectionsPricing/>
+      <SectionsTeamMembers/>
+      <SectionsTestimonials/>
+      <SectionsOurBlog/>
+      <SectionsSubscribeBlog/>
+      <SectionsBlogs/>
     </div>
   </div>
-<!--  <Footer/>-->
 </template>
-
-<script lang="ts" setup>
-
-import Modal from "~/components/Base/Extra/Modal.vue";
-
-definePageMeta({
-  layout:'custom',
-})
-</script>

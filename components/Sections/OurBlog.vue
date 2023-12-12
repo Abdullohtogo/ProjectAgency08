@@ -7,29 +7,7 @@
     <div class="custom-slider relative">
       <Swiper
         v-bind="{ modules }"
-        :breakpoints="{
-        '300':{
-          slidesPerView: .5,
-          spaceBetween: 10,
-        },
-        '400':{
-          slidesPerView: 1,
-          spaceBetween:15,
-        },
-        '710':{
-          slidesPerView:2,
-          spaceBetween:15,
-        },
-        '940':{
-          slidesPerView:2,
-          spaceBetween:15,
-        },
-        '1100':{
-          slidesPerView:2.5,
-          spaceBetween:10
-        }
-    }"
-        :settings="swiperOptions"
+        :breakpoints="swiperOptions.breakpoints"
         ref="swiperEl"
         @swiper="onInit"
         @slideChange="onSlideChange"
@@ -84,11 +62,27 @@ const slides = [
 ]
 
 const swiperOptions = {
-  breakpoints :{
-    '300': {
-      slidesPerView: 1,
-      spaceBetween: 20,
-    },
+  breakpoints:{
+  '300':{
+    slidesPerView: .5,
+      spaceBetween: 10,
+  },
+  '400':{
+    slidesPerView: 1,
+      spaceBetween:15,
+  },
+  '710':{
+    slidesPerView:1.6,
+      spaceBetween:15,
+  },
+  '940':{
+    slidesPerView:2,
+      spaceBetween:15,
+  },
+  '1100':{
+    slidesPerView:2.5,
+      spaceBetween:10
+  }
   },
   loop: true,
   navigation: {

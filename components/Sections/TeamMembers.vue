@@ -13,9 +13,9 @@
             <p class="text-center sm:text-[16px] text-[14px]">CEO And Founder</p>
           </div>
           <div class="flex-col gap-2 sm:translate-x-[340px] sm:translate-y-[170px] xl:translate-x-[340px] xl:translate-y-[170px] translate-x-[270px] translate-y-[120px] lg:translate-x-[270px] lg:translate-y-[120px] hidden socials absolute">
-            <img src="/icons/facebook.svg" alt="">
-            <img src="/icons/twitter.svg" alt="">
-            <img src="/icons/instagram.svg" alt="">
+            <img src="/icons/facebook.svg" alt="" class="cursor-pointer ">
+            <img src="/icons/twitter.svg" alt="" class="cursor-pointer ">
+            <img src="/icons/instagram.svg" alt="" class="cursor-pointer ">
           </div>
         </div>
         <div class="w-[300px] h-[230px] lg:w-[300px] xl:w-[396px] xl:h-[269px] lg:h-[230px] sm:w-[396px] sm:h-[269px] mt-[50px] border-md flex hover:shadow-xl transition-all card">
@@ -25,9 +25,9 @@
             <p class="text-center sm:text-[16px] text-[14px]">Web Developer</p>
           </div>
           <div class="flex-col gap-2 sm:translate-x-[340px] sm:translate-y-[170px] xl:translate-x-[340px] xl:translate-y-[170px] translate-x-[270px] translate-y-[120px] lg:translate-x-[270px] lg:translate-y-[120px] hidden socials absolute">
-            <img src="/icons/facebook.svg" alt="">
-            <img src="/icons/twitter.svg" alt="">
-            <img src="/icons/instagram.svg" alt="">
+            <img src="/icons/facebook.svg" alt="" class="cursor-pointer ">
+            <img src="/icons/twitter.svg" alt="" class="cursor-pointer ">
+            <img src="/icons/instagram.svg" alt="" class="cursor-pointer ">
           </div>
         </div>
         <div class="w-[300px] h-[230px] lg:w-[300px] lg:h-[230px] xl:w-[396px] xl:h-[269px] sm:w-[396px] sm:h-[269px] mt-[50px] border-md flex hover:shadow-xl transition-all card">
@@ -37,9 +37,9 @@
             <p class="text-center sm:text-[16px] text-[14px]">Web Designer</p>
           </div>
           <div class="flex-col gap-2 sm:translate-x-[340px] sm:translate-y-[170px] xl:translate-x-[340px] xl:translate-y-[170px] translate-x-[270px] translate-y-[120px] lg:translate-x-[270px] lg:translate-y-[120px] hidden socials absolute">
-            <img src="/icons/facebook.svg" alt="">
-            <img src="/icons/twitter.svg" alt="">
-            <img src="/icons/instagram.svg" alt="">
+            <img src="/icons/facebook.svg" alt="" class="cursor-pointer ">
+            <img src="/icons/twitter.svg" alt="" class="cursor-pointer ">
+            <img src="/icons/instagram.svg" alt="" class="cursor-pointer ">
           </div>
         </div>
         <div class="w-[300px] h-[230px] lg:w-[300px] lg:h-[230px] sm:w-[396px] xl:w-[396px] xl:h-[269px] sm:h-[269px] mt-[50px] border-md flex hover:shadow-xl transition-all card">
@@ -49,9 +49,9 @@
             <p class="text-center sm:text-[16px] text-[14px]">Web Designer</p>
           </div>
           <div class="flex-col gap-2 sm:translate-x-[340px] sm:translate-y-[170px] xl:translate-x-[340px] xl:translate-y-[170px] translate-x-[270px] translate-y-[120px] lg:translate-x-[270px] lg:translate-y-[120px] hidden socials absolute">
-            <img src="/icons/facebook.svg" alt="">
-            <img src="/icons/twitter.svg" alt="">
-            <img src="/icons/instagram.svg" alt="">
+            <img src="/icons/facebook.svg" alt="" class="cursor-pointer ">
+            <img src="/icons/twitter.svg" alt="" class="cursor-pointer ">
+            <img src="/icons/instagram.svg" alt="" class="cursor-pointer ">
           </div>
         </div>
         <div class="w-[300px] h-[230px] lg:w-[300px] lg:h-[230px] sm:w-[396px] xl:w-[396px] xl:h-[269px] sm:h-[269px] mt-[50px] border-md flex hover:shadow-xl transition-all card">
@@ -61,9 +61,9 @@
             <p class="text-center sm:text-[16px] text-[14px]">Web Designer</p>
           </div>
           <div class="flex-col gap-2 sm:translate-x-[340px] sm:translate-y-[170px] xl:translate-x-[340px] xl:translate-y-[170px] translate-x-[270px] translate-y-[120px] lg:translate-x-[270px] lg:translate-y-[120px] hidden socials absolute">
-            <img src="/icons/facebook.svg" alt="">
-            <img src="/icons/twitter.svg" alt="">
-            <img src="/icons/instagram.svg" alt="">
+            <img src="/icons/facebook.svg" alt="" class="cursor-pointer ">
+            <img src="/icons/twitter.svg" alt="" class="cursor-pointer ">
+            <img src="/icons/instagram.svg" alt="" class="cursor-pointer ">
           </div>
         </div>
         <div class="w-[300px] h-[230px] lg:w-[300px] lg:h-[230px] sm:w-[396px] sm:h-[269px] xl:w-[396px] xl:h-[269px] mt-[50px] border-md flex hover:shadow-xl transition-all card">
@@ -73,9 +73,9 @@
             <p class="text-center sm:text-[16px] text-[14px]">Web Designer</p>
           </div>
           <div class="flex-col gap-2 sm:translate-x-[340px] sm:translate-y-[170px] xl:translate-x-[340px] xl:translate-y-[170px] translate-x-[270px] translate-y-[120px] lg:translate-x-[270px] lg:translate-y-[120px] hidden socials absolute">
-            <img src="/icons/facebook.svg" alt="">
-            <img src="/icons/twitter.svg" alt="">
-            <img src="/icons/instagram.svg" alt="">
+            <img src="/icons/facebook.svg" alt="" class="cursor-pointer ">
+            <img src="/icons/twitter.svg" alt="" class="cursor-pointer ">
+            <img src="/icons/instagram.svg" alt="" class="cursor-pointer ">
           </div>
         </div>
       </div>
