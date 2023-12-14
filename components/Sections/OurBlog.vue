@@ -15,7 +15,7 @@
         <SwiperSlide v-for="(slide, index) in slides" :key="index">
           <div class="sm:w-[422px] sm:h-[402px] xs:w-[300px] h-[320px] hover:shadow-xl transition-all border-[1px] border-gray-200 flex rounded-md">
             <div class="">
-              <img :src="slide.image" alt="">
+              <img :src="slide.image" alt=""/>
               <div class="mx-5">
                 <h4 class="font-semibold mt-6 mb-3 sm:mt-7  sm:mb-4  leading-6 sm:text-[20px] sm:w-[300px] w-[250px]">{{ slide.title }}</h4>
                 <p class="text-pink">{{ slide.name }}</p>

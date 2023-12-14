@@ -10,7 +10,7 @@
         <div>
           <div class="grid grid-cols-2 ">
             <p class="w-[72px] h-[72px] rounded-[40%] bg-white text-center text-pink text-[30px] font-semibold pt-4 mb-[25px]">01</p>
-            <img src="/shapes/arrow.svg" alt="" class="-translate-x-8 lg:block hidden">
+            <img src="/shapes/arrow.svg" alt="" class="-translate-x-8 lg:block hidden/">
           </div>
           <h3 class="xl:w-[191px] w-[200px] xl:text-[22px] sm:text-[16px] sm:w-[190px] text-[17px] mb-[15px] font-bold text-white">Set disbursement Instructions</h3>
           <p class="xl:w-[263px] w-[210px] sm:w-[200px] text-white xl:text-[16px] text-[14px]">Get your blood tests delivered at home collect a sample from the your blood tests.</p>
@@ -18,7 +18,7 @@
         <div>
           <div class="grid grid-cols-2">
             <p class="w-[72px] h-[72px] rounded-[40%] bg-white text-center text-pink text-[30px] font-semibold pt-4 mb-[25px]">02</p>
-            <img src="/shapes/arrow%20(1).svg" alt="" class="-translate-x-8 lg:block hidden mt-10">
+            <img src="/shapes/arrow%20(1).svg" alt="" class="-translate-x-8 lg:block hidden mt-10"/>
           </div>
           <h3 class="xl:w-[280px] w-[200px] xl:text-[22px] sm:text-[16px] sm:w-[190px] text-[17px] mb-[15px] font-bold text-white">Assembly retrieves funds from your account</h3>
           <p class="xl:w-[263px] w-[210px] sm:w-[200px] text-white xl:text-[16px] text-[14px]">Get your blood tests delivered at home collect a sample from the your blood tests.</p>
@@ -26,7 +26,7 @@
         <div>
           <div class="grid grid-cols-2">
             <p class="w-[72px] h-[72px] rounded-[40%] bg-white text-center text-pink text-[30px] font-semibold pt-4 mb-[25px]">03</p>
-            <img src="/shapes/arrow.svg" alt="" class="-translate-x-8 lg:block hidden">
+            <img src="/shapes/arrow.svg" alt="" class="-translate-x-8 lg:block hidden"/>
           </div>
           <h3 class="xl:w-[210px] w-[200px] xl:text-[22px] sm:text-[16px] sm:w-[190px] text-[17px] mb-[15px] font-bold text-white">Assembly initiates disbursement</h3>
           <p class="xl:w-[263px] w-[210px] sm:w-[200px] text-white xl:text-[16px] text-[14px]">Get your blood tests delivered at home collect a sample from the your blood tests.</p>

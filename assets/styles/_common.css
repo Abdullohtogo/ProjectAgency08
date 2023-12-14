@@ -87,3 +87,14 @@ input::placeholder {
 .transition-300 {
   transition: all 0.3s ease-in-out;
 }
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 10px;
+}
+
+.grid-item {
+  padding: 20px;
+  border: 1px solid #ccc;
+}

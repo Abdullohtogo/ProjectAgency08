@@ -18,7 +18,7 @@
               <h4 class="font-bold mt-6 mb-4">{{ slide.title }}</h4>
               <p class="line w-[320px] text-[18px]">{{ slide.description }}</p>
               <div class="mt-[35px] flex gap-2">
-                <img :src="slide.image" alt="">
+                <img :src="slide.image" alt=""/>
                 <div class="">
                   <h4 class="text-[16px] font-bold">
                     Denny Hilguston
